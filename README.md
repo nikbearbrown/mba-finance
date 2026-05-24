@@ -2,7 +2,7 @@
 
 *Per-book metadata. Loaded by skills before drafting. Overrides workshop CLAUDE.md on voice specifics; subordinate on hard rules.*
 
-**Author:** Nik Bear Brown
+**Author:** Humanitarians AI
 
 **Folder:** `books/principles-finance-with-llms/`
 
@@ -21,7 +21,7 @@
 <!-- TOC sourced from `_toc.md` -->
 
 *A first course in business finance for the era of large language models.*
-*Author: Nik Bear Brown.*
+*Author: Humanitarians AI.*
 
 ---
 
