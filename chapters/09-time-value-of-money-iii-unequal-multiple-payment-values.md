@@ -1,221 +1,107 @@
 # Chapter 9 — Time Value of Money III: Unequal Multiple Payments
-
-
-## TL;DR
-
-- You will practice Compute the future value of a mixed stream of cash flows; Compute the present value of a mixed stream of cash flows by direct discounting and by decomposition into annuity-plus-single-payment components; Compute net present value (NPV) of an investment.
-- The chapter moves through The puzzle of the investment decision, Learning objectives, Concept 1 — From equal payments to arbitrary streams, The universal approach, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. The General Case
-2. NPV — Where TVM Becomes a Decision Tool
-3. Cash Flows That Aren't Equal
-
-**TL;DR.** Real cash flow streams aren't equal. Bonds have a final principal repayment that dwarfs each coupon. Capital projects have lumpy upfront costs and uneven returns. Stocks pay dividends that grow at varying rates. The solution is the general case: discount each cash flow separately by its own time horizon, then sum. The result has a name — **net present value** — and is the single most useful number in finance for deciding whether an investment is worth making.
+*How one number decides whether an investment is worth making.*
 
 ---
 
-## The puzzle of the investment decision
-
-A friend pitches you on a project. They want $450,000 up front. In return, the project will generate cash flows over the next five years:
-
-| Year | Cash flow |
-|---|---|
-| 1 | $100,000 |
-| 2 | $125,000 |
-| 3 | $175,000 |
-| 4 | $90,000 |
-| 5 | $50,000 |
+A friend pitches you a project. They want $450,000 up front. In return, the project will generate cash flows over the next five years: $100,000 in year one, $125,000 in year two, $175,000 in year three, $90,000 in year four, $50,000 in year five.
 
 Total cash returned: $540,000. That's $90,000 more than you put in — about 20% gross return over five years. The project sounds good.
 
 It probably isn't.
 
-The simple-arithmetic comparison ignores time value. The $50,000 you receive in year 5 is worth substantially less today than $50,000 in your hand right now. The $100,000 you receive in year 1 is worth almost as much as $100,000 today, but not quite. To decide whether the project is actually a good investment, you have to discount each future cash flow to today's dollars and compare the total to the initial $450,000.
+The arithmetic ignores time value. The $50,000 arriving in year five is worth substantially less today than $50,000 in your hand right now. The $100,000 in year one is worth almost as much as $100,000 today, but not quite. To decide whether the project is genuinely a good investment, you have to convert every future cash flow into today's dollars — each one discounted by the number of years until it arrives — and compare the total to the $450,000 it costs.
 
-If your discount rate is 4% (a low-risk benchmark), the present value of the cash flow stream is about $485,326 — about $35,000 more than the initial investment. The project clears the bar by a modest margin.
+At a 4% discount rate, the present value of the five cash flows is about $485,000. The project clears the bar by $35,000.
 
-If your discount rate is 10% (reflecting the project's actual risk), the present value drops to about $399,000 — about $51,000 *less* than you'd put in. The project doesn't clear the bar.
+At a 10% discount rate, the present value falls to about $399,000 — roughly $51,000 *less* than you'd put in. The project doesn't clear the bar.
 
-Same project, same cash flows. The discount rate decides.
-
-This is the general case of time-value-of-money analysis. Chapter 7 handled single payments. Chapter 8 handled streams of equal payments (annuities). Chapter 9 handles arbitrary streams — the case that covers most real investments. The tool we build here, **net present value (NPV)**, is the foundation of capital budgeting (Chapter 16) and of every DCF valuation in equity research.
+Same project, same cash flows, same arithmetic. The discount rate decides. This is the general case of time-value-of-money analysis, and the tool it produces — **net present value** — is the single most useful number in finance for deciding whether an investment is worth making.
 
 ---
 
-## Learning objectives
+## From equal payments to arbitrary streams
 
-After working through this chapter, you should be able to:
+Chapter 7 handled single payments. Chapter 8 handled streams of equal payments — annuities — and showed that the geometric-series structure of equal payments permits a closed-form collapse. The real world does not cooperate. Bonds have a final principal repayment that dwarfs each coupon. Capital projects have lumpy upfront costs and uneven returns. Stocks pay dividends that grow at varying rates. The general case has to handle any sequence.
 
-- Compute the future value of a mixed stream of cash flows.
-- Compute the present value of a mixed stream of cash flows by direct discounting and by decomposition into annuity-plus-single-payment components.
-- Compute net present value (NPV) of an investment.
-- State and apply the NPV decision rule.
-- Build an NPV calculation in Excel using the `NPV()` function.
-- Identify how sensitive an NPV calculation is to its discount rate.
-
-**Prerequisites.** Chapters 7 and 8.
-
----
-
-## Concept 1 — From equal payments to arbitrary streams
-
-Chapter 8 gave you a closed-form formula for the present value of $n$ equal payments. Real cash flow streams rarely come in $n$ equal payments. The general formula has to handle any sequence of cash flows.
-
-### The universal approach
-
-Number the periods $t = 0, 1, 2, \ldots, n$. Let $CF_t$ be the cash flow in period $t$ — positive for inflows, negative for outflows, zero for periods with no cash movement.
-
-The present value of the entire stream is:
+The formula is simpler than it looks. Number the periods $t = 0, 1, 2, \ldots, n$. Let $CF_t$ be the cash flow in period $t$ — positive for inflows, negative for outflows, zero for periods where nothing happens. The present value of the entire stream is:
 
 $$PV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t}$$
 
-That is the whole technical content. Discount each cash flow by the number of periods until it arrives, and sum. The summation extends as far as the cash flows extend.
+That is the complete technical content. Discount each cash flow by the number of periods until it arrives, and sum. The annuity formula from Chapter 8 is a special case: when every $CF_t$ equals the same constant $C$, the geometric series collapses into the closed form. When the cash flows are unequal, the sum doesn't collapse, and you compute it term by term.
 
-When the cash flows happen to be equal — say, $CF_t = C$ for all $t$ from 1 to $n$ — the geometric-series collapse from Chapter 8 gives the closed-form annuity formula. When they're unequal, the sum doesn't collapse, and you compute it explicitly.
+The friend's project, worked out at a 4% discount rate:
 
-### A worked example — the $450K project
+<!-- → [TABLE: five-year mixed cash flow table — columns: year, cash flow, discount factor (1/(1.04)^t), present value — rows 0 through 5 plus total row showing NPV of +$35,326 — student should see each flow discounted individually and the sum] -->
 
-For the friend's project, with a 4% discount rate:
+Year 0: −$450,000 × 1.0000 = −$450,000. Year 1: $100,000 × 0.9615 = $96,154. Year 2: $125,000 × 0.9246 = $115,570. Year 3: $175,000 × 0.8890 = $155,574. Year 4: $90,000 × 0.8548 = $76,932. Year 5: $50,000 × 0.8219 = $41,096. Sum: +$35,326.
 
-| Year | Cash flow | Discount factor | Present value |
-|---|---|---|---|
-| 0 | −$450,000 | 1.0000 | −$450,000 |
-| 1 | $100,000 | 0.9615 | $96,154 |
-| 2 | $125,000 | 0.9246 | $115,570 |
-| 3 | $175,000 | 0.8890 | $155,574 |
-| 4 | $90,000 | 0.8548 | $76,932 |
-| 5 | $50,000 | 0.8219 | $41,096 |
-| **Total** | | | **$35,326** |
+The sum of the discounted inflows is $485,326. After subtracting the $450,000 initial outflow, the **net** present value is $35,326. The project's cash flows, expressed in today's dollars, exceed its cost by that amount.
 
-The sum of the discounted cash flows (positive entries) is $485,326. After subtracting the $450,000 initial outflow, the **net** present value is about $35,326 — meaning the project's cash flows, in today's dollars, exceed its cost by that amount.
-
-A 4% discount rate is appropriate for very-low-risk projects. For most business investments, the right rate is higher. We'll come back to choosing the rate.
-
-### Future value of a mixed stream
-
-The mirror calculation runs forward in time. If you make a series of unequal contributions to a savings account over $n$ years, the future value at the end of year $n$ is:
+The same calculation runs forward in time just as easily. If you make a series of unequal contributions to an investment account, the future value at the end of year $n$ is:
 
 $$FV = \sum_{t=0}^{n} CF_t \cdot (1+r)^{n-t}$$
 
-Each contribution is compounded for the number of years remaining until the end of the horizon.
-
-For a saver who contributes $2,000 per year for 7 years at 7%, plus an extra $10,000 in year 3 and an extra $3,000 in year 5:
-
-| Year | Contribution | Years remaining | FV at year 7 |
-|---|---|---|---|
-| 0 | $2,000 | 7 | $3,212 |
-| 1 | $2,000 | 6 | $3,001 |
-| 2 | $2,000 | 5 | $2,805 |
-| 3 | $12,000 | 4 | $15,730 |
-| 4 | $2,000 | 3 | $2,450 |
-| 5 | $5,000 | 2 | $5,725 |
-| 6 | $2,000 | 1 | $2,140 |
-| **Total** | $27,000 | | **$35,062** |
-
-The saver contributed $27,000 in nominal terms and ended with $35,062. About $8,062 is interest earned through compounding.
-
-### Two paths to the same answer
-
-For unequal streams, there are usually two ways to compute the answer.
-
-**Path 1 — Discount each cash flow individually.** As shown in the table above. Conceptually clean, mechanically tedious.
-
-**Path 2 — Decompose into annuity + single payments.** If the stream contains a regular annuity component and irregular extras, value the annuity in one calculation (using the closed-form annuity formula) and value the irregular payments separately. Then sum.
-
-The two paths give identical answers (up to rounding). Path 2 is faster when the annuity component is large; Path 1 is faster when the cash flows are genuinely irregular. For a five-year project with no obvious annuity structure, Path 1 is the default.
-
-In practice, you'll do all of this in Excel.
-
-↳ **Dig Deeper — When IRR has multiple solutions**
-
-*The internal rate of return is the discount rate making NPV zero. For "normal" projects (one initial outflow, then inflows), IRR is unique. For projects with mixed cash flow signs (initial outflow, inflows, then a large terminal outflow — common in nuclear plants, mining, environmental cleanup), there can be multiple IRRs. Which one is right?*
-
-**Prompt:**
-> Explain the multiple-IRR problem with a specific example. Use the Olympic facility case: $350M build (year 0), $950M operating cash flow (year 1), $620M demolition cost (year 2). Show that this has two IRRs. Then explain why MIRR (modified internal rate of return) addresses this — and what assumptions MIRR makes that IRR doesn't.
-
-**What to do with the output:** Save it. We'll come back to MIRR in Chapter 16; for now, knowing that IRR has known failure modes helps you trust NPV instead.
-
-### The trade-off (concept 1)
-
-The general approach trades **flexibility against speed**. The closed-form annuity formula handles a specific, common case in one step. The general PV-of-a-mixed-stream approach handles every case but requires you to compute each cash flow's discount factor and sum. Spreadsheets erase the speed difference; the conceptual framework matters.
-
-### Common misconceptions
-
-- *"Mixed stream means random."* Mixed just means unequal. The cash flows can still be predictable; they just don't all equal each other.
-- *"You need a calculator or spreadsheet."* You don't. For small problems, the math is fast by hand. For project analysis with 30+ years of cash flows, a spreadsheet is essential.
+Each contribution is compounded forward for the years remaining until the horizon. A saver who deposits $2,000 per year for seven years but adds an extra $10,000 in year three and an extra $3,000 in year five would compound each deposit by its own remaining time: the year-zero deposit grows for seven full years, the year-three deposit (including the lump sum) grows for four, the year-five deposit (including its lump sum) grows for two. You sum across all of them. The arithmetic is the same as the PV calculation — just running in the opposite direction.
 
 ---
 
-## Concept 2 — Net present value: the decision tool
+## Net present value: the decision tool
 
-The PV-of-a-mixed-stream calculation is the engine. **Net present value (NPV)** is the conventional way of using that engine to make investment decisions.
+The general PV formula is the machinery. **Net present value** is the conventional way of using that machinery to make a yes-or-no decision.
 
-### Definition
-
-For an investment with an initial outflow $C_0$ (a negative cash flow at time 0) and subsequent cash inflows $C_1, C_2, \ldots, C_n$ at a discount rate $r$:
+For an investment with initial outflow $C_0$ and subsequent cash inflows $C_1, C_2, \ldots, C_n$ at discount rate $r$:
 
 $$NPV = -C_0 + \sum_{t=1}^{n} \frac{C_t}{(1+r)^t}$$
 
-(Some authors write the initial investment as $C_0$ already negative and absorb it into the sum from $t=0$. Either convention works; just be consistent.)
+NPV is the present value of inflows minus the present value of outflows, denominated in today's dollars. The decision rule:
 
-NPV is the present-value-of-inflows minus the present-value-of-outflows. It is denominated in today's dollars.
+- If NPV > 0, accept. The discounted inflows exceed the cost.
+- If NPV < 0, reject. The cost exceeds the discounted inflows.
+- If NPV = 0, the investment exactly meets the required return.
 
-### The NPV decision rule
+This is the cleanest decision rule in finance. It accounts for the time value of money, it is denominated in a concrete unit (today's dollars), and it has a property called **value additivity**: the NPV of two independent projects combined is exactly the sum of the individual NPVs. That property is what makes NPV the dominant tool in capital budgeting — you can evaluate each project on its own and then combine.
 
-The standard rule for evaluating an investment with a known cash flow stream and a known discount rate:
+A point worth stating explicitly: the NPV is *the dollar amount by which the project increases the wealth of its owners, in present-value terms*. An NPV of $35,326 does not mean the project earns $35,326 in profit. It means the project, properly executed at the assumed discount rate, makes you $35,326 richer right now in present-value terms. That is a different and more useful statement.
 
-- **If $NPV > 0$**, accept the investment. The discounted inflows exceed the cost.
-- **If $NPV < 0$**, reject. The cost exceeds the discounted inflows.
-- **If $NPV = 0$**, indifferent. The investment exactly meets the required return.
+### What the discount rate is actually doing
 
-This is the cleanest decision rule in finance. It accounts for the time value of money, and it scales — the NPV of two combined projects is the sum of the individual NPVs (assuming independence). This last property, called **value additivity**, is what makes NPV the dominant tool in capital budgeting.
+The sensitivity of NPV to the discount rate is not a flaw to be apologized for. It is the mechanism telling you the most important thing about the investment.
 
-### The NPV is denominated in today's dollars
-
-A subtle but important point. The NPV of a project is *the dollar amount by which the project will increase the wealth of its owners, today*. NPV of $35,326 means the project, properly executed, makes you $35,326 richer right now in present-value terms.
-
-This isn't a forecast of profits. It isn't a return percentage. It is a single dollar number telling you how much the project is worth above its cost.
-
-### Sensitivity to the discount rate
-
-The NPV calculation depends critically on the discount rate. Small changes in the rate produce large changes in NPV, especially for long-horizon projects.
-
-For the $450K project:
+For the friend's project:
 
 | Discount rate | NPV |
 |---|---|
-| 0% | $90,000 |
-| 4% | $35,326 |
-| 7% | $0 (approximate breakeven) |
+| 0% | +$90,000 |
+| 4% | +$35,326 |
+| 7% | ≈ $0 |
 | 10% | −$51,000 |
 | 15% | −$120,000 |
 
-At a 7% discount rate, the project breaks even. Above 7%, it destroys value. Below 7%, it creates value.
+At approximately 7%, the project breaks even. The 7% rate has a name: the **internal rate of return (IRR)** — the discount rate that makes NPV exactly zero. The IRR is the project's maximum viable cost of capital. If you can fund the project more cheaply than 7%, it's worth doing. If it costs more than 7% to obtain the capital, it isn't.
 
-The 7% breakeven rate has a name: the **internal rate of return (IRR)**. We'll formalize IRR in Chapter 16. For now, note that:
+The sensitivity table encodes something important. A project whose NPV turns negative at an 8% discount rate is a very different animal from a project that remains positive at 20%. The first is fragile — small changes in the cost of capital flip the decision. The second has margin for error. Any honest NPV analysis computes the answer at several discount rates and reports the range, not a single number.
 
-- IRR is the discount rate that makes NPV = 0.
-- A project should be accepted if IRR > the cost of capital, rejected if IRR < the cost of capital.
+<!-- → [CHART: NPV profile curve — NPV on y-axis, discount rate on x-axis, showing the project from the worked example — curve crosses zero at IRR (~7%), student should see the shape of the relationship and how steeply it declines] -->
 
-NPV and IRR usually agree on accept/reject decisions. They occasionally disagree (Chapter 16 will work through when), and when they disagree, NPV is the right tool.
+---
 
-### Worked example — using `=NPV()` in Excel
+## Two paths to the same answer
 
-For Excel users, the `NPV()` function does most of the work. The syntax:
+For any mixed cash flow stream, there are two equivalent approaches.
+
+**Path one** — discount each cash flow individually and sum. This is what the table above does. Conceptually clean, mechanically tedious for long-horizon projects.
+
+**Path two** — decompose into annuity plus single payments. If the stream contains a large regular component — say, equal cash flows for years one through five, plus a large terminal payment in year five — value the annuity in one calculation using the Chapter 8 formula and value the irregular payments separately. Then sum. The two paths give identical answers up to rounding.
+
+Path two is faster when the annuity component dominates. Path one is the default when the cash flows are genuinely irregular throughout. For any project with more than eight or ten periods, you do this in a spreadsheet.
+
+In Excel, the `NPV()` function does path one automatically:
 
 ```
-=NPV(rate, value1, value2, ...)
+=NPV(rate, value1, value2, ...) - initial_investment
 ```
 
-The function returns the present value of the cash flows starting in *period 1*. It does *not* include the initial investment at $t = 0$. To get full NPV including the initial outflow, subtract the initial investment from the function's result:
-
-```
-=NPV(rate, year1, year2, ..., yearN) - initial_investment
-```
-
-For the $450K project with a 10% discount rate:
+The function returns the present value of the cash flows listed, starting from period one. It does *not* include the initial investment — you subtract that manually, because the initial outflow occurs at $t = 0$ and needs no discounting. For the friend's project at 10%:
 
 ```
 =NPV(0.10, 100000, 125000, 175000, 90000, 50000) - 450000
@@ -223,108 +109,71 @@ For the $450K project with a 10% discount rate:
 
 returns approximately −$51,000. Reject.
 
-The Excel formula is robust enough that for routine work, NPV calculations are a one-liner. The conceptual understanding is what's hard.
-
-### Common misconceptions
-
-- *"NPV is too sensitive to the discount rate to be useful."* The sensitivity is real, and analysts should report NPV at several discount rates as part of any serious analysis. The sensitivity is a feature, not a bug — it forces you to be honest about what you're assuming.
-- *"NPV ignores the initial investment."* It doesn't. NPV explicitly subtracts the initial investment from the present value of inflows.
-- *"A higher NPV is always better."* All else equal, yes. But two projects with different scales can have very different NPVs without one being better — a $50M project with NPV $5M is doing a lot more work to produce that NPV than a $1M project with NPV $4M would. Scale matters; NPV doesn't capture it.
+The Excel formula is a one-liner. The conceptual understanding — why you subtract the initial investment outside the function, why the period numbering matters, what the output means — is what takes the rest of the chapter.
 
 ---
 
-## Concept 3 — How analysts actually use NPV
+## How analysts actually use NPV
 
-The NPV machinery as taught is straightforward. The hard parts in practice are getting the cash flows right and choosing the discount rate. Three observations from how the tool is actually used.
+The mechanics are clean. The hard parts in practice are getting the cash flows right and choosing the discount rate. Both are judgment calls.
 
-### Cash flows: get them as right as you can
+### Getting the cash flows right
 
-NPV in the abstract assumes you know the cash flows. In practice, you're forecasting them.
+For a capital-budgeting decision, the cash flows are not observed — they're forecast. A real analysis includes: the initial investment in equipment, working capital, and setup; year-by-year incremental revenue from the project; year-by-year incremental costs; tax effects (depreciation tax shields, effective tax rate on incremental income); and a **terminal value** — what the project's assets are worth, net of disposal costs, at the end of the project's life.
 
-For a capital-budgeting decision (Chapter 16), the cash flows include:
-- The initial investment in equipment, working capital, and setup.
-- Year-by-year incremental revenue from the project.
-- Year-by-year incremental costs of running the project.
-- The tax effects (depreciation, tax savings on losses, etc.).
-- The terminal value — what the project's assets are worth, net of disposal costs, at the end of the project's life.
+Each of these is an estimate. Bad estimates produce wrong NPVs even if the discounting arithmetic is perfect. Good practice runs the calculation under multiple scenarios — base case, optimistic, pessimistic — and reports the range. The NPV decision rule then becomes: accept if NPV > 0 in the base and pessimistic cases; examine carefully if the decision flips across scenarios; reject if NPV < 0 in all plausible scenarios.
 
-Each of these is an estimate. Bad estimates produce wrong NPVs. Good NPV practice involves running the calculation under multiple cash-flow scenarios and reporting the range, not just a point estimate.
+### Choosing the discount rate
 
-### The discount rate: also a judgment call
+The standard answer in corporate finance is the firm's **weighted average cost of capital (WACC)** — the blended cost of debt and equity weighted by the firm's capital structure. Chapter 17 computes WACC in detail. But WACC is itself an estimate. The cost of equity comes from the CAPM (Chapter 14), which requires assumptions about the market risk premium and the firm's beta. Different reasonable analysts can arrive at 1–2 percentage point differences in WACC for the same firm.
 
-The other input — the discount rate — is at least as judgment-laden. In corporate finance, the standard answer is the firm's **weighted average cost of capital (WACC)** — the blended cost of debt and equity weighted by the firm's capital structure. We'll compute WACC explicitly in Chapter 17.
+A 1–2 percentage point difference in the discount rate can flip a project from positive to negative NPV. This is not a comfortable fact. It means the NPV calculation's output is only as trustworthy as the weakest link in its assumptions — and the discount rate is often that link. The discipline is to be transparent about what rate you used, to test sensitivity across a range, and to be honest about what the range implies for the decision.
 
-But WACC itself depends on assumptions. The cost of equity comes from the **CAPM** (Chapter 14), which requires assumptions about the market risk premium and the firm's beta. The cost of debt comes from the firm's outstanding bonds, which may not be perfectly observable. Different reasonable analysts can produce 1–2 percentage point differences in estimated WACC for the same firm — and as we saw in the sensitivity table, that 1–2 points matters enormously.
+<!-- → [TABLE: sensitivity table showing NPV at varying discount rates and cash flow scenarios — rows: discount rates from 6% to 14% in 1-point increments; columns: optimistic, base, pessimistic cash flows — student should see how the decision can flip in different quadrants] -->
 
-For an equity research analyst, the discipline is:
+### Terminal value dominance
 
-1. Be transparent about the discount rate you used.
-2. Compute NPV (or DCF value) at a few alternative rates to bound the answer.
-3. Be honest about the range. A "valuation" expressed as a single number is usually overconfident.
+For long-horizon projects and DCF stock valuations, a practical problem emerges: the terminal value — the lump sum representing all cash flows beyond the explicit forecast horizon — often represents 60–80% of the total computed value. The year-by-year forecast gets most of the analytical attention, but a single perpetuity assumption is doing most of the heavy lifting.
 
-### Real-options thinking
+This is not a flaw in the math — it is a mathematical truth about how much near-term versus far-term cash flows contribute to present value at any reasonable discount rate. But it means the terminal value assumption deserves the same rigor as the year-by-year forecast, and usually gets less. An honest DCF says: "Here is what my terminal-value assumption implies about the long-run growth rate of the business. Is that plausible?" A DCF that doesn't ask that question is doing less than the math requires.
 
-Finally, NPV in its standard form treats projects as fixed once started. Real projects often have flexibility — the option to expand if things go well, to shut down if they go badly, to delay the start. These flexibility features have value not captured in standard NPV. The field of **real options** addresses this. For the equity research project, this is mostly relevant when valuing companies with significant strategic flexibility — biotech firms with optional drug candidates, energy firms with optional extraction projects, growth firms with optional expansion paths. Standard NPV understates the value of such flexibility. Chapter 16 returns to real options briefly.
+### Real options
 
-↳ **Dig Deeper — Terminal value dominance in DCF**
+NPV in its standard form treats projects as fixed once started. Real projects often have flexibility: the option to expand if early results are strong, to shut down if they're weak, to delay the start until market conditions improve. These flexibility features have economic value that standard NPV does not capture — it assumes you either fully commit now or don't commit at all.
 
-*A typical 5-year DCF has a terminal value that represents 60-80% of the total computed value. Year-by-year forecasts get most of the analytical attention, but the terminal value is doing most of the heavy lifting. This raises an uncomfortable question: how reliable is a valuation whose answer is dominated by a single perpetuity assumption?*
-
-**Prompt:**
-> Compute terminal value as a percentage of total firm value for three different DCF setups: (a) 5-year explicit forecast, 3% terminal growth, 9% WACC; (b) 10-year explicit forecast, 3% terminal growth, 9% WACC; (c) 5-year explicit forecast, 4% terminal growth, 8% WACC. Show the percentages. Then argue: is the dominance of terminal value a feature or a bug of DCF, and what does it imply for analyst practice?
-
-**What to do with the output:** Save it. We'll do real DCFs in Chapter 11; this perspective on terminal value will inform how you set your assumptions.
-
-### The trade-off (concept 3)
-
-NPV in practice trades **mathematical precision against forecasting honesty**. The discounting machinery is exact. The cash flows and the discount rate going into the machinery are estimates. A serious NPV analysis acknowledges this asymmetry — the math is precise, the inputs are not, and the output's reliability is bounded by the inputs.
-
-### Worked example — NPV of a corporate capital project
-
-Suppose your chosen company announces a $500M factory expansion expected to generate the following incremental free cash flows:
-
-| Year | Cash flow ($M) |
-|---|---|
-| 0 | −500 |
-| 1 | 80 |
-| 2 | 100 |
-| 3 | 130 |
-| 4 | 150 |
-| 5 | 150 |
-| 6 | 130 |
-| 7 | 100 |
-| 8 (terminal) | 600 |
-
-If the firm's WACC is 8%:
-
-NPV = $\sum CF_t / (1.08)^t$
-
-Working through year by year, you get an NPV of approximately +$284M. The project clears the firm's cost of capital by a wide margin and is value-creating.
-
-If the firm's WACC is actually 12% (perhaps because the project is riskier than the firm's average operations), the NPV falls to about +$95M — still positive, but much less impressive.
-
-For the equity research project: when your chosen company announces a major capex initiative, this is the analytical move. Estimate the cash flows, choose the discount rate, compute NPV, examine sensitivity. The NPV tells you whether the announcement is value-creating, and your reading goes into the report.
-
-### Common misconceptions
-
-- *"Once you've computed NPV, the decision is made."* NPV is one input. Strategic considerations, risk tolerance, and execution capability all matter too.
-- *"NPV always gets it right."* The math is right. Whether the answer is right depends on whether the cash flow estimates and discount rate are right. Both are judgment calls.
+The field of real options addresses this gap. For most routine capital projects, the difference is small enough to ignore. For projects with explicit flexibility built in — a biotech firm's option to develop a backup drug candidate, an energy firm's option to extract a reserve depending on future commodity prices, a technology firm's option to enter a new market — ignoring optionality can materially understate value. Chapter 16 returns to this briefly. For now, the point is that NPV is a floor on value when real options exist, not a ceiling.
 
 ---
 
-## Synthesis — the TVM toolkit complete
+## The TVM toolkit complete
 
-Three chapters of TVM, building toward a single tool. Chapter 7 gave you the master formula for a single payment. Chapter 8 extended to equal-payment streams. Chapter 9 generalized to arbitrary cash flow streams and introduced NPV — the decision rule that takes all of this machinery and produces an actionable answer.
+Three chapters, one conceptual arc. Chapter 7 gave the master formula for a single payment. Chapter 8 showed what happens when equal payments form a geometric series and collapse into a clean closed form. Chapter 9 handles every case the earlier chapters excluded — the real cases, the ones with unequal cash flows, irregular timing, lumpy terminal payments.
 
-NPV is not the last word in finance. The remaining chapters refine and extend it:
+The tool the general case produces — net present value — is the answer to the question that turns up on every serious investment decision: *is this worth doing?* Not whether the total dollars returned exceed the total dollars invested (the friend's 20% gross return), but whether the discounted inflows exceed the cost. The discount rate is the mechanism that encodes everything you know about the riskiness of the cash flows, the opportunity cost of capital, and the time preference of money.
 
-- **Chapter 10** uses NPV-style discounting to price bonds.
-- **Chapter 11** uses it to value stocks via DCF.
-- **Chapter 14** computes the discount rate (cost of equity) more carefully via CAPM.
-- **Chapter 16** applies NPV to capital budgeting decisions and introduces IRR formally.
-- **Chapter 17** computes WACC — the standard discount rate.
+What comes next is application. Chapter 10 uses this machinery to price bonds — the coupon stream is a mixed payment, with equal coupons plus a single par repayment at maturity. Chapter 11 uses it to value stocks via DCF. Chapter 16 applies it directly to corporate capital budgeting. Chapter 17 shows how to compute the discount rate carefully. The NPV concept from this chapter runs through all of them.
 
-For the equity research project, this chapter completes the technical foundation. By Chapter 11, you'll have built a DCF model for your chosen company. The model is, structurally, an NPV calculation: project the firm's free cash flows over a forecast horizon, choose a discount rate, sum the discounted cash flows. The output is the firm's intrinsic value. Compare to the market price; you have your investment thesis.
+For the equity research project, the implication is concrete: when your chosen company announces a major capital expenditure, this is the analytical move. Estimate the incremental cash flows, choose a discount rate, compute NPV across a range of assumptions, and form a view on whether the announcement creates or destroys value. That analysis becomes a section of the report.
+
+---
+
+## What would change my mind
+
+The chapter argues NPV is the right decision rule for evaluating investments with estimable cash flow streams. I would revise if (a) real-options-based valuation consistently outperformed NPV in predicting actual project outcomes — there is a genuine literature here, and for projects with significant flexibility, real options is better; for most standard projects, NPV remains the workhorse — or (b) the assumption that future cash flows can be reasonably estimated collapsed, in which case no formal decision rule helps and judgment dominates entirely. Both qualifications are real. Neither displaces NPV as the first tool to reach for.
+
+## Still puzzling
+
+The same discomfort returns that appeared in Chapter 7: *what discount rate?* The NPV calculation is mathematically exact. The discount rate going into it is an estimate built on other estimates. In practice, the discount rate is often where the most sensitivity in the analysis lives, and the choice can flip a project from accept to reject without changing anything about the underlying business. I am uncomfortable with how casually most applied DCF analysis chooses this number. The discomfort is appropriate, and analysts who feel it are usually better analysts than those who don't.
+
+---
+
+## Connections forward
+
+- **Chapter 10** prices bonds using mixed-stream NPV math — equal coupons plus a single par repayment at maturity.
+- **Chapter 11** values stocks via DCF — the general present-value formula applied to forecasted free cash flows.
+- **Chapter 14** refines the discount rate via the Capital Asset Pricing Model.
+- **Chapter 16** applies NPV formally to corporate capital budgeting and introduces IRR as a companion tool.
+- **Chapter 17** computes WACC — the standard discount rate for corporate projects.
 
 ---
 
@@ -332,104 +181,31 @@ For the equity research project, this chapter completes the technical foundation
 
 ### Warm-up
 
-**9.1** Define mixed stream. Why do real-world cash flows almost always require the mixed-stream approach rather than the closed-form annuity formula?
+**9.1** State the NPV decision rule in one sentence. Why is the rule stated in terms of today's dollars rather than future dollars? *(Tests: definition and unit-of-measure clarity. Difficulty: low.)*
 
-**9.2** State the NPV decision rule.
+**9.2** What is the internal rate of return (IRR), and how does it relate to the NPV of a project? If a project's IRR is 9% and the firm's cost of capital is 11%, what does NPV tell you? *(Tests: IRR-NPV relationship. Difficulty: low.)*
 
-**9.3** Why is NPV expressed in today's dollars rather than future dollars?
+**9.3** The Excel `NPV()` function requires you to subtract the initial investment separately. Why — what assumption is built into the function that requires this manual step? *(Tests: period-zero mechanics. Difficulty: low.)*
 
 ### Application
 
-**9.4** A project requires $200,000 today and produces:
-- Year 1: $40,000
-- Year 2: $60,000
-- Year 3: $80,000
-- Year 4: $80,000
-- Year 5: $60,000
+**9.4** A project requires $200,000 today and produces the following cash flows: Year 1: $40,000; Year 2: $60,000; Year 3: $80,000; Year 4: $80,000; Year 5: $60,000. (a) Compute NPV at 6%. (b) Compute NPV at 12%. (c) Between 6% and 12%, does the IRR appear to be closer to 6%, 9%, or 12%? Justify your answer without solving for IRR exactly. *(Tests: direct NPV computation + IRR intuition. Difficulty: medium.)*
 
-(a) Compute NPV at a 6% discount rate.
-(b) Compute NPV at a 12% discount rate.
-(c) At what discount rate does the project break even? (Solve approximately.)
+**9.5** Two projects each require $100,000 today. Project A pays $50,000 / $50,000 / $30,000 / $20,000 / $10,000 over five years. Project B pays $20,000 / $40,000 / $50,000 / $70,000 / $60,000 over five years. (a) Compute NPV for each at 10%. (b) Which project has higher NPV? (c) The projects have identical undiscounted cash flows — $160,000 each. Why does their NPV differ, and what does that tell you about the value of receiving cash flows earlier versus later? *(Tests: timing effects in mixed streams. Difficulty: medium.)*
 
-**9.5** Two projects, each requiring $100,000 today:
-
-| Year | Project A | Project B |
-|---|---|---|
-| 1 | $50,000 | $20,000 |
-| 2 | $50,000 | $40,000 |
-| 3 | $30,000 | $50,000 |
-| 4 | $20,000 | $70,000 |
-| 5 | $10,000 | $60,000 |
-
-(a) Compute NPV for each at a 10% discount rate.
-(b) Which project has the higher NPV?
-(c) What does the comparison tell you about the relative timing of the two projects' cash flows?
-
-**9.6** Use Excel's `NPV()` function to verify your answers to 9.4 and 9.5. Confirm that you correctly handle the initial investment outside the function.
+**9.6** A project has the following cash flows: Year 0: −$100,000; Year 1: +$300,000; Year 2: −$250,000. (a) Compute NPV at 5%, 25%, and 50%. (b) The IRR is defined as the discount rate making NPV = 0. Based on your three computations, does this project appear to have one IRR or more than one? (c) What does this imply about using IRR as a decision rule when cash flows change sign more than once? *(Tests: multiple-IRR problem and NPV's advantage. Difficulty: medium-high.)*
 
 ### Synthesis
 
-**9.7** Identify a recent major capital expenditure announcement from your chosen company (a new factory, a major acquisition, a new product launch with disclosed expected economics). Estimate the cash flows. Estimate a reasonable discount rate. Compute NPV. Argue whether the project is likely to be value-creating.
+**9.7** Identify a major capital expenditure announced by your chosen company in the past three years. Estimate the incremental cash flows using the firm's 10-K and announcement disclosures. Compute NPV at 7%, 9%, and 11%. At which rate does the project turn value-destroying? Does your analysis support or challenge management's stated rationale for the investment? *(Tests: applied NPV on a real firm. Difficulty: high.)*
 
-**9.8** A friend says: "NPV is too sensitive to the discount rate. The whole exercise is just garbage in, garbage out." Construct (a) a defense of NPV that takes the criticism seriously, and (b) a description of how a sophisticated analyst handles the sensitivity. What does the criticism get right? What does it get wrong?
+**9.8** The chapter notes that for a typical five-year DCF, terminal value represents 60–80% of total computed value. (a) Verify this claim numerically: build a five-year DCF with Year 1 FCF of $100M growing at 5% per year, a 9% discount rate, and a terminal value of 15× Year 5 FCF. What percentage of total value comes from the terminal value? (b) Now shift the terminal multiple from 15× to 12×. By how much does total value change? (c) What does this imply for how much analytical attention should go to terminal-value assumptions versus the year-by-year forecast? *(Tests: terminal-value dominance and sensitivity. Difficulty: high.)*
 
 ### Challenge
 
-**9.9** A project produces the following cash flows:
+**9.9** A friend argues: "NPV is too sensitive to the discount rate to be useful — a 2-point change in the rate can flip the answer, so the whole exercise is garbage in, garbage out." Construct the strongest version of this criticism, then refute it. Your refutation should explain what information the sensitivity itself contains, and describe how a serious analyst handles it rather than ignoring it. *(Tests: meta-reasoning about NPV's limitations and proper use. Difficulty: high.)*
 
-| Year | Cash flow |
-|---|---|
-| 0 | −$100,000 |
-| 1 | $300,000 |
-| 2 | −$250,000 |
-
-(a) Compute NPV at 5%, 25%, and 50%.
-(b) The IRR can be defined as a discount rate that makes NPV = 0. How many such rates does this project have? (Hint: there can be more than one.)
-(c) What does this tell you about the limitations of IRR as a decision rule when cash flows change sign more than once?
-
-**9.10** Build a DCF-style NPV in Excel for a hypothetical company:
-- Year 1 free cash flow: $50M, growing at 8% for years 2–5.
-- Years 6–10: 5% growth.
-- Year 10 terminal value: 12× year-10 FCF.
-- Discount rate: 9%.
-
-Compute the present value. Then examine sensitivity by varying the discount rate from 7% to 11% in 0.5% increments. By how much does the present value change? What does this tell you about how much confidence to place in any single DCF estimate?
-
----
-
-## Chapter summary
-
-- The general formula for the present value of a mixed cash flow stream:
-  $$PV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t}$$
-- The general formula for the future value of a mixed stream:
-  $$FV = \sum_{t=0}^{n} CF_t \cdot (1+r)^{n-t}$$
-- **Net present value (NPV)** is the sum of all present-valued cash flows, including the initial investment as a negative entry.
-- **NPV decision rule**: accept if NPV > 0; reject if NPV < 0.
-- NPV is denominated in today's dollars.
-- NPV is highly sensitive to the discount rate. Always test multiple rates.
-- The discount rate at which NPV = 0 is the **internal rate of return (IRR)** — covered in detail in Chapter 16.
-
----
-
-## What would change my mind
-
-The chapter argues NPV is the right decision rule for evaluating investments with known cash flow streams. The reading would have to revise if (a) a competing decision rule (real-options-based valuation, e.g.) consistently outperformed NPV in real-world capital budgeting outcomes — there's a real literature here, and for projects with significant flexibility, real options is genuinely better; for most projects, NPV remains the standard, or (b) the assumption that future cash flows can be reasonably estimated broke down, in which case no formal decision rule helps and judgment dominates. Both qualifications are real; neither displaces NPV as the workhorse.
-
-## Still puzzling
-
-The same puzzle as Chapter 7 returns: *what discount rate*? NPV's mathematical precision is wasted if the discount rate is chosen casually. WACC (Chapter 17) is the standard answer, but WACC is itself an estimate built on more estimates. In practice, the discount rate is often where the most sensitivity in the analysis lives, and the choice can drive a project from accept to reject without any change to the underlying business. I notice myself uncomfortable with how casually most discounted cash flow analyses choose this number; the discomfort is appropriate. Honest analysts say so.
-
----
-
-## Connections forward
-
-- **Chapter 10** uses mixed-stream NPV math to price bonds.
-- **Chapter 11** uses it to compute DCF stock value.
-- **Chapter 14** refines the discount rate via CAPM.
-- **Chapter 16** applies NPV to corporate capital budgeting and introduces IRR formally.
-- **Chapter 17** computes WACC.
-
----
+**9.10** Build a DCF-style NPV in Excel for a hypothetical company: Year 1 FCF of $50M growing at 8% through Year 5, then 5% through Year 10, with a terminal value of 12× Year 10 FCF and a 9% discount rate. (a) Compute total present value. (b) Vary the discount rate from 7% to 11% in 0.5-point increments and record total value at each rate. (c) Vary the terminal multiple from 10× to 15× at a fixed 9% discount rate and record total value at each multiple. (d) Construct a two-variable sensitivity table showing total value for every combination of discount rate (7–11%) and terminal multiple (10×–15×). What does the table tell you about which assumption matters more? *(Tests: spreadsheet NPV construction + two-variable sensitivity analysis. Difficulty: high.)*
 
 ---
 
@@ -493,10 +269,9 @@ Chapter 10 prices bonds. The Chapter 10 LLM Exercise will price one of your comp
 
 **Tags:** NPV, mixed-stream, present-value, capital-budgeting, discount-rate, time-value-of-money
 
-
 ---
 
-##  AI Wayback Machine
+## AI Wayback Machine
 
 **Run this:**
 
