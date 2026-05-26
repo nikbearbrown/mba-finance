@@ -1,239 +1,130 @@
 # Chapter 12 — Historical Performance of US Markets
-
-
-## TL;DR
-
-- You will practice State approximate long-run nominal and real returns for US stocks, bonds, and T-bills; Compute the equity risk premium and explain what it compensates investors for; Identify the major US market downturns (1929-32, 1973-74, 2000-02, 2008-09, 2020) and their approximate magnitudes.
-- The chapter moves through The puzzle of $10,000, Learning objectives, Concept 1 — The long-run record, Returns by asset class (1981–2020 averages), and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. The Numbers Behind the Theory
-2. What a Century of Markets Teaches
-3. The Equity Premium and Its Discontents
-
-**TL;DR.** Over the past century, US stocks have returned roughly 10% per year (about 7% real), bonds 5–6%, and T-bills 3-4%. The gap between stocks and safer assets — the **equity risk premium** — is the empirical observation that compensates equity investors for accepting variable cash flows. The history is large enough to take seriously and short enough to leave room for honest doubt about whether it repeats.
+*What a century of data actually tells us — and what it doesn't.*
 
 ---
 
-## The puzzle of $10,000
+In January 1980, you put $10,000 into an S&P 500 index fund. You held it through the 1987 crash, the dot-com bust, the 2008 financial crisis, the COVID collapse, and the 2022 bear market. By mid-2020, through all of it, your $10,000 was worth approximately $697,000.[^1]
 
-In January 1980, you put $10,000 into an S&P 500 index fund (you'd have to wait two years for Vanguard to launch its low-cost retail version, but assume you got there). You held it through the 1980s expansion, the 1987 crash, the 1990s tech boom, the dot-com bust, the 2003-07 expansion, the 2008 financial crisis, the 2009-2020 expansion, the COVID crash and recovery, and the 2022 bear market. By mid-2020 — through good years and bad, through the painful drawdowns — your $10,000 was worth approximately $697,000.[^1]
+[^1]: Compounded at roughly 11.2% nominal over 40 years. Specific endpoint values vary by exact start/end dates; figures from data through mid-2020 cited in OpenStax.
 
-If you had panicked and sold during the worst stretches, missing only the *ten best trading days* of those forty years, your $10,000 would have grown to about $313,000 instead — less than half. Missing the five best days alone would have cost you over a quarter million dollars.
+Now suppose you panicked during the bad stretches and missed only the *ten best trading days* of those forty years. Your $10,000 grows to about $313,000 instead — less than half. Miss the five best days alone and you've lost over a quarter million dollars.
 
-[^1]: Compounded at roughly 11.2% nominal over 40 years. Specific endpoint values vary by exact start/end dates; figures from data through mid-2020 cited in OpenStax. `[verify]` for current data.
+This is the central pattern in US market history. Stocks, over long periods, deliver compounding returns that are dramatic in their cumulative effect. Trying to time entry and exit around the bad days usually destroys more value than it creates — because the best days and the worst days cluster in the same volatile periods. An investor who flees the volatility misses the recovery.
 
-This is the central pattern in US market history. Stocks, on average, over long periods, deliver returns that compound dramatically. Trying to time entry and exit usually destroys more value than it creates. The pattern has held, with episodes of severe interruption, for at least a century.
-
-For the equity research project, this chapter does two things. First, it gives you the historical data — long-run returns by asset class, the risk-return trade-off in observed numbers, the equity risk premium. Second, it forces honest engagement with what the history *means*: how much should we expect the past to repeat, and what does that imply for forward-looking valuation?
+The pattern has held, with episodes of severe interruption, for at least a century. This chapter is about what that history actually says: the numbers, the crashes, and the honest limits of what any of it implies for what comes next.
 
 ---
 
-## Learning objectives
+## The long-run record
 
-After working through this chapter, you should be able to:
+Several decades of careful data collection — Ibbotson, Damodaran, Dimson-Marsh-Staunton — give us a reasonably reliable picture of asset-class returns over long periods. The numbers for 1981–2020:
 
-- State approximate long-run nominal and real returns for US stocks, bonds, and T-bills.
-- Compute the equity risk premium and explain what it compensates investors for.
-- Identify the major US market downturns (1929-32, 1973-74, 2000-02, 2008-09, 2020) and their approximate magnitudes.
-- Distinguish between **realized returns** (what actually happened) and **expected returns** (what investors anticipated).
-- Explain why timing the market is difficult and usually counterproductive.
-- Compare US equity performance to other developed markets (Australia, UK, Japan).
+<!-- → [TABLE: asset class returns table — columns: asset class, nominal return, real return, standard deviation — rows: large-cap stocks, small-cap stocks, investment-grade corporate bonds, 10-year Treasuries, T-bills, inflation — student should see the full hierarchy from stocks down to cash] -->
 
-**Prerequisites.** Chapters 7-9 (TVM), Chapter 10 (bonds), Chapter 11 (stocks).
+Large-cap stocks (S&P 500): roughly 12.6% nominal, 9.7% real, standard deviation 16.1%. Investment-grade corporate bonds: 10.3% nominal, 7.4% real, standard deviation 7.7%. Ten-year Treasuries: 8.2% nominal, standard deviation 9.9%. T-bills: 3.9% nominal, roughly 1% real, standard deviation 3.4%. Inflation over the same period: 2.9%.
+
+The longer-horizon record (1928 through 2020) shows similar patterns but with slightly lower fixed-income returns — partly because 1981–2020 included the great bond bull market that began as inflation peaked. A specific comparison: $100 invested in long-term US Treasuries in 1928 and held through 2020 grew to about $8,000. The same $100 in large-cap stocks grew to over $400,000 — fifty times the bond return.[^2]
+
+[^2]: Damodaran data series, NYU Stern. `[verify]` for current vintage and exact endpoints.
+
+The pattern is consistent across almost every sub-period of US market history: stocks outperform bonds, bonds outperform cash, and the differences compound dramatically over long horizons.
 
 ---
 
-## Concept 1 — The long-run record
+## The equity risk premium
 
-Several decades of careful data collection (Ibbotson, Damodaran, Dimson-Marsh-Staunton) give us a reasonably reliable picture of asset-class returns over long periods.
-
-### Returns by asset class (1981–2020 averages)
-
-| Asset class | Nominal return | Real return | Standard deviation |
-|---|---|---|---|
-| Large-cap stocks (S&P 500) | 12.6% | ~9.7% | 16.1% |
-| Small-cap stocks | 12.1% | ~9.2% | higher |
-| Investment-grade corporate bonds (Baa) | 10.3% | ~7.4% | 7.7% |
-| 10-year Treasury bonds | 8.2% | ~5.3% | 9.9% |
-| T-bills | 3.9% | ~1.0% | 3.4% |
-| Inflation (CPI) | 2.9% | — | 1.8% |
-
-The longer-horizon record (1928 to 2020 inclusive) shows similar patterns but with slightly lower nominal returns for fixed income — partly because the 1981–2020 period included the great bond bull market that began as inflation peaked.
-
-A specific comparison from the historical record: $100 invested in long-term US Treasury bonds in 1928 and held through 2020 grew to about $8,000. The same $100 in large-cap stocks grew to over $400,000 — *fifty times* the bond return.[^2]
-
-[^2]: Damodaran data series for historical asset class returns, NYU Stern. `[verify]` for current vintage and exact endpoints.
-
-### The equity risk premium
-
-The gap between stock returns and Treasury returns is the **equity risk premium (ERP)**. Over the 1981-2020 sample:
+The gap between stock returns and Treasury returns is the **equity risk premium (ERP)**. Over the 1981–2020 sample:
 
 $$\text{ERP} \approx 12.6\% - 3.9\% = 8.7\%$$
 
-Over longer historical samples (1928 onward), the ERP has been more like 5-7 percentage points, depending on which Treasury benchmark you use and the precise window. As of the post-2008 era, equity research analysts typically use an *expected* ERP of 4-6%, lower than the long-run realized average. The reasoning: the realized premium was unusually high in part because of one-time events (the post-WWII US economy, the 1980-2020 disinflation), and forward-looking expectations should be more modest.
+Over longer historical samples (1928 onward), the ERP has been more like 5–7 percentage points depending on which Treasury benchmark you use and the precise window. As of the post-2008 era, equity analysts typically use an *expected* ERP of 4–6% — lower than the realized historical average. The reasoning matters: the realized premium was partly elevated by one-time events that cannot repeat. Treasury yields fell from 14% in 1981 to 1.5% in 2020. That 12-point decline lifted bond prices, reduced corporate borrowing costs, raised price-to-earnings ratios, and pushed equity returns above what underlying earnings growth alone would have produced. The next forty years cannot deliver the same tailwind because yields cannot fall by another 12 points from where they are now.
 
-The ERP is the single most important number in equity research after the discount rate. It feeds into the cost of equity (Chapter 14), which feeds into WACC (Chapter 17), which is the discount rate in DCF (Chapter 11). Get the ERP wrong by 2 percentage points and you can swing your DCF valuation by 30%.
+The ERP is the most consequential single number in equity valuation after the risk-free rate. It feeds into the cost of equity (Chapter 14), which feeds into WACC (Chapter 17), which is the discount rate in every DCF model. Change the ERP by 2 percentage points and the DCF valuation swings by 30% or more. This is not a small decision.
 
-### Bonds vs. cash
+There is also a subtler problem with the historical ERP: survivorship bias. The US has the highest realized equity premium in the developed world. Some of this reflects genuine economic strength. But markets that were destroyed — Russian equities in 1917, Chinese equities in 1949, several European exchanges in World War II — don't appear in the historical-returns dataset. The record we have is the record of markets that survived. If you had randomly selected a developed country's stock market in 1900 to invest in for a century, you would not have had 50% odds of choosing the United States. The realized US premium is the view from the winner's podium, and extrapolating from it without adjustment is optimistic.
 
-Bonds have outperformed cash (T-bills) by 3-5 percentage points on average over long horizons — the **term premium** for bearing duration risk. But bond returns are not stable: in some years they are sharply negative (2022 saw a -13% return on the bond aggregate, the worst calendar year in modern history), and in some years they exceed stock returns (2008's flight to safety produced 20%+ returns on Treasuries while stocks fell 38%).
-
-The bond-stock balance is the foundation of every diversified portfolio. The classic "60/40" portfolio (60% stocks, 40% bonds) tries to capture most of the equity premium with materially lower variance. Whether 60/40 still works in a low-yield world is one of the active debates in asset allocation; we'll return to it in Chapter 15.
-
-↳ **Dig Deeper — Survivorship bias and the equity premium**
-
-*The US has the highest equity risk premium in the developed world. Some of this is genuine economic strength. Some of it is *survivorship bias*: the US is the country that won the 20th century. Countries whose markets were destroyed (Russia 1917, China 1949, several European exchanges in WWII) don't show up in the historical-returns dataset.*
-
-**Prompt:**
-> Summarize the survivorship bias argument as developed by Dimson, Marsh, and Staunton in *Triumph of the Optimists* and the Credit Suisse Global Investment Returns Yearbook. How much of the US equity premium is plausibly attributable to "winning the 20th century" vs. genuine structural advantages? What does this imply for forward-looking equity premium estimates? Then briefly describe one or two specific markets that suffered catastrophic losses but are typically excluded from "long-run equity return" analyses.
-
-**What to do with the output:** Save it. The survivorship-bias argument is the strongest case for using forward-looking equity premium estimates *below* the realized US historical average.
-
-### The trade-off (concept 1)
-
-Asset class returns trade **expected reward against year-to-year variability**. The historical record shows clearly that the assets with higher long-run returns (stocks) have higher year-to-year variability. The premium isn't free — it's compensation for accepting variance, including the very real possibility of catastrophic short-term losses. The 2008 financial crisis or the 2020 COVID crash are the kind of events that punish investors who can't (or won't) hold through the drawdowns.
-
-### Common misconceptions
-
-- *"Stocks always outperform bonds over long periods."* In the US, yes — for the past century. In Japan since 1990, no. Country selection matters.
-- *"Bonds are safe."* Bonds are safer than stocks but can have multi-year drawdowns of 20%+ in real terms (the late-1970s bond market is the canonical case).
-- *"The equity premium is a constant."* It varies across periods, countries, and time horizons. Forward-looking expectations should be lower than realized historical averages.
+<!-- → [CHART: equity risk premium over rolling 20-year windows, 1930–present — student should see how variable the premium is and that it has been both much higher and much lower than the long-run average in specific periods] -->
 
 ---
 
-## Concept 2 — Major drawdowns
+## Five crashes worth knowing
 
-The smooth long-run averages hide brutal short-run episodes. Five US drawdowns deserve specific attention.
+The smooth long-run averages hide brutal short-run episodes. Five drawdowns deserve specific attention — not as cautionary tales but as data about what equity investing actually involves.
 
-### 1929-1932 (Great Depression)
+**1929–1932.** The S&P composite peaked in September 1929 and fell roughly 86% over the next three years. Adjusted for deflation, the real loss was still well over 70%. The market did not regain its 1929 nominal peak until 1954 — twenty-five years later. This is the standard corrective to "stocks always recover quickly" intuitions. The recovery was real. The time scale was generational.
 
-The S&P composite peaked in September 1929 and fell about 86% over the next three years. Adjusted for the deflation of the period, the real loss was a bit less but still well over 70%. The market did not regain its 1929 peak (in nominal terms) until 1954 — twenty-five years later. In real, dividend-reinvested terms, recovery was somewhat faster but still took many years.
+**1973–1974.** The S&P 500 fell about 48% during the recession that accompanied the OPEC oil shock and the Bretton Woods collapse. Inflation was high; real losses were severe. The market took roughly a decade to fully recover in real terms.
 
-The 1929-32 episode is a useful corrective to "stocks always recover quickly" intuitions. The recovery was real, but the time scale was generational.
+**2000–2002.** The S&P 500 fell about 49% from peak to trough. The NASDAQ fell about 78% — and many of its dominant 1999-vintage companies never recovered at all. Recovery to the prior peak took five years for the S&P, much longer for the NASDAQ.
 
-### 1973-1974
+**2008–2009.** The S&P 500 fell 57% from October 2007 to March 2009 — the most severe US drawdown since the Great Depression. It reclaimed its prior peak in March 2013, about 5.5 years from peak. Some sectors — financials, real estate — took much longer; many individual firms never recovered.
 
-The S&P 500 fell about 48% from peak to trough during the recession that accompanied the OPEC oil shock and the Bretton Woods collapse. Inflation was high; real losses were severe. The market took roughly a decade to fully recover in real terms.
+**2020.** The S&P 500 fell 34% in 33 days, the fastest bear market in US history. It reclaimed its prior peak in five months. The brevity of both the decline and the recovery was unusual; aggressive monetary and fiscal policy responses compressed what might otherwise have been a longer episode.
 
-### 2000-2002 (dot-com bust)
+<!-- → [CHART: S&P 500 drawdown chart — showing each major drawdown as a shaded region with depth labeled — student should see the pattern and the severity clearly, with recovery timeline visible] -->
 
-The S&P 500 fell about 49% from peak to trough. The NASDAQ fell about 78%. Recovery to the prior peak took five years for the S&P, much longer for the NASDAQ. Many of the dominant 1999-vintage companies (pets.com, Webvan, AOL after the Time Warner merger) never recovered at all.
+What these five events share: each was preceded by strong returns and rising valuations. Each was accompanied by a macro shock. Each was recovered through the next expansion.
 
-### 2008-2009 (Financial Crisis)
+What they did *not* share: timing predictability. With hindsight, every drawdown had warning signs. Without hindsight, none was widely anticipated. In every case, significant parts of the financial commentariat confidently denied the downturn right up to the moment it began. The 2007 Bernanke testimony before Congress in which subprime mortgage stress was assessed as "contained" happened in March 2007. The Lehman Brothers CEO reaffirmed the firm's financial strength in a September 10, 2008 analyst call. Lehman filed for bankruptcy three days later.
 
-The S&P 500 fell about 57% from October 2007 to March 2009. It reclaimed its prior peak in March 2013 — about 5.5 years from peak to recovery. Some sectors (financials, real estate) took much longer; many never fully recovered.
-
-### 2020 (COVID)
-
-The S&P 500 fell 34% in 33 days — the fastest bear market in US history. It reclaimed its prior peak in just 5 months. The sharpness of both the decline and the recovery was unusual; the brevity is partly attributable to fast and aggressive monetary and fiscal policy responses.
-
-### 2022 (rate spike)
-
-Less severe but worth noting. The S&P 500 fell about 25% in calendar 2022 amid the fastest Fed tightening cycle in 40 years. Bonds simultaneously fell 13%, breaking the typical stocks-bonds diversification benefit. The "60/40 portfolio" fell about 17% — its worst year since the 1930s in nominal terms.
-
-### What the drawdowns share
-
-Each drawdown was preceded by a period of strong returns and rising valuations. Each was accompanied by a macro shock (depression, oil, tech bubble, financial crisis, pandemic, inflation). Each was partially recovered through the next expansion.
-
-What they did *not* share: timing predictability. With hindsight, every drawdown had warning signs. Without hindsight, none was widely anticipated. Each one was confidently denied by significant fractions of the financial commentariat right up to the moment it began. This is the core difficulty with active market timing.
-
-### Worked example — what your company looked like through 2008
-
-For your chosen company, look up its stock chart from October 2007 through March 2009. What was the maximum drawdown? How does it compare to the S&P 500's 57% decline?
-
-Some companies did much better than the market (consumer staples like Walmart, Procter & Gamble, McDonald's). Some did much worse (financial firms, leveraged industrials). Some were essentially destroyed (Lehman Brothers, Bear Stearns, Wachovia). The dispersion within the market is as informative as the market average.
-
-This is exercise 12.7 in the project. It connects historical context to your company's idiosyncratic story.
-
-↳ **Dig Deeper — Sequence-of-returns risk in retirement**
-
-*Two retirees with identical 30-year average returns can have very different outcomes — the one who experiences early-retirement losses runs out of money; the one with early-retirement gains thrives. Sequence matters as much as average return when you're drawing on a portfolio.*
-
-**Prompt:**
-> Explain sequence-of-returns risk with a specific worked example: two retirees, both starting with $1M, both withdrawing 4% per year (inflation-adjusted), both achieving 7% average annual return over 30 years — but with the order of returns reversed. Show that the one with bad early returns runs out of money while the other ends up with substantial wealth. What does this imply for asset allocation around retirement age?
-
-**What to do with the output:** Save it. Sequence-of-returns risk is a key concern in personal financial planning that the long-run-average framing hides.
-
-### The trade-off (concept 2)
-
-The realized return data trades **smoothness against representativeness**. Long-run averages smooth across drawdowns. Investors who actually invested through them experienced something very different from the smoothed average. For a buy-and-hold investor with a 30+ year horizon, the average is meaningful. For a 60-year-old who needs to draw on retirement savings, a 50% drawdown a year before retirement is catastrophic in a way the long-run average cannot capture.
-
-### Common misconceptions
-
-- *"The market always recovers."* It always has, in the US, eventually. Time horizons of 25 years (1929 case) or longer are real.
-- *"Diversification protects against everything."* In ordinary markets, yes. In genuine crises (1929, 2008), correlations rise toward 1 and most assets fall together. The "correlation crisis" of 2008 made diversification much less helpful exactly when investors needed it most.
+This is the core difficulty with active market timing: the events that cause the crashes are, almost by definition, the events that markets have not yet priced. If they were priceable in advance, they would already be priced, and the crash would have already happened.
 
 ---
 
-## Concept 3 — Implications for analysts and investors
+## What the history implies — and what it doesn't
 
-Three takeaways from the historical record matter for the equity research project and for any thoughtful approach to investing.
+Three observations from the long-run record matter for any serious approach to investing or equity research.
 
-### 1. The equity premium is real but not guaranteed
+**The equity premium is real but variable.** The US data over a century is clear: equities have outperformed bonds and cash by a substantial margin over essentially every long horizon. For a patient investor with a horizon of decades, equity allocation is the appropriate default. But "substantial margin" is not a fixed number. The realized premium is variable across sub-periods, and it is substantially higher in the US than in most other developed markets. Japan's equity market in 1990 was the largest in the world by some measures; it has spent the subsequent thirty-plus years below that peak. The US premium is not a law of nature. It is the historical experience of one country over one century, with a significant tailwind from a unique geopolitical moment.
 
-US stocks have outperformed bonds and cash by a wide margin over essentially every long horizon in the past century. The premium is large enough that, for a long-horizon investor, equity allocation is the correct default.
+**Market timing is harder than it looks.** The "missing the best days" data quantifies the problem precisely: in virtually every long sample, the best ten trading days produce so much of the total return that missing them — even if you also miss the worst days — leaves you substantially worse off than buy-and-hold. The mechanism is that best days and worst days cluster in the same volatile periods. An investor who exits during the volatility to avoid the worst days typically misses the best days too. The 2020 case is the sharpest recent example: 34% decline in 33 days, then 75% rally over 18 months. Investors who sold in the panic locked in the loss and often missed the recovery.
 
-But the historical equity premium reflects the experience of *one country* over *one century*. The US economy benefited from political stability, geographic security, deep capital markets, and post-WWII economic dominance. None of these is guaranteed to continue. International data (Dimson-Marsh-Staunton's *Credit Suisse Global Investment Returns Yearbook*) shows that several developed markets have substantially lower equity premia than the US — and one (Japan) has had essentially no equity premium for over thirty years.
+This does not mean every investor should hold every position through every drawdown. Individual stocks can permanently lose value; Lehman Brothers shareholders didn't get their money back. The buy-and-hold lesson is about diversified exposure to *the market*, not about any individual company. And for time horizons shorter than a decade or for investors who will need the capital within a few years, the volatility tolerance required for 100% equity exposure is genuinely unreasonable.
 
-For forward-looking valuation, the cautious move is to use an expected ERP somewhat lower than the long-run US realized average. 4-6% is the modern academic and practitioner consensus.
+**Realized returns are not expected returns.** Every number in this chapter is *realized* return — what actually happened. Expected returns — what investors anticipated — are a different quantity. The two can diverge for long periods, and the historical record cannot tell you what forward returns will be. The 12.6% nominal return on US stocks since 1981 was partly driven by a 12-point decline in Treasury yields that raised all asset prices. A simple projection of that number forward assumes the same tailwind continues, which requires Treasury yields to fall from 4% to negative 8% over the next forty years. That is not a plausible scenario.
 
-### 2. Market timing is harder than it looks
+The appropriate forward-looking inputs for a DCF model: the current risk-free rate (the 10-year Treasury yield, whatever it is at the time of analysis), an equity risk premium of 4–6% (the current academic and practitioner consensus, informed by but lower than the historical realized average), and a long-term growth rate for terminal value of 2–3% (roughly long-run real GDP growth plus inflation).
 
-The data on "missing the best days" is consistent and damning. Across virtually every long sample, the best 10 trading days produce so much of the total return that missing them — even if you also miss the worst days — leaves you substantially worse off than buy-and-hold.
-
-The reason: the worst days and the best days tend to cluster in volatile periods. An investor who flees at the bottom misses the recovery. The 2020 COVID crash and recovery is the canonical recent case: the S&P 500 fell 34% in 33 days, then rallied 75% over the following 18 months. Many investors who sold during the panic locked in the loss and did not get back in for the recovery.
-
-This does not mean every investor should hold every stock through every drawdown. It does mean that systematic, disciplined market timing is rare among professional investors, and even rarer when you adjust for survivorship bias.
-
-For the project, this implies that your equity research thesis should be a long-run thesis. If your conclusion is "this stock will outperform over the next 5+ years for the following reasons," that's a defensible analytical claim. If your conclusion is "this stock will go up in the next month," you're doing technical analysis, not fundamental research.
-
-### 3. The future is not the past
-
-The most important caveat of historical-return analysis: every number in this chapter is *realized* return, not *expected* return. They are not the same thing.
-
-Realized returns reflect what actually happened. Expected returns reflect what investors anticipated. The two can diverge for long periods — investors may underestimate or overestimate future returns, and the divergence shows up as realized returns being above or below expectations.
-
-The long-run historical average return is a useful benchmark for *forward* expectations, but it is not a forecast. The 12.6% nominal return on stocks since 1981 reflects, in part, a falling discount rate from 14% Treasury yields in 1981 to 1.5% in 2020 — a one-time tailwind that lifted equity prices through multiple expansion. The next 40 years cannot deliver the same tailwind because Treasury yields cannot fall by another 12 percentage points.
-
-For the equity research project, this means your DCF should not assume that future returns mechanically equal historical returns. The CAPM (Chapter 14) and WACC (Chapter 17) machinery embed this reality — the discount rate is forward-looking and reflects current conditions.
-
-### Worked example — building forward expectations from the historical record
-
-For your equity research model, you'll need a few forward-looking inputs. Reasonable starting points, with sensitivity analysis:
-
-- **Risk-free rate**: current 10-year Treasury yield (around 4-5% as of recent data, depending on the cycle).
-- **Equity risk premium**: 4.5-5.5% (current academic/practitioner consensus, lower than realized historical average).
-- **Long-term growth rate** (for DCF terminal value): 2-3% (roughly long-run real GDP growth, consistent with mature-economy growth expectations).
-- **Inflation expectation**: 2-3% (Fed target plus modest premium).
-
-These are *base-case* assumptions. Your sensitivity analysis should include alternative scenarios. The work isn't picking one scenario; it's showing how the conclusion changes across reasonable scenarios.
-
-### The trade-off (concept 3)
-
-The historical record trades **certainty about the past against uncertainty about the future**. The data is what it is. Whether tomorrow looks like yesterday is a separate question, and one historical analysis alone cannot answer.
-
-### Common misconceptions
-
-- *"The historical equity premium will continue."* It probably won't be exactly the same. Forward-looking expectations are the appropriate input to valuation.
-- *"You should buy and hold no matter what."* Buy-and-hold works for diversified equity index funds with long horizons. Individual stocks can permanently lose value. The buy-and-hold lesson is about *the market*, not about *individual stocks*.
+<!-- → [TABLE: forward-looking vs. realized returns comparison — columns: parameter, realized historical average, forward-looking estimate, rationale for difference — rows: risk-free rate, equity risk premium, expected stock return, long-term growth rate] -->
 
 ---
 
-## Synthesis — what the data lets us claim
+## The synthesis
 
-After a century of careful data, the following claims are well-supported:
+After a century of careful data, five claims are well-supported by the evidence:
 
-1. **Equities have outperformed bonds and cash by a substantial margin** over long periods in the US. The premium is real and large.
-2. **The equity premium is variable**, both across countries and across time periods. Forward expectations should be lower than realized historical averages.
-3. **Drawdowns are recurring and severe.** Investors who cannot tolerate 30-50% interim losses should not hold a 100% equity portfolio, regardless of long-run averages.
-4. **Market timing is hard.** Missing a small number of best days substantially reduces long-run returns. Most active timing strategies underperform buy-and-hold after costs.
-5. **Diversification works in normal markets but partially breaks in crises.** Correlations rise during stress; tail risks are systemic.
+Equities have outperformed bonds and cash by a substantial margin over long periods in the US. The premium is real and large.
 
-These five claims are the backbone of every defensible long-term investing argument. They are also the historical context that the rest of this book — particularly Chapters 13-15 — builds quantitative tools to engage with.
+The equity premium is variable — across countries, across time periods, and across the starting conditions of any investment. Forward expectations should be lower than realized historical averages.
 
-For the equity research project, this chapter establishes the empirical context for your investment thesis. When your DCF says your chosen stock is worth $X and the market says it's worth $0.85X, your case for the divergence rests on specific firm-level analysis — but the broader claim that equity research can identify mispricings rests on the long-run record that markets are sometimes wrong.
+Drawdowns are recurring and severe. An investor who cannot tolerate 30–50% interim losses should not hold a 100% equity portfolio, regardless of long-run averages.
+
+Market timing is hard. Missing a small number of best trading days substantially reduces long-run returns. Most active timing strategies underperform buy-and-hold after costs.
+
+Diversification works in normal markets but partially fails in crises. Correlations rise during stress; tail risks become systemic. The 2022 experience — stocks down 25%, bonds down 13% simultaneously — showed that the usual stock-bond diversification benefit can disappear in high-inflation, rising-rate environments.
+
+These five claims are the empirical backbone of every defensible long-term investing argument. They are also the context the next several chapters build quantitative tools to engage with: Chapter 13 installs the statistical machinery for measuring risk, Chapter 14 computes beta, Chapter 15 applies these results to portfolio construction, and Chapter 17 uses the equity premium to compute the cost of equity.
+
+For the equity research project specifically, this chapter establishes the empirical context for the investment thesis. When your DCF says your chosen company is worth $X and the market says it's worth 85% of $X, your case for the gap rests on firm-level analysis — but the broader claim that equity research can identify mispricings rests on the long-run record that markets are sometimes wrong. That record is real. It is also humbling: the same data that shows markets are occasionally mispriced shows that correctly identifying and timing those mispricings is one of the harder problems in finance.
+
+---
+
+## What would change my mind
+
+The chapter argues that long-run US equity returns provide a useful but imperfect guide to forward expectations, and that the realized equity premium is real but smaller going forward than realized historical averages suggest. I would revise if (a) a sustained period of US equity returns substantially below historical averages emerged and persisted — the 2010s and 2020s may already be showing this in valuations-adjusted returns — or (b) forward-looking implied-cost-of-capital methods turned out to be substantially more accurate than backward-looking averages. These methods are the leading academic alternative and probably are better than naive averages; they are not yet precise enough to replace the historical record as a benchmark.
+
+## Still puzzling
+
+Whether the next forty years will resemble the last forty. The 1981–2020 period had an enormous tailwind from declining interest rates that lifted every asset class. That tailwind cannot repeat. Forward-looking returns are probably meaningfully lower than realized historical averages — but by how much? Reasonable estimates range from one percentage point lower to substantially lower. This uncertainty propagates directly into every DCF-based valuation. The honest analyst includes it as a sensitivity case rather than assuming the historical record extends mechanically into the future.
+
+---
+
+## Connections forward
+
+- **Chapter 13** installs the statistical machinery for measuring risk: mean, standard deviation, covariance, Sharpe ratio.
+- **Chapter 14** computes beta — the regression of a stock's returns on the market — and uses it to estimate the cost of equity via CAPM.
+- **Chapter 15** applies the historical return and risk data to portfolio construction and personal investing.
+- **Chapter 17** uses the equity premium and risk-free rate to compute the cost of equity and WACC.
 
 ---
 
@@ -241,79 +132,31 @@ For the equity research project, this chapter establishes the empirical context 
 
 ### Warm-up
 
-**12.1** State approximate long-run nominal annual returns for: large-cap US stocks, US Treasury bonds, US T-bills, and inflation. State the equity risk premium implied by these numbers.
+**12.1** State approximate long-run nominal annual returns for large-cap US stocks, 10-year Treasuries, and T-bills (1981–2020 averages). Compute the equity risk premium from these numbers. *(Tests: recall of the return hierarchy and ERP definition. Difficulty: low.)*
 
-**12.2** Define "drawdown." What was the magnitude and duration of the 2008-09 S&P 500 drawdown? The 2020 COVID drawdown?
+**12.2** What is a drawdown? State the approximate peak-to-trough magnitude and recovery time for the 2008–2009 financial crisis and the 2020 COVID crash. What was unusual about the 2020 recovery compared to earlier drawdowns? *(Tests: drawdown mechanics and episode knowledge. Difficulty: low.)*
 
-**12.3** Why might forward-looking expected equity returns be lower than realized historical returns?
+**12.3** Why should forward-looking equity return assumptions be lower than the 1981–2020 realized average? Name the specific one-time tailwind that inflated the historical number. *(Tests: realized vs. expected returns and the interest-rate tailwind argument. Difficulty: low.)*
 
 ### Application
 
-**12.4** Pull data from FRED or another source on the S&P 500 (`SP500`), 10-year Treasury yield (`DGS10`), and headline CPI (`CPIAUCSL`) over the past 40 years. Compute:
+**12.4** Pull S&P 500 total return data (`^SP500TR` on Yahoo Finance) and 10-year Treasury return data for the past 20 years. Compute: (a) annualized equity return; (b) annualized bond return; (c) realized equity risk premium; (d) real equity return using CPI from FRED. Compare to the 1981–2020 averages in this chapter — is the premium higher, lower, or similar over your window? *(Tests: FRED/Yahoo fluency and ERP computation on real data. Difficulty: medium.)*
 
-(a) Annualized total return on the S&P 500 (assume dividend reinvestment; the total-return index ticker is `^SP500TR` on Yahoo Finance).
-(b) Annualized return on a constant-maturity 10-year Treasury (approximate).
-(c) Annualized inflation rate.
-(d) The equity risk premium (S&P 500 return minus Treasury return).
-(e) Real returns for each.
+**12.5** For your chosen company, find its stock price history from October 2007 through March 2009. (a) Compute the maximum drawdown. (b) Compute the recovery time to the prior peak. (c) Compare both to the S&P 500's 57% drawdown and 5.5-year recovery. What does the comparison suggest about the firm's systematic risk? *(Tests: applying drawdown concept to a specific firm. Difficulty: medium.)*
 
-**12.5** For your chosen company, plot the stock price (or total return index) from October 2007 through December 2009. Compare its drawdown and recovery to the S&P 500's. What does the comparison tell you about the firm's resilience?
-
-**12.6** A friend says, "I've been watching the market for the last 6 months and I think we're about to crash. I'm going to cash for now and get back in after." Construct three counter-arguments grounded in this chapter's data.
+**12.6** The chapter states that missing the ten best trading days over forty years cuts returns from roughly $697,000 to $313,000 on a $10,000 investment. (a) Verify this is consistent with the compounding math: approximately what annual return corresponds to $697,000, and what annual return corresponds to $313,000? (b) What does the gap between the two numbers imply about the concentration of returns in a small number of days? *(Tests: compound growth mechanics and the timing-the-market point. Difficulty: medium.)*
 
 ### Synthesis
 
-**12.7** A 65-year-old retiree has $1 million in a 100% equity portfolio. The market falls 50% in the next year (a 2008-style drawdown). Write a one-page assessment of:
+**12.7** A colleague argues: "The equity risk premium is just survivorship bias. The US happened to win the 20th century. We should use a much lower forward ERP — maybe 2%." Construct (a) the strongest version of this argument, including at least one specific destroyed market as evidence, and (b) the strongest counter-argument for why the US premium reflects genuine structural advantages. What evidence would help you decide how much weight to give each side? *(Tests: survivorship bias argument and its limits. Difficulty: high.)*
 
-(a) The retirement plan's current sustainability under typical 4% withdrawal rules.
-(b) Whether the long-run historical equity premium is consoling or insufficient at this point.
-(c) What asset allocation might have been more appropriate, and why.
-
-**12.8** The historical equity premium in the US is much higher than in many other developed economies. Construct three explanations: (a) the US has been genuinely better, (b) survivor bias makes us see the winning case, (c) the divergence is partly random. For each, identify what evidence would distinguish it from the others.
+**12.8** In 2022, both US stocks (−25%) and US bonds (−13%) fell simultaneously — a correlation that broke the usual stock-bond diversification logic. (a) Identify the macro mechanism that caused this. (b) In which of the five historical crash episodes covered in this chapter was a similar correlation failure present? (c) What does this imply for the "60/40 portfolio is safe" assumption? *(Tests: crisis correlation + macro mechanism identification. Difficulty: high.)*
 
 ### Challenge
 
-**12.9** Compute the consequence of "missing the best days" for your own retirement projection:
+**12.9** Using the forward-looking inputs suggested in the chapter (current 10-year Treasury yield, ERP of 4–6%, long-term growth rate of 2–3%), build two DCF scenarios for your chosen company: one using the bottom of the ERP range (4%) and one using the top (6%). By what percentage does your estimated intrinsic value change between the two scenarios? What does this tell you about how much of your investment thesis depends on the ERP assumption versus firm-specific analysis? *(Tests: ERP sensitivity in a real DCF. Difficulty: high.)*
 
-(a) Assume you invest $5,000 per year for 40 years at the long-run average S&P 500 return of 10%.
-(b) Compute the future value with all returns intact.
-(c) Compute the future value if you miss the *best 5% of years* (about 2 years of returns out of 40, randomly distributed but forced to be the highest 2 of the 40).
-
-For (c), one approximation: if the worst 38 of 40 years average 6% nominal (the average minus the best 2 years roughly equates), use that for years 1-38 and zero for the missed best 2 years. The exact calculation requires Monte Carlo simulation; an approximate answer is fine.
-
-**12.10** The Dimson-Marsh-Staunton dataset shows substantial variation in long-run equity premia across countries. The US, Australia, and South Africa have the highest premia; Italy, Belgium, and Austria the lowest. Speculate on why these differences exist. What implications might this have for an investor diversifying internationally today?
-
----
-
-## Chapter summary
-
-- Long-run US asset returns (1981-2020 averages): stocks ~12.6%, bonds ~8.2%, T-bills ~3.9%, inflation ~2.9%.
-- The **equity risk premium** is the gap between stock and Treasury returns. Long-run realized: 5-9 percentage points. Forward-looking expectation: 4-6%.
-- Major drawdowns: 1929-32 (-86%, 25-year recovery), 1973-74 (-48%), 2000-02 (-49%), 2008-09 (-57%), 2020 (-34%, 5-month recovery), 2022 (-25%).
-- Missing the best 10 trading days over 40 years cuts long-run returns by more than half.
-- The historical record reflects one country over one century. Forward-looking expectations should be more modest than realized historical averages.
-- US equity premium is high by international standards.
-
----
-
-## What would change my mind
-
-The chapter argues that long-run US equity returns provide a useful but imperfect guide to forward expectations, and that the equity premium is real but smaller than realized averages suggest. The reading would have to revise if (a) a sustained period of equity returns substantially below historical averages emerged in the US (we may be in such a period now; the 2010-2020s may look unusual in retrospect), or (b) new methodologies for estimating expected returns turned out to be substantially more accurate than backward-looking averages. Forward-looking implied-cost-of-capital methods are the leading academic alternative; they're better than naive averages but still imperfect.
-
-## Still puzzling
-
-The cleanest unresolved question is *whether the next 40 years will look like the last 40*. The 1981-2020 period had an enormous tailwind: declining interest rates from 14% to 1.5% pushed bond prices up, reduced corporate borrowing costs, raised P/E ratios, and lifted equity returns. That tailwind cannot repeat. So forward-looking returns probably will be lower. By how much? I don't know. Reasonable estimates range from "1-2 percentage points lower" to "substantially lower." This uncertainty propagates directly into every DCF-based valuation. Honest analysts include it as a sensitivity case; sloppy analysts pretend it doesn't exist.
-
----
-
-## Connections forward
-
-- **Chapter 13** installs the statistical machinery for measuring risk.
-- **Chapter 14** computes beta — the regression of a stock's returns on the market.
-- **Chapter 15** applies these results to portfolio construction and personal investing.
-- **Chapter 17** uses the equity premium and risk-free rate to compute the cost of equity.
-
----
+**12.10** The chapter claims that market timing is hard because best and worst days cluster together. Design a simple test of this claim using historical data: (a) identify the 10 best and 10 worst single-day S&P 500 returns in any 10-year window you choose; (b) compute the average number of calendar days between consecutive best/worst days; (c) compare this to what you would expect if best and worst days were randomly distributed throughout the year. Does the data support the clustering claim? *(Tests: empirical reasoning about market timing and return clustering. Difficulty: high.)*
 
 ---
 
@@ -378,11 +221,11 @@ Chapter 13 introduces statistical analysis. The Chapter 13 LLM Exercise will com
 
 **Tags:** historical-returns, equity-risk-premium, market-history, drawdowns, equity-premium, asset-class-returns
 
-
 ---
 
-##  AI Wayback Machine
-**Roger Ibbotson** was compiled the historical US stock-and-bond returns dataset that anchors modern asset-allocation studies.
+## AI Wayback Machine
+
+**Roger Ibbotson** compiled the historical US stock-and-bond returns dataset that anchors modern asset-allocation studies.
 
 **Run this:**
 
