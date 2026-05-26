@@ -1,367 +1,243 @@
 # Chapter 16 — How Companies Think about Investing
-
-
-## TL;DR
-
-- You will practice Compute payback period, discounted payback period, NPV, IRR, MIRR, and profitability index for a project; Apply the decision rule for each metric; Identify when NPV and IRR disagree, and explain why.
-- The chapter moves through The puzzle of two projects, two answers, Learning objectives, Concept 1 — The decision rules, Payback period, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. Capital Budgeting
-2. NPV, IRR, and the Decisions Firms Have to Make
-3. From Project to Portfolio of Projects
-
-**TL;DR.** A firm with limited capital faces the same valuation problem an investor does, applied to its own internal projects: which projects increase shareholder value, and how do you rank competing options? The toolkit — payback, NPV, IRR, MIRR, profitability index — has clear hierarchy: **NPV is the gold standard for value creation**, with the others useful as supplementary checks. This chapter installs the toolkit and works through the cases where the methods disagree.
+*Five metrics, one hierarchy, and why the percentage return lies to you about scale.*
 
 ---
 
 ## The puzzle of two projects, two answers
 
-A firm has two mutually exclusive projects to choose between. Both clear the firm's 9% cost of capital. The numbers:
+A firm has to choose between two embroidery machines. It can't buy both. The numbers:
 
 | Project | Cost | NPV at 9% | IRR |
 |---|---|---|---|
-| Regular embroidery machine | $16,000 | $2,836 | 14.1% |
-| Heavy-duty embroidery machine | $40,000 | $3,971 | 13.2% |
+| Regular machine | $16,000 | $2,836 | 14.1% |
+| Heavy-duty machine | $40,000 | $3,971 | 13.2% |
 
-The IRR rule (pick the higher percentage return) says: regular machine. 14.1% beats 13.2%.
+The IRR rule says: take the regular machine. 14.1% beats 13.2%.
 
-The NPV rule (pick the larger dollar value created) says: heavy-duty machine. $3,971 beats $2,836.
+The NPV rule says: take the heavy-duty machine. $3,971 of value created beats $2,836.
 
-Both rules can't be right. Both are based on the same time-value-of-money math. Why do they disagree?
+Both rules use identical time-value-of-money arithmetic. They disagree. Which one is right?
 
-The IRR is a *rate* — it ignores project size. A 14.1% return on a $16,000 project produces less absolute wealth than a 13.2% return on a $40,000 project, even though the percentage is higher. NPV captures the absolute wealth difference; IRR doesn't.
+NPV is right. Here's why the IRR is misleading. A 14.1% return on $16,000 produces $2,263 of annual value at the margin. A 13.2% return on $40,000 produces $5,280. The percentage looks better on the small machine; the absolute dollar creation looks better on the large one. IRR is a *rate* — it ignores project size entirely. NPV is a *dollar amount* — it measures what actually gets added to shareholder wealth. The firm's objective is to maximize value. NPV measures that directly.
 
-When the two methods disagree, **NPV wins.** The firm's job is to maximize value — total dollars added to shareholder wealth. NPV measures that directly. IRR is a useful summary metric but a flawed decision rule under several common conditions.
-
-For the equity research project, this chapter is essential because real firms make capital budgeting decisions all the time, and your job as an analyst is to evaluate whether they're making them well. A firm that consistently chooses lower-NPV projects because they have higher IRRs is making predictable mistakes, and the analytical signal is informative.
+This is the whole chapter. Five metrics, clear hierarchy, and a handful of cases where methods disagree with clean resolutions.
 
 ---
 
-## Learning objectives
-
-After working through this chapter, you should be able to:
-
-- Compute payback period, discounted payback period, NPV, IRR, MIRR, and profitability index for a project.
-- Apply the decision rule for each metric.
-- Identify when NPV and IRR disagree, and explain why.
-- Handle mutually exclusive projects, projects with unequal lives, and capital rationing.
-- Recognize the multiple-IRR problem and apply MIRR as a workaround.
-
-**Prerequisites.** Chapters 7-9 (TVM), Chapter 11 (DCF, valuation).
-
----
-
-## Concept 1 — The decision rules
-
-Five metrics serve five different purposes. We work through them in order of conceptual seriousness.
+## The five metrics in order of seriousness
 
 ### Payback period
 
-The simplest metric. **Payback period** is the number of years until the project's cumulative cash inflows recover the initial investment.
+The simplest thing you can say about a project: how many years until the initial investment is recovered from cash inflows?
 
-Example: A $16,000 machine produces $2,000 in year 1, $4,000 in year 2, and $5,000/year in years 3-6. Cumulative inflows reach $16,000 in year 4. Payback = 4 years.
+A $16,000 machine producing $2,000 in year 1, $4,000 in year 2, and $5,000 per year in years 3–6 reaches cumulative inflows of $16,000 in year 4. Payback = 4 years.
 
-**Decision rule** (informal): accept if payback is shorter than some threshold (3 years, 5 years — chosen by management).
+**Decision rule:** Accept if payback is less than some threshold — chosen by management, often 3 or 5 years.
 
-**Strengths:** Simple. Quick. Easy to explain to non-finance audiences. Captures liquidity intuition.
+Payback has two fatal flaws. First, it ignores the time value of money: $5,000 in year 5 is treated identically to $5,000 in year 1. Second, it ignores everything that happens after the cutoff: a project paying back in 4 years and then generating $50,000 more over the following decade looks identical to one that pays back in 4 years and stops producing cash entirely.
 
-**Weaknesses:**
-1. **Ignores time value of money.** Treats $5,000 in year 5 the same as $5,000 in year 1.
-2. **Ignores cash flows after the cutoff.** A project that pays back in 4 years and produces $50,000 more over the next 10 years looks identical to a project that pays back in 4 years and stops.
-3. **Arbitrary threshold.** No principled answer for what payback period is "good enough."
+Use payback as a liquidity check — "how long until we're exposed?" — never as the primary decision rule.
 
-For decision-making purposes, payback period is a supplementary metric, never the primary one.
+### Discounted payback
 
-### Discounted payback period
+A modest fix: apply present-value factors to each cash flow before accumulating them. This corrects the time-value problem but does nothing for the cash-flows-after-cutoff problem. The threshold is still arbitrary.
 
-A modest improvement. **Discounted payback** uses the present-valued cash flows.
+For the $16,000 machine at 9%:
 
-For Sam's project at 9% cost of capital:
+<!-- → [TABLE: Discounted payback table — Year 0 through Year 6, columns: Year, Cash Flow, PV Factor (at 9%), Present Value, Cumulative PV — student should see undiscounted payback at year 4 and discounted payback slightly into year 6, understanding the year-2 gap as the price of ignoring time value] -->
 
-| Year | Cash flow | PV factor | PV | Cumulative PV |
-|---|---|---|---|---|
-| 0 | -16,000 | 1.000 | -16,000 | -16,000 |
-| 1 | 2,000 | 0.917 | 1,834.86 | -14,165.14 |
-| 2 | 4,000 | 0.842 | 3,366.72 | -10,798.42 |
-| 3 | 5,000 | 0.772 | 3,860.92 | -6,937.50 |
-| 4 | 5,000 | 0.708 | 3,542.13 | -3,395.37 |
-| 5 | 5,000 | 0.650 | 3,249.66 | -145.71 |
-| 6 | 5,000 | 0.596 | 2,981.34 | 2,835.63 |
+Undiscounted payback: 4 years. Discounted payback: approximately 5.05 years. The gap is the cost of pretending early and late cash flows are equally valuable.
 
-Discounted payback ≈ 5.05 years. The project recovers the discounted initial investment slightly into year 6. (Compared to undiscounted payback of 4 years.)
+Discounted payback is strictly better than undiscounted payback. It's still a secondary metric.
 
-**Decision rule:** Same arbitrary threshold problem.
+### Net Present Value
 
-**Strengths:** Time-adjusted. Captures liquidity discipline.
-
-**Weaknesses:** Still ignores cash flows beyond the cutoff. Still has an arbitrary threshold.
-
-### Net Present Value (NPV)
-
-The gold standard. From Chapter 9:
+The gold standard.
 
 $$NPV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t}$$
 
-where $r$ is the firm's cost of capital and $CF_0$ is negative (the initial outflow).
+where $CF_0$ is negative (the outflow) and $r$ is the firm's cost of capital. Accept if NPV > 0. Reject if NPV < 0.
 
-For Sam's project at 9%:
+For the regular machine at 9%:
 
-$$NPV = \frac{-16{,}000}{1} + \frac{2{,}000}{1.09} + \frac{4{,}000}{1.09^2} + \frac{5{,}000}{1.09^3} + \frac{5{,}000}{1.09^4} + \frac{5{,}000}{1.09^5} + \frac{5{,}000}{1.09^6}$$
+$$NPV = -16{,}000 + \frac{2{,}000}{1.09} + \frac{4{,}000}{1.09^2} + \frac{5{,}000}{1.09^3} + \frac{5{,}000}{1.09^4} + \frac{5{,}000}{1.09^5} + \frac{5{,}000}{1.09^6}$$
 
-$$NPV = -16{,}000 + 1{,}835 + 3{,}367 + 3{,}861 + 3{,}542 + 3{,}250 + 2{,}981 = \$2{,}836$$
+$$= -16{,}000 + 1{,}835 + 3{,}367 + 3{,}861 + 3{,}542 + 3{,}250 + 2{,}981 = \$2{,}836$$
 
-**Decision rule:** Accept if NPV > 0; reject if NPV < 0.
+NPV of $2,836 means: this project adds $2,836 of present-value wealth to the firm, above and beyond what the firm's cost of capital requires. It's the value the firm creates by choosing this project over investing the same $16,000 at its opportunity cost.
 
-**Strengths:**
-1. Incorporates time value of money.
-2. Considers all cash flows over the project's life.
-3. Has a clear decision rule grounded in shareholder wealth maximization.
-4. Discount rate can be adjusted for project risk.
-5. Value-additive: the NPV of a portfolio of projects equals the sum of individual NPVs.
+Why NPV is the right metric: it incorporates time value of money, includes all cash flows over the full project life, uses a principled decision rule tied directly to value creation, and is additive — the NPV of a portfolio of projects equals the sum of the individual NPVs. This last property matters for a CFO managing dozens of simultaneous projects.
 
-**Weaknesses:**
-1. Sensitivity to discount-rate assumption.
-2. Less intuitive to communicate than a percentage return.
-3. Doesn't handle capital rationing cleanly (you can compute NPV but ranking projects under a budget constraint requires the profitability index).
+### Internal Rate of Return
 
-NPV is the right primary metric for capital budgeting. Other methods are supplementary.
-
-### Internal Rate of Return (IRR)
-
-The discount rate at which NPV = 0.
+The discount rate at which NPV equals zero:
 
 $$0 = \sum_{t=0}^{n} \frac{CF_t}{(1 + IRR)^t}$$
 
-Solve for IRR using a financial calculator or `=IRR()` in Excel. For Sam's project, IRR = 14.09%.
+For the regular machine, IRR = 14.1%. For the heavy-duty machine, IRR = 13.2%.
 
-**Decision rule:** Accept if IRR > cost of capital; reject if IRR < cost of capital.
+**Decision rule:** Accept if IRR > cost of capital. Reject if IRR < cost of capital. For standalone project accept/reject decisions with normal cash flow patterns (one outflow followed by inflows), IRR gives the same answer as NPV.
 
-**Strengths:**
-1. Easy to communicate (a percentage return is intuitive).
-2. Doesn't require specifying a discount rate to make the accept/reject decision.
-3. Useful summary metric across multiple projects.
+IRR fails under three conditions.
 
-**Weaknesses:**
-1. **Multiple IRRs.** When cash flows change sign more than once (initial outflow, then inflows, then another outflow — common for environmental cleanup or terminal-cost projects), there can be more than one mathematical solution. The Olympic-stadium example: $350M build, $950M operate, $620M demolish. The NPV profile crosses zero twice.
-2. **Scale blindness.** A 25% IRR on $1,000 is preferred to a 15% IRR on $1,000,000 by the IRR rule, but the latter creates 600× more value in absolute terms.
-3. **Reinvestment-rate assumption.** IRR implicitly assumes cash flows are reinvested at the IRR rate. For a 25% IRR project, that requires finding other 25% projects, which is rare.
+**Condition 1: Mutually exclusive projects.** As the opening puzzle showed, IRR ranks by rate and ignores size. When projects differ in scale, the higher-IRR project can create less value. Use NPV.
 
-### Modified Internal Rate of Return (MIRR)
+**Condition 2: Multiple IRRs.** When cash flows change sign more than once — an initial outflow, then inflows, then another large outflow (environmental remediation, decommissioning costs, warranty reserves) — the NPV equation can have two or more values of IRR that set it to zero. There's no unambiguous solution. The NPV profile crosses zero twice. The IRR rule is undefined.
 
-Fixes IRR's reinvestment-rate problem. Three steps:
-1. Compute the present value of all *outflows* at the cost of capital.
-2. Compute the future value (at project end) of all *inflows*, compounded at the cost of capital.
-3. Solve for the rate that grows step 1's PV into step 2's FV over the project's life.
+<!-- → [CHART: NPV profile for a project with non-conventional cash flows — x-axis is discount rate from 0% to 40%, y-axis is NPV; curve crosses zero twice (two IRRs), while NPV at the firm's actual cost of capital is clearly positive or negative; student should see that NPV gives an unambiguous answer at any discount rate while IRR is indeterminate] -->
 
-For Sam's project:
+**Condition 3: Reinvestment assumption.** IRR implicitly assumes intermediate cash flows are reinvested at the IRR rate. For a project with a 25% IRR, this means finding other 25% projects to reinvest every cash inflow. That's rarely realistic. For high-IRR projects, IRR overstates the return the firm actually earns.
+
+### Modified Internal Rate of Return
+
+MIRR fixes the reinvestment problem by being explicit about the reinvestment rate:
+
+1. Compute the present value of all *outflows*, discounted at the cost of capital.
+2. Compound all *inflows* forward to the end of the project at the cost of capital.
+3. Find the single rate that turns step 1's PV into step 2's FV over the project's life.
+
+For the regular machine:
 - PV of outflows: $16,000 (just the initial)
-- FV of inflows compounded at 9%: $31,595
-- $16{,}000(1+i)^6 = 31{,}595$
-- $i = (31{,}595/16{,}000)^{1/6} - 1 = 12.0\%$
+- FV of inflows compounded at 9% to end of year 6: $31,595
+- $16{,}000 \times (1+MIRR)^6 = 31{,}595$
+- $MIRR = (31{,}595/16{,}000)^{1/6} - 1 = 12.0\%$
 
-MIRR = 12.0%.
+MIRR = 12.0%, compared to IRR of 14.1%. The difference is the reinvestment assumption: IRR assumes the $2,000 received in year 1 gets reinvested at 14.1% for five more years; MIRR assumes it gets reinvested at 9%. The 9% assumption is more realistic for most firms.
 
-Compare to IRR of 14.1%. The MIRR is lower because it assumes cash flows reinvest at 9% (the cost of capital), while IRR assumes they reinvest at 14.1% (the IRR itself). MIRR is more realistic.
+**Decision rule:** Accept if MIRR > cost of capital. Single solution, always. More realistic than IRR.
 
-**Decision rule:** Accept if MIRR > cost of capital.
-
-**Strengths:** Single solution. Realistic reinvestment assumption.
-
-**Weaknesses:** Still doesn't capture scale. Still requires choosing a cost of capital. Less commonly used than IRR despite its theoretical advantages.
-
-### Profitability Index (PI)
-
-A scaling measure for capital rationing.
+### Profitability Index
 
 $$PI = \frac{PV(\text{inflows})}{PV(\text{outflows})}$$
 
-For Sam's project: $PI = 18,836 / 16,000 = 1.18$.
+For the regular machine: PV of inflows = $18,836; PV of outflows = $16,000; PI = 1.18. Accept if PI > 1 — equivalent to NPV > 0.
 
-**Decision rule:** Accept if PI > 1 (equivalent to NPV > 0).
+PI becomes useful under **capital rationing** — when the firm has more positive-NPV projects than available capital. Ranking projects by PI ranks them by NPV per dollar invested, which is what you want when the binding constraint is dollars, not the number of projects.
 
-**Strengths:** Useful for ranking projects under budget constraints. Captures NPV per dollar invested.
-
-**Weaknesses:** Equivalent to NPV for accept/reject decisions in the absence of constraints.
+<!-- → [TABLE: Capital rationing example — firm with $200M budget and seven candidate projects, columns: Project, NPV ($M), Investment ($M), PI = (NPV+Investment)/Investment, PI Rank — show optimal selection by PI order versus what you'd get by naively selecting largest-NPV projects; student should see that PI maximizes total NPV within the budget constraint] -->
 
 ↳ **Dig Deeper — Real options in capital budgeting**
 
-*Standard NPV treats capital projects as static — once committed, you proceed. But real projects often have flexibility: the option to expand if successful, abandon if unsuccessful, or delay the start. These flexibility features have value that NPV ignores.*
+*Standard NPV treats capital projects as static — once committed, you proceed. But real projects often have flexibility: expand if successful, abandon if not, delay the start. These flexibility features have value that NPV misses.*
 
 **Prompt:**
 > Explain the four main types of real options in capital budgeting: option to expand, option to abandon, option to delay, option to switch. For each, give one industry example where it's most valuable (e.g., pharmaceutical R&D for option to abandon). Then briefly describe how option-pricing methods (Black-Scholes adapted, binomial trees) can be applied to real options. What practical limitations make real options analysis harder than the financial-options version?
 
-**What to do with the output:** Save it. Real options are why some "negative NPV" projects are actually value-creating — and why some "positive NPV" projects need flexibility to deliver.
-
-### The trade-off (concept 1)
-
-The five metrics trade **comprehensiveness against simplicity**. Payback is simple but loses information. NPV is comprehensive but harder to communicate. IRR is intuitive but flawed in specific cases. The right approach for a capital-budgeting analysis: lead with NPV, supplement with IRR (with caveats), use PI for capital rationing, use MIRR when the reinvestment assumption matters.
-
-### Common misconceptions
-
-- *"All five metrics are equivalent for accept/reject decisions."* They are roughly equivalent for *standalone* projects with normal cash flow patterns. They diverge in important ways for ranking, mutually exclusive projects, and unusual cash flows.
-- *"Higher IRR is always better."* Not when projects differ in scale or duration.
+**What to do with the output:** Save it. Real options are why some apparently negative-NPV projects are actually value-creating — and why some positive-NPV projects need explicit flexibility to deliver.
 
 ---
 
-## Concept 2 — When the methods disagree
+## When the methods disagree: three clean cases
 
-Three situations produce conflicts among the metrics. Each has a clean resolution.
+### Mutually exclusive projects
 
-### Conflict 1: Mutually exclusive projects
+The opening puzzle is the template. When IRR and NPV disagree, NPV wins. The firm maximizes value, not rate of return. The scale-adjusted comparison — incrementally, does the larger investment earn above the cost of capital? — is what NPV computes directly.
 
-Two projects compete for the same resource — a factory site, a piece of equipment, an executive's time. The firm can do one but not both. Different metrics may rank them differently.
+Intuition check. Suppose a friend offers you two deals: earn 20% on $100, or earn 15% on $10,000. Which do you take? Most people correctly take the second — $1,500 of actual income beats $20 regardless of the rate. That's the NPV calculation. It's not exotic; it's arithmetic.
 
-The chapter's opening puzzle: regular machine (NPV $2,836, IRR 14.1%) vs. heavy-duty machine (NPV $3,971, IRR 13.2%). IRR favors regular; NPV favors heavy-duty.
+### Projects with unequal lives
 
-**Resolution:** When NPV and IRR disagree on mutually exclusive projects, **NPV wins**. The firm's objective is value creation, not rate maximization. The heavy-duty machine creates more value despite its lower percentage return.
+A 3-year project with NPV of $50,000 vs. a 6-year project with NPV of $80,000. The longer project's NPV is higher, but it occupies twice as much time. Are they genuinely comparable?
 
-### Conflict 2: Projects with unequal lives
+Two methods produce the same answer.
 
-A 3-year project with NPV of $50,000 vs. a 6-year project with NPV of $80,000. The 6-year project's NPV is larger, but it ties up resources for twice as long. Are they comparable?
+**Replacement chain.** Repeat the shorter project to match the longer one's horizon. If the 3-year project can be repeated with identical cash flows, build a 6-year model that does it twice. Compare both to the 6-year project's NPV directly.
 
-Two methods to handle this.
-
-**Replacement chain.** Repeat the shorter project to match the longer one's horizon. If the 3-year project has the same cash flows when repeated, build a 6-year cash flow model that does it twice. Compare to the 6-year project's NPV directly.
-
-For OpenStax's truck example: old truck (3-year life, NPV $49,474) vs. new truck (6-year life, NPV $80,658). Chained over 6 years, two old trucks: $86,645 total NPV. Old truck wins.
-
-**Equivalent annual annuity (EAA).** Convert each NPV to an annuity payment over the project's life:
+**Equivalent annual annuity (EAA).** Convert each project's NPV into a constant annual payment over its life:
 
 $$EAA = \frac{NPV \times r}{1 - (1+r)^{-n}}$$
 
-Compare the annuities directly. Higher annuity wins.
+The project with the higher EAA produces more value per year — the right comparison when projects can be repeated.
 
-For the trucks at 10%: old truck EAA = $19,894/year; new truck EAA = $18,520/year. Old truck wins.
+Use whichever is more transparent for the audience. For projects that genuinely can be repeated (equipment replacement), the replacement chain is most intuitive. For projects that can't be repeated, EAA handles the comparison cleanly.
 
-Both methods give the same ranking. Use whichever is cleaner for the analysis.
+### Capital rationing
 
-### Conflict 3: Capital rationing
+Rank by profitability index, accept in PI order until the budget is exhausted.
 
-The firm has more positive-NPV projects than capital. Rank them.
+The logic: PI is NPV per dollar of capital deployed. When capital is the scarce resource, you maximize the NPV extracted per unit of the scarce resource. Ranking by total NPV fails because it doesn't account for how much capital each project consumes — a project with NPV of $80M and cost of $200M might leave behind a combination of smaller projects with higher total NPV per dollar.
 
-By NPV alone, you can't tell which combination of projects produces the highest *total* NPV given the budget. Use the **profitability index**: rank by PI, then accept projects in PI order until the budget is exhausted.
+↳ **Dig Deeper — How firms actually set hurdle rates**
 
-OpenStax example. Firm has $200M budget. Seven candidate projects:
-
-| Project | NPV ($M) | Investment | PI | Rank by PI |
-|---|---|---|---|---|
-| A | 60 | 150 | 1.40 | 1 |
-| E | 11 | 30 | 1.37 | 2 |
-| F | 7 | 20 | 1.35 | 3 |
-| D | 15 | 50 | 1.30 | 4 |
-| B | 25 | 100 | 1.25 | 5 |
-| G | 2 | 10 | 1.20 | 6 |
-| C | 10 | 70 | 1.14 | 7 |
-
-Rank by PI: choose A (cost $150M), E ($30M), F ($20M). Total cost: $200M. Total NPV: $78M.
-
-If you'd ranked by NPV alone, you might have chosen A + B = $250M of investment, busting the budget; or A + D + B = $300M, even worse. Or A + B = top NPVs but $250M > $200M budget.
-
-PI tells you: getting the most value per dollar means going with the highest PI projects until you can't fit another. This is the right answer under capital rationing.
-
-↳ **Dig Deeper — How firms actually choose hurdle rates**
-
-*The textbook says firms should use WACC (or a project-specific risk-adjusted rate) as the discount rate for capital projects. In practice, many firms use a single corporate hurdle rate for everything, often set well above WACC. Why?*
+*The textbook says firms should use WACC as the project discount rate. In practice, many use a single hurdle rate set well above WACC. Why?*
 
 **Prompt:**
-> Explain why corporate hurdle rates often exceed the firm's WACC. Three reasons frequently cited: (1) optimism bias in cash flow projections (the firm is correcting for systematic over-estimation), (2) capital rationing concerns (limited budget; need to prioritize), (3) "tradition" or executive risk aversion. Walk through evidence for each. Then argue: which is the strongest case, and which approaches the level of capital-misallocation that destroys shareholder value?
+> Explain why corporate hurdle rates often exceed the firm's WACC. Three reasons frequently cited: (1) optimism bias in cash flow projections (the firm corrects for systematic over-estimation), (2) capital rationing (limited budget forces prioritization), (3) executive risk aversion. Walk through evidence for each. Then argue: which reason is most defensible, and which represents capital misallocation that destroys shareholder value?
 
 **What to do with the output:** Save it. Real corporate capital budgeting deviates from the textbook in predictable ways; understanding the deviations helps assess your project company's discipline.
 
-### The trade-off (concept 2)
+---
 
-Method conflicts trade **simplicity against fidelity to the underlying optimization**. Each metric is right for some uses and wrong for others. The discipline is to know which conflict is operating and apply the right resolution. NPV is the value-creation metric; PI is the value-per-dollar metric for budget-constrained decisions.
+## The harder problem: estimating the cash flows
 
-### Worked example — your chosen company's recent capex
+The metrics tell you whether a project clears a hurdle. The harder problem is constructing the cash flows that go into them.
 
-For your equity research project: identify a major capital expenditure your chosen company announced in the past two years. Most public companies disclose major capex in 8-K filings or in the MD&A section of the 10-K.
+NPV uses **incremental free cash flows** — the additional cash the firm generates because it does the project, net of all required reinvestment:
 
-Estimate (using public information and reasonable assumptions):
-- Initial investment.
-- Annual cash flows over an estimated useful life.
-- Cost of capital (use your WACC estimate from Chapter 17 once it's available; for now, approximate at 8-10%).
+$$\text{Project FCF}_t = (\text{Revenue}_t - \text{COGS}_t - \text{Opex}_t)(1 - \tau) + \text{Dep}_t - \text{Capex}_t - \Delta\text{NWC}_t$$
 
-Compute NPV, IRR, payback. Decide whether the capex is value-creating. Compare to the firm's stated rationale in disclosures. Disagreements are analytically interesting and often inform investment thesis.
+where $\tau$ is the tax rate and $\Delta\text{NWC}$ is the change in net working capital the project requires.
+
+Four disciplines for getting this right.
+
+**No sunk costs.** Money already spent is gone regardless of the decision. Including sunk costs in NPV is a systematic bias toward over-investment in losing projects — you keep funding things because you've already paid so much. The NPV calculation includes only future cash flows.
+
+**Include opportunity costs.** If the project uses a building the firm already owns, the firm can't use that building for something else. The opportunity cost — the best alternative use foregone — is a real cash flow for NPV purposes, even if no cash changes hands.
+
+**Account for cannibalization.** If the new product steals revenue from an existing product, the net revenue increment is smaller than the gross. Optimistic managers omit cannibalization; rigorous analysis includes it.
+
+**Don't ignore terminal costs.** Projects end. The machine gets scrapped, the environmental cleanup happens, the lease terminates. Terminal cash flows are part of the project's economics and can flip marginal projects from positive to negative NPV.
+
+<!-- → [TABLE: FCF estimation discipline checklist — rows: Sunk costs, Opportunity costs, Cannibalization, Terminal costs — columns: Rule (include/exclude), What managers often do wrong, Real-world example of the error, Impact direction on NPV (overstated/understated) — student should be able to audit any cash flow projection against these four rules] -->
+
+### Boeing's 787 Dreamliner
+
+The 787 is the capital-budgeting case that almost everyone in finance knows. Boeing committed approximately $13 billion to develop the aircraft. Development overruns exceeded $20 billion and deliveries arrived three years late, with structural and battery issues producing further grounding events through 2024. Estimated total program development cost exceeded $32 billion.
+
+Was this a good capital-budgeting decision? The honest answer depends heavily on what cash flows you count and over what horizon. On direct program economics — development cost against aircraft margins over the delivery schedule — the case is questionable. On strategic-option value — Boeing maintaining widebody leadership against Airbus, a position worth considerable competitive value — the case is more defensible.
+
+The 787 case is useful precisely because it illustrates both the discipline NPV brings (forces you to put explicit numbers on everything) and its limits (can't cleanly capture strategic optionality without additional frameworks). A capital-budgeting analysis of a Boeing-type decision should produce an NPV calculation *and* an explicit argument for why the strategic considerations justify whatever gap the NPV analysis shows.
 
 ---
 
-## Concept 3 — From mechanics to strategic capital allocation
+## A hierarchy, not a menu
 
-The metrics tell you whether a single project clears a hurdle. Real corporate capital allocation is broader.
+The five metrics aren't five equally valid choices. They have a structure:
 
-### Free cash flow estimation
+**NPV is the primary criterion for value creation.** Accept or reject based on NPV. Full stop.
 
-The cash flows that go into NPV/IRR are not GAAP earnings. They are **incremental free cash flows**: the additional cash the firm generates *because* it does the project, net of all required reinvestment.
+**IRR is a useful summary metric, not a decision criterion.** Report it alongside NPV; use it to communicate the project's implied return; don't rank by it for mutually exclusive projects.
 
-$$\text{Project FCF}_t = (\text{Revenue}_t - \text{COGS}_t - \text{Opex}_t) \times (1 - \tau) + \text{Depreciation}_t - \text{Capex}_t - \Delta \text{Working capital}_t$$
+**MIRR is the better version of IRR when the reinvestment assumption matters** — which is most of the time for high-IRR projects in firms that don't have unlimited 20%+ alternatives.
 
-where $\tau$ is the tax rate.
+**PI is the ranking tool for capital-constrained decisions.** Not needed otherwise.
 
-The discipline: include only what the project changes. Don't include sunk costs. Don't ignore opportunity costs (using a building you already own to host the project means you can't use it for something else). Don't ignore cannibalization (if the new product steals revenue from existing products).
+**Payback is a liquidity check.** A 12-year payback on a 10-year project is a problem the analyst should flag. Beyond that, it adds little.
 
-For an analyst evaluating a corporate decision, the FCF estimate is where the action is. Bad NPV decisions usually result from bad FCF estimation, not from bad arithmetic.
+For the equity research project: when you evaluate your chosen company's capital allocation, the question is whether management appears to be using NPV-consistent logic — taking projects whose expected returns exceed the cost of capital, calibrated appropriately to project risk — or making one of the predictable errors: pursuing high-IRR small projects over lower-IRR large ones, or anchoring on payback period at the expense of long-duration value creation.
 
-### Risk adjustment
+The analytical signal is informative in both directions. A firm with disciplined capital allocation tends to earn returns above cost of capital over time. A firm that makes systematic capital-budgeting mistakes tends not to.
 
-The discount rate should reflect the project's risk, not just the firm's average cost of capital.
-
-A diversified firm doing a low-risk project (replacing existing equipment) should discount at a rate below WACC. Doing a high-risk project (new market entry) should discount above WACC. In practice, many firms use WACC for everything, and the resulting decisions are biased — low-risk projects underapproved, high-risk projects overapproved.
-
-For sophisticated capital budgeting, project-specific discount rates are computed from project beta and the project's debt capacity. This is intermediate finance; for principles-level work, WACC is the default.
-
-### Real options
-
-Standard NPV treats project decisions as static — once committed, you proceed. Real projects often have *flexibility*:
-- The option to expand if successful.
-- The option to abandon if unsuccessful.
-- The option to delay the start.
-- The option to switch technology mid-project.
-
-These flexibility features have value that standard NPV misses. The field of **real options analysis** treats them explicitly using option-pricing methods. For analytical rigor in industries with high flexibility (biotech, energy exploration, technology), real options capture value the standard NPV underestimates.
-
-For most projects, standard NPV is good enough. For projects with significant optionality, the analyst should at least flag that NPV likely understates value.
-
-### Strategic context
-
-Some projects have value beyond their direct NPV — they produce learning, build options for follow-on projects, signal to competitors, or protect existing market position. A defensive capex (matching a competitor's investment) might have negative direct NPV but positive total value if it prevents larger losses.
-
-These are real considerations but hard to quantify. The discipline: present the NPV calculation honestly, then list the strategic considerations explicitly. Don't hide low NPV behind unquantified strategic claims.
-
-### Worked example — Boeing's 787 Dreamliner
-
-The 787 Dreamliner is a textbook capital-budgeting case. Boeing committed roughly $32 billion to develop the aircraft, expected to be recovered through aircraft sales over the next 30+ years. The development ran $20+ billion over budget and delivered three years late, with persistent quality issues that produced grounding events through 2024.
-
-Was the project a good one? Hard to say definitively. By a narrow NPV measure with the actual cost overruns, the answer might be no. By a strategic-importance measure — Boeing maintaining technological leadership in widebody aircraft — the answer might be yes.
-
-The case illustrates both the discipline of NPV (forces explicit estimation of cash flows) and its limits (can't fully capture strategic positioning). For the equity research project, capital-budgeting analysis should identify both the quantitative answer and the strategic factors that adjust it.
-
-### The trade-off (concept 3)
-
-Capital allocation trades **methodological rigor against business judgment**. The NPV machinery is rigorous and works well for projects with reasonably-known cash flows and risks. Strategic considerations are softer and harder to quantify. Both matter; neither replaces the other. A capital-budgeting analysis that produces a single NPV number with no qualitative discussion misses important context. An analysis that's all qualitative judgment with no NPV math is not analysis at all.
-
-### Common misconceptions
-
-- *"Sunk costs should be considered in NPV."* No. Sunk costs are gone regardless of the decision. Only incremental cash flows from the decision matter.
-- *"Real options always justify going ahead."* Sometimes; sometimes the option value is small enough not to change the answer.
-- *"Strategic value justifies low-NPV projects."* Sometimes — but the strategic value should be specifically articulated, not used as a catch-all justification.
+<!-- → [TABLE: Metric hierarchy summary — rows: NPV, IRR, MIRR, PI, Payback — columns: Primary use, Decision rule, When it fails, When to rely on it — student should be able to select the right metric for any capital-budgeting context without having to work through the logic from scratch] -->
 
 ---
 
-## Synthesis — capital budgeting as the firm's investment problem
+## What would change my mind
 
-The firm faces, internally, the same problem an investor faces externally: pick the best uses of limited capital. The toolkit transferred from individual investing — TVM, NPV, risk-adjusted discounting — applies cleanly. The decision rules are clear in most cases:
+The chapter argues NPV is the correct primary metric for capital budgeting, with the others serving supplementary roles in specific situations. The reading would have to revise if (a) real options analysis became standard for general capital budgeting — currently it's used in specific high-optionality industries but not routinely — or (b) compelling empirical evidence emerged that firms using IRR-based decision rules systematically outperform NPV-based firms. No such evidence exists; theory predicts the opposite.
 
-1. **Lead with NPV.** It's the value-creation metric.
-2. **Supplement with IRR** (with caveats about scale, multiple roots, reinvestment).
-3. **Use PI for capital rationing.** Ranks NPV per dollar invested.
-4. **Use MIRR when the reinvestment assumption matters.**
-5. **Use payback only as a liquidity sanity check, never as primary criterion.**
+## Still puzzling
 
-The harder questions are upstream of the metrics: getting the cash flow estimates right, choosing the right discount rate, handling unequal lives, and deciding when strategic considerations justify deviating from the pure NPV answer. These are where analytical judgment matters.
+The hardest unsolved problem in practice is the discount rate. Standard practice uses WACC for all projects, but different projects carry different risk. A low-risk capacity expansion should be discounted less than a high-risk new-market entry; using the same WACC for both systematically under-approves safe projects and over-approves risky ones. The right answer — project-specific discount rates derived from project beta and debt capacity — is theoretically clear and practically messy. Most firms know the argument and don't implement it because the marginal improvement in capital allocation doesn't justify the political cost of having different hurdles for different projects. The gap between theory and practice here is real and persistent.
 
-For the equity research project, this chapter equips you to evaluate your chosen company's capital allocation. Are they investing in projects that look value-creating? Do their disclosures suggest they're using sound NPV-style discipline, or are they making predictable IRR-vs-NPV mistakes? The answer feeds into your investment thesis.
+---
+
+## Connections forward
+
+- **Chapter 17** computes WACC — the discount rate plugged into NPV.
+- **Chapter 18** forecasts the cash flows that feed NPV.
+- **Chapter 19** addresses working capital, a component of project FCF.
+- **Chapter 20** addresses the risk factors that determine project-specific discount rates.
 
 ---
 
@@ -369,112 +245,85 @@ For the equity research project, this chapter equips you to evaluate your chosen
 
 ### Warm-up
 
-**16.1** Define payback period, NPV, IRR, MIRR, and profitability index. State the decision rule for each.
+**16.1** State the decision rule for each of the five capital-budgeting metrics: payback, discounted payback, NPV, IRR, and MIRR. For each, name one situation where it should not be used as the primary criterion.
 
-**16.2** Why does NPV prevail over IRR when the two disagree on mutually exclusive projects?
+**16.2** The opening puzzle showed a regular machine (NPV $2,836, IRR 14.1%) and a heavy-duty machine (NPV $3,971, IRR 13.2%). Without doing any new arithmetic, explain in two sentences why a firm that maximizes shareholder value should choose the heavy-duty machine despite its lower IRR.
 
-**16.3** Explain the multiple-IRR problem. When does it arise?
+**16.3** Describe the multiple-IRR problem. Under what cash flow conditions does it arise? Why does NPV remain well-defined in these cases?
 
 ### Application
 
-**16.4** A project has the following cash flows:
-- Year 0: -$100,000
-- Years 1-4: $35,000 each
-- Year 5: $40,000
+**16.4** A project requires an initial investment of $80,000 and produces the following cash flows:
 
-Cost of capital: 8%. Compute:
-(a) Payback period.
-(b) Discounted payback period.
+- Year 1: $20,000
+- Year 2: $25,000
+- Year 3: $30,000
+- Year 4: $35,000
+- Year 5: $20,000
+
+Cost of capital: 10%. Compute:
+
+(a) Payback period (to the nearest year).
+(b) Discounted payback period (to the nearest 0.1 year).
 (c) NPV.
-(d) IRR.
+(d) IRR (use Excel's `=IRR()` or iterate).
 (e) Profitability index.
+(f) State the accept/reject decision under each metric.
 
-**16.5** Firm has two mutually exclusive projects, both with cost of capital 10%:
-- Project A: -$50,000, then $20,000/year for 4 years.
-- Project B: -$200,000, then $70,000/year for 4 years.
+**16.5** A firm must choose between two mutually exclusive projects, both with a 12% cost of capital:
+
+- Project A: Initial cost $60,000; annual cash flows of $22,000 for 4 years.
+- Project B: Initial cost $250,000; annual cash flows of $80,000 for 4 years.
 
 (a) Compute NPV and IRR for each.
-(b) Which has higher IRR?
-(c) Which has higher NPV?
-(d) Which should the firm choose?
+(b) Which has the higher IRR? Which has the higher NPV?
+(c) Which should the firm select, and why?
+(d) Restate the "20% on $100 vs. 15% on $10,000" intuition in terms of these two projects.
 
-**16.6** Firm has a $300M budget and seven candidate projects. Use the profitability indices below to determine which projects to fund:
+**16.6** A firm with a $500M capital budget is evaluating six projects:
 
 | Project | NPV ($M) | Investment ($M) |
 |---|---|---|
-| A | 80 | 200 |
-| B | 50 | 150 |
-| C | 30 | 100 |
-| D | 25 | 70 |
-| E | 18 | 50 |
-| F | 12 | 40 |
-| G | 8 | 30 |
+| A | 120 | 300 |
+| B | 90 | 250 |
+| C | 60 | 150 |
+| D | 45 | 120 |
+| E | 30 | 80 |
+| F | 20 | 60 |
 
-Rank by PI; select projects until budget is exhausted. What's the total NPV under your selection?
+(a) Compute PI for each project.
+(b) Rank by PI and select projects until the $500M budget is exhausted.
+(c) What is the total NPV under your selection?
+(d) What would the total NPV have been if you had simply selected by largest NPV first? Compare.
 
 ### Synthesis
 
-**16.7** For your chosen company, identify a major capex announcement in the past 2-3 years. Estimate (using public information and reasonable assumptions):
-(a) Initial investment.
-(b) Annual cash flows expected over a reasonable useful life.
-(c) An appropriate discount rate.
+**16.7** A project has the following cash flows: Year 0: −$100,000; Years 1–3: +$60,000; Year 4: −$40,000 (environmental cleanup). Cost of capital: 8%.
 
-Compute NPV. Argue whether the project is likely to be value-creating.
+(a) Compute NPV. Is it positive?
+(b) Compute MIRR. Does the MIRR decision rule agree with NPV?
+(c) Attempt to find the IRR. Does the project have one IRR, two, or is the situation ambiguous? Explain why.
 
-**16.8** A friend says: "Real options always justify going ahead with a project. Even if the standard NPV is negative, the option value can flip the decision." Construct a careful response addressing (a) when this is true, (b) when it's not, and (c) the practical difficulty of estimating option value for non-financial projects.
+**16.8** For your chosen company, identify a major capital expenditure announced in the past two years (8-K filing or 10-K MD&A). Estimate: (a) the initial outflow, (b) plausible annual incremental cash flows, (c) the project's life. Compute NPV using your estimate of the firm's WACC (10% is a reasonable placeholder if you haven't completed Chapter 17 yet). Argue whether the capex appears value-creating.
 
 ### Challenge
 
-**16.9** Construct a specific example of a project with two IRRs (NPV crosses zero twice). Use real-feeling cash flows. Compute MIRR for the same project. Argue that MIRR gives the correct accept/reject signal in this case.
+**16.9** Boeing committed approximately $13 billion to develop the 787 Dreamliner; actual development cost exceeded $32 billion. Build a rough NPV model:
 
-**16.10** Boeing's 787 Dreamliner ran roughly $20 billion over its initial $13B development budget. With actual delivery delays of 3+ years and ongoing quality issues, did the project produce positive NPV in retrospect? Build a rough model with:
-- Initial development cost (actual).
-- Annual cash flows from aircraft sales (estimate from public unit deliveries and pricing).
-- Useful life (estimate based on aircraft generations).
-- Discount rate (estimate Boeing's WACC at the time).
+(a) Use actual development cost as the outflow (you may need to spread it over 5 years of development).
+(b) Estimate annual FCF from 787 deliveries: Boeing has delivered roughly 1,000+ aircraft at estimated net margins of $5–15M per plane. Spread over a reasonable delivery schedule.
+(c) Use a discount rate of 8–10% (Boeing's approximate WACC at the time).
+(d) Compute NPV. Does the program appear to have positive NPV on direct financials alone?
+(e) Argue what strategic option value would need to be worth to justify the investment if the direct NPV is negative.
 
-Argue whether the 787 was a financially good project. What strategic considerations might justify a different conclusion?
-
----
-
-## Chapter summary
-
-- **Five capital-budgeting metrics**: payback, discounted payback, NPV, IRR, MIRR, profitability index.
-- **NPV is the gold standard** — directly measures value creation. Decision rule: accept if NPV > 0.
-- **IRR has known flaws** — multiple roots when cash flows change sign more than once; scale-blind; reinvestment assumption.
-- **MIRR fixes IRR's reinvestment-rate problem** by using cost of capital as the reinvestment rate.
-- **Mutually exclusive projects**: NPV wins when methods disagree.
-- **Unequal lives**: replacement chain or equivalent annual annuity.
-- **Capital rationing**: use profitability index to rank.
-- Cash flow estimation and discount rate choice are where most analytical errors come from, not the math itself.
-
----
-
-## What would change my mind
-
-The chapter argues NPV is the correct primary metric for capital budgeting. The reading would have to revise if (a) real options analysis became standard for general capital budgeting (currently it's used in specific industries), or (b) compelling empirical evidence emerged that firms using IRR-based decision rules systematically outperform firms using NPV — there's no such evidence, and theory predicts the opposite. NPV's primacy is well-established.
-
-## Still puzzling
-
-The genuinely hard question is *what discount rate to use for project evaluation*. Standard practice uses WACC for everything, but different projects have different risks. Project-specific discount rates would be more accurate but require more analytical work. The error from using WACC for everything is that low-risk projects get under-approved and high-risk projects get over-approved. In aggregate this leads to suboptimal capital allocation. Many large firms know this but don't adjust because the alternative (project-specific rates) is messy and contestable. The right answer in theory and the standard practice diverge here.
-
----
-
-## Connections forward
-
-- **Chapter 17** computes WACC — the firm's cost of capital, used as the discount rate.
-- **Chapter 18** forecasts cash flows, the inputs to NPV.
-- **Chapter 19** addresses working capital, a component of project FCF.
-- **Chapter 20** addresses the risks that should determine project-specific discount rates.
-
----
+**16.10** A colleague argues: "Real options always justify going ahead with projects that have slightly negative NPV. The option to abandon is always worth something." Construct a careful response: (a) when is this argument valid, (b) when does option value fail to flip a negative-NPV project, and (c) what discipline should surround any real-options argument to prevent it from becoming a catch-all justification for bad capital allocation?
 
 ---
 
 ## LLM Exercise — Chapter 16: Reverse-Engineer Your Company's Capital Budgeting
 
 **Project:** Equity Research Report on a Chosen Public Company
-**What you're building this chapter:** Assess your company's capital allocation track record — does it appear to be using NPV-disciplined decision-making, or is it making predictable IRR-vs-NPV mistakes?
+**What you're building this chapter:** Assess your company's capital allocation track record — does it appear to use NPV-disciplined decision-making, or is it making predictable IRR-vs-NPV mistakes?
 **Tool:** Claude Project.
 
 ### The Prompt
@@ -510,7 +359,7 @@ Cite sources. Don't speculate beyond the disclosed information.
 
 ### What this produces
 
-A 1-2 page capital-allocation track-record section. Adds substantive context to the investment thesis — many investment outcomes hinge on whether management deploys capital well.
+A 1–2 page capital-allocation track-record section. Adds substantive context to the investment thesis — many investment outcomes hinge on whether management deploys capital well.
 
 ### How to adapt this prompt
 
@@ -528,13 +377,9 @@ Chapter 17 computes WACC. The Chapter 17 LLM Exercise will produce the cost-of-c
 
 ---
 
-**Tags:** capital-budgeting, NPV, IRR, MIRR, profitability-index, payback, mutually-exclusive, capital-rationing
+## AI Wayback Machine
 
-
----
-
-##  AI Wayback Machine
-**Joel Dean** was developed the modern framework for capital budgeting in 1951 — including NPV and IRR as standard decision criteria.
+**Joel Dean** developed the modern framework for capital budgeting in 1951 — including NPV and IRR as standard decision criteria.
 
 **Run this:**
 
@@ -550,3 +395,7 @@ Who is Joel Dean, and how does their work connect to corporate investing we cove
 - Add a constraint: "Answer including criticisms or limits of Joel Dean's framework."
 
 What changes? What gets better? What gets worse?
+
+---
+
+**Tags:** capital-budgeting, NPV, IRR, MIRR, profitability-index, payback, mutually-exclusive, capital-rationing
