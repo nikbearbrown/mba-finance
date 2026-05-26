@@ -1,249 +1,154 @@
 # Chapter 8 — Time Value of Money II: Equal Multiple Payments
 
-
-## TL;DR
-
-- You will practice Distinguish a perpetuity from an annuity, and an ordinary annuity from an annuity due; Compute the present value of a perpetuity (constant or growing); Compute the present value and future value of an ordinary annuity and an annuity due.
-- The chapter moves through The puzzle of the lottery, Learning objectives, Concept 1 — Perpetuities: streams that never end, Why perpetuities have finite present value, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. Annuities, Perpetuities, and the Arithmetic of Streams
-2. Lottery, Mortgage, Pension
-3. Equal Payments Across Time
-
-**TL;DR.** A single-payment time-value calculation handles one cash flow. An *annuity* handles a stream of equal payments over a fixed horizon (mortgages, car loans, pension annuities). A *perpetuity* handles an equal stream that continues forever (preferred stock dividends, college endowments). Both have closed-form formulas that reduce a stream of payments to a single present or future value. This chapter installs those formulas and uses them to price loans, evaluate retirement plans, and tell stated interest rates from effective ones.
+*How an infinite stream of payments adds up to something you can hold in your hand.*
 
 ---
 
-## The puzzle of the lottery
+Here is a thing that seems impossible.
 
-You win the North Dakota Lottery. The prize is $1.2 million.
+Suppose someone promises to pay you $1 every year, forever. Not for a hundred years. Not for a thousand. *Forever.* An infinite number of payments, each worth something, stretching out to the end of time.
 
-The state offers two payout options.
+What is that promise worth today?
 
-- **Option A** — $120,000 per year for ten years, starting next year.
-- **Option B** — a single lump sum, today, of $787,000.
+Your first instinct might be: infinitely much. An infinite number of positive-valued payments — the sum ought to be infinite. But the promise is not worth infinite money. It is worth a perfectly specific, finite, calculable number. And the reason comes down to a fact about the future that we established in Chapter 7: a dollar far enough away is worth almost nothing today.
 
-Which is better?
+A $1 payment fifty years from now, discounted at 5%, has a present value of $0.087 — less than nine cents. A $1 payment a hundred years from now has a present value of $0.0076 — less than a penny. Two hundred years away: a hundredth of a cent. The payments keep shrinking toward zero fast enough that their infinite sum converges to a finite number. This is the same phenomenon that lets a geometric series — $1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots$ — add up to exactly 2, not infinity, even with infinitely many terms.
 
-If the question were just "which is more dollars?", Option A wins easily — $1.2 million versus $787,000 is a 50% premium. But the question is which is worth more *today*. Option A's $1.2 million doesn't arrive all at once; it arrives in pieces, over a decade. The first $120,000 lands in twelve months. The second in twenty-four. The last $120,000 doesn't arrive until ten years from now — and a dollar ten years away is worth substantially less than a dollar today.
-
-To answer the question, we have to compute the **present value of a stream of equal payments**. That kind of stream is called an **annuity**. The math we need is an extension of Chapter 7's single-payment time-value formula, but the result is a single closed-form expression that handles any annuity in one step.
-
-Spoiler: at a 9% discount rate, the present value of Option A is about $770,000 — *less* than Option B's $787,000. Take the lump sum. But if you had a way to safely earn 9% on the money, Option A would be worth more than $1.2 million in your pocket at the end. The answer depends on the rate, and the rate depends on what you'd actually do with the money.
-
-For the equity research project, this chapter is the bridge between single-payment TVM (Chapter 7) and the cash-flow streams that drive every valuation in finance (Chapters 9–11, 16–18). Most things you'll value — bonds, mortgages, pension plans, capital projects — are streams of cash, not single lumps.
+That finite number is where this chapter begins.
 
 ---
 
-## Learning objectives
+## Perpetuities: the infinite stream
 
-After working through this chapter, you should be able to:
+A **perpetuity** is a constant payment $C$ received every period, starting one period from now, forever. The present value is:
 
-- Distinguish a perpetuity from an annuity, and an ordinary annuity from an annuity due.
-- Compute the present value of a perpetuity (constant or growing).
-- Compute the present value and future value of an ordinary annuity and an annuity due.
-- Build a loan amortization schedule by hand or in Excel.
-- Solve for any single unknown in an annuity equation (payment, rate, or term).
-- Distinguish the stated annual rate from the effective annual rate, and compute the effective rate from any stated rate and compounding frequency.
+$$PV = \frac{C}{(1+r)^1} + \frac{C}{(1+r)^2} + \frac{C}{(1+r)^3} + \cdots = \sum_{n=1}^{\infty} \frac{C}{(1+r)^n}$$
 
-**Prerequisites.** Chapter 7 (single-payment TVM). Comfort with summation and geometric series.
+To evaluate this sum, use the geometric-series trick. Call the sum $PV$. Multiply both sides by $(1+r)$:
 
----
+$$PV \cdot (1+r) = C + \frac{C}{(1+r)^1} + \frac{C}{(1+r)^2} + \cdots$$
 
-## Concept 1 — Perpetuities: streams that never end
+Subtract the original equation:
 
-The simplest stream of payments to value is a **perpetuity** — an equal payment that continues forever.
-
-### Why perpetuities have finite present value
-
-It seems impossible. An infinite number of payments, each worth something, adding up to a finite present value? But the math works because each future payment is discounted, and distant payments are discounted to almost nothing.
-
-A $1 payment 50 years from now, discounted at 5%, has a present value of $0.087. A $1 payment 100 years from now, discounted at 5%, has a present value of $0.0076 — less than a penny. By 200 years, it's a hundredth of a cent. The payments approach zero in present value fast enough that their sum converges to a finite number.
-
-The sum is the present value of the perpetuity:
-
-$$PV = \sum_{n=1}^{\infty} \frac{C}{(1+r)^n}$$
-
-This is a geometric series. Multiply both sides by $(1+r)$ and subtract the original to telescope:
-
-$$PV \cdot (1+r) - PV = \frac{C}{(1+r)^0} - \lim_{n \to \infty} \frac{C}{(1+r)^{n}} = C - 0 = C$$
+$$PV \cdot (1+r) - PV = C - \lim_{n \to \infty} \frac{C}{(1+r)^n} = C - 0$$
 
 $$PV \cdot r = C$$
 
 $$\boxed{PV = \frac{C}{r}}$$
 
-Where $C$ is the constant payment per period and $r$ is the discount rate per period. That's it. One of the cleanest formulas in finance.
+One of the cleanest results in finance. The present value of a constant stream that pays forever is just the payment divided by the discount rate. No exponents. No compounding schedules. One division.
 
-### Worked example — preferred stock as a perpetuity
+Notice what drives the formula. Higher payments mean higher present value — obvious. Higher discount rates mean lower present value — also obvious. But the relationship is exactly inverse: double the rate, halve the value. This is the same mechanism that makes long-duration bonds sensitive to interest rate changes, as we'll see in Chapter 10.
 
-A common application: a corporation issues preferred stock that pays a fixed dividend forever (or until the firm is dissolved or the stock is called back). If the dividend is $2.00 per share annually and investors require a 7% return, the price of the stock is:
+**Preferred stock as a perpetuity.** A corporation sometimes issues preferred stock that pays a fixed dividend indefinitely. If the dividend is $2.00 per share annually and investors require a 7% return:
 
 $$PV = \frac{\$2.00}{0.07} = \$28.57$$
 
-Investors will pay $28.57 per share. The math says: for every $28.57 they invest, they receive $2.00 per year forever, which is exactly a 7% return.
+That's the price investors will pay. For every $28.57 invested, they receive $2.00 per year — exactly a 7% return.
 
-If interest rates rise and the required return becomes 10%, the same dividend now requires a price of $\$2.00 / 0.10 = \$20.00$. The stock price falls. This is the basic mechanism by which interest rates affect asset prices, in the simplest possible setting. We'll see the same mechanism much more elaborately in Chapter 10 (bonds) and Chapter 11 (stocks).
+Now suppose interest rates rise and the required return becomes 10%:
 
-### Growing perpetuities
+$$PV = \frac{\$2.00}{0.10} = \$20.00$$
 
-A **growing perpetuity** pays a stream that increases at a constant rate $g$ per period:
+The stock price falls from $28.57 to $20.00 — a 30% drop — with no change in the underlying dividend. This is why bond and preferred-stock prices fall when interest rates rise. The mechanism is in the formula.
 
-$$PV = \frac{C}{r - g}$$
+<!-- → [CHART: line chart showing how PV = C/r behaves as r rises from 2% to 15% for a fixed C = $2.00 — student should see the hyperbolic relationship and why small changes in r at low rates produce large changes in price] -->
 
-The formula requires $r > g$; otherwise the geometric sum doesn't converge — the payments grow too fast for the discounting to keep up.
+**Growing perpetuities.** What if the payment grows at a constant rate $g$ each period? The first payment is $C$, the second is $C(1+g)$, the third $C(1+g)^2$, and so on. Apply the same telescoping trick — the sum converges as long as $r > g$, and the result is:
 
-Example: a college endowment is structured to pay $4.00 per share to a charitable beneficiary annually, with the payment growing at 0.2% per year. The required return is 3%.
+$$\boxed{PV = \frac{C}{r - g}}$$
+
+If $r \leq g$, the formula breaks down — the stream grows too fast for discounting to cap it, and the sum diverges. This constraint ($r > g$) is not just mathematical; it is economic. A firm cannot grow faster than the economy forever without eventually *being* the economy. The condition is a sanity check built into the formula.
+
+Example: a college endowment pays $4.00 per share annually to a charitable beneficiary, with payments growing at 0.2% per year, and the required return is 3%:
 
 $$PV = \frac{\$4.00}{0.03 - 0.002} = \frac{\$4.00}{0.028} = \$142.86$$
 
-Without growth, the same cash flow at 3% would have a present value of $\$4 / 0.03 = \$133.33$. Adding 0.2% annual growth raises the present value by about 7%.
+Without growth, the same cash flow at 3% would be worth $\$4.00 / 0.03 = \$133.33$. A modest 0.2% growth rate adds about $9.50 to present value — roughly 7%. Growth matters more than it looks, because it persists forever.
 
-This formula matters far more than its simplicity suggests. The Gordon growth model, which Chapter 11 uses to value stocks, is just the growing perpetuity formula applied to dividends.
-
-↳ **Dig Deeper — The Gordon growth model's hidden assumption**
-
-*The Gordon growth model — $P = D_1 / (r - g)$ — assumes growth at rate $g$ continues forever and is less than $r$. Both assumptions are violated in real cases. What happens when a firm's growth is genuinely high (close to $r$) for a sustained period? Or when growth is uneven? Practitioners use multi-stage models that the textbook formula doesn't capture cleanly.*
-
-**Prompt:**
-> Explain three specific situations where the Gordon growth model produces misleading valuations: (1) a high-growth firm where current $g$ is close to $r$, (2) a cyclical firm whose recent dividends are atypical, (3) a firm whose payout ratio is changing over time. For each, describe how a multi-stage DDM would address the issue, and what assumptions remain unobservable.
-
-**What to do with the output:** Save it. We'll use multi-stage DDMs in Chapter 11; this background helps you set realistic stage transitions.
-
-### The trade-off (concept 1)
-
-The perpetuity formula trades **closed-form simplicity against the assumption of perpetual constancy**. Real cash flows don't stay constant or grow at a fixed rate forever. The formula is most useful for stable cash flows where modeling each period separately would be both difficult and unhelpfully precise. Preferred stock, dividend-paying mature firms, and endowment fund modeling are the natural applications.
+This formula is the Gordon growth model for stock valuation, which we'll use in Chapter 11. If $D_1$ is next year's dividend and $g$ is the expected perpetual growth rate, then $P_0 = D_1 / (r - g)$. Everything in that model is right here in this section.
 
 ---
 
-## Concept 2 — Annuities: streams that end
+## Annuities: the finite stream
 
-An **annuity** is a stream of equal payments over a *finite* number of periods. Mortgages, car loans, retirement annuities, and pension payouts are all annuities.
+An **annuity** is like a perpetuity with an expiration date. Instead of paying forever, it pays for a fixed number of periods $n$ and then stops. Mortgages, car loans, pension payouts, and lottery prizes are all annuities.
 
-Two flavors of annuity exist depending on when within the period the payment falls.
+Two timing conventions exist.
 
-- **Ordinary annuity** — payment at the *end* of each period. Most loans work this way: you get the loan today, and your first payment is one period later.
-- **Annuity due** — payment at the *beginning* of each period. Most lease payments and rent contracts work this way: you pay for January at the start of January, not the end.
+An **ordinary annuity** pays at the *end* of each period. You borrow money today; your first payment is one period later. Most loans work this way.
 
-The two differ by exactly one period of timing. Annuity due payments are received (or paid) one period earlier, so they're worth slightly more in present-value terms.
+An **annuity due** pays at the *beginning* of each period. You sign a lease and pay January's rent on January 1, not January 31. Most rent and lease agreements work this way.
 
-### Present value of an ordinary annuity
+The difference is exactly one period of timing. Annuity due payments arrive one period earlier, so they're worth one period of compounding more. The relationship is simple:
 
-The present value of an annuity is the sum of the present values of each individual payment:
+$$PV_\text{due} = PV_\text{ordinary} \times (1+r) \qquad \text{and} \qquad FV_\text{due} = FV_\text{ordinary} \times (1+r)$$
 
-$$PV = \frac{C}{1+r} + \frac{C}{(1+r)^2} + \frac{C}{(1+r)^3} + \dots + \frac{C}{(1+r)^n}$$
+I'll derive the ordinary annuity formulas; the annuity due versions follow by multiplying by $(1+r)$.
 
-Like the perpetuity, this is a geometric series. Some algebra (the same telescoping move) gives:
+**Present value of an ordinary annuity.** There is a clever way to see the closed form without doing all the algebra: an ordinary annuity for $n$ periods is a perpetuity that starts today *minus* a perpetuity that starts $n$ periods from now.
+
+The first perpetuity, valued today, is worth $C/r$. The delayed perpetuity is also worth $C/r$ from its future start — but discounted back to today is worth $(C/r)(1+r)^{-n}$. The difference is the annuity:
+
+$$PV = \frac{C}{r} - \frac{C}{r}(1+r)^{-n} = \frac{C}{r}\left[1 - (1+r)^{-n}\right]$$
 
 $$\boxed{PV = C \times \frac{1 - (1+r)^{-n}}{r}}$$
 
-The bracketed term is called the **present-value annuity factor**. Tables of these factors used to be in the back of finance textbooks; today, every spreadsheet and financial calculator computes them on demand.
+The bracketed term is the **present-value annuity factor** — a number that depends only on $r$ and $n$, not on $C$. Tables of these factors used to fill the appendix pages of finance textbooks; now you compute them with a single formula or Excel's `PV()` function.
 
-### Worked example — solving the lottery
+<!-- → [TABLE: present-value annuity factors for selected rates (4%, 6%, 8%, 10%) and terms (5, 10, 20, 30 years) — student should notice how the factor grows much faster with term at low rates than at high rates] -->
 
-Back to the opening puzzle. North Dakota Lottery: $120,000 per year for 10 years, discounted at 9%.
-
-$$PV = \$120{,}000 \times \frac{1 - (1.09)^{-10}}{0.09} = \$120{,}000 \times 6.4177 = \$770{,}119$$
-
-Lump-sum option: $787,000.
-
-Lump sum wins by about $17,000. At 9%, you can't earn enough on the spread-out payments to justify giving up the cash today.
-
-If your discount rate were lower — say, 6% — the calculation flips:
-
-$$PV = \$120{,}000 \times \frac{1 - (1.06)^{-10}}{0.06} = \$120{,}000 \times 7.3601 = \$883{,}210$$
-
-Now the annuity is worth more than the lump sum. The right discount rate is, as always, what you would actually earn on the money.
-
-### Future value of an ordinary annuity
-
-Sometimes the question runs the other direction: if I save $X per year for $n$ years at rate $r$, how much will I have at the end? The future value of an ordinary annuity is:
+**Future value of an ordinary annuity.** If the question runs the other direction — "if I save $C$ per period for $n$ periods, what will I have?" — compound each payment forward to period $n$:
 
 $$\boxed{FV = C \times \frac{(1+r)^n - 1}{r}}$$
 
-The bracketed term is the **future-value annuity factor**.
+---
 
-Example: Save $3,000 per year for 5 years at 4%.
+## The lottery, resolved
 
-$$FV = \$3{,}000 \times \frac{(1.04)^5 - 1}{0.04} = \$3{,}000 \times 5.4163 = \$16{,}249$$
+Back to the opening puzzle. North Dakota Lottery: $120,000 per year for 10 years (ordinary annuity), or $787,000 today as a lump sum.
 
-You contributed $15,000. Compounding added $1,249. Modest. Over longer horizons it grows fast.
+At a 9% discount rate:
 
-Save $15,000 per year for 10 years at 8%:
+$$PV = \$120{,}000 \times \frac{1 - (1.09)^{-10}}{0.09} = \$120{,}000 \times 6.4177 = \$770{,}119$$
 
-$$FV = \$15{,}000 \times \frac{(1.08)^{10} - 1}{0.08} = \$15{,}000 \times 14.4866 = \$217{,}298$$
+The lump sum ($787,000) is worth more by about $17,000. Take the cash.
 
-You contributed $150,000. Compounding added $67,298 — about 45% of the contributions.
+At 6%:
 
-### Annuity due — the (1+r) adjustment
+$$PV = \$120{,}000 \times \frac{1 - (1.06)^{-10}}{0.06} = \$120{,}000 \times 7.3601 = \$883{,}210$$
 
-If payments fall at the *beginning* of each period instead of the end, they each sit one period earlier. Multiply the ordinary-annuity formula by $(1+r)$:
+Now the annuity is worth $96,000 more than the lump sum. Take the payments.
 
-$$PV_\text{due} = PV_\text{ordinary} \times (1+r)$$
-$$FV_\text{due} = FV_\text{ordinary} \times (1+r)$$
+The crossover rate — where both options are equally valuable — sits around 8.1%. If you can earn more than 8.1% on your investments, take the lump sum. If not, take the payments.
 
-For the lottery example at 9%: $\$770{,}119 \times 1.09 = \$839{,}429$. If the lottery's first payment were today instead of next year, the annuity would be worth more than the lump sum even at 9%.
-
-The (1+r) adjustment is small in absolute terms but compounds across calculations. When evaluating any real annuity, check whether it's ordinary or due; the answer depends on it.
-
-### Worked example — saving early vs. saving more
-
-Two workers each plan to save until age 60 at 5% return.
-
-- **Worker A** starts at age 30, saves $1,000 per year for 30 years.
-- **Worker B** starts at age 20, saves $1,000 per year for 40 years.
-
-Worker A's final balance:
-
-$$FV = \$1{,}000 \times \frac{(1.05)^{30} - 1}{0.05} = \$1{,}000 \times 66.4388 = \$66{,}439$$
-
-Worker B's final balance:
-
-$$FV = \$1{,}000 \times \frac{(1.05)^{40} - 1}{0.05} = \$1{,}000 \times 120.7998 = \$120{,}800$$
-
-Worker B contributes $40,000 and ends with $120,800. Worker A contributes $30,000 and ends with $66,439. The 33% more in contributions yields 82% more in final value, because Worker B's early contributions had ten more years to compound.
-
-This is why every personal finance book emphasizes starting early. The arithmetic is built into the annuity formula.
-
-### Solving for the unknown payment
-
-The annuity formula has four variables: $PV$ (or $FV$), $C$, $r$, $n$. Given any three, solve for the fourth.
-
-Most useful in practice: solve for $C$ given $PV$, $r$, and $n$. This is how mortgage payments are computed.
-
-$$C = PV \times \frac{r}{1 - (1+r)^{-n}}$$
-
-Example: Borrow $32,000 for a car at 6% APR over 36 months. Convert to monthly: $r = 0.005$, $n = 36$.
-
-$$C = \$32{,}000 \times \frac{0.005}{1 - (1.005)^{-36}} = \$32{,}000 \times 0.030422 = \$973.50$$
-
-Monthly payment: $973.50. Over 36 months: $35,046 total — meaning $3,046 of interest paid on the $32,000 borrowed.
-
-↳ **Dig Deeper — Mortgages with prepayment options**
-
-*A standard fixed-rate mortgage isn't actually a clean annuity — the borrower has the option to prepay (refinance) when rates fall. This option has value to the borrower and represents a cost to the lender, which is reflected in mortgage pricing. The mortgage market's complexity around prepayment is part of why mortgage-backed securities are harder to value than corporate bonds.*
-
-**Prompt:**
-> Explain how the prepayment option affects the valuation of a 30-year fixed-rate mortgage from the lender's perspective. Why are mortgage-backed securities typically priced at a yield premium to comparable Treasuries even after credit-quality adjustments? Then describe one approach lenders use to model expected prepayment (e.g., the PSA prepayment model).
-
-**What to do with the output:** Save it. Mortgage-backed securities are a substantial part of the bond market; understanding prepayment is part of understanding the broader fixed-income landscape.
-
-### The trade-off (concept 2)
-
-Annuity formulas trade **realistic complexity against analytical tractability**. Real loans have prepayment options, variable rates, and balloon payments; pension annuities have inflation adjustments and survival contingencies. The closed-form annuity formula handles none of these. It does, however, value any *fixed-payment, fixed-term* stream in one calculation. Most consumer loans and many corporate-finance applications fit the simple model closely enough that it's the right starting point.
+The honest version: most people cannot guarantee themselves an 8.1% annual return after taxes. The lottery annuity provides a guaranteed 8.1% implied return on the spread-out payments, with zero risk. For someone without a high-confidence investment alternative, the annuity is probably the better choice. The formula doesn't tell you which to pick. It tells you what the pick depends on.
 
 ---
 
-## Concept 3 — Real-world applications
+## Solving for any variable
 
-Three applications come up routinely.
+The annuity formula has four variables: $PV$, $C$, $r$, $n$. Given any three, solve for the fourth.
 
-### Application 1 — Loan amortization
+**Solving for the payment** is how mortgage and car loan payments are computed. Rearrange for $C$:
 
-When you make a mortgage or car payment, part of the payment covers interest accrued in the period and part reduces the principal. The mix changes over the life of the loan. Early payments are heavily weighted toward interest; later payments toward principal.
+$$C = PV \times \frac{r}{1 - (1+r)^{-n}}$$
 
-**Why?** Interest accrues on the *outstanding balance*. At the start of the loan, the balance is at its highest, so interest is at its highest. As principal gets paid down, interest expense per period falls, and a larger share of the (constant) payment goes to principal.
+Borrow $32,000 at 6% APR over 36 months. Monthly: $r = 0.005$, $n = 36$.
+
+$$C = \$32{,}000 \times \frac{0.005}{1 - (1.005)^{-36}} = \$32{,}000 \times 0.030422 = \$973.50 \text{ per month}$$
+
+Over 36 months you pay $35,046 total — meaning $3,046 in interest. That's 9.5% of the principal paid in interest charges.
+
+**Solving for the term** — how long until a savings target is reached — requires logarithms or a numerical solver. Excel's `NPER()` function handles it directly.
+
+**Solving for the rate** — what return does this investment implicitly promise? — generally has no closed form and requires numerical methods. Excel's `RATE()` and `IRR()` functions do this. We'll use them heavily in Chapter 16.
+
+---
+
+## Loan amortization: what's inside the payment
+
+When you make a loan payment, part covers interest accrued during the period and part reduces the outstanding balance. Because interest accrues on the *remaining balance*, and the payment is constant, the split shifts over the loan's life. Early payments are heavily weighted toward interest; later payments toward principal.
 
 For the $32,000 / 36-month / 6% car loan:
 
@@ -256,91 +161,83 @@ For the $32,000 / 36-month / 6% car loan:
 | 36 | $973.50 | $4.84 | $968.66 | $0.00 |
 | **Total** | **$35,046** | **$3,046** | **$32,000** | |
 
-In month 1, interest is 16% of the payment. By month 36, interest is less than 1% of the payment. The schedule of how much principal vs. interest is paid each period is called the **amortization schedule**.
+In month 1, interest is 16% of the payment. By month 36, it's less than 1%.
 
-For a 20-year mortgage on $140,000 at 3.6% APR:
-- Monthly payment: $819.16
-- Total paid over 20 years: $196,598
-- Total interest: $56,598 — about 28% of the home's purchase price (after the down payment)
+The practical implication of this structure: prepaying principal early is disproportionately valuable. A $500 extra payment in year 1 reduces the balance on which future interest accrues, and those savings compound across the remaining life of the loan. A single extra payment early in a 30-year mortgage can eliminate several months of payments at the end.
 
-A useful mental model: extending the loan term lowers monthly payments but increases total interest paid. A 30-year mortgage at 3.6% has a lower monthly payment than a 20-year mortgage at the same rate but costs substantially more interest over the life of the loan.
+<!-- → [CHART: stacked bar chart showing the interest vs. principal split for each payment of a 30-year mortgage — student should see how the bars flip from interest-heavy to principal-heavy and approximately where the crossover occurs] -->
 
-**Prepayment**: paying extra toward principal early reduces the outstanding balance, which reduces interest accrued over the remaining life of the loan, which compounds (in the consumer's favor) as the loan progresses. Even a single extra payment in year 1 can shave several months off a 30-year mortgage.
-
-### Application 2 — Retirement planning
-
-Most retirement-planning calculations are annuity calculations. Two questions come up.
-
-**Accumulation phase.** "If I save $X per year at rate $r$, what will I have at retirement age?" Solve with the future-value annuity formula.
-
-**Distribution phase.** "If I have $Y at retirement age and want to withdraw equal amounts for $n$ years at rate $r$, how much can I withdraw?" Solve with the present-value annuity formula, rearranged for $C$.
-
-Example: A 65-year-old retires with $750,000 in savings. They expect to live to 90 and want equal monthly withdrawals over those 25 years. Their portfolio is invested in a balanced fund earning 5% per year.
-
-Convert to monthly: $r = 0.05/12 ≈ 0.00417$, $n = 25 \times 12 = 300$.
-
-$$C = \$750{,}000 \times \frac{0.00417}{1 - (1.00417)^{-300}} = \$750{,}000 \times 0.005846 = \$4{,}385$$
-
-About $4,385 per month, or roughly $52,600 per year. Combined with Social Security, this might or might not match the retiree's spending needs. The calculation is the input to that decision.
-
-The retirement-planning literature also uses the **4% rule** as a shortcut — withdraw 4% of the initial portfolio per year (with inflation adjustment) and the portfolio should last about 30 years under reasonable return assumptions. The 4% rule is roughly consistent with the present-value annuity math but tilted slightly conservative to account for sequence-of-returns risk. We'll come back to it in Chapter 15.
-
-### Application 3 — Stated vs. effective interest rates
-
-A subtler issue. When a credit card statement says "1.5% per month," what's the annual rate?
-
-The naive calculation: $1.5\% \times 12 = 18\%$. This is the **stated annual rate** or **APR (annual percentage rate)**.
-
-But interest compounds monthly, not just at year-end. The actual annual rate, accounting for compounding, is the **effective annual rate (EAR)**:
-
-$$EAR = (1 + r_\text{period})^m - 1$$
-
-where $r_\text{period}$ is the periodic rate and $m$ is the number of compounding periods per year.
-
-For 1.5% monthly:
-
-$$EAR = (1.015)^{12} - 1 = 0.19562 = 19.56\%$$
-
-The effective rate is 19.56%, not 18%. The difference is real money. On a $10,000 balance carried for a year, that 1.56% gap is $156 in additional interest.
-
-For a credit card APR of 24%, the effective annual rate is over 27%. Compounding daily is more punitive still — closer to 27.1%.
-
-**Why this matters as a consumer**: the rate quoted in marketing material is usually the APR, not the EAR. The effective rate is higher. Always.
-
-**Why this matters as an analyst**: when comparing investments or loans with different compounding frequencies, you cannot compare APRs directly. Convert each to its effective annual rate first. A bond yielding 5% with annual compounding is genuinely lower-yielding than a bond yielding 5% with quarterly compounding (which has an EAR of 5.09%).
-
-The Excel formula `=EFFECT(rate, periods)` returns the EAR directly. For rate 0.015 and 12 periods: `=EFFECT(0.015, 12)` returns 0.1956.
-
-### Worked example — payday loans and the cost of "convenience"
-
-A payday lender offers a cash advance: borrow $200 today, repay $214 in one week. The fee is $14 — 7% of the principal — for one week of borrowing.
-
-Annualized using the simple-multiplication approach: $7\% \times 52 = 364\%$. Already alarming.
-
-Annualized as an effective annual rate (assuming you roll the loan over week after week):
-
-$$EAR = (1.07)^{52} - 1 = 33.7 = 3{,}370\%$$
-
-The effective rate is over thirty-three times the nominal annual rate. This is what payday lending actually costs when consumers can't repay the principal at the end of the week and roll the loan forward. The math is what consumer-protection regulation in this space is up against.
-
-### The trade-off (concept 3)
-
-Real-world annuity applications trade **modeling realism against computational tractability**. Real mortgages have escrow, taxes, insurance, prepayment options, refinancing decisions, points, and origination fees. The simple annuity model treats all of those as separate. For first-pass thinking, the simple model is right. For final-pass financial decisions, the additional features matter and need to be modeled separately.
+On a 20-year, $140,000 mortgage at 3.6% APR, the monthly payment is $819.16. Total interest paid over the life of the loan: $56,598 — about 28% of the purchase price. A 30-year mortgage at the same rate has a lower monthly payment but costs more total interest, because the balance declines more slowly and interest accrues longer. Choosing between loan terms is choosing how to trade monthly cash flow against total interest cost. The amortization schedule makes that trade-off visible.
 
 ---
 
-## Synthesis — annuities as the bridge to real valuation
+## Retirement planning: two annuities in sequence
 
-The annuity machinery is the bridge between Chapter 7's single-payment math and the real-world cash-flow streams that make up most financial instruments. By the end of this chapter, you can:
+Most retirement calculations are two successive annuity problems chained together.
 
-- Value a perpetuity (constant or growing) — the foundation of preferred-stock pricing and the Gordon dividend-discount model.
-- Value an annuity (ordinary or due) — the foundation of mortgage and loan pricing, retirement planning, and pension valuation.
-- Build a loan amortization schedule by hand or in Excel.
-- Convert between stated and effective interest rates — the foundation of comparing rates across products.
+**Accumulation phase.** Save $C$ per year for $n$ years at rate $r$:
 
-What's still missing: cash flow streams where the *payments are unequal*. Real bonds have coupon payments plus a final principal repayment. Real stocks have dividends that grow at varying rates. Real businesses have cash flows that vary year to year. Chapter 9 handles the unequal-payment case, and at that point, you have the full TVM toolkit.
+$$FV = C \times \frac{(1+r)^n - 1}{r}$$
 
-For the equity research project, this chapter completes another piece of the foundation. A bond's value (Chapter 10) is the sum of an annuity (the coupon stream) and a single payment (the maturity value). A dividend-paying stock's value (Chapter 11) is a perpetuity in its simplest form. The arithmetic in this chapter is the arithmetic those chapters use.
+**Distribution phase.** Withdraw $W$ per month for $m$ months from a portfolio of size $FV$, at monthly rate $r_m$:
+
+$$W = FV \times \frac{r_m}{1 - (1+r_m)^{-m}}$$
+
+A 65-year-old retires with $750,000, plans withdrawals over 25 years, and the portfolio earns 5% annually. Monthly rate $\approx 0.00417$, $m = 300$:
+
+$$W = \$750{,}000 \times \frac{0.00417}{1 - (1.00417)^{-300}} \approx \$4{,}385 \text{ per month}$$
+
+About $52,600 per year. Whether that's enough depends on Social Security income, spending plans, and whether the retiree lives past 90 — all questions the formula forces you to state explicitly rather than handwave.
+
+<!-- → [INFOGRAPHIC: two-phase timeline diagram for retirement planning — left phase shows annual contributions accumulating to FV at retirement date, right phase shows monthly withdrawals drawing down the same FV to zero; label both phases with their respective formulas and show how the retirement date is the hinge connecting them] -->
+
+---
+
+## Stated vs. effective interest rates
+
+When a credit card says "1.5% per month," is the annual rate 18%?
+
+Technically, 18% is the **stated annual rate** (also called APR) — the periodic rate times the number of periods. But interest compounds monthly. The cost of borrowing, after accounting for compounding, is the **effective annual rate (EAR)**:
+
+$$\boxed{EAR = \left(1 + \frac{r_\text{stated}}{m}\right)^m - 1}$$
+
+For 1.5% per month ($r_\text{stated} = 18\%$, $m = 12$):
+
+$$EAR = (1.015)^{12} - 1 = 19.56\%$$
+
+Not 18%. On a $10,000 balance carried for a year, that 1.56% gap is $156 in additional interest — real money.
+
+For daily compounding at the same 18% APR:
+
+$$EAR = \left(1 + \frac{0.18}{365}\right)^{365} - 1 \approx 19.72\%$$
+
+Higher still. The more frequent the compounding, the higher the effective rate relative to the stated rate.
+
+**Why this matters as an analyst.** When comparing instruments with different compounding frequencies, APRs cannot be compared directly. Convert to EAR first. A bond yielding 5% with annual coupons and a bond yielding 5% with quarterly coupons are not equally attractive — the quarterly one has an EAR of $(1.0125)^4 - 1 = 5.09\%$ and is marginally better.
+
+**The extreme case.** A payday lender charges $14 to borrow $200 for one week — a 7% fee for one week. Rolled over weekly:
+
+$$EAR = (1.07)^{52} - 1 = 3{,}370\%$$
+
+The effective rate is over three thousand percent. The compounding machinery doesn't care about the loan's size or the borrower's desperation. The math is what it is.
+
+<!-- → [TABLE: effective annual rates for common stated rates (12%, 18%, 24%) at monthly and daily compounding — student should see how EAR consistently and materially exceeds APR] -->
+
+---
+
+## The whole toolkit
+
+This chapter added four pieces of machinery to Chapter 7's single-payment foundation.
+
+The **constant perpetuity** ($PV = C/r$) values an infinite equal stream. The **growing perpetuity** ($PV = C/(r-g)$, with $r > g$) values an infinite growing stream — and is the mathematical core of dividend-discount stock valuation.
+
+The **ordinary annuity** formulas value a finite equal stream in either direction: $PV = C \cdot \frac{1-(1+r)^{-n}}{r}$ and $FV = C \cdot \frac{(1+r)^n-1}{r}$. The **annuity due** variants multiply by $(1+r)$.
+
+The **effective annual rate** ($EAR = (1 + r/m)^m - 1$) converts any stated rate to its true annual cost.
+
+What the toolkit still can't handle: streams where the payments are unequal. Real capital projects. Real bonds with a terminal face-value payment. Real dividend streams that grow in stages before settling. Chapter 9 extends the framework to unequal payments with the NPV concept, and at that point the toolkit is complete.
+
+For the equity research project, the machinery here is already at work. Bond valuation (Chapter 10) prices the coupon stream with an annuity formula and the principal repayment with a single-payment formula. Stock valuation (Chapter 11) applies the growing perpetuity formula to dividends. The arithmetic is exactly what's on this page.
 
 ---
 
@@ -348,85 +245,105 @@ For the equity research project, this chapter completes another piece of the fou
 
 ### Warm-up
 
-**8.1** Distinguish a perpetuity from an annuity. Distinguish an ordinary annuity from an annuity due.
+**8.1** A share of preferred stock pays a fixed annual dividend of $4.50. If the required return is 6%, what is the stock's price? If the required return rises to 9%, what is the new price? Explain in one sentence why the price moves in that direction.
+*(Tests: constant perpetuity formula and the inverse relationship between rate and price)*
 
-**8.2** Write the present-value formula for: (a) a constant perpetuity, (b) a growing perpetuity, (c) an ordinary annuity. Define every variable.
+**8.2** Write the present-value formula for an ordinary annuity. Define every variable. Then explain in plain English what the present-value annuity factor represents and why it depends on $r$ and $n$ but not on $C$.
+*(Tests: annuity formula structure and conceptual understanding of the annuity factor)*
 
-**8.3** Why is the present value of a perpetuity finite, even though the number of payments is infinite?
+**8.3** A stated annual rate of 12% is compounded monthly. Compute the effective annual rate. Then explain why the EAR is higher than the APR, and what the difference represents economically.
+*(Tests: EAR formula and the compounding intuition behind it)*
 
 ### Application
 
-**8.4** A preferred stock pays a $3.50 annual dividend. If the required rate of return is 6%, what is the price of the stock? If the required return rises to 8%, what is the new price?
+**8.4** You win a lottery prize of $600,000, payable as $60,000 per year for 10 years (ordinary annuity) starting next year. The lump-sum alternative is $420,000 today.
 
-**8.5** You win a $5 million prize, payable as $250,000 per year for 20 years (ordinary annuity) starting next year. The lump-sum option is $3.5 million today.
+(a) At a 6% discount rate, which option is worth more? Show your calculation.
+(b) At a 10% discount rate, which option is worth more? Show your calculation.
+(c) Find (by trial and error or algebra) the approximate crossover rate at which both options are equally valuable.
+(d) Explain what the crossover rate means in terms of investment alternatives.
 
-(a) At a 7% discount rate, which option is worth more?
-(b) At what discount rate are the two options equivalent?
-(c) Explain in plain English why the answer depends on the rate.
+*(Tests: annuity PV formula, comparison with lump sum, and the meaning of the discount rate)*
 
-**8.6** A $250,000 mortgage at 4.5% APR over 30 years.
+**8.5** You borrow $48,000 to buy a car at 5.4% APR (compounded monthly) over 48 months.
 
 (a) Compute the monthly payment.
-(b) How much interest is paid over the life of the loan?
-(c) What's the loan balance after 60 monthly payments (i.e., 5 years)?
+(b) Compute total interest paid over the life of the loan.
+(c) Build the first three rows and the last row of the amortization schedule (month, payment, interest portion, principal portion, remaining balance).
+(d) What is the outstanding loan balance after 24 payments?
+
+*(Tests: solving for payment C, and building/reading an amortization table)*
+
+**8.6** A growing perpetuity pays $5.00 next year and grows at 1.5% per year. The discount rate is 4%.
+
+(a) Compute the present value.
+(b) What happens to the present value if the growth rate rises to 3%? Compute the new value.
+(c) What happens if the discount rate falls to 2.5% while growth stays at 1.5%? Compute.
+(d) Which change — in (b) or (c) — has a larger effect on present value? What does that tell you about which variable matters more?
+
+*(Tests: growing perpetuity formula and sensitivity to changes in r vs. g)*
 
 ### Synthesis
 
-**8.7** A friend's credit card has an APR of 22.99%. Compute the effective annual rate assuming daily compounding. Then compute how long a $10,000 balance would take to double if no payments were made. Use the rule of 72 to cross-check.
+**8.7** A 35-year-old plans to retire at 65 and wants to withdraw $6,000 per month for 25 years in retirement. Assume a 6% annual return throughout.
 
-**8.8** Pension fund management. Your firm's pension obligations require paying out $2 million per year forever (well, effectively forever — for the foreseeable future of the firm) at a current discount rate of 4%. The firm has $40 million in pension assets.
+(a) How large a nest egg is needed at age 65 to fund the withdrawals?
+(b) What annual savings amount, starting today and ending at age 65, would accumulate to that nest egg?
+(c) Suppose the person waits until age 45 to start saving. What annual savings amount is now required? Explain the difference intuitively.
 
-(a) What is the present value of the obligation?
-(b) Is the pension fully funded?
-(c) If the discount rate falls to 3%, what happens to the pension's funded status?
+*(Tests: two-phase retirement planning — distribution phase PV, then accumulation phase FV — and the compounding cost of delay)*
+
+**8.8** A credit card has an APR of 21.99%, compounded daily. A store card has an APR of 24.99%, compounded monthly.
+
+(a) Compute the EAR for each card.
+(b) Which card is more expensive? By how much in annual interest on a $5,000 balance?
+(c) Explain why you cannot compare the two APRs directly to determine which is more expensive.
+
+*(Tests: EAR computation and the limits of APR as a comparison metric)*
 
 ### Challenge
 
-**8.9** Two mortgage offers on a $500,000 home (after 20% down).
+**8.9** Two mortgage offers on a $400,000 home (after 20% down, so $320,000 borrowed):
 
-- Offer A: 30 years at 6.0% APR, no points.
-- Offer B: 15 years at 5.0% APR, no points.
+- Offer A: 30 years at 6.5% APR, no points.
+- Offer B: 15 years at 5.75% APR, no points.
 
 (a) Compute monthly payments for each.
 (b) Compute total interest paid over the life of each loan.
-(c) Argue which is the better choice and what assumption your argument depends on.
+(c) Compute the loan balance remaining after 5 years for each.
+(d) Suppose you plan to sell the house in 7 years. Recalculate which offer costs less in total (payments made minus balance remaining at year 7). Does your answer change from (b)?
+(e) Defend your mortgage recommendation and name the one assumption your argument most depends on.
 
-**8.10** Build an Excel amortization schedule for a $100,000 loan at 5% APR over 10 years (monthly payments). Use Excel formulas (not hard-coded values) so the schedule updates if you change the rate or term. What happens to the total interest paid if you pay an extra $100 per month? Quantify in dollars and years saved.
+*(Tests: annuity payment computation, amortization, total cost analysis, and sensitivity of the recommendation to holding-period assumptions)*
 
----
+**8.10** Your chosen company pays (or has recently paid) a dividend. Using the company's actual dividend data from its most recent 10-K:
 
-## Chapter summary
+(a) Compute the five-year geometric average dividend growth rate.
+(b) Apply the Gordon growth model at three combinations of $r$ and $g$ of your choosing. Display as a 3×3 sensitivity table (three values of $r$ across columns, three values of $g$ down rows — nine valuations total).
+(c) Compare your range of modeled prices to the current stock price. Where does the model suggest the stock is fairly valued, overvalued, or undervalued?
+(d) Identify the single assumption your valuation is most sensitive to — and explain what would have to be true about the company for that assumption to hold.
 
-- **Perpetuities** pay an equal stream forever. Present value: $PV = C/r$ (constant) or $PV = C/(r-g)$ (growing).
-- **Annuities** pay an equal stream for a finite number of periods.
-  - Ordinary annuity (payments at end of period):
-    - $PV = C \times \frac{1 - (1+r)^{-n}}{r}$
-    - $FV = C \times \frac{(1+r)^n - 1}{r}$
-  - Annuity due (payments at beginning of period): multiply by $(1+r)$.
-- **Loan amortization** decomposes each payment into interest and principal. Early payments are interest-heavy; late payments are principal-heavy.
-- **Stated vs. effective rates**: $EAR = (1 + r_\text{period})^m - 1$. Always convert before comparing rates with different compounding frequencies.
+*(Tests: Gordon growth model applied to real data, sensitivity analysis, and critical evaluation of model assumptions)*
 
 ---
 
 ## What would change my mind
 
-The chapter argues that annuity and perpetuity formulas are the right tools for valuing equal-payment streams. The reading would have to revise if (a) a closed-form valuation method emerged that handled both equal and unequal payments uniformly without the case-by-case approach this chapter teaches — some derivatives-pricing approaches do this in continuous time, but they're more complex than the closed-form annuity formulas; for introductory pedagogy the simpler approach wins, or (b) the underlying assumption of constant rates over the life of an annuity broke down so frequently in practice that the formulas became misleading. Real loans do have variable-rate features, but the fixed-rate annuity model remains the dominant one in consumer finance.
+The chapter argues that annuity and perpetuity formulas are the right tools for valuing equal-payment streams. Two revisions would shake this. First, if continuous-time pricing methods became the standard introductory framework — they handle equal and unequal payments uniformly — the case-by-case structure here would feel redundant. For introductory pedagogy, the closed-form simplicity still wins. Second, if variable-rate loans became dominant in consumer finance rather than a minority, the fixed-rate annuity model would mislead more often than it helps. Neither shift has materialized.
 
 ## Still puzzling
 
-The cleanest unresolved question this chapter sets up is *what discount rate to use for an annuity*. For the lottery example, I used 9%, then 6%, and got opposite answers. Which one is right? The textbook answer is "your opportunity cost of capital" — what you'd earn on the money in your next-best alternative. But that requires me to know my own personal investment opportunities and risk tolerance. In practice, most people are sloppy about this, and the answer they get is whatever the assumed rate happens to produce. Honest financial advisors say so. I'll come back to this in Chapter 17 (WACC) and Chapter 11 (DCF discount rate) where the question of "what rate?" is dragged into the open.
+The puzzle the chapter doesn't resolve: what discount rate to actually use. The lottery calculation got opposite answers at 9% versus 6%, and both rates are defensible for different people. The annuity formula doesn't choose the rate — it only translates a rate into a value. Choosing the right rate requires knowing your own opportunity cost of capital, and most people are imprecise about this. The formula makes the ambiguity explicit rather than resolving it. We return to the question of "what rate?" directly in Chapters 14 and 17.
 
 ---
 
 ## Connections forward
 
-- **Chapter 9** extends to streams of *unequal* payments — the general TVM case.
+- **Chapter 9** extends to streams of unequal payments — the general TVM case.
 - **Chapter 10** uses annuity + single-payment math to price bonds.
 - **Chapter 11** uses the growing perpetuity formula (Gordon model) to value stocks.
 - **Chapter 16** uses NPV (net present value of unequal cash flow streams) for capital budgeting.
 - **Chapter 17** computes WACC, the firm's discount rate.
-
----
 
 ---
 
@@ -482,11 +399,11 @@ Chapter 9 generalizes to arbitrary cash flow streams and introduces NPV. The Cha
 
 **Tags:** annuity, perpetuity, ordinary-annuity, annuity-due, amortization, effective-rate, retirement-planning
 
-
 ---
 
-##  AI Wayback Machine
-**Edmond Halley** was astronomer who computed the first life-annuity tables in 1693 — making rigorous pricing of multi-payment streams possible.
+## AI Wayback Machine
+
+**Edmond Halley** was the astronomer who computed the first life-annuity tables in 1693 — making rigorous pricing of multi-payment streams possible.
 
 **Run this:**
 
