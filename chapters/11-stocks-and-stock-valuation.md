@@ -1,395 +1,226 @@
 # Chapter 11 — Stocks and Stock Valuation
 
-
-## TL;DR
-
-- You will practice Distinguish common stock from preferred stock, and identify the rights and limitations of each; Apply the zero-growth dividend discount model to value preferred stock and bond-like equity; Apply the Gordon growth model (constant-growth DDM) to value mature dividend-paying firms.
-- The chapter moves through The puzzle of the missing contract, Learning objectives, Concept 1 — What a stock is, and why valuation is hard, Common vs. preferred stock, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. Three Ways to Price an Uncertain Cash Flow
-2. From Dividends to DCF
-3. What Is a Stock Worth?
-
-**TL;DR.** A bond's cash flows are contractual; a stock's are not. That single difference is what makes stock valuation harder, and why three different families of valuation methods exist — dividend discount models, discounted cash flow models, and relative-multiples approaches. None of them is right by itself. Serious equity research uses all three and triangulates.
+*Three methods, none of them right, all of them necessary.*
 
 ---
 
-## The puzzle of the missing contract
+In Chapter 10, we priced a bond. The arithmetic was tight. Known coupon payments. Known principal. Known maturity date. Everything required to compute a present value was written in the bond's contract. The market's only judgment call was what discount rate to apply.
 
-In Chapter 10, we priced a bond. The math was tight: known coupon payments, known principal, known maturity date. Everything you needed to compute a bond's present value was written in the bond's contract. The market's only judgment call was the discount rate.
+Now try to price a stock.
 
-A stock has no such contract.
+A share of common stock entitles you to a fractional ownership in the issuing firm. That ownership comes with a vote at shareholder meetings, a residual claim on assets if the firm is liquidated, and a possible stream of dividends the company *may* pay at *whatever amount the board decides* on *whatever schedule they choose*. There is no contractual guarantee of any cash flow at any time. The bond's clean problem — discount contractual payments at an appropriate rate — has been replaced by a genuinely open question: what cash flows will this firm produce, for whom, and when?
 
-A share of common stock entitles you to a fractional ownership in the issuing firm. That ownership comes with three things: a vote at shareholder meetings, a residual claim on the firm's assets in the event of liquidation, and a *possible* stream of dividends the company *may* decide to pay at *whatever amount it chooses* on *whatever schedule* the board approves. There is no contractual guarantee of any cash flow at any time.
+Nobody knows. That's not a temporary problem to be resolved with better data. It's the nature of the instrument.
 
-So how do you value a stock?
+So three families of valuation methods exist, because no single approach captures everything that matters. Each one works on a different principle. Each is right under its own assumptions. Each fails in its own specific way. A serious equity analyst uses all three and reports the range.
 
-The honest answer is: imperfectly, with three different families of methods, none of which agrees with the others, and all of which require judgment. The interesting answer is: each method works on a different principle, and understanding when each applies is the analyst's craft.
-
-The three families:
-
-1. **Dividend Discount Models (DDM)** — value the stock as the present value of future dividend payments, projected and discounted.
-2. **Discounted Cash Flow (DCF) models** — value the firm as the present value of all future free cash flows, then divide by share count.
-3. **Multiples-based approaches** — value the stock by comparing it to similar firms using ratios like P/E, P/B, EV/EBITDA.
-
-Each is a different reading of "what is this share entitled to." Each works better in some circumstances than others. A serious equity research report uses all three and triangulates among them.
-
-For the running project, this chapter is the analytical heart of the equity research deliverable. The DCF model you'll build for your chosen company in this chapter's exercises becomes the centerpiece of your final report.
+This chapter installs all three.
 
 ---
 
-## Learning objectives
-
-After working through this chapter, you should be able to:
-
-- Distinguish common stock from preferred stock, and identify the rights and limitations of each.
-- Apply the **zero-growth dividend discount model** to value preferred stock and bond-like equity.
-- Apply the **Gordon growth model** (constant-growth DDM) to value mature dividend-paying firms.
-- Apply a **two-stage DDM** to value firms transitioning from high-growth to mature growth.
-- Apply the **DCF model** to value firms where free cash flow is more reliable than dividends.
-- Compute and interpret **P/E, P/B, P/S, P/CF, and EV/EBITDA** multiples.
-- State the three forms of the efficient market hypothesis and assess what each implies for active equity research.
-
-**Prerequisites.** Chapters 7–10 (TVM, bonds). Chapter 6 (financial ratios).
-
----
-
-## Concept 1 — What a stock is, and why valuation is hard
+## What a stock is
 
 Two things make a stock fundamentally different from a bond.
 
-**No contractual cash flow.** A bond promises explicit, contractual coupon and principal payments. A stock promises nothing. Dividends, if any, are at the board's discretion. Capital gains, if any, depend on the market's evolving judgment of the firm's prospects. The cash flow stream is not specified; it has to be *forecast*.
+**No contractual cash flow.** A bond promises explicit coupon and principal payments. Miss one, and the firm is in default. A stock promises nothing. Dividends are at the board's discretion. Capital gains depend on the market's evolving judgment of the firm's prospects. The cash flow stream isn't specified — it has to be forecast.
 
-**Residual claim.** Bondholders are paid first. After interest and principal are met, what's left flows to equity holders — but only what's left. In good years, that's a lot. In bad years, it can be zero. The variability is built into the equity claim.
+**Residual claim.** Bondholders are paid first. After interest and principal are satisfied, what's left flows to equity holders — but only what's left. In good years, that's a lot. In bankruptcy, it can be zero. The variability is structural, not accidental.
 
-These two features make stocks both more risky and more potentially rewarding than bonds. They also make valuation a fundamentally judgment-laden exercise.
+These two features make stocks both more risky and more potentially rewarding than bonds, and they make valuation a fundamentally judgment-laden exercise.
 
-### Common vs. preferred stock
+**Common vs. preferred stock.** Most public companies issue **common stock**. Common shareholders vote at annual meetings (typically one vote per share), receive dividends if and when the board declares them, and have residual claims on assets in liquidation after all creditors and preferred shareholders are paid. They bear the full upside and downside of the firm's performance.
 
-Most public companies issue **common stock**. Common shareholders:
-- Vote at shareholder meetings (typically one vote per share).
-- Receive dividends if and when the board declares them.
-- Have a residual claim on assets in liquidation (after all creditors and preferred shareholders are paid).
-- Bear the full upside and downside of the firm's performance.
+Some firms also issue **preferred stock**, a hybrid with features of both stocks and bonds. Preferred stock pays a *fixed* dividend at a stated rate, has priority over common stock in dividend payments and liquidation, and typically carries no voting rights. Because preferred dividends are fixed and continue indefinitely, preferred stock is a perpetuity — pricing it is the formula from Chapter 8: $P_0 = D / r$.
 
-Some firms also issue **preferred stock**, a hybrid instrument with features of both stocks and bonds:
-- Pays a *fixed* dividend at a stated rate, similar to a bond's coupon.
-- Has priority over common stock in dividend payments and liquidation.
-- Usually carries no voting rights.
-- Has no maturity date — preferred dividends, in principle, continue indefinitely.
-
-Preferred stock can be **cumulative** (missed dividends accumulate as a liability that must eventually be paid) or **noncumulative** (missed dividends are simply lost). Some preferred shares are **convertible** — the holder can exchange them for common shares at a specified ratio, providing upside participation if the common stock appreciates.
-
-Because preferred dividends are fixed and continue indefinitely, preferred stock is essentially a perpetuity. Pricing it is straightforward (we'll see in Concept 2).
-
-Common stock is the harder case and the focus of the rest of this chapter.
-
-### Why investors hold stocks despite the uncertainty
-
-Stocks have outperformed bonds and cash over almost every long-run period in US market history (Chapter 12 gets the data). The premium for bearing equity risk — the **equity risk premium** — has averaged roughly 4–5 percentage points over Treasury yields over the past century. That's the compensation for accepting variable cash flows and residual claim status.
-
-For an investor with a long horizon, a diversified portfolio of stocks has historically produced wealth-compounding returns that bonds and cash cannot match. For a short horizon, the variability can be catastrophic — the S&P 500 fell 38% in 2008 and 34% in early 2020. Time horizon matters enormously.
-
-For the equity research project: when you construct your investment thesis, you're implicitly betting that *your particular stock* will outperform the broader market. Most stocks don't. The work in the next several sections is about doing that analysis honestly.
-
-↳ **Dig Deeper — Why some companies don't pay dividends**
-
-*Apple paid no dividends from 1995 to 2012 — through the entire iPod and iPhone launch. Berkshire Hathaway has never paid a dividend. Amazon has never paid a dividend. Yet all three have created enormous shareholder value. The decision *not* to pay dividends is itself a capital allocation decision worth understanding.*
-
-**Prompt:**
-> Explain the trade-off between paying dividends and retaining earnings for reinvestment, from the firm's perspective. Walk through Berkshire Hathaway's stated rationale (Buffett's letters explain it). Compare to Apple's reversal in 2012 — what changed in Apple's situation that made dividends appropriate? Then summarize the empirical evidence: do non-dividend-paying firms outperform dividend-paying firms over long periods?
-
-**What to do with the output:** Save it. If your project company doesn't pay dividends, this gives you the framework to assess whether that's value-creating capital allocation or hoarding.
-
-### The trade-off (concept 1)
-
-Equity ownership trades **higher expected returns against higher uncertainty about realized returns**. The contractual cash flows of bonds give you a much narrower range of outcomes. The non-contractual nature of equity widens the range in both directions. Whether equity is the right choice depends on your time horizon, your risk tolerance, and your alternative uses for capital.
-
-### Common misconceptions
-
-- *"Stocks always go up over the long run."* On average, in the US, over multi-decade horizons, yes. Japan since 1990 is a counterexample lasting more than 30 years. Country selection matters; time horizon matters; diversification matters.
-- *"A high stock price means a valuable company."* The price per share is meaningless without context. A $10 stock with 100 billion shares outstanding has a much larger market cap than a $1,000 stock with 100,000 shares outstanding. Always reason about market cap, not price.
+Common stock is the harder case, and the focus of everything that follows.
 
 ---
 
-## Concept 2 — Three families of valuation methods
-
-Each family answers "what is this stock worth?" by a different route. We work through them in order of conceptual cleanliness.
-
-### Family 1 — Dividend Discount Models (DDM)
+## The first family: Dividend Discount Models
 
 If a stock pays dividends, one defensible approach is to value it as the present value of all future dividend payments. The general formula:
 
 $$P_0 = \sum_{t=1}^{\infty} \frac{D_t}{(1+r)^t}$$
 
-where $D_t$ is the dividend in year $t$ and $r$ is the required rate of return.
+where $D_t$ is the dividend in year $t$ and $r$ is the required rate of return on equity. This is the present-value machinery from Chapters 7 and 8 applied to an equity stream.
 
-The infinite sum looks intimidating, but with assumptions about how dividends behave, it collapses to closed forms.
+The infinite sum collapses to closed forms when you make assumptions about how dividends behave.
 
-**Zero-growth DDM.** If dividends are constant forever (a perpetuity):
+**Zero-growth DDM.** If dividends are constant forever — a perpetuity — then $P_0 = D / r$. This applies cleanly to preferred stock and to mature firms whose dividends have been flat for years.
 
-$$P_0 = \frac{D}{r}$$
+**The Gordon growth model.** If dividends grow at a constant rate $g$ forever:
 
-This is the formula we used in Chapter 8 for perpetuities. It applies cleanly to preferred stock and to mature firms whose dividends genuinely don't grow.
+$$\boxed{P_0 = \frac{D_1}{r - g}}$$
 
-Example: a preferred stock pays $5.00 annually with a required return of 8%. Price = $5/0.08 = $62.50.
+where $D_1 = D_0 \times (1+g)$ is next year's dividend. This is the growing-perpetuity formula from Chapter 8, applied to dividends. It requires $r > g$ — the same sanity check: a firm can't grow faster than the discount rate forever without the formula breaking down.
 
-**Constant-growth DDM (the Gordon model).** If dividends grow at a constant rate $g$ forever:
+Example: a stock pays $5.00 this year, expects dividends to grow at 4% per year forever, and investors require an 8% return. Then $D_1 = \$5.20$, and:
 
-$$P_0 = \frac{D_1}{r - g}$$
+$$P_0 = \frac{\$5.20}{0.08 - 0.04} = \$130$$
 
-where $D_1 = D_0 \times (1+g)$ is next year's dividend. This is the growing-perpetuity formula from Chapter 8 applied to dividends. It requires $r > g$; if dividends grow as fast as the discount rate, the formula blows up.
+The Gordon model is the workhorse of DDM. It applies to mature firms with stable dividend histories — utilities, consumer staples, established financials.
 
-Example: A stock pays $5.00 this year ($D_0$), is expected to grow dividends at 4% per year forever, and has a required return of 8%. Then $D_1 = 5.20$, and:
+**Sensitivity warning, and it's serious.** With $D_1 = \$5.20$:
 
-$$P_0 = \frac{5.20}{0.08 - 0.04} = \$130$$
+| | $g = 4\%$ | $g = 5\%$ |
+|---|---|---|
+| $r = 8\%$ | $130 | $173 |
+| $r = 9\%$ | $104 | $130 |
 
-The Gordon model is the workhorse of DDM. It applies to mature firms with stable dividend histories — utilities, consumer staples, established industrials.
+A one-percentage-point change in growth moves the price 33%. A one-percentage-point change in the required return moves it 20%. These are inputs that analysts disagree about routinely and by more than one point. Never report a Gordon model result as a single number. Report a range.
 
-**Sensitivity warning.** The Gordon model is brutally sensitive to the inputs. With $D_1 = 5.20$:
-- $r = 8\%, g = 4\%$ → $130
-- $r = 8\%, g = 5\%$ → $173 (33% higher for a 1-point change in $g$)
-- $r = 9\%, g = 4\%$ → $104 (20% lower for a 1-point change in $r$)
+<!-- → [TABLE: Gordon model sensitivity grid — rows: required return (7%, 8%, 9%, 10%), columns: dividend growth rate (2%, 3%, 4%, 5%, 6%) — student should see how quickly values change near the r = g boundary and where the "safe" region of the model lies] -->
 
-A 1-percentage-point miss on either input swings the valuation 20–35%. This is why DDM valuations should never be reported as a single number; report a range.
+**Two-stage DDM.** Real firms don't grow at a constant rate forever. The two-stage model handles firms transitioning from high growth to mature growth by dividing the future into two periods: an explicit high-growth phase, and then a stable growth rate applied via the Gordon model as a terminal value.
 
-**Two-stage DDM.** Real firms don't grow at a constant rate forever. The two-stage DDM splits the future into two periods: a high-growth phase (e.g., 10% growth for 5 years) followed by a stable-growth phase (e.g., 4% forever).
+Procedure: project dividends year by year during the high-growth phase; at the end of that phase, compute a terminal value as $TV = D_{n+1} / (r - g_\text{stable})$; discount both the dividends and the terminal value back to today.
 
-Procedure:
-1. Compute and discount the dividends during the high-growth phase year by year.
-2. At the end of the high-growth phase, compute a **terminal value** using the Gordon model on the start of the stable-growth phase.
-3. Discount the terminal value back to today.
-4. Sum: $P_0 = \sum_{t=1}^{n} \frac{D_t}{(1+r)^t} + \frac{TV_n}{(1+r)^n}$
+Example: a company pays a $14 dividend today, expects 13% growth for five years, then settles at 5% forever. Required return: 12%.
 
-Worked example. A company pays $14 dividend this year, growth of 13% for the next 5 years, then 5% forever. Required return: 12%.
+Stage 1 dividends (years 1–5): $15.82, $17.88, $20.20, $22.83, $25.79$.
 
-Stage 1 dividends (years 1-5):
-- $D_1 = 14 \times 1.13 = \$15.82$
-- $D_2 = 17.88, D_3 = 20.20, D_4 = 22.83, D_5 = 25.79$
+Terminal value at end of year 5:
+$$TV_5 = \frac{25.79 \times 1.05}{0.12 - 0.05} = \frac{27.08}{0.07} = \$386.89$$
 
-Terminal value at end of year 5 (using Gordon with $D_6 = 25.79 \times 1.05 = 27.08$):
-$$TV_5 = \frac{27.08}{0.12 - 0.05} = \$386.89$$
-
-Present value:
-- PV of dividends years 1-5 ≈ $71.91
+Present values:
+- PV of dividends years 1–5: $\approx \$71.91$
 - PV of terminal value: $386.89 / (1.12)^5 = \$219.54$
-- **Total: $291.45**
+- **Total: $291.45$**
 
-Two-stage DDM is more realistic than the simple Gordon model and is the standard for mature dividend-paying firms whose growth profile is changing.
+Two-stage DDM is more realistic than the simple Gordon model for any firm whose growth rate is changing. It's the standard for mature dividend-paying firms in transition.
 
-**DDM limitations.** The model has serious limitations:
-- It cannot value non-dividend payers. Many of the most successful firms — Amazon, Google (until 2024), Berkshire Hathaway — pay no dividends.
-- It is brutally sensitive to growth and discount rate assumptions.
-- Companies can manipulate dividend policy in ways that distort the model. A firm taking on debt to maintain a dividend looks fine to the DDM but is actually destroying value.
+**Where DDM breaks down.** The model cannot value non-dividend payers. Amazon never paid a dividend during decades of spectacular value creation. Google paid none until 2024. Berkshire Hathaway never has. For growth firms that retain cash and reinvest rather than distributing it, DDM gives you nothing — literally a zero, because you're discounting no dividends at all. A different family of methods is required.
 
-For the project: DDM works for some chosen companies (utilities, consumer staples, mature financials) and not others. If your company doesn't pay dividends, you'll need DCF.
+---
 
-### Family 2 — Discounted Cash Flow (DCF)
+## The second family: Discounted Cash Flow
 
-The DCF model values the firm as the present value of all future **free cash flows**. The general formula:
+The DCF model values the firm as the present value of all future **free cash flows** — the cash available to all capital providers after the firm has covered operating expenses, taxes, capital expenditures, and working-capital needs:
 
-$$\text{Firm value} = \sum_{t=1}^{n} \frac{FCF_t}{(1+r)^t} + \frac{TV_n}{(1+r)^n}$$
+$$FCF = \text{EBIT} \times (1 - \text{tax rate}) + \text{Depreciation} - \text{Capex} - \Delta\text{Working capital}$$
 
-where:
-- $FCF_t$ is free cash flow in year $t$
-- $r$ is the firm's weighted-average cost of capital (WACC, computed in Chapter 17)
-- $TV_n$ is the terminal value at the end of the explicit forecast period
-- $n$ is the length of the forecast period
+The firm value is:
 
-After computing firm value, divide by shares outstanding to get value per share. Compare to the current market price.
+$$\text{Firm value} = \sum_{t=1}^{n} \frac{FCF_t}{(1+WACC)^t} + \frac{TV_n}{(1+WACC)^n}$$
 
-**Why DCF is the analyst's preferred method.** Three reasons:
+where WACC is the firm's weighted-average cost of capital (computed in Chapter 17), $n$ is the length of the explicit forecast period, and $TV_n$ is a terminal value at the end. Divide by shares outstanding to get value per share.
 
-1. **Cash flows are harder to manipulate than earnings.** Accounting choices change reported earnings. Cash that arrives in the bank account is harder to fake.
-2. **Works for non-dividend-payers.** A firm that retains cash and reinvests in the business has DCF value but no DDM value. Most growth firms are in this category.
-3. **Forces explicit forecasts.** Building a DCF means projecting revenue, margins, capex, working capital changes, and tax for each year. The discipline of doing this is the analytical exercise; the resulting number is almost a byproduct.
+**Why analysts prefer DCF over DDM.** Three reasons.
 
-**Free cash flow** is the cash available to all capital providers (debt and equity) after the firm has covered its operating expenses, taxes, capital expenditures, and working-capital needs:
+Cash flows are harder to manipulate than earnings. Accounting choices change reported earnings; cash that arrives in the bank account is more difficult to fake.
 
-$$FCF = \text{EBIT} \times (1 - \text{tax rate}) + \text{Depreciation} - \text{Capex} - \Delta \text{Working capital}$$
+DCF works for non-dividend payers. A firm that retains cash and reinvests it in the business has DCF value even if it never pays a dividend. Most growth firms are in this category.
 
-This is **free cash flow to the firm (FCFF)**, the standard input to enterprise-DCF. (There's also free cash flow to equity, FCFE, which subtracts net debt repayments. Both work; FCFF is more common.)
+Building a DCF forces explicit forecasts. To run the model you must project revenue, margins, capex, working capital, and tax for each year. The discipline of doing this forces you to understand the firm. The resulting number is almost a byproduct; the understanding is the asset.
 
-**Worked example — a hypothetical mid-size firm.** Forecast: $50M FCF in year 1, growing at 8% for 5 years, then 4% forever. WACC: 10%. 1 million shares outstanding.
+<!-- → [INFOGRAPHIC: DCF structure diagram — timeline showing explicit FCF forecasts for years 1-5, then a terminal value arrow at year 5; below the timeline, discounting arrows pointing back to year 0; labels for each component with the formula; caption: "Terminal value typically accounts for 60-80% of total firm value"] -->
 
-Stage 1 FCF (years 1-5):
-- $FCF_1 = 50, FCF_2 = 54, FCF_3 = 58.32, FCF_4 = 62.99, FCF_5 = 68.02$ (in $M)
+**Worked example.** Forecast: $50M FCF in year 1, growing at 8% for five years, then 4% forever. WACC: 10%. One million shares outstanding.
 
-Terminal value at year 5:
+Stage 1 FCF (in $M): $50, $54, $58.32, $62.99, $68.02$.
+
+Terminal value:
 $$TV_5 = \frac{68.02 \times 1.04}{0.10 - 0.04} = \frac{70.74}{0.06} = \$1{,}179\text{M}$$
 
-Present value:
-- PV of FCF years 1-5: ~$222M
-- PV of terminal value: $1,179 / (1.10)^5 = \$732\text{M}$
+Present values:
+- PV of stage 1 FCF: $\approx \$222\text{M}$
+- PV of terminal value: $1{,}179 / (1.10)^5 = \$732\text{M}$
 - **Firm value: $954M**
 - **Value per share: $954**
 
-Compare to current market price. If the stock trades below $954, DCF says it's undervalued.
+If the stock trades below $954, the DCF says it's undervalued.
 
-**Sensitivity.** DCF inherits the same sensitivity problem as DDM. A 1-point change in WACC or in long-term growth rate moves the answer 15–25%. Always run sensitivity analysis.
+**The terminal value problem.** In most DCFs, the terminal value accounts for 60–80% of total firm value. Think about what that means: the forecast for the explicit period (years 1–5), which analysts agonize over, contributes a minority of the answer. The terminal value — driven by the long-term growth rate and the discount rate — dominates. And both of those inputs are highly uncertain. Honest analysts say so explicitly in their reports. A DCF that presents a single number without sensitivity analysis on WACC and terminal growth is hiding the uncertainty rather than quantifying it.
 
-**Terminal value dominance.** In most DCFs, the terminal value accounts for 60–80% of total firm value. The forecast for the explicit period (years 1-5 or 1-10) gets disproportionate analytical attention but contributes a minority of the answer. The terminal value — driven by long-term growth and WACC — dominates. This is humbling; honest analysts say so.
+**Sensitivity inherited from structure.** Like the Gordon model, DCF is sensitive to its inputs. A one-point change in WACC or long-term growth moves the answer 15–25%. Always run sensitivity analysis. Always present a range.
 
-For the project: build a DCF for your chosen company. Year 1 FCF can be estimated from the most recent 10-K. Years 2-5 require forecasting growth (Chapter 18 will help). Terminal growth rate should be conservative — usually no higher than long-term GDP growth (2-3%). WACC computation is Chapter 17.
+---
 
-### Family 3 — Multiples (relative valuation)
+## The third family: Multiples
 
-The simplest valuation approach is *comparing* a firm to its peers. If the median software firm trades at 25× earnings, and your firm earns $4 per share, the firm is worth roughly $100 per share by multiples.
+The simplest valuation approach is comparison. If the median consumer-staples firm trades at 22× earnings, and your firm earns $4.00 per share, a first approximation of the stock's value is $88. That's it.
 
 The most common multiples:
 
-**Price-to-earnings (P/E).**
-$$\text{P/E} = \frac{\text{Price}}{\text{EPS}}$$
-The most quoted multiple. Trailing P/E uses the past year's earnings; forward P/E uses estimated next-year earnings. Useful for profitable, stable firms.
+**Price-to-earnings (P/E)** = Price / EPS. The most quoted multiple. Trailing P/E uses past-year earnings; forward P/E uses estimated next-year earnings. Most useful for profitable, stable firms.
 
-**Price-to-book (P/B).**
-$$\text{P/B} = \frac{\text{Price}}{\text{Book value per share}}$$
-Compares market value to accounting book value. Especially useful for financial firms (banks, insurers) where book value approximates economic value.
+**Price-to-book (P/B)** = Price / Book value per share. Compares market value to accounting book value. Especially useful for financial firms where book value approximates economic value.
 
-**Price-to-sales (P/S).**
-$$\text{P/S} = \frac{\text{Price}}{\text{Revenue per share}}$$
-Useful for unprofitable firms (where P/E is meaningless) and for early-stage growth firms.
+**Price-to-sales (P/S)** = Price / Revenue per share. Useful for unprofitable firms where P/E is undefined, and for early-stage growth firms.
 
-**Price-to-cash-flow (P/CF).**
-$$\text{P/CF} = \frac{\text{Price}}{\text{Operating cash flow per share}}$$
-Useful when accounting earnings differ substantially from cash earnings.
+**EV/EBITDA** = Enterprise value / EBITDA. Enterprise value = market cap + debt − cash. This is the preferred multiple for cross-firm comparison because it neutralizes capital-structure differences. A highly leveraged firm and an unlevered firm with otherwise identical operations have similar EV/EBITDA but very different P/E ratios. When you want to compare underlying operating performance across firms with different debt loads, use EV/EBITDA.
 
-**EV/EBITDA.**
-$$\text{EV/EBITDA} = \frac{\text{Enterprise value}}{\text{EBITDA}}$$
-**Enterprise value** = market cap + debt − cash. EV/EBITDA is the favorite multiple for cross-firm comparison because it neutralizes capital structure differences. A leveraged firm and an unleveraged firm with otherwise identical operations have similar EV/EBITDA but very different P/E ratios.
+<!-- → [TABLE: illustrative comparison of the same firm analyzed at different multiples — show how different choices of multiple (P/E vs. P/B vs. EV/EBITDA) can produce different implied valuations, and label the circumstances where each multiple is most appropriate] -->
 
-**Dividend yield.**
-$$\text{Dividend yield} = \frac{\text{Annual dividend}}{\text{Price}}$$
-Useful for income-oriented investors. High dividend yields can signal undervaluation or signal a dividend that's about to be cut.
+**How multiples work in practice.** Find three to five close peers. Compute each peer's multiples. Take the median (or trimmed mean). Apply that median to your firm's relevant metric. The result is an implied value under the assumption that your firm should trade at peer multiples.
 
-**The multiples approach in practice.** For your chosen company, find 3-5 close peers. Compute each peer's P/E, P/B, EV/EBITDA, P/S. Compute the median (or trimmed mean) multiple for the peer group. Apply the median multiple to your company's relevant metric (earnings, book, EBITDA, sales). The result is an implied valuation under the assumption that your firm should trade at peer multiples.
+**Where multiples fail.** A multiples-based valuation assumes the peer group is fairly valued. If the whole sector is overvalued — as technology was in 2021 — applying elevated peer multiples to your firm produces elevated valuations that are uniformly wrong in the same direction. Multiples inherit market-wide mispricing. They are most useful as a cross-check against DCF, not as a primary method.
 
-**Limitations of multiples.**
-
-- **Snapshot in time.** A multiple captures one moment of market sentiment, not long-run economics.
-- **Garbage in, garbage out.** If peer multiples are inflated (as in 2021 tech), applying them to your firm produces inflated valuations.
-- **Comparability.** "Peer firms" rarely match perfectly on all dimensions. Adjustments are subjective.
-- **Aggregated bubbles.** When the whole market is overvalued, all peers are overvalued, and multiples-based valuations are uniformly wrong in the same direction.
-
-Multiples should be used as a *cross-check* against DCF and DDM, not as a primary valuation method.
-
-↳ **Dig Deeper — When DCF and multiples disagree dramatically**
-
-*Two valuation methods, applied to the same firm, can give answers that differ by 50% or more. When this happens, the analyst's job is to figure out *why* — not to average the answers. The disagreement itself is informative.*
-
-**Prompt:**
-> Construct a hypothetical example where DCF says a stock is worth $100/share but the trailing P/E multiple comparison (using peer median) suggests $60/share. List six possible reasons for the disagreement, ranging from technical (DCF assumptions are wrong) to substantive (peer firms aren't actually comparable, or the market is mispricing the entire peer group). For each reason, identify what evidence would distinguish it.
-
-**What to do with the output:** Save it. When your project's DCF and multiples disagree, you'll need to walk through this kind of diagnosis.
-
-### The trade-off (concept 2)
-
-Each valuation family trades **assumption-load against applicability**.
-
-- **DDM** has the cleanest theory (PV of cash to equity holders) but requires dividends to exist and to be predictable.
-- **DCF** has the broadest applicability but requires multi-year forecasts of cash flows.
-- **Multiples** require the least forecasting but assume peer comparability and inherit market-wide mispricing.
-
-A serious equity research report uses all three and reports the range. If they agree closely, confidence is high. If they disagree by 50%, you have a story to tell about why.
-
-### Worked example — triangulating a single stock
-
-Suppose your chosen company:
-- Pays $2.50 dividend, growing at 6%, required return 9% → DDM gives $2.65/0.03 = $88
-- DCF gives $94 per share
-- P/E of 22 × EPS of $4.20 = $92
-- EV/EBITDA of 14 × EBITDA per share of $7 = $98
-
-The four methods give a range of $88-$98, clustering around $93. Current market price is $85. Your reading: the stock is moderately undervalued by about 10%, with reasonable confidence.
-
-If the same exercise gave $50, $94, $135, and $200, you'd have much less confidence in any single number — and your research report would explain *why* the methods disagree. Disagreement is informative.
-
-### Common misconceptions
-
-- *"DCF is the right answer."* DCF gives one answer based on its assumptions. Different reasonable analysts using DCF will get different answers. It's a tool, not an oracle.
-- *"Higher P/E means overvalued."* Not necessarily. A firm growing earnings faster than its peers deserves a higher multiple. Compare growth-adjusted multiples (PEG ratio) within an industry.
-- *"Multiples replace fundamental analysis."* They don't. They summarize the market's current pricing of fundamentals.
+They also assume comparability. "Peer firms" rarely match perfectly on growth rates, margins, business mix, and financial structure. Adjustments are unavoidable and subjective.
 
 ---
 
-## Concept 3 — Efficient markets and what we're really doing
+## Triangulating: using all three together
 
-The valuation methods in Concept 2 assume that stocks can be mispriced and that careful analysis can identify the mispricing. Whether this assumption is correct is one of the most contested questions in finance.
+Here is the core discipline of equity research: never trust a single method.
 
-### The efficient market hypothesis
+Suppose your company's analysis produces:
+- DDM (Gordon model): $88
+- DCF: $94
+- P/E multiple: $92
+- EV/EBITDA multiple: $98
 
-The **efficient market hypothesis (EMH)** says that current stock prices incorporate all available information. If true in its strong form, the entire equity-research industry is wasting its time.
+The four methods cluster in a range of $88–$98, centered near $93. The stock trades at $85. Your reading: moderately undervalued by approximately 10%, with reasonable confidence across methods.
 
-EMH comes in three flavors:
+Now suppose the same exercise produced: DDM $50, DCF $94, P/E multiple $135, EV/EBITDA $200. You have far less confidence in any single number — but the disagreement is informative. Why does the DDM give $50 when DCF gives $94? Because the firm pays a low dividend relative to its free cash flow — it's retaining cash for reinvestment, which the DDM can't see but the DCF can. Why does the P/E multiple give $135 when the DCF gives $94? Because the peer group is expensive relative to fundamentals, which a multiples approach inherits. The research report would explain the disagreements, not paper over them.
 
-**Weak form.** Current prices reflect all *historical price and volume information*. Charting and technical analysis cannot predict future prices. (This form is broadly supported by empirical evidence — technical-analysis trading rarely beats buy-and-hold after costs.)
+<!-- → [INFOGRAPHIC: "valuation bridge" for a hypothetical company — a horizontal bar or range chart showing where each method falls, with the current market price marked as a vertical line; student should see what it looks like when methods cluster vs. when they diverge, and which situation should raise more caution] -->
 
-**Semi-strong form.** Current prices reflect all *publicly available information* — financial statements, news, analyst reports, everything in the public domain. Fundamental analysis based on public information cannot consistently beat the market. (This form is contested. Some studies support it; some hedge funds appear to violate it.)
+**Professional practice.** Sell-side analysts at investment banks typically present: a DCF as primary valuation with a base case and two or three alternative scenarios; multiples as cross-checks; and an explicit price target derived from the synthesis. The recommendation — Buy, Hold, or Sell — is tied to the gap between the price target and the current market price.
 
-**Strong form.** Current prices reflect *all information* — public and private. Even insiders cannot beat the market. (Almost no one believes this. Insider trading regulations exist because insider information demonstrably has value.)
-
-### Why analysts do equity research anyway
-
-If markets are at least somewhat efficient, why does the equity research industry exist? Three reasons:
-
-**1. Markets are efficient on average but not everywhere.** Liquid, heavily-followed large-cap stocks may be close to efficient. Small-cap stocks, foreign markets, emerging asset classes are demonstrably less efficient. Skilled analysts who specialize can find edges.
-
-**2. The process matters even if the answer is wrong.** Building a DCF for your chosen company forces you to understand the firm — its products, customers, competitive position, cost structure, capital allocation. Even if the DCF answer is no better than the market price, the *understanding* is the asset.
-
-**3. Different analysts have different inputs.** Two analysts using DCF will get different answers because they have different views on growth, margins, and discount rates. The market price is one weighted average of these views; your analysis is another. If your views are well-supported, your number can be a useful input even if the market disagrees.
-
-For the equity research project, the deliverable is not a guarantee of future performance. It is a defensible reading of what your company is worth, with explicit assumptions and sensitivity analysis. The process is the work; the number is the byproduct.
-
-### How professional analysts handle the methods
-
-Professional sell-side analysts at investment banks typically present:
-- A DCF as their primary valuation, with a base case and 2-3 alternative scenarios.
-- Multiples-based valuations as cross-checks.
-- An explicit price target derived from the analysis.
-- A Buy/Hold/Sell recommendation tied to the price target relative to current market price.
-
-Buy-side analysts (at hedge funds and asset managers) typically:
-- Build their own models from scratch rather than rely on sell-side estimates.
-- Apply more elaborate sensitivity analysis.
-- Express less concrete recommendations (often holding longer or shorter than sell-side targets imply).
-
-For the project, you'll produce something close to the sell-side format — a DCF, multiples cross-check, and a recommendation. The presentation matters; junior analyst work that looks unprofessional is dismissed regardless of the underlying analysis.
-
-### The trade-off (concept 3)
-
-Active equity research trades **the cost of analysis against the value of insight**. If markets are perfectly efficient, the cost is wasted; if markets are sufficiently inefficient, the insight is profitable. The empirical answer is somewhere in the middle, and skilled analysts in particular niches can sustain modest edges. Most active investors don't beat the market over the long run after costs. A small minority do, persistently. The interesting question for any individual analyst is whether they're in that minority.
-
-### Worked example — putting your project together
-
-For your chosen company, the deliverable from this chapter is a valuation section of the equity research report:
-
-1. **DCF model** with explicit assumptions for revenue growth, margins, capex, tax rate, and WACC. Present base case + bull/bear sensitivity.
-2. **Multiples comparison** to 3-5 peer firms on P/E, EV/EBITDA, and one other relevant multiple. Report median peer multiple and implied value.
-3. **(If applicable) DDM** — for dividend-paying mature firms.
-4. **Triangulation** — what range of values do the methods imply? Where do they agree, where do they disagree, and why?
-5. **Price target** — your synthesized estimate of fair value per share.
-6. **Recommendation** — Buy if your price target is materially above market price; Hold if roughly equal; Sell if materially below.
-
-Chapters 14 (CAPM and beta), 17 (WACC), and 18 (forecasting) give you the inputs. Chapter 20 cross-checks against the firm's risk profile. By the end of the book, your final report integrates everything.
-
-### Common misconceptions
-
-- *"If the market is efficient, valuation is pointless."* Even efficient markets need analysts to make them efficient. Someone has to do the work that gets reflected in the price.
-- *"Sell-side recommendations are reliable."* They have systematic biases. Empirical work shows sell-side analysts collectively over-recommend Buy and under-recommend Sell, partly because of investment-banking client relationships. Read recommendations critically.
+For the project, you'll produce something close to this format. The methods give you a range. The range, combined with your reading of the firm's competitive position, produces your investment thesis. The presentation matters: junior analyst work that looks unprofessional is dismissed regardless of the underlying analysis.
 
 ---
 
-## Synthesis — three families, one judgment
+## Efficient markets: what we're really doing
 
-A stock has no contractual cash flow. Three families of valuation methods exist because no single approach captures everything that matters. DDM is theoretically clean but applies only to dividend-paying firms. DCF is broadly applicable but requires multi-year forecasts and is brutally sensitive to assumptions. Multiples are easy and useful as cross-checks but inherit market-wide mispricing.
+All three valuation methods assume stocks can be mispriced and that analysis can identify the mispricing. Whether this is correct is one of the most contested questions in finance.
 
-A serious equity analyst uses all three, triangulates among them, presents the resulting range honestly, and commits to a recommendation that the analysis supports.
+The **efficient market hypothesis (EMH)** says current prices incorporate all available information. Three versions:
 
-For the running project, the valuation section of your equity research report uses these methods to estimate your chosen company's fair value. The methods give you a range. The range plus your reading of the firm's qualitative position produces your investment thesis.
+**Weak form:** Prices reflect all historical price and volume data. Chartism and technical analysis can't beat buy-and-hold. This version is broadly supported by evidence — technical trading strategies rarely outperform after costs.
 
-The next several chapters refine the inputs. Chapter 12 gives historical equity-return data. Chapter 13-14 install the statistical and regression tools for risk measurement. Chapter 17 computes WACC. Chapter 18 forecasts the cash flows. Chapter 20 frames risk management. By the end, the equity research report writes itself.
+**Semi-strong form:** Prices reflect all publicly available information — financial statements, news, analyst reports, everything in the public domain. Fundamental analysis based on public information cannot consistently beat the market. This version is contested. Some studies support it; certain hedge funds appear to contradict it persistently.
+
+**Strong form:** Prices reflect all information, public and private. Even insiders cannot beat the market. Almost no one believes this. Insider-trading regulations exist precisely because private information demonstrably has value.
+
+<!-- → [TABLE: three-row comparison of EMH forms — columns: form name, what information is incorporated, implication for technical analysis, implication for fundamental analysis, empirical support — student should see at a glance that evidence gets weaker as you move from weak to strong form] -->
+
+**Why analysts do equity research anyway.** If markets are efficient, fundamental analysis is wasted effort. Several responses:
+
+Markets are efficient on average but not everywhere. Liquid, heavily-followed large-cap stocks are close to efficiently priced. Small-cap stocks, emerging markets, and less-followed sectors are demonstrably less efficient. Analysts who specialize can find edges.
+
+The process is valuable even when the answer isn't definitive. Building a DCF for a company forces you to understand it deeply — its products, customers, cost structure, competitive position, capital allocation. That understanding has value independent of whether the DCF answer beats the market price.
+
+Different analysts have different inputs. Two careful analysts using DCF will get different answers because they hold different views on growth, margins, and risk. The market price is a weighted average of all these views. Your analysis is another data point. If your views are better-supported than the consensus, your number can be a useful input even when the market disagrees.
+
+For the equity research project: the deliverable is not a promise of outperformance. It is a defensible reading of what your company is worth, with explicit assumptions, sensitivity analysis, and honest acknowledgment of what the model can't see. The process is the work. The number is the byproduct.
+
+---
+
+## The whole picture
+
+A bond's value is determined by its contract. A stock's value is determined by forecasts, comparisons, and judgment. Three families of methods exist because forecasts and comparisons each capture a different piece of the picture, and no single piece is sufficient.
+
+DDM is theoretically clean: if you hold equity to receive dividends, the stock is worth the present value of those dividends. But it can't see the value retained inside the firm that isn't paid out.
+
+DCF is broadly applicable: it values all the cash the firm will ever generate, regardless of what form it takes. But it requires multi-year forecasts and is dominated by a terminal value that itself requires heroic assumptions about the long run.
+
+Multiples are fast and grounded in observable market prices. But they inherit the market's current sentiment, including whatever overvaluation or undervaluation currently pervades the peer group.
+
+Use all three. Report the range. Explain the disagreements. That is what equity research is.
+
+The next several chapters refine the inputs. Chapter 14 establishes beta and the CAPM, which gives you the required return for DDM and DCF. Chapter 17 computes WACC. Chapter 18 builds the systematic forecasting framework for the cash flows that go into DCF. By the time those chapters are done, the first-cut model you'll build in the exercise below will be replaced by something considerably sharper.
 
 ---
 
@@ -397,76 +228,104 @@ The next several chapters refine the inputs. Chapter 12 gives historical equity-
 
 ### Warm-up
 
-**11.1** Distinguish common stock from preferred stock on at least four dimensions.
+**11.1** Distinguish common stock from preferred stock on four dimensions: voting rights, dividend obligation, claim priority in liquidation, and upside participation. Which behaves more like a bond, and why?
+*(Tests: fundamental distinction between equity types and where preferred stock sits on the risk spectrum)*
 
-**11.2** State the Gordon growth model formula. Define each variable. What's the constraint on $r$ and $g$, and why?
+**11.2** State the Gordon growth model formula and define every variable. What is the mathematical constraint on $r$ and $g$, and what is the economic reason the constraint exists?
+*(Tests: Gordon model structure and the logic behind the r > g requirement)*
 
-**11.3** Why is DCF preferred over DDM for many companies? Name two types of firms where DCF is more appropriate.
+**11.3** Name the three families of valuation methods. For each, state in one sentence the core principle it applies and one circumstance where it is the least reliable method.
+*(Tests: conceptual overview of all three families and their failure conditions)*
 
 ### Application
 
-**11.4** A stock pays $3.00 dividend this year, growing at 5% per year forever. Required return is 9%.
-(a) What's the stock's value using the Gordon model?
-(b) Recompute if growth is 6% (other inputs unchanged). By what percentage does the value change?
-(c) Recompute if required return is 10% (other inputs unchanged). By what percentage does the value change?
-(d) What does this tell you about the model's sensitivity?
+**11.4** A stock pays $3.60 in dividends this year, growing at 5% per year forever. The required return is 10%.
 
-**11.5** A firm has the following projected free cash flows ($M):
+(a) Compute the stock's value using the Gordon growth model.
+(b) Recompute if growth rises to 7%. By what percentage does value change?
+(c) Recompute if the required return rises to 12% (growth back to 5%). By what percentage does value change?
+(d) Which input — growth or discount rate — produces the larger percentage change in (b) vs. (c)? What does that suggest about where analysts should focus their disagreements?
+
+*(Tests: Gordon model computation and sensitivity intuition)*
+
+**11.5** A firm has the following projected free cash flows ($ millions):
+
 | Year | FCF |
 |---|---|
-| 1 | 80 |
-| 2 | 95 |
-| 3 | 115 |
-| 4 | 130 |
-| 5 | 140 |
-After year 5, FCF grows at 3% forever. WACC is 9%. The firm has 50 million shares outstanding.
-(a) Compute the present value of years 1-5 FCFs.
-(b) Compute the terminal value at year 5.
-(c) Compute the present value of the terminal value.
-(d) Sum to get firm value, then divide by shares for value per share.
+| 1 | 60 |
+| 2 | 72 |
+| 3 | 86 |
+| 4 | 100 |
+| 5 | 112 |
 
-**11.6** For your chosen company, compute:
-(a) Trailing P/E using the most recent 10-K's diluted EPS.
-(b) Forward P/E using consensus next-year EPS estimates.
-(c) P/B using the most recent balance sheet.
-(d) EV/EBITDA using market cap + total debt − cash, divided by trailing EBITDA.
+After year 5, FCF grows at 3% forever. WACC is 9%. The firm has 40 million shares outstanding and $200M net debt.
+
+(a) Compute the PV of years 1–5 FCFs.
+(b) Compute the terminal value at year 5 and discount it to today.
+(c) Compute firm value, subtract net debt, and divide by shares to get equity value per share.
+(d) What percentage of total firm value comes from the terminal value? What does this tell you about where DCF results are most sensitive to assumptions?
+
+*(Tests: full DCF computation including terminal value and equity bridge)*
+
+**11.6** A company earns $5.50 in diluted EPS (trailing twelve months). You identify four peer firms with trailing P/E multiples of 18, 21, 24, 19, and 22.
+
+(a) Compute the peer median P/E.
+(b) Apply the median multiple to get an implied stock price.
+(c) The company's current stock price is $85. Is it overvalued or undervalued by this measure? By how much?
+(d) Name two reasons the company might legitimately deserve to trade above the peer median. Name two reasons it might deserve to trade below.
+
+*(Tests: multiples computation and the judgment required to interpret the comparison)*
 
 ### Synthesis
 
-**11.7** Build a complete DCF model for your chosen company in Excel:
-- Project FCF for 5 years using historical growth as a starting point and adjusting based on industry trends.
-- Compute terminal value with conservative long-term growth.
-- Use a WACC estimate (you can use 8% if Chapter 17's WACC computation is not yet done).
-- Compare the resulting value per share to the current market price.
+**11.7** A mature consumer-products firm pays $4.00 in dividends (growing at 3.5%), has $6.00 in earnings, trades at $72 per share, and has a required return of 9%. Its peer group trades at a median P/E of 16.
 
-**11.8** Compare your company to 3 peer firms on at least two valuation multiples. Are your company's multiples above or below the peer median? What does this suggest about the market's view of your company? How does it match or differ from your DCF?
+(a) Apply the Gordon model. Is the stock undervalued or overvalued?
+(b) Apply the P/E multiples comparison. Is it undervalued or overvalued?
+(c) The two methods give different answers. Construct one explanation where the DDM result is more trustworthy, and one where the multiples result is more trustworthy. What evidence would distinguish them?
+
+*(Tests: triangulation across methods and the analytical skill of explaining disagreement)*
+
+**11.8** State the three forms of the efficient market hypothesis. Then construct a specific scenario — a real investment strategy or a real market event — that would count as evidence against each form. What would you need to observe to conclude a given form had been violated rather than merely noisy?
+*(Tests: EMH definitions and the evidentiary standard required to challenge each form)*
 
 ### Challenge
 
-**11.9** Two firms in the same industry have identical earnings, identical revenue, but very different P/E multiples (one is 15, one is 30). List five distinct factors that might justify the difference. For each, explain which is reasonable and which suggests mispricing.
+**11.9** Build a first-cut DCF for your chosen company in Excel using data from its most recent 10-K. Use the following assumptions as a starting point:
 
-**11.10** Your DCF says your chosen company's stock is worth $X. Your multiples comparison says it's worth $Y. They disagree by 30%. Construct three plausible explanations: (a) your DCF assumptions are off; (b) the market is mispricing the stock; (c) the peer firms aren't good comparables. For each, identify what evidence would distinguish the explanation from the alternatives.
+- Revenue growth: 3-year historical average from MD&A.
+- Operating margin: 3-year average.
+- Tax rate: effective rate from most recent year.
+- Capex: 3-year average as % of revenue.
+- Working capital change: 3-year average as % of revenue.
+- Terminal growth: 2.5%.
+- WACC: 8% placeholder.
 
----
+Compute base-case value per share. Then run a sensitivity table: WACC at 7%, 8%, 9% across columns; terminal growth at 1.5%, 2.5%, 3.5% across rows. Report the nine resulting values per share. Where does the current stock price fall in your sensitivity range? What does that placement imply about the market's embedded assumptions?
 
-## Chapter summary
+*(Tests: full DCF construction from primary-source data, sensitivity analysis, and the ability to read what a market price implies about assumptions)*
 
-- A stock has no contractual cash flow. Three families of valuation methods exist to handle the resulting uncertainty.
-- **DDM** values stocks as the present value of future dividends. Forms: zero-growth, Gordon (constant growth), two-stage. Applies only to dividend payers; sensitive to assumptions.
-- **DCF** values the firm as the present value of free cash flows, then divides by share count. Most broadly applicable; requires multi-year forecasts; terminal value typically dominates.
-- **Multiples** (P/E, P/B, P/S, P/CF, EV/EBITDA) compare the firm to peers. Quick and useful as cross-checks; inherits market-wide mispricing.
-- The **efficient market hypothesis** has three forms (weak, semi-strong, strong). Markets are roughly efficient on average; specific niches and firms can be inefficient enough to reward analysis.
-- A serious equity research report uses all three families and triangulates.
+**11.10** Your DCF for a chosen company produces a value per share of $X. Your P/E and EV/EBITDA multiples comparison produces values of $Y and $Z. The three estimates differ by more than 25%.
+
+Construct three distinct explanations for the disagreement:
+
+(a) A problem with your DCF assumptions — which specific input is most likely wrong, and in which direction?
+(b) A problem with the peer comparison — what makes your firm genuinely different from the peers in a way that justifies a premium or discount?
+(c) A market-level mispricing — is there a reason the entire peer group might be over- or undervalued relative to fundamentals right now?
+
+For each explanation, identify what additional evidence — from the 10-K, from market data, or from industry sources — would help you determine which explanation is most likely correct.
+
+*(Tests: analytical diagnosis of valuation disagreement, the kind of reasoning that distinguishes serious equity research from mechanical model-running)*
 
 ---
 
 ## What would change my mind
 
-The chapter argues that DCF is the gold-standard valuation approach for most equities, with multiples as cross-checks and DDM as a special case for dividend payers. The reading would have to revise if (a) DCF turned out to be systematically biased — there's empirical work suggesting analyst DCFs are typically too optimistic, but the bias is in the *inputs*, not the method, or (b) a fundamentally new valuation framework emerged that captured what DCF misses (real-options approaches come close for some firms; behavioral-finance approaches don't replace DCF, they qualify it). For now, DCF + multiples + DDM remains the working consensus.
+The chapter argues that DCF is the gold-standard approach for most equities, with multiples as cross-checks and DDM as a special case. Two things would revise this. First, if analyst DCFs turned out to be systematically and incorrigibly biased — there is empirical evidence that sell-side DCFs are too optimistic — but the bias is in the *inputs*, not the method. Better inputs fix a biased DCF; no amount of better inputs fixes a wrong method. Second, if a fundamentally new valuation framework emerged that captured what DCF misses. Real-options approaches come close for some firms. Behavioral-finance adjustments qualify DCF but don't replace it. For now, DCF + multiples + DDM remains the working consensus.
 
 ## Still puzzling
 
-The cleanest unresolved question this chapter sets up is *what to do when DCF, multiples, and DDM substantially disagree*. If they all agree to within 10-15%, the answer is easy. If they disagree by 50%, you have to decide which method to weight most heavily, and that decision is where the analyst's judgment lives. I don't have a clean rule for resolving disagreement. The honest framework is: each method has known biases; reason about which biases are most likely to apply to *this* firm in *this* market environment; weight accordingly. This is craft, not science.
+The cleanest unresolved question: what to do when the three methods substantially disagree. If they agree within 10–15%, the synthesis is easy. If DCF says $100 and the multiples say $60, you have to decide which to weight, and that decision is where the analyst's judgment actually lives. The honest framework is: reason about which method's assumptions are most likely to be wrong for *this specific firm* in *this specific market environment*, and weight accordingly. This is craft, not algorithm. I have not found a clean rule for it, and I am skeptical of anyone who claims to have one.
 
 ---
 
@@ -477,8 +336,6 @@ The cleanest unresolved question this chapter sets up is *what to do when DCF, m
 - **Chapter 17** computes WACC, the firm's discount rate.
 - **Chapter 18** forecasts the cash flows that go into DCF.
 - **Chapter 20** frames the risk management required for the firm to deliver the forecast cash flows.
-
----
 
 ---
 
@@ -559,11 +416,11 @@ Chapter 12 examines historical equity returns. The Chapter 12 LLM Exercise will 
 
 **Tags:** stock-valuation, DCF, dividend-discount-model, Gordon-growth, multiples, P/E, EV/EBITDA, efficient-markets
 
-
 ---
 
-##  AI Wayback Machine
-**John Burr Williams** was wrote The Theory of Investment Value (1938) — establishing the dividend discount model that still anchors stock valuation.
+## AI Wayback Machine
+
+**John Burr Williams** wrote *The Theory of Investment Value* (1938) — establishing the dividend discount model that still anchors stock valuation.
 
 **Run this:**
 
