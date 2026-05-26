@@ -1,5 +1,12 @@
 # Chapter 12 — Historical Performance of US Markets
 
+
+## TL;DR
+
+- You will practice State approximate long-run nominal and real returns for US stocks, bonds, and T-bills; Compute the equity risk premium and explain what it compensates investors for; Identify the major US market downturns (1929-32, 1973-74, 2000-02, 2008-09, 2020) and their approximate magnitudes.
+- The chapter moves through The puzzle of $10,000, Learning objectives, Concept 1 — The long-run record, Returns by asset class (1981–2020 averages), and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. The Numbers Behind the Theory
 2. What a Century of Markets Teaches
@@ -374,8 +381,7 @@ Chapter 13 introduces statistical analysis. The Chapter 13 LLM Exercise will com
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Roger Ibbotson** was compiled the historical US stock-and-bond returns dataset that anchors modern asset-allocation studies.
 
 **Run this:**

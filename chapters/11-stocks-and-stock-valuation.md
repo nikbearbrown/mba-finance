@@ -1,5 +1,12 @@
 # Chapter 11 — Stocks and Stock Valuation
 
+
+## TL;DR
+
+- You will practice Distinguish common stock from preferred stock, and identify the rights and limitations of each; Apply the zero-growth dividend discount model to value preferred stock and bond-like equity; Apply the Gordon growth model (constant-growth DDM) to value mature dividend-paying firms.
+- The chapter moves through The puzzle of the missing contract, Learning objectives, Concept 1 — What a stock is, and why valuation is hard, Common vs. preferred stock, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Three Ways to Price an Uncertain Cash Flow
 2. From Dividends to DCF
@@ -555,8 +562,7 @@ Chapter 12 examines historical equity returns. The Chapter 12 LLM Exercise will 
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **John Burr Williams** was wrote The Theory of Investment Value (1938) — establishing the dividend discount model that still anchors stock valuation.
 
 **Run this:**

@@ -1,5 +1,12 @@
 # Chapter 10 — Bonds and Bond Valuation
 
+
+## TL;DR
+
+- You will practice Define and use the basic vocabulary of bonds: par value, coupon rate, coupon payment, maturity, yield to maturity, callable, convertible, zero-coupon, floating-rate; Compute a bond's price as the present value of its coupon stream plus the present value of its principal repayment; Identify whether a bond trades at a premium, at a discount, or at par, based on the relationship between its coupon rate and the market YTM.
+- The chapter moves through The puzzle of a bond trading above par, Learning objectives, Concept 1 — What a bond is, The basic terms, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Pricing a Loan
 2. Coupons, Yields, and the Inverse That Runs Underneath
@@ -439,9 +446,7 @@ Chapter 11 builds the DCF model for stock valuation. The Chapter 11 LLM Exercise
 
 ---
 
-## AI Wayback Machine
-
-**Frank Fabozzi** was fixed-income scholar whose textbooks have shaped how a generation of finance students think about bond valuation.
+##  AI Wayback Machine
 
 **Run this:**
 

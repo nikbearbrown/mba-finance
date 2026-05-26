@@ -1,5 +1,12 @@
 # Chapter 4 — The Accrual Accounting Process
 
+
+## TL;DR
+
+- You will practice Distinguish cash-basis from accrual-basis accounting and identify which is appropriate for which kind of firm; State the accounting equation and the rules of double-entry bookkeeping, and apply them to simple transactions; Apply the revenue recognition principle and the expense recognition (matching) principle to short-term transactions.
+- The chapter moves through The puzzle of two true stories, Learning objectives, Concept 1 — Cash vs. accrual: two methods, two answers, The cash basis, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Two Stories About the Same Month
 2. When Did You Earn It?
@@ -534,8 +541,7 @@ Chapter 5 walks through the four primary financial statements in detail. The Cha
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **William Paton** was co-author of An Introduction to Corporate Accounting Standards (1940) — the foundational text on accrual accounting principles.
 
 **Run this:**

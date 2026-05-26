@@ -1,5 +1,12 @@
 # Chapter 2 — Corporate Structure and Governance
 
+
+## TL;DR
+
+- You will practice Compare the four main forms of business organization — sole proprietorship, partnership, corporation, hybrid (LLC/LLP) — across liability, taxation, governance, and ability to raise capital; Distinguish a C corporation from an S corporation, and identify why a growing firm typically converts; Define the principal-agent problem in a corporate context, name the three main flavors (stockholders vs.
+- The chapter moves through The puzzle of the legal person, Learning objectives, Concept 1 — The four forms, and why most large firms end up as corporations, The trade-off (concept 1), and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Who Is the Firm For?
 2. The Strange Invention of the Corporate Person
@@ -410,8 +417,7 @@ Chapter 3 examines macro context — interest rates, inflation, the business cyc
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Adolf Berle** was co-authored The Modern Corporation and Private Property (1932) — the founding work of corporate governance scholarship.
 
 **Run this:**

@@ -1,5 +1,12 @@
 # Chapter 19 — Trade Credit and Working Capital in Planning
 
+
+## TL;DR
+
+- You will practice Define and compute the cash conversion cycle, days sales outstanding, days inventory, and days payable; Calculate the implicit annual cost of forgoing a trade-credit discount (e; Identify how a firm can shorten its cash conversion cycle.
+- The chapter moves through The puzzle of negative working capital, Learning objectives, Concept 1 — The cash conversion cycle, The formula, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. The Cash Conversion Cycle
 2. Working Capital and How Amazon Gets Paid First
@@ -416,8 +423,7 @@ Chapter 20 — the final substantive chapter — examines risk management. The C
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Hyman Minsky** was economist whose Financial Instability Hypothesis explains why working-capital management matters as financial conditions tighten.
 
 **Run this:**

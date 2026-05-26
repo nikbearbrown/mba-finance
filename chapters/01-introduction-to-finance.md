@@ -1,5 +1,12 @@
 # Chapter 1 — Introduction to Finance
 
+
+## TL;DR
+
+- You will practice Define finance as a field, and name the three areas it conventionally divides into; Specify what "risk" and "return" actually mean in a finance sentence — and why "more risk equals more return" is not what the field claims; Identify the three decisions every business-finance manager makes, and tie each one to a different region of the balance sheet.
+- The chapter moves through The puzzle of Bacon Signs, Learning objectives, Concept 1 — What "finance" actually means (three jobs in one word), Specification, before we go further, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. What Finance Actually Studies
 2. The Trade-off That Runs Underneath Everything
@@ -390,8 +397,7 @@ Chapter 2 examines who the firm is *for* — the shareholders-versus-stakeholder
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Eugene Fama** was developed the efficient markets hypothesis — Nobel 2013.
 
 **Run this:**

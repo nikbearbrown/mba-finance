@@ -1,5 +1,12 @@
 # Chapter 6 — Measures of Financial Health
 
+
+## TL;DR
+
+- You will practice State and compute the four major efficiency ratios (accounts receivable turnover, total asset turnover, inventory turnover, days' sales in inventory); Compute the three liquidity ratios (current, quick, cash) and explain when each is most informative; Compute the three core solvency ratios (debt-to-assets, debt-to-equity, times interest earned) and assess a firm's leverage.
+- The chapter moves through The puzzle of one identical number, Learning objectives, Concept 1 — What a ratio is, and why it beats raw numbers, Five families of ratios, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Five Families of Ratios
 2. What the Numbers Mean
@@ -582,8 +589,7 @@ Chapter 7 installs single-payment time-value-of-money. The Chapter 7 LLM Exercis
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Edward Altman** was developed the Z-score in 1968 — the bankruptcy-prediction model that anchors modern financial-health analysis.
 
 **Run this:**

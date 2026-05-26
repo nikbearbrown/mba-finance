@@ -1,5 +1,12 @@
 # Chapter 3 — Economic Foundations: Money and Rates
 
+
+## TL;DR
+
+- You will practice Distinguish nominal and real interest rates, and compute one from the other given an inflation rate; Explain interest rates as the equilibrium price of loanable funds; Specify what CPI, core CPI, the GDP deflator, and PPI measure, and identify which is right for which question.
+- The chapter moves through The puzzle of the rate move, Learning objectives, Concept 1 — Interest rates as the price of money, Layer one — nominal vs. real, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. The Price of Money
 2. Why Every Finance Decision Has a Rate Inside It
@@ -442,8 +449,7 @@ Chapter 4 introduces accrual accounting — the rules that produce the financial
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Irving Fisher** was developed the Fisher equation linking nominal and real interest rates — and the Quantity Theory of Money.
 
 **Run this:**

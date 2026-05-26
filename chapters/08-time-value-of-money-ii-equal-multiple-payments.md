@@ -1,5 +1,12 @@
 # Chapter 8 — Time Value of Money II: Equal Multiple Payments
 
+
+## TL;DR
+
+- You will practice Distinguish a perpetuity from an annuity, and an ordinary annuity from an annuity due; Compute the present value of a perpetuity (constant or growing); Compute the present value and future value of an ordinary annuity and an annuity due.
+- The chapter moves through The puzzle of the lottery, Learning objectives, Concept 1 — Perpetuities: streams that never end, Why perpetuities have finite present value, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Annuities, Perpetuities, and the Arithmetic of Streams
 2. Lottery, Mortgage, Pension
@@ -478,8 +485,7 @@ Chapter 9 generalizes to arbitrary cash flow streams and introduces NPV. The Cha
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Edmond Halley** was astronomer who computed the first life-annuity tables in 1693 — making rigorous pricing of multi-payment streams possible.
 
 **Run this:**

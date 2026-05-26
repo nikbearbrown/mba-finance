@@ -1,5 +1,12 @@
 # Chapter 5 — Financial Statements
 
+
+## TL;DR
+
+- You will practice Identify the four primary financial statements and what each measures; Trace how the income statement, balance sheet, and statement of equity connect through retained earnings; Distinguish operating, investing, and financing cash flows on a cash flow statement.
+- The chapter moves through The puzzle of one fact, three different stories, Learning objectives, Concept 1 — The four statements and what each one measures, The income statement — performance over a period, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. The Four Views of a Company
 2. Reading a 10-K
@@ -583,8 +590,7 @@ Chapter 6 computes ratios from these statements. The Chapter 6 LLM Exercise will
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Mary T. Washington** was first Black woman CPA in the US (1943) — trained hundreds of accountants and shaped early small-business financial reporting.
 
 **Run this:**

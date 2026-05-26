@@ -1,5 +1,12 @@
 # Chapter 17 — How Firms Raise Capital
 
+
+## TL;DR
+
+- You will practice Compute the after-tax cost of debt for a firm using its outstanding bond yields; Compute the cost of equity using CAPM and (where applicable) the dividend growth model; Compute the firm's WACC given component costs and capital structure weights.
+- The chapter moves through The puzzle of Apple's debt, Learning objectives, Concept 1 — The three component costs, Cost of debt, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. WACC and the Mix
 2. Debt, Equity, and Why Apple Borrows
@@ -540,8 +547,7 @@ Chapter 18 builds pro forma forecasts. The Chapter 18 LLM Exercise will produce 
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Franco Modigliani** was co-developed the Modigliani-Miller theorem on capital structure — Nobel 1985.
 
 **Run this:**

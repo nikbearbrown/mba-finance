@@ -1,5 +1,12 @@
 # Chapter 15 — How to Think about Investing
 
+
+## TL;DR
+
+- You will practice Articulate an investment policy statement (IPS) — risk tolerance, time horizon, return objectives, allocation rules; Compute holding-period and annualized returns; distinguish dividend yield from capital gain; Apply diversification principles to design a multi-stock portfolio.
+- The chapter moves through The puzzle of $50,000, Learning objectives, Concept 1 — The investor's framework, What you're solving for, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. The Investor's Framework
 2. Risk, Return, and What to Do With $50,000
@@ -440,8 +447,7 @@ Chapter 16 examines corporate capital budgeting from the firm's perspective. The
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Benjamin Graham** was wrote Security Analysis (1934) — the founding text of value investing.
 
 **Run this:**

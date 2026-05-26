@@ -1,5 +1,12 @@
 # Chapter 14 — Regression Analysis in Finance
 
+
+## TL;DR
+
+- You will practice Compute the correlation coefficient between two return series and test for significance; Compute the slope, intercept, and R² of a simple linear regression; Explain what beta measures and compute it as the slope of a stock's returns regressed on market returns.
+- The chapter moves through The puzzle of two stocks at the same return, Learning objectives, Concept 1 — Correlation and regression: the machinery, Correlation, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Beta, CAPM, and the Cost of Equity
 2. The Slope That Sets the Discount Rate
@@ -524,8 +531,7 @@ Chapter 15 examines personal investing. The Chapter 15 LLM Exercise asks: would 
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **William Sharpe** was developed the Capital Asset Pricing Model — Nobel 1990.
 
 **Run this:**

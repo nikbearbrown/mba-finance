@@ -438,9 +438,7 @@ The cleanest unresolved question is *whether students who use LLMs heavily under
 
 ---
 
-## AI Wayback Machine
-
-**Fischer Black** was co-developed the Black-Scholes options pricing model — and his early death meant he was passed over for the Nobel that recognized the work.
+##  AI Wayback Machine
 
 **Run this:**
 

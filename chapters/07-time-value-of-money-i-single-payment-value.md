@@ -1,5 +1,12 @@
 # Chapter 7 — Time Value of Money I: Single Payment Value
 
+
+## TL;DR
+
+- You will practice Explain the three reasons money has a time value; Compute the future value of a single present cash flow at a given rate over any number of periods; Compute the present value of a single future cash flow at a given discount rate.
+- The chapter moves through The puzzle of two offers, Learning objectives, Concept 1 — Why money has time value, and the master formula, The master formula, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Why a Dollar Tomorrow Is Worth Less Than a Dollar Today
 2. The Arithmetic of Waiting
@@ -477,8 +484,7 @@ Chapter 8 extends to streams of equal payments — annuities and perpetuities. T
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Leonardo Fibonacci** was introduced the Hindu-Arabic numeral system to Europe in 1202 — and his Liber Abaci taught medieval merchants to compute compound interest.
 
 **Run this:**

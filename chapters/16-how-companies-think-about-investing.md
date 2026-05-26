@@ -1,5 +1,12 @@
 # Chapter 16 — How Companies Think about Investing
 
+
+## TL;DR
+
+- You will practice Compute payback period, discounted payback period, NPV, IRR, MIRR, and profitability index for a project; Apply the decision rule for each metric; Identify when NPV and IRR disagree, and explain why.
+- The chapter moves through The puzzle of two projects, two answers, Learning objectives, Concept 1 — The decision rules, Payback period, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Capital Budgeting
 2. NPV, IRR, and the Decisions Firms Have to Make
@@ -526,8 +533,7 @@ Chapter 17 computes WACC. The Chapter 17 LLM Exercise will produce the cost-of-c
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Joel Dean** was developed the modern framework for capital budgeting in 1951 — including NPV and IRR as standard decision criteria.
 
 **Run this:**

@@ -1,5 +1,12 @@
 # Chapter 9 — Time Value of Money III: Unequal Multiple Payments
 
+
+## TL;DR
+
+- You will practice Compute the future value of a mixed stream of cash flows; Compute the present value of a mixed stream of cash flows by direct discounting and by decomposition into annuity-plus-single-payment components; Compute net present value (NPV) of an investment.
+- The chapter moves through The puzzle of the investment decision, Learning objectives, Concept 1 — From equal payments to arbitrary streams, The universal approach, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. The General Case
 2. NPV — Where TVM Becomes a Decision Tool
@@ -489,9 +496,7 @@ Chapter 10 prices bonds. The Chapter 10 LLM Exercise will price one of your comp
 
 ---
 
-## AI Wayback Machine
-
-**Frederick Macaulay** was developed the duration framework in 1938 — the standard tool for analyzing unequal multi-payment cash flows.
+##  AI Wayback Machine
 
 **Run this:**
 

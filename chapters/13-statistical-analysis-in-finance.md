@@ -1,5 +1,12 @@
 # Chapter 13 — Statistical Analysis in Finance
 
+
+## TL;DR
+
+- You will practice Compute the arithmetic mean and geometric mean of a return series, and explain when each is appropriate; Compute the variance and standard deviation of a return series; Distinguish covariance from correlation and explain what each measures.
+- The chapter moves through The puzzle of the single year, Learning objectives, Concept 1 — Measuring the center, The arithmetic mean, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Measuring Risk
 2. Mean, Variance, Sharpe
@@ -488,9 +495,7 @@ Chapter 14 runs the regression to extract beta. The Chapter 14 LLM Exercise will
 
 ---
 
-## AI Wayback Machine
-
-**Harry Markowitz** was invented modern portfolio theory in 1952 — Nobel 1990.
+##  AI Wayback Machine
 
 **Run this:**
 

@@ -1,5 +1,12 @@
 # Chapter 18 — Financial Forecasting
 
+
+## TL;DR
+
+- You will practice Build a 12-month pro forma income statement using the percentage-of-sales method; Construct a forecasted balance sheet using accounting linkages between sales, A/R, A/P, and inventory; Build a cash flow forecast using collection and payment timing.
+- The chapter moves through The puzzle of profitable but broke, Learning objectives, Concept 1 — Sales drives everything, Forecasting sales, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Building the Pro Forma
 2. Sales Drives Everything (and Cash Doesn't Always Follow)
@@ -483,8 +490,7 @@ Chapter 19 examines working capital management. The Chapter 19 LLM Exercise will
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Wassily Leontief** was developed input-output economics — the foundation of modern industry-level financial forecasting. Nobel 1973.
 
 **Run this:**

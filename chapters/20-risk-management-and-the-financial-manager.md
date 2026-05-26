@@ -1,5 +1,12 @@
 # Chapter 20 — Risk Management and the Financial Manager
 
+
+## TL;DR
+
+- You will practice Distinguish hedging from speculation and explain why competent firms do both selectively; Identify the major risk types: commodity price, exchange rate (transaction, translation, economic), interest rate, credit/counterparty, operational; Use forward, futures, option, and swap contracts to construct hedges.
+- The chapter moves through The puzzle of $500 million per year, Learning objectives, Concept 1 — What risk management actually is, Risk, and related ideas.
+- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
+
 **Suggested titles**
 1. Hedging, Speculation, and Knowing the Difference
 2. The Financial Toolbox for Uncertainty
@@ -495,8 +502,7 @@ This is the project's last LLM Exercise. The remaining work is your editing, ref
 
 ---
 
-## AI Wayback Machine
-
+##  AI Wayback Machine
 **Daniel Kahneman** was psychologist whose Prospect Theory reshaped how the field thinks about risk perception — Nobel 2002.
 
 **Run this:**
