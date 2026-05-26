@@ -1,260 +1,202 @@
 # Chapter 7 — Time Value of Money I: Single Payment Value
-
-
-## TL;DR
-
-- You will practice Explain the three reasons money has a time value; Compute the future value of a single present cash flow at a given rate over any number of periods; Compute the present value of a single future cash flow at a given discount rate.
-- The chapter moves through The puzzle of two offers, Learning objectives, Concept 1 — Why money has time value, and the master formula, The master formula, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. Why a Dollar Tomorrow Is Worth Less Than a Dollar Today
-2. The Arithmetic of Waiting
-3. Compounding, Discounting, and the Rule of 72
-
-**TL;DR.** Money has a time value because money you have today can earn a return between now and any future date. The single-payment time-value-of-money formula — $FV = PV \times (1+r)^n$ — converts between present and future values given an interest rate and a time horizon. Master it, and you can solve four kinds of problems by rearrangement: future value, present value, required interest rate, and required time horizon.
+*One formula. Four directions. The arithmetic spine of every valuation in this book.*
 
 ---
 
 ## The puzzle of two offers
 
-A relative offers you a deal. They have $10,000 they want to give you, but they need to make sure you actually want it. Two options:
+A relative offers you a deal. They have $10,000 to give you. Two options:
 
 - **Option A** — they hand you $10,000 today.
-- **Option B** — they promise to hand you $11,000 two years from now, in writing, with no risk that they renege.
+- **Option B** — they promise $11,000 two years from now, in writing, guaranteed.
 
-The answer depends entirely on one thing the question doesn't tell you. *What would you do with the $10,000 between now and two years from now?*
+Most people sense Option B might be better — it's more money. But that intuition is incomplete, because the right answer depends entirely on something the question doesn't tell you: *what would you do with the $10,000 in the meantime?*
 
-If you'd put it in a savings account at 2% per year, $10,000 today grows to $10,000 × (1.02)² = $10,404 in two years. Option B's $11,000 is more. Take Option B.
+If you'd put it in a savings account at 2% per year, today's $10,000 grows to $10,000 × (1.02)² = $10,404 in two years. Option B's $11,000 beats that. Take Option B.
 
-If you'd invest it in something that earned 6% per year, $10,000 grows to $10,000 × (1.06)² = $11,236 in two years. Option B's $11,000 is less. Take Option A.
+If you'd invest it in something earning 6% per year, today's $10,000 grows to $10,000 × (1.06)² = $11,236 in two years. Option B no longer wins. Take Option A.
 
-If you'd earn exactly 4.88%, the two options are tied: $10,000 × (1.0488)² ≈ $11,000. The breakeven rate is the rate at which your money would grow over two years to match the future offer. Above that rate, today is better. Below that rate, future is better.
+If you'd earn exactly 4.88%, the two options are tied: $10,000 × (1.0488)² ≈ $11,000. That's the breakeven rate — the rate at which today's money would grow to exactly match the future offer. Above that rate, today is better. Below it, the future is better.
 
-This is the entire field of finance, in miniature. Money has a time value because money you have today can earn a return between now and any future date. The size of that return — the **interest rate** — determines how much $1 today is worth in some future period, and conversely, how much $1 in some future period is worth today.
-
-For the equity research project, this chapter installs the arithmetic that the rest of the book uses constantly. Every valuation in Chapters 10, 11, and 16 is, at its core, an application of the single-payment formula we build here.
+This is not a trick. This is the entire field of finance, in miniature. Money has a time value because money you have today can be invested, and invested money grows. The question is never "which is more dollars?" It's always "at what rate would you invest the present amount, and does the future offer beat that?"
 
 ---
 
-## Learning objectives
-
-After working through this chapter, you should be able to:
-
-- Explain the three reasons money has a time value.
-- Compute the future value of a single present cash flow at a given rate over any number of periods.
-- Compute the present value of a single future cash flow at a given discount rate.
-- Solve for the unknown variable (rate, time, PV, or FV) when the other three are known.
-- Adjust the basic formula for compounding more frequent than annual.
-- Distinguish nominal from real interest rates using the Fisher equation.
-- Use the Rule of 72 to estimate doubling times for any rate of growth.
-
-**Prerequisites.** Comfort with exponents and basic algebra. Chapter 3 (interest rates as the price of money).
-
----
-
-## Concept 1 — Why money has time value, and the master formula
+## Why money has time value
 
 Three reasons, in order of importance.
 
-**1. Money invested today earns a return.** A dollar in your pocket today can be deposited in a savings account, used to buy stocks, or lent to someone, and at some point in the future you'll have more than a dollar. A dollar that arrives in the future cannot have been earning anything in the meantime. So the present dollar is worth more than the future dollar by exactly the return you would have earned.
+**First: money invested today earns a return.** A dollar in your pocket can be deposited, lent, or invested — and at some future point you'll have more than a dollar. A dollar arriving in the future cannot have been earning anything in the meantime. The present dollar is worth more than the future dollar by exactly the return you would have earned on it. This is the dominant reason, and it's purely mechanical.
 
-**2. Future payments are uncertain.** The person promising you $11,000 two years from now might not pay. The bank holding your savings might fail. The country might experience hyperinflation. Even if you trust the counterparty completely, accidents happen. A dollar in hand carries less default risk than a dollar promised.
+**Second: future payments are uncertain.** Even if someone promises you $11,000 in two years, something might prevent delivery. The counterparty might fail. The country might experience inflation that shrinks purchasing power. Default risk makes future dollars worth less than present dollars for reasons beyond opportunity cost.
 
-**3. People prefer present consumption.** This is the softest of the three reasons but it's real. Most people would rather have a thing now than the same thing later. Even in a world with no investment opportunities and no default risk, most people would discount the future at some positive rate just because they'd rather not wait.
+**Third: people prefer present consumption.** Most people would rather have something now than wait for the same thing later, even absent any investment opportunity or default risk. This is real but it's the softest of the three. For this book, when we say "money has time value," we mostly mean the first reason: present money can be invested.
 
-The first reason is the dominant one for finance. The second matters for credit-risk analysis. The third is more relevant for behavioral economics. For the rest of this book, when we say "money has time value," we mostly mean reason 1: present money can be invested.
+---
 
-### The master formula
+## The master formula
 
-Suppose you put $1,000 into a savings account paying 4% interest per year. After one year, you have $1,040 — your original $1,000 plus $40 of interest. Trivial.
+Suppose you put $1,000 into a savings account paying 4% interest per year.
 
-After two years? Your $1,040 (the balance from year 1) earns 4% on itself: $1,040 × 0.04 = $41.60. So you end year 2 with $1,040 + $41.60 = $1,081.60.
+After one year: $1,000 × 1.04 = $1,040. Straightforward.
 
-Notice the $41.60. That's slightly more than the $40 you earned in year 1. Why? Because in year 2 you earned 4% on $1,040, not on $1,000. You earned interest on your interest. **Compound interest** — interest paid on past interest — is the engine of everything that follows.
+After two years: $1,040 × 1.04 = $1,081.60.
 
-The general formula. If you start with **PV** (present value), invest at rate **r** per period, and let it compound for **n** periods, you end with:
+Notice that $1,081.60 is not $1,080. The extra $1.60 comes from the fact that in year 2 you earned 4% not on your original $1,000 but on $1,040 — you earned interest on your interest. This is **compound interest**, and it is the engine of everything that follows.
+
+The general formula. If you start with **PV** (present value), invest at rate **r** per period, and let it compound for **n** periods:
 
 $$FV = PV \times (1+r)^n$$
 
-Read it: the future value equals the present value times the future-value factor $(1+r)^n$. The factor is greater than 1 whenever $r > 0$, and grows exponentially with $n$.
+Read it: the future value equals the present value, scaled up by the factor $(1+r)^n$. That factor is always greater than 1 when $r > 0$, and it grows exponentially with $n$.
 
-Three concrete computations to anchor the formula:
+What does "exponentially" actually mean here? Work through a few values:
 
-| Initial $1,000, rate 4% | Future value | Multiplier |
-|---|---|---|
-| 3 years | $1,124.86 | 1.125 |
-| 10 years | $1,480.24 | 1.480 |
-| 50 years | $7,106.68 | 7.107 |
+<!-- → [TABLE: $1,000 at 4% compounded annually — rows for n = 1, 5, 10, 20, 30, 50 years — columns: years, future value, multiplier (FV/1000) — student should see the multiplier start small and accelerate; annotate where the curve starts to feel "fast"] -->
 
-Three years — modest growth. Ten years — about 50% growth. Fifty years — over 7x. The formula is exponential, and exponentials feel slow at first and shockingly fast later. This is where the Feynman move "what's actually happening" earns its keep: each year, you earn 4% on a slightly larger base than the year before, and the compounding compounds.
+Three years at 4% gives about $1,125. Ten years gives about $1,480. Fifty years gives about $7,107. The first ten years add about $480. The next forty years add another $5,627.
 
-### Compounding visualized
+That asymmetry is the whole story of compounding. Each year, you earn 4% on a base that is slightly larger than the year before. The growth in the base is small at first and large later. Plot the formula as a curve and you get a shape that looks nearly flat for decades and then bends sharply upward. The bend is not a trick; it's arithmetic.
 
-If you graph $FV = 1{,}000 \times (1.04)^n$ for n from 0 to 100, the curve is barely visible above the horizontal $1,000 line for the first 20 years, and then rockets upward. Most of the action is in the second half of the time horizon. This is why financial advice for young people emphasizes starting early — the early dollars get the most years of compounding.
+This is why financial advice for young people emphasizes starting early. Two friends, both starting at 22:
 
-A clean illustration. Two friends, both age 22.
+- **Friend A** invests $5,000 per year from age 22 to 30 (nine years), then stops. Lets the balance compound at 8%.
+- **Friend B** waits until 30, then invests $5,000 per year all the way to 65 (thirty-five years) at the same 8%.
 
-- **Friend A** invests $5,000 per year from age 22 to age 30 (9 years), then stops, and lets it compound at 8% until age 65.
-- **Friend B** waits until age 30, then invests $5,000 per year from age 30 to age 65 (35 years) at the same 8%.
+At age 65, Friend A has contributed about $45,000 total. Friend B has contributed about $175,000. Yet their ending balances are nearly equal — Friend A's, in fact, is slightly higher.
 
-At age 65:
-- Friend A contributed $45,000 total but their balance is about $887,000.
-- Friend B contributed $175,000 total but their balance is about $861,000.
+The early dollars got more years of compounding. The late dollars, no matter how numerous, couldn't catch up.
 
-A invested less than a third as much, started 8 years earlier, and ended up with slightly more. That is compound interest. The dollars contributed early have many more years to grow than the dollars contributed late, and the difference is enormous. (`[verify]` exact figures with current spreadsheet calculation; the qualitative point is robust.)
+<!-- → [CHART: Side-by-side bar chart comparing Friend A and Friend B at age 65 — show total contributions (shaded one color) versus total growth (shaded another) for each friend; student should see that Friend A's growth dwarfs contributions while Friend B's balance is more evenly split, making the power of early compounding viscerally visible] -->
 
 ↳ **Dig Deeper — Negative interest rates**
 
-*Standard TVM assumes positive interest rates. But several countries (Japan, Switzerland, some European banks) have at various times had negative nominal policy rates. Some Treasury yields have gone negative in real terms even more often. What does negative-rate TVM actually look like, and what does it imply for capital allocation?*
+*Standard TVM assumes positive interest rates. But several countries — Japan, Switzerland, the Eurozone — have at various times had negative nominal policy rates. Some Treasury yields have gone negative in real terms even more often. What does the formula produce when r < 0?*
 
 **Prompt:**
 > Explain the mechanics of negative interest rates as observed in Japan (since 2016), Switzerland, and the Eurozone. What does the standard TVM formula produce when r < 0? Then describe two real economic phenomena that emerge under negative-rate conditions: (1) why some firms accumulate cash rather than borrowing, even at negative cost, and (2) what happens to the present value of long-dated future cash flows when rates are negative.
 
 **What to do with the output:** Save it. The standard TVM intuition assumes rates are positive; understanding the edge case sharpens the standard reasoning.
 
-### The trade-off (concept 1)
-
-Time-value calculations trade **simplicity against realism**. The formula $FV = PV(1+r)^n$ assumes a constant interest rate over the full horizon, no taxes, no inflation, no risk of default, no withdrawal of funds. Real-world investing has all of these. The formula is the right starting point because it isolates the single most important effect — compounding — and shows it cleanly. Adjustments come later (Chapter 8 for streams of payments, Chapter 13 for variability of returns, Chapter 17 for risk-adjusted rates).
-
-### Common misconceptions
-
-- *"Compound interest is just simple interest plus a little extra."* No — over long horizons, compound interest is dramatically more than simple interest. Over 30 years at 8%, $1,000 grows to $10,063 with compounding but only $3,400 with simple interest.
-- *"Higher returns mean linearly higher final values."* No — they mean exponentially higher. At 4%, $1 becomes $7.10 in 50 years. At 8%, $1 becomes $46.90 in 50 years. The final value at 8% is over 6× the final value at 4%, even though the rate is just 2× higher.
-
 ---
 
-## Concept 2 — Computing in both directions
+## The formula has four directions
 
-The master formula has four variables: PV, FV, r, n. Given any three, you can solve for the fourth. This single formula generates four kinds of problems, and equity analysts solve all four constantly.
+The master formula has four variables: PV, FV, r, n. Given any three, solve for the fourth. That single equation generates four kinds of problems, and equity analysts work all four of them constantly.
 
-### Direction 1 — Future value (compound forward in time)
+### Compound forward: finding future value
 
-You know PV, r, and n. You compute FV.
+You know PV, r, n. You compute FV.
 
-Direct application of the formula. Examples:
+This is the formula as written. Put $25,000 in a retirement account earning 7% for 30 years:
 
-- $1,000 invested at 6% for 10 years: $FV = 1{,}000 \times (1.06)^{10} = \$1{,}790.85$.
-- $25,000 retirement savings invested at 7% for 30 years: $FV = 25{,}000 \times (1.07)^{30} = \$190{,}306$.
-- A $400,000 house appreciating at 4% per year for 6 years: $FV = 400{,}000 \times (1.04)^6 = \$506{,}128$.
+$$FV = 25{,}000 \times (1.07)^{30} = \$190{,}306$$
 
-In Excel: `=FV(rate, nper, pmt, [pv], [type])`. For a single payment with no recurring payment, set `pmt = 0`. For our $1,000 / 6% / 10-year example: `=FV(0.06, 10, 0, -1000)` returns 1790.85. Note the negative sign on PV — Excel uses sign convention where money flowing out (the deposit) is negative.
+A $400,000 house appreciating at 4% per year for 6 years:
 
-In a financial calculator: enter PV = −1000, I/Y = 6, N = 10, PMT = 0, then compute FV. The calculator returns 1790.85.
+$$FV = 400{,}000 \times (1.04)^6 = \$506{,}128$$
 
-### Direction 2 — Present value (discount backward in time)
+In Excel: `=FV(0.07, 30, 0, -25000)` returns 190,306. The negative sign on PV follows Excel's sign convention — money flowing out (your deposit) is negative; money flowing in (your future balance) is positive.
 
-You know FV, r, and n. You compute PV. Rearranging the formula:
+### Discount backward: finding present value
+
+You know FV, r, n. You compute PV. Rearrange:
 
 $$PV = \frac{FV}{(1+r)^n}$$
 
-The factor $\frac{1}{(1+r)^n}$ is called the **present value factor** or **discount factor**. It is always less than 1 for positive r and positive n — meaning a future dollar is worth less than a present dollar.
+The factor $1/(1+r)^n$ is called the **discount factor**. It is always less than 1 for positive r — meaning a future dollar is always worth less than a present dollar.
 
-Examples:
+<!-- → [TABLE: Present value factors at three discount rates (4%, 7%, 10%) for n = 1, 5, 10, 20, 30 years — student should see how quickly high discount rates compress distant future values toward zero] -->
 
-- A $50,000 lottery payout in 5 years, discounted at 5%: $PV = \frac{50{,}000}{(1.05)^5} = \$39{,}176$. The lottery is worth less today than its face value because you have to wait.
-- A $1,000 savings bond maturing in 30 years, discounted at 5%: $PV = \frac{1{,}000}{(1.05)^{30}} = \$231$. A "$1,000 savings bond" — gifted to a child — is actually worth about $231 the day it's bought.
-- A $1 million life insurance payout 20 years from now, discounted at 6%: $PV = \frac{1{,}000{,}000}{(1.06)^{20}} = \$311{,}805$.
+A $50,000 lottery payout in 5 years, discounted at 5%:
 
-In Excel: `=PV(rate, nper, pmt, [fv], [type])`. For our $50,000 lottery example: `=PV(0.05, 5, 0, 50000)` returns −39,176.31. Excel returns the negative because under sign convention, you'd "pay" that to receive the future $50,000.
+$$PV = \frac{50{,}000}{(1.05)^5} = \$39{,}176$$
 
-The discount rate matters enormously. A future $1 million discounted at 5% over 30 years is worth $231,377. The same $1 million discounted at 8% is worth only $99,377. Higher discount rates compress future values much faster. Equity research analysts argue about discount rates because the answer is highly sensitive to it.
+A "$1,000 savings bond" gifted to a child, maturing in 30 years, discounted at 5%:
 
-### Direction 3 — Solving for the rate (what return is implied?)
+$$PV = \frac{1{,}000}{(1.05)^{30}} = \$231$$
 
-You know PV, FV, and n. You compute r. Rearranging:
+That savings bond is worth $231 the day you buy it, not $1,000. The face value is a future value. The present value is what you're actually giving.
 
-$$r = \left( \frac{FV}{PV} \right)^{1/n} - 1$$
+The discount rate matters enormously here. A future $1 million discounted at 5% over 30 years is worth $231,377 today. The same $1 million discounted at 8% is worth only $99,377. The discount rate can more than double or halve the valuation of the same cash flow. This is why equity research analysts argue so intensely about discount rates — the answer is highly sensitive to the choice, and the choice requires judgment that the formula cannot provide.
 
-This is the **implied rate** — the constant annual return that would convert PV into FV over n periods.
+### Solve for the rate: what return is implied?
 
-Examples:
+You know PV, FV, n. You compute r. Rearrange:
 
-- A house bought for $300,000 sold for $450,000 ten years later. Implied rate: $(450{,}000/300{,}000)^{1/10} - 1 = 1.5^{0.1} - 1 = 4.14\%$ per year. Decent but not spectacular.
-- An investment of $15,000 grew to $25,000 over 8.5 years. Implied rate: $(25{,}000/15{,}000)^{1/8.5} - 1 = 6.19\%$ per year.
-- A college tuition that was $5,000 per year in 1985 and $25,000 per year in 2025. Implied rate: $(25{,}000/5{,}000)^{1/40} - 1 = 4.13\%$ per year — meaningfully above general inflation, which is why college affordability is a recurring concern.
+$$r = \left(\frac{FV}{PV}\right)^{1/n} - 1$$
 
-In Excel: `=RATE(nper, pmt, pv, [fv], [type])`. For the $15,000 → $25,000 / 8.5-year example: `=RATE(8.5, 0, -15000, 25000)` returns 0.0619 (6.19%).
+A house bought for $300,000 and sold for $450,000 ten years later:
 
-### Direction 4 — Solving for the time (how long until?)
+$$r = \left(\frac{450{,}000}{300{,}000}\right)^{1/10} - 1 = 1.5^{0.1} - 1 = 4.14\%$$
 
-You know PV, FV, and r. You compute n. Rearranging using logarithms:
+Decent but not spectacular — roughly on par with inflation during many periods.
+
+College tuition of $5,000 per year in 1985 and $25,000 per year in 2025:
+
+$$r = \left(\frac{25{,}000}{5{,}000}\right)^{1/40} - 1 = 5^{0.025} - 1 = 4.13\%$$
+
+Tuition inflation has run at about 4% real per year — meaningfully above general inflation. This is one reason why college affordability is a recurring concern: the cost has compounded faster than most families' incomes.
+
+In Excel: `=RATE(nper, pmt, pv, fv)`.
+
+### Solve for time: how long until?
+
+You know PV, FV, r. You compute n. Take logs of both sides of the formula:
 
 $$n = \frac{\ln(FV/PV)}{\ln(1+r)}$$
 
-Examples:
+A $25,000 college fund needs to reach $50,000. At 7%:
 
-- $100 needs to grow to $133.82 at 5%. How many years? $n = \ln(1.3382) / \ln(1.05) = 5.97$ years.
-- $25,000 college fund needs to reach $50,000. At 7%, how long? $n = \ln(2) / \ln(1.07) = 10.24$ years.
-- A retirement account at $250,000 needs to reach $1 million. At 8%, how long? $n = \ln(4) / \ln(1.08) = 18.0$ years.
+$$n = \frac{\ln(2)}{\ln(1.07)} = \frac{0.6931}{0.0677} = 10.24 \text{ years}$$
 
-In Excel: `=NPER(rate, pmt, pv, [fv], [type])`.
+A retirement account at $250,000 needs to reach $1 million. At 8%:
 
-### A worked example for the project — when does Apple's cash become "infinite"?
+$$n = \frac{\ln(4)}{\ln(1.08)} = 18.0 \text{ years}$$
 
-Apple holds about $191B in cash and short-term investments. If left in the bank earning 4% (current short-term rates) and not used for buybacks, dividends, or acquisitions, how big would that pile be in 30 years?
-
-$FV = 191{,}000 \times (1.04)^{30} = 191{,}000 \times 3.243 = \$619{,}500$ million, or about $619 billion.
-
-This is the kind of computation that makes Apple's capital-allocation decisions visible. Holding cash earns the risk-free rate; investing it productively (in capex, R&D, or returning to shareholders) might earn substantially more. Whether Apple's $191B is well-deployed or not depends entirely on the alternative uses available to the firm. Chapter 17 examines this question quantitatively.
-
-↳ **Dig Deeper — The social discount rate for environmental decisions**
-
-*When economists value future benefits of climate action vs. present costs, the discount rate matters enormously. A 1% rate values our great-grandchildren's welfare highly. A 5% rate barely values it at all. The Stern Review (2006) and the Nordhaus DICE model use very different rates — and arrive at very different policy implications. The discount-rate choice is technical, ethical, and consequential.*
-
-**Prompt:**
-> Explain why the social discount rate matters so much for cost-benefit analysis of long-horizon environmental decisions. Compare the rates used by Nordhaus's DICE model (around 4-5%) and Stern Review (1.4%). What's the philosophical argument for a lower social discount rate? What's the argument against? Then summarize what current US government cost-benefit analysis (under OMB Circular A-4) actually uses.
-
-**What to do with the output:** Save it. The general TVM machinery applies; the choice of rate is where contested values enter.
-
-### The trade-off (concept 2)
-
-Each direction trades **what's known against what's unknown**. The same formula serves all four, and the choice of which one to use depends on what data the analyst has. In equity research, FV calculations are common in forecasting (what will revenue be in 5 years?). PV calculations are common in valuation (what is a future cash flow worth today?). Rate calculations are common in investment evaluation (what return did this investment earn?). Time calculations are common in financial planning (how long until I can retire?).
-
-### Common misconceptions
-
-- *"PV and FV are different concepts."* They are the same concept viewed from opposite directions. Compounding is forward-in-time; discounting is backward-in-time; both use $(1+r)^n$.
-- *"You need a financial calculator."* You don't. Excel handles all of this with `=PV()`, `=FV()`, `=RATE()`, `=NPER()` functions. A calculator app on a phone does the math. The conceptual understanding is what's hard.
+In Excel: `=NPER(rate, pmt, pv, fv)`.
 
 ---
 
-## Concept 3 — Refinements: compounding frequency, real rates, and the Rule of 72
+## A worked example: Apple's cash pile
 
-The master formula assumes annual compounding. Real financial instruments often compound more frequently — quarterly, monthly, daily — and inflation eats away at returns over time. Three refinements.
+Apple holds roughly $191 billion in cash and short-term investments. Suppose — purely as a thought experiment — that money sat in a bank account earning 4% (current short-term rates) for 30 years and was never deployed for buybacks, dividends, or acquisitions. What would it be worth?
 
-### Refinement 1 — Compounding frequency
+$$FV = 191{,}000 \times (1.04)^{30} = 191{,}000 \times 3.243 \approx \$619 \text{ billion}$$
 
-If interest is paid more than once per year, the effective return is higher than the stated annual rate suggests. The general formula:
+That calculation makes Apple's capital-allocation decisions legible. Holding cash earns the risk-free rate. Investing it productively — in R&D, capex, or returning to shareholders — might earn substantially more. Whether Apple's $191 billion is well-deployed depends entirely on the alternatives available to the firm. Chapter 17 examines that question quantitatively.
+
+---
+
+## Three refinements
+
+The master formula assumes annual compounding. Reality is messier in three ways worth addressing.
+
+### Compounding frequency
+
+Most financial instruments compound more than once per year. The adjusted formula:
 
 $$FV = PV \times \left(1 + \frac{r}{m}\right)^{m \cdot n}$$
 
-where $r$ is the stated annual rate, $m$ is the number of compounding periods per year, and $n$ is the number of years.
+where $m$ is the number of compounding periods per year and $r$ is the stated annual rate.
 
-Compare $1,000 at 6% for one year:
+Compare $1,000 at 6% for one year at different frequencies:
 
-- **Annual** ($m=1$): $1{,}000 \times (1.06)^1 = \$1{,}060.00$
-- **Quarterly** ($m=4$): $1{,}000 \times (1.015)^4 = \$1{,}061.36$
-- **Monthly** ($m=12$): $1{,}000 \times (1.005)^{12} = \$1{,}061.68$
-- **Daily** ($m=365$): $1{,}000 \times (1 + 0.06/365)^{365} = \$1{,}061.83$
-- **Continuous** ($m \to \infty$): $1{,}000 \times e^{0.06} = \$1{,}061.84$
+<!-- → [TABLE: Compounding frequency comparison — rows: Annual, Quarterly, Monthly, Daily, Continuous — columns: formula applied, FV after 1 year, FV after 30 years — student should see that the 1-year difference is trivial but the 30-year difference is substantial] -->
 
-The differences are small for one year at 6%. They grow with the time horizon and the rate.
+At one year: annual gives $1,060.00; monthly gives $1,061.68; continuous gives $1,061.84. The difference is under $2. Barely matters.
 
-Over 100 years at 3%:
-- Annual: $\$19.22$ per dollar.
-- Monthly: $\$397.44$ per dollar.
-
-The monthly compounding produces a final value over 20× the annual. For long horizons, compounding frequency matters substantially.
+At 30 years: annual gives $5,743; monthly gives $6,023. A $280 gap per original $1,000. Matters more as the horizon grows.
 
 The **continuous compounding** formula uses the natural exponential:
 
 $$FV = PV \times e^{r \cdot n}$$
 
-This is the limiting case as compounding frequency goes to infinity. It comes up routinely in derivatives pricing (Chapter 20) and in some bond mathematics (Chapter 10).
+This is the limiting case as $m \to \infty$. It comes up in derivatives pricing (Chapter 20) and some bond mathematics (Chapter 10). For most corporate-finance work, annual or semi-annual compounding is close enough.
 
-### Refinement 2 — Nominal vs. real rates (the Fisher equation)
+### Nominal vs. real rates
 
-The interest rate quoted on most financial instruments is the **nominal rate** — the rate you actually receive in dollars. Inflation eats away at the real purchasing power of those dollars. The **real rate** is the nominal rate adjusted for inflation.
+The interest rate quoted on most instruments is the **nominal rate** — the rate you actually receive in dollars. Inflation eats away at the real purchasing power of those dollars. The **real rate** is the nominal rate adjusted for inflation.
 
 Approximate relationship:
 
@@ -262,84 +204,89 @@ $$\text{Real rate} \approx \text{Nominal rate} - \text{Inflation rate}$$
 
 Exact relationship (the **Fisher equation**):
 
-$$(1 + \text{Nominal rate}) = (1 + \text{Real rate}) \times (1 + \text{Inflation rate})$$
+$$(1 + r_\text{nominal}) = (1 + r_\text{real}) \times (1 + \pi)$$
 
-Solving for the nominal rate when real rate and inflation are known:
+For a 6% real rate target and 2% expected inflation:
 
-$$\text{Nominal} = (1 + \text{Real}) \times (1 + \text{Inflation}) - 1$$
+$$r_\text{nominal} = (1.06)(1.02) - 1 = 8.12\%$$
 
-For a 6% real rate and 2% expected inflation:
+The simple approximation gives 8%. The exact equation gives 8.12%. For low inflation rates the approximation is fine. For high inflation — think the 1970s, or certain emerging markets — use the exact formula.
 
-$$\text{Nominal} = 1.06 \times 1.02 - 1 = 0.0812 = 8.12\%$$
+For the equity research project: long-term equity return data is typically presented both in nominal and real terms. Real returns are what matter for purchasing power. When you see a historical return of "10% per year," check whether that's nominal or real before drawing conclusions.
 
-The approximation gives 8% (just adding 6% + 2%); the exact equation gives 8.12%. For most purposes the approximation is fine; for precise work — particularly with high inflation rates — use the Fisher equation.
-
-For the project: when reading historical financial data, always check whether returns are quoted in nominal or real terms. Long-term equity return data (Chapter 12) is typically presented both ways. Real returns are what matter for purchasing power.
-
-### Refinement 3 — The Rule of 72
+### The Rule of 72
 
 A useful mental shortcut. The number of years for a quantity to double at a given growth rate is approximately:
 
 $$n_\text{double} \approx \frac{72}{r}$$
 
-where $r$ is the rate as a percentage (so 6% for a 6% growth rate).
+where $r$ is the rate as a percentage.
 
-| Rate | Doubling time |
-|---|---|
-| 2% | 36 years |
-| 4% | 18 years |
-| 6% | 12 years |
-| 8% | 9 years |
-| 12% | 6 years |
-| 24% | 3 years |
+At 6%, money doubles in approximately 12 years. At 8%, about 9 years. At 24% — typical credit-card APR — outstanding balances double in about 3 years if you make only minimum payments.
 
-The rule comes from the fact that $\ln(2) / \ln(1+r) \approx 72/r$ for small r. It's accurate to within a fraction of a year for rates between 2% and 12%, and good enough for back-of-the-envelope thinking elsewhere.
+The rule derives from the fact that $\ln(2) / \ln(1+r) \approx 72/r$ for small $r$. It's accurate to within a fraction of a year for rates between 2% and 12%, and useful for back-of-the-envelope thinking everywhere else.
 
-Applications:
+The rule applies to any growing quantity — not just investment returns. US GDP growing at 2% real doubles every 36 years. Inflation at 3% doubles prices every 24 years. A population growing at 2% per year doubles every 36 years. Once you know the rule, you start seeing compounding everywhere.
 
-- **GDP growth.** The US economy grew at about 2% real per year for most of the 20th century. By the rule of 72, GDP doubles every 36 years — and indeed it did, roughly four times during the century.
-- **Inflation.** At 3% inflation, prices double every 24 years. At 7% inflation, prices double every 10.3 years. The pre-1980 period had inflation that doubled prices repeatedly within a generation.
-- **Credit card APR.** At 24%, balances double every 3 years if you make minimum payments. This is why credit-card debt is genuinely dangerous.
-- **Population.** At 2% growth, a population doubles every 36 years. This is why demographic projections matter.
+<!-- → [TABLE: Rule of 72 reference table — rows for rates 1%, 2%, 3%, 4%, 6%, 8%, 10%, 12%, 18%, 24%, 36%, 72% — columns: rate, approximate doubling time (72/r), exact doubling time (ln2/ln(1+r)), real-world example at that rate (GDP, inflation, credit card, etc.) — student should internalize the table as a mental shortcut they use for the rest of the course] -->
 
-The rule works for any growing or shrinking quantity — population, GDP, inflation, debt — not just investment returns. It is the most useful one-line shortcut in finance.
+↳ **Dig Deeper — The social discount rate for environmental decisions**
 
-### The trade-off (concept 3)
+*When economists value future benefits of climate action against present costs, the discount rate determines almost everything. A 1% rate weights our great-grandchildren's welfare nearly as heavily as our own. A 5% rate barely weights it at all. The Stern Review (2006) and Nordhaus's DICE model use very different rates — and arrive at very different policy conclusions.*
 
-Refinements trade **precision against simplicity**. The basic $FV = PV(1+r)^n$ is intuitive and gets you 90% of the way there. Compounding frequency, Fisher adjustment, and continuous compounding handle the remaining 10% — important for precise work but unnecessary for first-pass thinking. The Rule of 72 trades exactness for usability and is invaluable for quick estimation.
+**Prompt:**
+> Explain why the social discount rate matters so much for cost-benefit analysis of long-horizon environmental decisions. Compare the rates used by Nordhaus's DICE model (around 4–5%) and the Stern Review (1.4%). What's the philosophical argument for a lower social discount rate? What's the argument against? Then summarize what current US government cost-benefit analysis (under OMB Circular A-4) actually uses.
 
-### Worked example — comparing two real-world investment options
-
-A simple investment decision the project will engage with. Two ways to put $10,000 to work for 20 years:
-
-**Option A**: A 20-year Treasury bond yielding 4.5% nominal, semi-annual coupons (effectively semi-annual compounding when reinvested).
-$$FV_A = 10{,}000 \times \left(1 + \frac{0.045}{2}\right)^{40} = 10{,}000 \times (1.0225)^{40} = \$24{,}376$$
-
-**Option B**: An equity index fund with expected return of 7% nominal, dividends reinvested (effectively annual compounding for our purposes).
-$$FV_B = 10{,}000 \times (1.07)^{20} = \$38{,}697$$
-
-The expected difference is about $14,000 over 20 years. But Option B's actual outcome could range from about $22,000 (if returns underperform expectations) to $65,000 or more (if they outperform). Option A's outcome is essentially fixed at $24,376 (assuming the Treasury doesn't default).
-
-The trade-off is the risk-return relationship from Chapter 1, made arithmetically concrete. Higher expected return; higher variability. The right choice depends on what the money is for and the investor's tolerance for variance.
-
-### Common misconceptions
-
-- *"More frequent compounding is always meaningfully better."* It's better, but the difference between monthly and annual compounding is usually under 1% per year. Don't agonize over compounding frequency unless rates or time horizons are extreme.
-- *"Real rates are usually positive."* Not always. In some recent periods (2010s, briefly in 2020), real Treasury rates were negative because inflation exceeded nominal yields. Holders of cash and Treasuries lost purchasing power.
+**What to do with the output:** Save it. The TVM machinery applies directly; the choice of rate is where contested values enter.
 
 ---
 
-## Synthesis — TVM as the language of finance
+## Putting it together: two investment options
 
-Three concepts, one formula, four directions of use. The master formula:
+A simple decision that the equity research project will engage with directly. Two ways to invest $10,000 for 20 years:
 
-$$FV = PV \times (1+r)^n$$
+**Option A**: A 20-year Treasury bond yielding 4.5% nominal, with semi-annual coupons reinvested:
 
-This is the spine of the time value of money. Compound forward to project a present sum into the future. Discount backward to express a future sum in today's dollars. Solve for r to find the implied return. Solve for n to find the required horizon. Adjust for compounding frequency when needed. Adjust for inflation using the Fisher equation when nominal vs. real distinction matters. Use the Rule of 72 for quick estimation.
+$$FV_A = 10{,}000 \times \left(1 + \frac{0.045}{2}\right)^{40} = 10{,}000 \times (1.0225)^{40} = \$24{,}376$$
 
-This chapter handled single payments. Most real cash flows come in streams — annuities, mortgages, bond coupons, dividend streams. Chapter 8 extends the same logic to streams of equal payments. Chapter 9 extends to streams of unequal payments. Chapter 10 uses the result to price bonds. Chapter 11 uses it to price stocks via discounted cash flow.
+**Option B**: An equity index fund with expected return of 7% nominal, dividends reinvested:
 
-For the project, the deliverable from this chapter is a working facility with the four directions of TVM. By the end of Chapter 9, you'll be able to discount any cash flow stream to a present value — the foundation of equity valuation.
+$$FV_B = 10{,}000 \times (1.07)^{20} = \$38{,}697$$
+
+The expected difference is about $14,000. But Option B's actual outcome could range from roughly $22,000 (if returns disappoint) to $65,000 or more (if they outperform). Option A's outcome is essentially fixed at $24,376, assuming the Treasury doesn't default.
+
+<!-- → [CHART: Fan chart showing Option B's distribution of possible 20-year outcomes as a cone of uncertainty, with Option A's $24,376 shown as a fixed horizontal endpoint — student should see both the expected advantage of equities and the width of the uncertainty band around it] -->
+
+This is the risk-return trade-off from Chapter 1, made arithmetically concrete. The TVM formula doesn't make the choice for you. It makes the stakes of the choice visible.
+
+---
+
+## What the formula can't do
+
+The master formula $FV = PV(1+r)^n$ assumes a constant rate over the entire horizon, no taxes, no inflation adjustments, no defaults, no withdrawals. Real-world investing has all of these. The formula is the right starting point because it isolates the single most important effect — compounding — and shows it clearly. The refinements come later: Chapter 8 for streams of equal payments, Chapter 13 for return variability, Chapter 17 for the risk-adjusted rate the firm itself uses.
+
+The genuinely hard question the formula sets up but cannot answer is: *what discount rate do I use?* The arithmetic of $PV = FV/(1+r)^n$ is precise; the choice of $r$ is judgment-laden. Should I discount a startup's future cash flows at the same rate as the US government's? Obviously not. But how much higher, and on what basis? That question drives Chapters 11, 14, and 17. The TVM machinery is exact. What we feed into the machinery is approximate. Honest analysts say so.
+
+---
+
+## What would change my mind
+
+The chapter argues that the single-payment TVM formula is the foundational quantitative tool of finance, and that mastering its four directions builds the arithmetic spine for everything that follows. The reading would have to revise if a non-discount-based approach to valuation became dominant practice — some heterodox economists argue against discounting for long-horizon environmental decisions, and the debate is real. But those debates haven't displaced the TVM framework inside finance. The deeper challenge is persistent negative real interest rates: if the assumption that money earns a positive real return over time breaks down sustainably, the whole intuition of "present is worth more than future" inverts. We've had brief episodes. We haven't had a sustained breakdown.
+
+## Still puzzling
+
+The hardest thing this chapter sets up but doesn't resolve is the discount rate choice. The formula is clean. The rate is contested. For a startup, should I use 12%? 20%? 40%? The answer changes the present value by an order of magnitude over a 30-year horizon. The field has frameworks — CAPM in Chapter 14, WACC in Chapter 17 — that give you a principled method. But every framework requires inputs that are themselves estimated, and the estimates carry their own uncertainty. Valuations are sensitive to the discount rate in a way that should make anyone presenting a single-number DCF uncomfortable. Chapter 11 will return to this explicitly.
+
+---
+
+## Connections forward
+
+- **Chapter 8** extends to streams of equal payments — annuities and perpetuities.
+- **Chapter 9** handles arbitrary cash flow streams.
+- **Chapter 10** prices bonds using TVM.
+- **Chapter 11** values stocks via discounted cash flow.
+- **Chapter 16** evaluates corporate capital projects using NPV and IRR.
+- **Chapter 17** computes WACC — the discount rate the firm itself uses.
 
 ---
 
@@ -347,84 +294,46 @@ For the project, the deliverable from this chapter is a working facility with th
 
 ### Warm-up
 
-**7.1** State the master TVM formula. Define each of the four variables.
+**7.1** State the master TVM formula. Define each of the four variables in one sentence each. Then explain in plain English what the factor $(1+r)^n$ is actually doing to the present value.
 
-**7.2** State the three reasons money has time value. Which is most important from a finance perspective?
+**7.2** State the three reasons money has time value and rank them by importance for corporate finance. In one sentence, explain why the dominant reason is "purely mechanical."
 
-**7.3** Use the Rule of 72 to estimate doubling times at 3%, 6%, 9%, and 12%.
+**7.3** Use the Rule of 72 to estimate doubling times at 2%, 4%, 6%, 8%, and 12%. Then verify one of them with the exact formula $n = \ln(2)/\ln(1+r)$. How close is the approximation?
 
 ### Application
 
-**7.4** Compute:
+**7.4** Compute the following. Show the formula setup and the arithmetic for each.
 
-(a) FV of $5,000 invested at 7% for 25 years.
-(b) PV of $100,000 needed in 15 years at a 6% discount rate.
-(c) The interest rate that turns $10,000 into $25,000 over 12 years.
-(d) The number of years for $50,000 to grow to $200,000 at 8%.
+(a) FV of $8,000 invested at 6% for 20 years.
+(b) PV of $150,000 to be received in 12 years at a 7% discount rate.
+(c) The annual interest rate that turns $12,000 into $30,000 over 9 years.
+(d) The number of years for $40,000 to grow to $160,000 at 6%.
 
-**7.5** Using the Fisher equation, compute the nominal rate required to deliver a 4% real return when inflation is expected to be 3.5%. Compare to the simple approximation.
+**7.5** Using the Fisher equation, compute the nominal rate required to deliver a 3.5% real return when expected inflation is 4%. Compare to the simple approximation of adding the two rates. By how many basis points does the approximation understate the exact answer?
 
-**7.6** A $1,000 deposit at 5% nominal annual rate, compounded:
-(a) Annually
-(b) Quarterly
-(c) Monthly
-(d) Daily
+**7.6** You invest $2,000 at a 6% stated annual rate. Compute the future value after 1 year and after 40 years under:
 
-Compute the future value after 1 year and after 30 years for each compounding frequency. By what percentage do the 30-year values differ between annual and daily compounding?
+(a) Annual compounding.
+(b) Monthly compounding.
+(c) Continuous compounding ($FV = PV \times e^{rn}$).
+
+By what percentage does 40-year continuous compounding exceed 40-year annual compounding? Why is the gap so much larger at 40 years than at 1 year?
 
 ### Synthesis
 
-**7.7** Two friends each save for retirement. Friend A starts at age 22, contributes $5,000 per year for 9 years (ages 22–30), and then stops contributing but lets the balance compound. Friend B starts at age 30, contributes $5,000 per year for 35 years (ages 30–65). Both earn 8% per year. At age 65:
+**7.7** Return to the Friend A / Friend B illustration. Verify both ending balances numerically at 8% compounded annually. (Hint: treat each year's $5,000 contribution as a separate single payment that compounds for its own number of years, then sum them.) What is the exact difference in their age-65 balances? What does the difference represent in terms of the cost of waiting?
 
-(a) How much has each friend contributed in total?
-(b) What is each friend's balance?
-(c) Explain the difference in plain English. What does this tell you about the value of starting early vs. contributing more?
+**7.8** A future $1 million cash flow is to be received in 25 years.
 
-**7.8** Use TVM to evaluate one of your chosen company's recent decisions. Pick a major capital expenditure announced in the last 12 months — a factory, an acquisition, a major tech investment. Estimate the present value of the cash outflow at the time of the announcement (it may already be in present dollars if paid up front, or may need to be discounted if paid over time). Compare to the firm's market cap. Is this a material commitment? What discount rate would you use, and why?
+(a) Compute its present value at discount rates of 3%, 6%, 9%, and 12%.
+(b) Which rate cuts the present value roughly in half compared to the 3% base case?
+(c) An analyst presents a single-number DCF valuation to a client and uses an 8% discount rate. A colleague argues it should be 10%. Using your results from (a), estimate what percentage of the stated value the disagreement would destroy. What does this tell you about the stakes of discount rate debates?
 
 ### Challenge
 
-**7.9** Inflation runs at 3% per year for 50 years. Use the Rule of 72 and the exact compound formula to compute (a) how much purchasing power is lost over the period, and (b) what nominal return an investor needs to earn just to break even on purchasing power. Compare to historical data on long-run inflation and equity returns from Chapter 12 (you can preview the data on FRED).
+**7.9** Tuition at a selective US university was approximately $5,000 per year in 1975 and approximately $60,000 per year in 2025. Use the implied-rate formula to compute the compound annual growth rate of tuition over this period. Then compute what tuition would be in 2045 if that rate continues. Compare your 2045 figure to median US household income growth over the same 1975–2025 period (look it up or use an estimate of roughly 2% real). What does the comparison suggest about the long-run trajectory of college affordability?
 
-**7.10** A company offers two compensation packages:
-- Package A: $80,000 per year for 4 years.
-- Package B: $50,000 per year for the first 4 years and a guaranteed $200,000 bonus at the end of year 4.
-
-Assume your discount rate is 6%. Which is the better deal? Now consider how your answer changes if the discount rate is 12%. What does the sensitivity tell you about the role of the discount rate in financial decisions?
-
----
-
-## Chapter summary
-
-- Money has time value because (1) money invested today earns a return; (2) future payments carry default risk; (3) people prefer present consumption.
-- The master formula: $FV = PV \times (1+r)^n$. Four variables; given any three, you can solve for the fourth.
-- **Compounding** (forward in time) and **discounting** (backward in time) are the same operation in opposite directions.
-- More frequent compounding produces higher future values; the effect is small over short horizons and substantial over long ones.
-- The **Fisher equation** $(1 + r_\text{nominal}) = (1 + r_\text{real}) \times (1 + \text{inflation})$ links nominal and real rates exactly. The simple subtraction is a useful approximation.
-- The **Rule of 72** estimates doubling time as $72/r$ for any growth rate.
-
----
-
-## What would change my mind
-
-The chapter argues that the single-payment TVM formula is the foundation of all financial valuation, and that mastering its four directions is the foundational quantitative skill of the field. The reading would have to revise if (a) a non-discount-based approach to valuation became the dominant practice — some heterodox economists argue against discounting, particularly for long-horizon environmental and intergenerational decisions, but these debates haven't displaced the TVM framework in finance, or (b) the assumption that money has time value broke down in some persistent way — negative real interest rates over a sustained period would do this, and we've had brief episodes (2010s, briefly 2020), but not persistent ones.
-
-## Still puzzling
-
-The genuinely hard question this chapter sets up but doesn't resolve is *what discount rate to use*. The formula $PV = FV/(1+r)^n$ is mechanical; the choice of $r$ is judgment-laden. Should I discount future cash flows of a startup at the same rate as future cash flows of the US government? Obviously not — the risk is different. But how much different, and how do I quantify it? That question is the engine of Chapters 11 (DCF), 14 (CAPM and beta), and 17 (WACC). The TVM machinery is precise; what we put into the machinery is approximate. Honest analysts say so explicitly when they present valuations.
-
----
-
-## Connections forward
-
-- **Chapter 8** extends to streams of equal payments (annuities, perpetuities).
-- **Chapter 9** handles arbitrary cash flow streams.
-- **Chapter 10** uses TVM to price bonds.
-- **Chapter 11** uses TVM (via DCF) to value stocks.
-- **Chapter 16** uses TVM to evaluate corporate capital projects (NPV, IRR).
-- **Chapter 17** computes WACC — the discount rate the firm itself uses.
-
----
+**7.10** The two-offer puzzle at the opening of this chapter has a breakeven rate of approximately 4.88%. Solve for this exactly using the formula, then explain: if your personal opportunity cost — the return you could actually earn on the money — is unknown, how would you use the breakeven rate as a decision tool? Give a concrete example of a situation where knowing the breakeven rate is more useful than knowing the discount rate itself.
 
 ---
 
@@ -479,13 +388,9 @@ Chapter 8 extends to streams of equal payments — annuities and perpetuities. T
 
 ---
 
-**Tags:** time-value-of-money, future-value, present-value, compounding, discounting, Fisher-equation, Rule-of-72
+## AI Wayback Machine
 
-
----
-
-##  AI Wayback Machine
-**Leonardo Fibonacci** was introduced the Hindu-Arabic numeral system to Europe in 1202 — and his Liber Abaci taught medieval merchants to compute compound interest.
+**Leonardo Fibonacci** introduced the Hindu-Arabic numeral system to Europe in 1202 — and his *Liber Abaci* taught medieval merchants to compute compound interest.
 
 **Run this:**
 
@@ -497,7 +402,11 @@ Who is Leonardo Fibonacci, and how does their work connect to time value of mone
 
 **Now make the prompt better.** Try one of these:
 
-- Ask it to apply Leonardo Fibonacci's framework to a specific finance question.
-- Add a constraint: "Answer including criticisms or limits of Leonardo Fibonacci's framework."
+- Ask it to apply Fibonacci's historical context to a specific finance question.
+- Add a constraint: "Answer including criticisms or limits of Fibonacci's framework."
 
 What changes? What gets better? What gets worse?
+
+---
+
+**Tags:** time-value-of-money, future-value, present-value, compounding, discounting, Fisher-equation, Rule-of-72
