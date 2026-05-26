@@ -1,319 +1,170 @@
 # Chapter 15 — How to Think about Investing
-
-
-## TL;DR
-
-- You will practice Articulate an investment policy statement (IPS) — risk tolerance, time horizon, return objectives, allocation rules; Compute holding-period and annualized returns; distinguish dividend yield from capital gain; Apply diversification principles to design a multi-stock portfolio.
-- The chapter moves through The puzzle of $50,000, Learning objectives, Concept 1 — The investor's framework, What you're solving for, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. The Investor's Framework
-2. Risk, Return, and What to Do With $50,000
-3. Asset Allocation, Diversification, and the Indexing Question
-
-**TL;DR.** Personal investing is the application of everything in this book to the question of what to do with money you actually have. The framework rests on three pillars: matching portfolio risk to time horizon (asset allocation), diversifying within asset classes to eliminate firm-specific noise, and accepting that systematic risk is what gets rewarded. The empirical record on active management is humbling — most professional managers underperform low-cost index funds after fees, and the indexing case for individual investors is strong.
+*Why the same $50,000 has completely different right answers depending on one question.*
 
 ---
-
-## The puzzle of $50,000
 
 You have $50,000. What should you do with it?
 
-The answer, like everything in this book, depends on the question hidden inside the question. *When* do you need the money? *How* much loss can you tolerate without changing your behavior? *What* is the alternative use of the cash?
+The question sounds like it has one answer. It has many, and they differ radically depending on one thing you haven't been asked yet: *when do you need it back?*
 
-If you need the money in two years for a house down payment, the answer is mostly cash and short-term bonds. The 2008-2009 stock market crash would have cost a homebuyer with all-equity savings about half their down payment — a catastrophic outcome that eight years of strong returns afterward could not undo for someone who had to buy a house in 2009.
+If you need the money in two years for a house down payment, the answer is mostly cash and short-term bonds. The 2008–2009 stock market crash would have cost a buyer with all-equity savings roughly half their down payment — a catastrophic outcome that a decade of strong subsequent returns could not undo for someone who had to buy a house in 2009.
 
-If you don't need the money for thirty years, the answer is mostly equities. The same 2008-2009 crash would have been a temporary drawdown on the way to substantial wealth accumulation by 2025.
+If you don't need the money for thirty years, the answer is mostly equities. The same crash would have been a temporary drawdown on the way to substantial wealth accumulation by 2025.
 
 Same $50,000. Same investor. Radically different right answers.
 
-This chapter is about the framework that produces the right answer. It synthesizes the tools from Chapters 1–14 into the practical decision space of personal investing. For students who will end up making personal portfolio decisions for themselves and possibly for clients, the framework here is the day-one foundation.
-
-For the equity research project, this chapter provides the personal-investor lens on the company you've been analyzing. Even if your DCF says the stock is undervalued, the question for an individual investor is *should it be in the portfolio*, not just *is it underpriced*. Position sizing, portfolio fit, and tax considerations matter alongside the valuation work.
+This chapter is about the framework that produces the right answer. It takes everything built in Chapters 1 through 14 — TVM, statistics, CAPM, market history — and applies it to the concrete question of what to do with money you actually have.
 
 ---
 
-## Learning objectives
+## The investor's framework
 
-After working through this chapter, you should be able to:
-
-- Articulate an investment policy statement (IPS) — risk tolerance, time horizon, return objectives, allocation rules.
-- Compute holding-period and annualized returns; distinguish dividend yield from capital gain.
-- Apply diversification principles to design a multi-stock portfolio.
-- Use Sharpe ratio, Treynor ratio, and Jensen's alpha to evaluate performance.
-- Explain the empirical evidence for and against active management.
-- Construct a defensible asset allocation for a hypothetical investor.
-
-**Prerequisites.** Chapters 11-14 (stocks, market history, statistics, CAPM).
-
----
-
-## Concept 1 — The investor's framework
-
-Before computing returns or building portfolios, install the framework that orders the decisions.
-
-### What you're solving for
-
-An investor is trying to do four things, which compete with each other:
-
-1. **Achieve specific goals** — retirement, a house, education, charitable giving — at specific future times.
-2. **Match risk to tolerance** — including the risk of changing behavior at the wrong moment (selling during a panic).
-3. **Maximize after-tax, after-fee returns** — the only returns that actually compound to wealth.
-4. **Stay disciplined** — the hardest of the four, and the one where most investors lose to themselves.
-
-The first three are technical. The fourth is psychological and is where most of the empirical underperformance of individual investors comes from. We'll touch on all four.
+Before computing a single number, install the framework that orders the decisions. An investor is trying to do four things, which compete with each other: achieve specific goals at specific future times, match portfolio risk to actual tolerance, maximize after-tax and after-fee returns, and stay disciplined under stress. The first three are technical. The fourth is psychological and is where most empirical underperformance of individual investors comes from.
 
 ### Time horizon and asset allocation
 
-The single most important determinant of an appropriate investment strategy is **time horizon** — when you'll need the money. Different time horizons admit different levels of variance.
+The most important determinant of an appropriate investment strategy is **time horizon**. Different time horizons admit different levels of variance.
 
-A rough hierarchy:
+<!-- → [TABLE: time horizon vs. appropriate allocation — rows: <1 year, 1-3 years, 3-7 years, 7-15 years, 15-30+ years; columns: tolerable variance description, typical allocation (stocks/bonds/cash split), rationale — student should see the progression clearly] -->
 
-| Time horizon | Tolerable variance | Typical allocation |
-|---|---|---|
-| < 1 year | None | Cash, T-bills |
-| 1-3 years | Low | Short-term bonds, T-bills |
-| 3-7 years | Moderate | Mix of bonds and stocks |
-| 7-15 years | Higher | Mostly stocks, some bonds |
-| 15-30+ years | High | Mostly equities, small fixed-income |
+The logic is asymmetric. Over short horizons, market downturns can permanently impair specific goals because you have to sell at the bottom. Over long horizons, downturns are recoverable, and the equity premium has time to compound. The same 50% drawdown that destroys a two-year horizon is a temporary noise event on a thirty-year timeline.
 
-The logic: over short horizons, market downturns can permanently impair specific goals (you have to sell at the bottom because you need the money). Over long horizons, downturns are recoverable, and the equity premium has time to compound.
+The classic shorthand is *age in bonds* — at 30, hold 30% in bonds; at 60, hold 60%. The rule is too crude for serious planning (it ignores wealth level, other income, specific goals, risk personality), but it captures the right qualitative shape: bond allocation rises with age as horizon shortens. Target-date funds implement a smoother version of this automatically, which is why they dominate 401(k) defaults.
 
-The classic shorthand is **age in bonds** — at age 30, hold 30% in bonds; at age 60, hold 60%. The rule is too crude for serious planning (it ignores wealth, other income sources, specific goals) but captures the right qualitative shape: bond allocation rises with age as horizon shortens.
-
-More sophisticated approaches use **glide paths** — the asset allocation declines smoothly as the target date approaches. Target-date funds (the dominant default option in 401(k) plans) implement this automatically.
-
-### Risk tolerance vs. risk capacity
+### Risk capacity vs. risk tolerance
 
 Two different things, often conflated.
 
-**Risk capacity** is *how much loss you can absorb without changing your behavior or sacrificing goals*. A retiree drawing on savings has low risk capacity; a 25-year-old with stable income has high risk capacity.
+**Risk capacity** is how much loss you can absorb without changing behavior or sacrificing goals. A retiree drawing on savings has low capacity; a 25-year-old with stable employment income has high capacity.
 
-**Risk tolerance** is *how much loss you can stomach emotionally*. This is partly hardwired and partly experience-dependent. Investors who lived through 2008 often have lower risk tolerance even if their financial position has fully recovered.
+**Risk tolerance** is how much loss you can stomach emotionally. This is partly hardwired and partly experience-dependent. Investors who lived through 2008 often report lower tolerance even after their portfolios have fully recovered.
 
-A well-designed portfolio matches the *lower* of the two. An investor with high capacity but low tolerance who builds a 100% equity portfolio will sell during the next drawdown and crystallize losses they didn't have to take.
+A well-designed portfolio matches the *lower* of the two. An investor with high capacity but low tolerance who builds a 100% equity portfolio will sell during the next drawdown and crystallize losses they didn't have to take. The rule is not "maximize expected return subject to your capacity constraint." It is "maximize expected return subject to the constraint you will actually honor when things get bad."
 
 ### The investment policy statement
 
-A useful discipline: write down your investment plan *before* making decisions. The standard format is the **investment policy statement (IPS)**, which captures:
+The most useful tool in behavioral finance is probably also the simplest: write down your investment plan *before* making decisions. The **investment policy statement (IPS)** captures your goals (specific dollar amounts, specific dates), your risk limits (how much drawdown you'll tolerate without changing course), your target asset allocation, your rebalancing rules, and your selection approach. The IPS exists to be consulted when you feel the urge to do something different from the plan. Markets are volatile; human emotion is reactive; having a written plan gives you something to defer to that isn't "what I feel like doing right now."
 
-- **Goals**: what you're investing for, with target amounts and dates.
-- **Risk tolerance and capacity**: explicit limits on how much loss you'll accept.
-- **Asset allocation**: target weights to stocks, bonds, cash, by category.
-- **Rebalancing rules**: when and how often to bring allocations back to targets.
-- **Selection rules**: low-cost index funds vs. active management; specific accounts (401(k), IRA, taxable).
-- **Tax considerations**: tax-advantaged accounts, asset location, harvest losses.
-
-Writing an IPS before market stress means having a plan to follow when stress arrives. The IPS is the antidote to behavioral mistakes — it gives you something to refer to that's not "what I feel like doing right now."
-
-For the equity research project, your individual stock pick fits inside the IPS; it does not replace it. A 30-year-old with $50,000 might decide that Apple looks attractive, but Apple shouldn't be 100% of the portfolio regardless of how attractive it looks.
-
-↳ **Dig Deeper — Behavioral finance and the gap between rational and actual*
-
-*Modern Portfolio Theory assumes rational investors. Real investors have well-documented behavioral biases — loss aversion, recency bias, overconfidence, herding. Behavioral finance (Kahneman, Thaler, Shiller) is the field that maps when actual investing diverges from rational.*
-
-**Prompt:**
-> Summarize five core findings from behavioral finance that affect investing decisions: (1) loss aversion (Kahneman-Tversky), (2) the disposition effect (selling winners, holding losers), (3) overconfidence and trading frequency, (4) herding/momentum behavior, (5) recency bias in return-extrapolation. For each, describe one piece of empirical evidence and one practical implication for an individual investor's discipline.
-
-**What to do with the output:** Save it. The investment policy statement is partially a tool for managing your own behavioral biases — knowing them helps you write a better IPS.
-
-### The trade-off (concept 1)
-
-The investor's framework trades **simple rules against personalized optimization**. A target-date fund is one decision and gives you a passable allocation for life. A custom-designed portfolio with explicit IPS, tax planning, and rebalancing rules can outperform on the margin but requires active attention. For most investors, the target-date fund or a simple two-fund portfolio (broad equity index + broad bond index) is good enough — and good enough beats the more elaborate approach if "elaborate" leads to behavioral mistakes.
-
-### Common misconceptions
-
-- *"Aggressive investing means high risk tolerance."* It might mean the investor has high risk capacity (long horizon) — or it might mean they're not honestly assessing tolerance. Both should be considered.
-- *"Volatile years can be made up."* They can — over time. The investor who needs the money during the volatility cannot wait for the recovery.
+For the equity research project, the individual stock pick fits inside an IPS — it does not replace it. A 30-year-old with $50,000 might have a defensible Buy thesis on a specific company. That company still shouldn't be 100% of the portfolio regardless of how compelling the thesis looks.
 
 ---
 
-## Concept 2 — Diversification: how many stocks, what kinds
+## Diversification: how many stocks, what kinds
 
-Diversification is the simplest and most reliable risk-reduction technique. It works because individual stocks have **firm-specific risk** that gets averaged out across many holdings.
+Diversification is the simplest and most reliable risk-reduction tool available. It works because individual stocks carry **firm-specific risk** — risk that affects one company but not others — and that risk averages out as you add uncorrelated holdings.
 
-### The math (briefly)
-
-Recall from Chapter 13: portfolio variance with two assets is
+The underlying math is the portfolio variance formula from Chapter 13. For two assets:
 
 $$\sigma_p^2 = w_A^2 \sigma_A^2 + w_B^2 \sigma_B^2 + 2 w_A w_B \rho_{A,B} \sigma_A \sigma_B$$
 
-When the correlation $\rho < 1$, the portfolio variance is less than the weighted average of the individual variances. As more assets are added (with correlations less than 1), the portfolio variance keeps falling — though with diminishing returns.
+When the correlation $\rho < 1$, portfolio variance is less than the weighted average of the individual variances. Adding more assets with correlations less than 1 keeps reducing portfolio variance — but with steeply diminishing returns.
 
-### Empirical results
+Meir Statman's empirical result from 1987: going from 1 stock to 12 stocks dramatically reduces portfolio standard deviation; from 12 to 50 reduces it modestly; from 50 to 500 barely changes it at all. The diversification benefit is largely exhausted by roughly 15–20 holdings, provided those holdings are genuinely uncorrelated.
 
-**Meir Statman's classic result:** a 12-stock portfolio captures most of the diversification benefit. Going from 1 stock to 12 stocks dramatically reduces portfolio standard deviation; going from 12 to 50 reduces it modestly; going from 50 to 500 barely reduces it at all.[^1]
+The empirical data on real stocks makes the correlation point vivid. Delta Airlines had a standard deviation of 51.9% over 2011–2020. Combining Delta with Southwest — correlation 0.87, same industry — reduced standard deviation to 49.1%. A small benefit. Combining Delta with Exxon — correlation 0.35, different industry — reduced standard deviation to 30.4%. A large benefit from the same number of holdings, because the industries respond differently to the same economic conditions.
 
-[^1]: Statman, "How Many Stocks Make a Diversified Portfolio?" *Journal of Financial and Quantitative Analysis*, 1987.
-
-**The OpenStax data on real stocks:** Delta Airlines alone had a standard deviation of 51.9% over 2011-2020. Combining DAL with Southwest (correlation 0.87) reduced std dev to 49.1% — a small benefit because they're in the same industry. Combining DAL with Exxon (correlation 0.35) reduced std dev to 30.4% — a much larger benefit because the industries are different.
-
-The lesson: **correlation matters as much as count.** Twelve technology stocks is less diversified than four stocks across technology, finance, consumer, and industrial sectors.
+**Correlation matters as much as count.** Twelve technology stocks is less diversified than four stocks spread across technology, finance, consumer staples, and industrials. The naive approach of counting holdings misses this entirely.
 
 ### Practical guidelines
 
-A workable approach:
+A workable approach: use index funds where possible. A broad equity index gives you 500–3,500 holdings instantly at low cost. This is the cheapest and most reliable diversification available. If picking individual stocks, hold at least 10–15 with low cross-correlations across sectors. Limit any single position to roughly 5% of the portfolio. Limit any single sector to roughly 20%.
 
-1. **Use index funds where possible.** A broad equity index (S&P 500 or total stock market) gives you 500-3,500+ holdings instantly at low cost. This is the cheapest and most reliable diversification available.
-2. **If picking individual stocks**, hold at least 10-15 with low cross-correlations across sectors and industries.
-3. **Limit single-stock concentration**. A common rule: no more than 5% of the portfolio in any single position. (Some investors go higher; some go lower.)
-4. **Limit single-sector concentration**. The Cramer rule of "no more than 20% in one sector" is reasonable.
-5. **Diversify internationally** if possible. US-only portfolios have country-specific risk; adding international exposure reduces it.
+<!-- → [TABLE: sample 12-stock diversified equity portfolio — columns: sector, allocation %, representative names — showing sector balance roughly mirroring S&P 500 weights with small tilts — student should see what a real diversification structure looks like] -->
 
 ### What diversification cannot do
 
-Diversification eliminates **firm-specific risk**. It does *not* eliminate **systematic (market) risk**. When the entire market falls 30% in a recession, every diversified portfolio falls roughly 30%. Diversification doesn't help.
+Diversification eliminates firm-specific risk. It does not eliminate **systematic (market) risk**. When the entire market falls 30% in a recession, every diversified portfolio falls roughly 30%. Diversification doesn't help.
 
-In genuine crises, correlations also rise — the "correlation crisis" of 2008 saw asset classes that had been historically uncorrelated all fall together. International equities, REITs, commodities, and high-yield bonds all crashed alongside US stocks. Only Treasuries provided meaningful diversification in 2008. Diversification still helps in crises, but less than its smoothness in normal markets would suggest.
+In genuine crises, the benefit is further reduced because correlations rise. The 2008 episode showed international equities, REITs, commodities, and high-yield bonds all falling together with US stocks. Assets that had been historically uncorrelated became correlated precisely when diversification was most needed. Only Treasuries provided meaningful protection.
 
-For 2022, the failure was different: stocks and bonds *both* fell because rising rates hurt both simultaneously. The 60/40 portfolio's worst year since the 1930s. Diversification across asset classes can fail when the same shock hits multiple asset classes through different channels.
+The 2022 episode showed a different failure mode: stocks and bonds both fell simultaneously because rising interest rates hurt both through different but related channels. The "60/40 portfolio" — the dominant diversification structure for retail investors — had its worst year since the 1930s in nominal terms.
 
-The honest framing: diversification is necessary but not sufficient. It cannot replace good asset allocation, and it cannot insure against systematic shocks.
-
-### Worked example — building a diversified equity portfolio
-
-Suppose you want a 12-stock portfolio. A reasonable approach:
-
-| Sector | Allocation | Sample names |
-|---|---|---|
-| Technology | 20% | Apple, Microsoft, Alphabet |
-| Healthcare | 15% | Johnson & Johnson, UnitedHealth |
-| Consumer staples | 12% | Procter & Gamble, Coca-Cola |
-| Financials | 12% | Berkshire Hathaway, JPMorgan |
-| Industrials | 10% | Caterpillar |
-| Energy | 8% | Exxon Mobil |
-| Materials | 8% | Linde |
-| Communications | 8% | Verizon |
-| Real estate | 7% | (REIT) |
-
-The balance roughly mirrors the S&P 500's sector weights with small tilts. For an analyst doing fundamental research, this is the kind of structure that lets your individual stock picks (one or two per sector) replace the broad index without sacrificing diversification. If your work is good enough to outperform the index in a few specific picks, you keep the diversification while adding the alpha. If the picks underperform, you've added risk without reward.
-
-↳ **Dig Deeper — The 4% rule and its critics**
-
-*The "4% rule" — withdraw 4% of your initial portfolio per year (inflation-adjusted) and the portfolio should last 30 years — was popularized by William Bengen in 1994. It's been the dominant retirement-planning rule of thumb for thirty years. Recent research suggests it may be too aggressive in low-return environments and too conservative in others.*
-
-**Prompt:**
-> Explain Bengen's original 4% rule and the empirical analysis behind it. Then summarize three lines of recent critique: (1) the Trinity Study confirming and extending Bengen's findings, (2) Wade Pfau's research suggesting lower safe withdrawal rates in low-yield environments, (3) "guardrail" approaches (Klinger, Guyton-Klinger) that adjust withdrawals based on portfolio performance. What's a defensible withdrawal rate for a 65-year-old retiring today, and what assumptions does it depend on?
-
-**What to do with the output:** Save it. Personal-investing decisions ultimately come back to safe-withdrawal-rate questions; this gives you the modern landscape.
-
-### The trade-off (concept 2)
-
-Diversification trades **the chance of large outperformance against the assurance of avoiding catastrophic single-stock losses**. A concentrated portfolio (5 stocks) can substantially outperform if you pick well. It can also be wiped out by a single Enron-style failure. A diversified portfolio gives up the upside but eliminates the catastrophic downside. For long-term wealth-building, the diversified path is almost always the right one.
-
-### Common misconceptions
-
-- *"Owning 50 stocks is more diversified than 12."* If they're correlated (e.g., all tech), it's not much more diversified. If they're uncorrelated, the marginal benefit beyond ~15-20 is small.
-- *"Diversification reduces returns."* It reduces *variance*. Expected return is unchanged (you still earn the expected returns of the assets you hold). Diversification doesn't compromise expected return; it only reduces realized variance around it.
+The honest framing: diversification is necessary but not sufficient. It eliminates the kind of risk that comes from owning too few companies. It does not insure against the kind of risk that comes from being exposed to the economy at all.
 
 ---
 
-## Concept 3 — Performance evaluation and the active/passive question
+## Performance evaluation and the active-passive question
 
-Once you have a portfolio, how do you measure whether it's doing well? Three metrics from Chapter 14, each useful for different purposes.
+Once you have a portfolio, three metrics quantify whether it's performing well.
 
-### Sharpe ratio (revisited)
-
-Excess return per unit of total risk:
+**Sharpe ratio** — excess return per unit of total risk:
 
 $$\text{Sharpe} = \frac{\bar{R}_p - R_f}{\sigma_p}$$
 
-Useful for comparing portfolios in absolute terms. A higher Sharpe means more return per unit of variance. The S&P 500's long-run Sharpe has been about 0.4. Active managers who consistently produce Sharpe ratios above 0.6 over long periods are exceptional.
+This is the right metric for evaluating a portfolio in isolation, on an absolute basis. The S&P 500's long-run Sharpe has been roughly 0.4. Active managers who consistently produce Sharpe ratios above 0.6 over long periods are exceptional.
 
-### Treynor ratio
-
-Excess return per unit of *systematic* (market) risk:
+**Treynor ratio** — excess return per unit of systematic risk only:
 
 $$\text{Treynor} = \frac{\bar{R}_p - R_f}{\beta_p}$$
 
-Used for portfolios already part of a diversified larger portfolio, where idiosyncratic risk doesn't matter. For an investor whose only risk is the manager's exposure to market moves, Treynor is the more relevant metric.
+This is the right metric when the portfolio being evaluated is one piece of a larger diversified portfolio, where the only risk that matters is systematic exposure. A concentrated bet in a single stock contributes systematic risk to the broader portfolio; idiosyncratic risk diversifies away. Treynor captures just the systematic piece.
 
-### Jensen's alpha
-
-The portion of return that *exceeds* what CAPM predicts given the portfolio's beta:
+**Jensen's alpha** — the return above and beyond what CAPM predicts:
 
 $$\alpha = \bar{R}_p - [R_f + \beta_p (\bar{R}_m - R_f)]$$
 
-A positive alpha means the manager has produced returns above what their market exposure would justify. This is what active managers are paid for. The empirical record: most active managers don't sustain positive alpha after fees.
+A positive alpha means the portfolio has delivered returns above what its market exposure alone would predict. This is what active managers are paid to produce. The empirical record on whether they do so is the crux of the active-passive debate.
 
-### Worked example — comparing two managers
+### A worked comparison
 
-Mr. Wong and Ms. Petrov each ran a portfolio over 10 years.
+Two managers over 10 years, with risk-free rate 2% and market return 11%:
 
-| Manager | Return | Std Dev | Beta |
-|---|---|---|---|
-| Wong | 14% | 8% | 1.2 |
-| Petrov | 16% | 10% | 1.6 |
+<!-- → [TABLE: Wong vs. Petrov performance comparison — rows: return, std dev, beta, Sharpe, Treynor, CAPM expected, Jensen's alpha — student should see that higher absolute return does not mean better risk-adjusted performance] -->
 
-Risk-free rate: 2%. Market return: 11%. Market premium: 9%.
+Manager Wong: 14% return, standard deviation 8%, beta 1.2. Sharpe: $(14-2)/8 = 1.50$. Treynor: $(14-2)/1.2 = 10.0$. CAPM expected return: $2 + 1.2 \times 9 = 12.8\%$. Alpha: $+1.2\%$.
 
-For Wong:
-- Sharpe: $(14-2)/8 = 1.50$
-- Treynor: $(14-2)/1.2 = 10$
-- CAPM expected: $2 + 1.2 \times 9 = 12.8\%$. Alpha: $14 - 12.8 = +1.2\%$.
+Manager Petrov: 16% return, standard deviation 10%, beta 1.6. Sharpe: $(16-2)/10 = 1.40$. Treynor: $(16-2)/1.6 = 8.75$. CAPM expected return: $2 + 1.6 \times 9 = 16.4\%$. Alpha: $-0.4\%$.
 
-For Petrov:
-- Sharpe: $(16-2)/10 = 1.40$
-- Treynor: $(16-2)/1.6 = 8.75$
-- CAPM expected: $2 + 1.6 \times 9 = 16.4\%$. Alpha: $16 - 16.4 = -0.4\%$.
+Petrov had higher absolute returns. Wong had better risk-adjusted performance on every metric — higher Sharpe, higher Treynor, positive alpha versus negative alpha. Petrov earned less than CAPM would predict given the risk taken. Wong earned more. The higher return is not the better performance.
 
-Petrov has higher absolute returns. Wong has better risk-adjusted performance on every metric. Wong's portfolio is doing more with less.
+### The active vs. passive question
 
-### The active vs. passive debate
+The empirical case for passive indexing:
 
-Should you actively pick stocks (or hire someone to do it) or just buy the index?
+The SPIVA reports (S&P Indices vs. Active) show that 80–90% of active US large-cap mutual fund managers underperform their benchmark over 15–20 year periods after fees. This is not a close call or a borderline finding — it is one of the most replicated results in empirical finance. The few managers who outperform in any given period show limited persistence; past outperformance is a poor predictor of future outperformance. And the costs compound brutally: a 1% annual expense ratio over 40 years consumes roughly 25% of the wealth you would otherwise have accumulated in a low-cost index fund.
 
-The empirical case for **passive (indexing)**:
+The case for active management:
 
-1. **Most active managers underperform.** The SPIVA (S&P Indices vs. Active) reports show that 80-90% of active US large-cap mutual fund managers underperform their benchmark over 15-20 year periods, after fees.[^2]
-2. **The few who outperform are hard to identify in advance.** Past outperformance is a poor predictor of future outperformance.
-3. **Costs compound.** A 1% annual expense ratio over 40 years turns $10,000 of equity savings into about $108,000 less than the same investment in a 0.05% index fund — over 25% of the index investor's wealth lost to fees.
+Some markets are less efficient — small-cap, emerging market, and certain fixed-income segments show higher fractions of active managers who outperform. The best managers do exist; decades of consistent alpha from a small number of investors (Buffett is the canonical case, the Medallion Fund another) proves the concept. And passive investing involves a kind of deliberate complacency: you accept whatever the market prices, regardless of whether those prices are correct.
 
-[^2]: SPIVA U.S. Year-End reports, S&P Dow Jones Indices. `[verify]` for current data.
-
-The case for **active (stock picking or hiring active managers)**:
-
-1. **Some markets are less efficient.** Small-cap, emerging market, and fixed-income markets have higher proportions of active managers who outperform.
-2. **The best managers do exist.** Buffett, Renaissance Medallion, a few others have generated decades of consistent alpha. The challenge is identifying them in advance.
-3. **Indexing is a form of complacency.** Passive investing means you accept whatever the market does. Active investing means you have a view.
-
-For most retail investors with 30+ year horizons, the empirical case strongly favors indexing. The cost savings are large, the behavioral discipline is easier, and the historical evidence consistently shows underperformance of active managers after fees.
-
-For institutional investors, sophisticated investors with edges in specific niches, or investors who genuinely believe they have skill they can exploit, active strategies can be appropriate. The honest test: do you have a *defensible* reason to think you can beat the market after costs? If not, the passive default is probably right.
-
-### Where the equity research project fits
-
-The equity research project is a fundamental analysis exercise. It produces a defensible view on a single stock. That's valuable analytical training even if you ultimately put your savings in an index fund.
-
-The project does not (by itself) imply that your subsequent investing should be active. It implies that you understand what active managers are trying to do, why most of them fail, and what the few successful ones are doing differently. Both the passive case and the active case become more informed.
-
-For the project deliverable, the personal-investing implications of your work are part of the final report's executive summary. Position sizing, fit within a diversified portfolio, and the question of whether the analytical edge justifies the risk are all relevant.
-
-### The trade-off (concept 3)
-
-Active vs. passive trades **the cost of analysis (and behavioral discipline) against the potential for outperformance**. Passive is cheap and reliable. Active is expensive and unreliable. The rare combination of skill, discipline, and market opportunity that produces sustainable alpha is genuinely rare. Honest investors take the indexing default unless they have a specific reason to deviate.
-
-### Common misconceptions
-
-- *"Index funds are guaranteed to match the market."* They closely track the market, less their (low) expense ratios. Pure indexing produces market returns minus tiny tracking costs.
-- *"I'll just buy the active funds that have outperformed lately."* This is "performance chasing." The empirical record is that recent outperformance is a poor predictor of future outperformance.
+For most retail investors with horizons of 30 years or more, the empirical case strongly favors indexing. The cost savings are large, the behavioral discipline is simpler, and the underperformance of active managers is too consistent to dismiss. For an investor with genuine analytical skill and the discipline to apply it without behavioral error — rare but real — active strategies can be appropriate. The honest test is not "do I believe I'm above average?" (most people do) but "do I have a specific, defensible reason to think I can beat the market after costs?"
 
 ---
 
-## Synthesis — the investor's playbook
+## The synthesis
 
-Three concepts, one playbook:
+Three concepts, one playbook.
 
-1. **Match portfolio risk to time horizon and tolerance.** Long horizons can absorb equity variance; short horizons cannot. Write an investment policy statement. Stick to it.
-2. **Diversify within asset classes.** Index funds are the cheapest reliable diversification. If picking individual stocks, hold at least 10-15 across uncorrelated sectors.
-3. **Default to passive unless you have a defensible reason for active.** The empirical record favors indexing for most investors, most of the time.
+Match portfolio risk to time horizon and tolerance. Long horizons can absorb equity variance; short horizons cannot. Write an IPS. Stick to it under stress — the whole point of writing it is to be able to stick to it under stress.
 
-The work in Chapters 1-14 made these statements concrete. TVM gives you the arithmetic for projecting goals into future dollar amounts. Statistics gives you risk measurement. CAPM gives you the cost-of-equity benchmark. Market history gives you the empirical context for setting expectations. This chapter integrates them into a usable investing framework.
+Diversify within asset classes. Index funds are the cheapest and most reliable diversification. If picking individual stocks, hold at least 10–15 across uncorrelated sectors. Correlation of holdings matters as much as count.
 
-For the project, the personal-investing perspective is the lens through which your equity research recommendation should be weighed. A "Buy" rating doesn't mean "put all your savings in this stock." It means "this stock is undervalued; the right amount to add to a diversified portfolio depends on your other holdings, your time horizon, and the strength of your conviction."
+Default to passive unless you have a defensible reason for active. The empirical record favors indexing for most investors in most markets. The cost savings are real and compound. Active outperformance after fees is rare and hard to identify in advance.
 
-Chapter 16 takes the analytical machinery in a different direction — applying it to *corporate* investment decisions. The DCF math is the same; the question (should the firm undertake this project?) is different.
+The work in Chapters 1–14 made each of these statements concrete. TVM gives you the arithmetic for converting goals into future dollar targets. Statistics gives you the tools to measure risk. CAPM gives you the benchmark for evaluating whether you're earning what your risk justifies. Market history gives you the empirical base rates for setting realistic expectations. This chapter assembles them into a usable framework.
+
+For the equity research project, this is the lens through which the final recommendation should be interpreted. A "Buy" rating does not mean "put all your savings in this stock." It means "this stock appears undervalued relative to intrinsic value; the appropriate amount to allocate in a diversified portfolio depends on your other holdings, your time horizon, and the strength and fragility of your analytical case."
+
+Chapter 16 applies the same analytical machinery to a different question: not *should I own this stock* but *should the firm itself undertake this project*. The DCF math is identical; the decision-maker is the corporation rather than the individual.
+
+---
+
+## What would change my mind
+
+The chapter argues that passive indexing is the right default for most individual investors. I would revise if (a) the cost of active management fell far enough to offset the performance gap — costs have been falling, but not fast enough to close the gap yet — or (b) active management consistently outperformed in clearly identifiable market segments over long periods. The small-cap and emerging-markets evidence is the most credible push against the full passive case, but the effect is modest and unstable across periods. For US large-cap equities specifically, the case for indexing is overwhelming.
+
+## Still puzzling
+
+The genuinely hard question this chapter frames but doesn't resolve: how should an investor behave when they've done substantial fundamental work on a specific stock and believe it's genuinely mispriced? The textbook answer is "size the position appropriately within a diversified portfolio." The harder reality is that even being right can be unprofitable for years if the market is slow to agree, and being wrong looks identical to being early for a long time. Active investing ultimately requires a temperament — the ability to hold a position under stress while the market disagrees with you — that most investors genuinely do not have, and no amount of analytical skill compensates for its absence.
+
+---
+
+## Connections forward
+
+- **Chapter 16** applies the same NPV machinery to corporate capital budgeting — the firm deciding which projects to fund.
+- **Chapter 17** computes WACC — the firm's discount rate for those decisions.
+- **Chapter 18** forecasts cash flows for firm-level valuation.
+- **Chapter 20** revisits portfolio risk in the context of firm-level risk management.
 
 ---
 
@@ -321,78 +172,31 @@ Chapter 16 takes the analytical machinery in a different direction — applying 
 
 ### Warm-up
 
-**15.1** A stock you bought for $100 paid $3 in dividends and is now worth $120. Compute the dividend yield, capital gain yield, and total holding-period return.
+**15.1** A stock you bought for $100 paid $3 in dividends during the year and is now worth $120. Compute: (a) dividend yield; (b) capital gain yield; (c) total holding-period return. *(Tests: return decomposition mechanics. Difficulty: low.)*
 
-**15.2** Define risk capacity and risk tolerance. How are they different? Why does it matter to distinguish them?
+**15.2** Define risk capacity and risk tolerance. Give one example of an investor who has high capacity but low tolerance, and explain what the right portfolio design implication is. *(Tests: the capacity/tolerance distinction and its practical consequence. Difficulty: low.)*
 
-**15.3** State the rough relationship between time horizon and appropriate equity allocation. What happens if you ignore the relationship?
+**15.3** Two portfolios both returned 12% last year. Portfolio A had a standard deviation of 18% and a beta of 1.4. Portfolio B had a standard deviation of 10% and a beta of 0.8. Risk-free rate: 3%. Market return: 10%. Compute Sharpe, Treynor, and Jensen's alpha for each. Which performed better on a risk-adjusted basis? *(Tests: Sharpe/Treynor/alpha computation. Difficulty: low-medium.)*
 
 ### Application
 
-**15.4** Compute Sharpe, Treynor, and Jensen's alpha for a portfolio with 12% return, std dev 16%, and beta 1.1. Risk-free rate: 4.5%. Market return: 10%.
+**15.4** A 29-year-old earns $75,000 per year, has $15,000 in savings, no debt, and wants to retire at 65 with $2 million in today's dollars. Write a one-paragraph investment policy statement specifying: (a) target asset allocation; (b) rebalancing frequency and trigger; (c) account types (401(k), IRA, taxable); (d) selection approach (index vs. active). Justify each choice. *(Tests: IPS construction applied to a realistic investor. Difficulty: medium.)*
 
-**15.5** A 40-year-old earning $80,000/year with $20,000 in cash savings, no debt, and the goal of retiring at 65: write a one-paragraph IPS for them. Specify allocation, rebalancing frequency, and account types (401k, IRA, taxable).
+**15.5** You are building a 12-stock diversified equity portfolio. The following pairs of stocks are available. For each pair, explain which combination produces more diversification benefit and why: (a) Two airlines vs. one airline and one pharmaceutical; (b) Two large-cap US technology stocks vs. one large-cap US technology stock and one international consumer-staples stock; (c) A gold miner and a retailer vs. two retailers. *(Tests: correlation-based diversification reasoning without requiring calculation. Difficulty: medium.)*
 
-**15.6** Build a 10-stock diversified portfolio template (you don't need to pick specific stocks; just sectors and approximate weights). Then justify why your weights are reasonable for a 35-year-old saving for retirement.
+**15.6** An investor holds a $200,000 portfolio. Her IPS limits any single position to 5% and any single sector to 20%. She wants to add the stock you've analyzed for the equity research project. (a) What is the maximum dollar position she can take? (b) If the stock has a beta of 1.4 and her current portfolio has a beta of 0.9, what happens to the portfolio's beta if she adds the maximum position? (c) Is that an acceptable outcome given a moderate risk-tolerance IPS? *(Tests: position sizing + beta impact calculation. Difficulty: medium.)*
 
 ### Synthesis
 
-**15.7** A friend says: "I've been picking individual stocks for 20 years. My portfolio is up about 100%. Index funds returned 280% over the same period." Construct a diagnosis of what went wrong and a recommendation for how to fix it going forward.
+**15.7** The chapter states that 80–90% of active US large-cap mutual fund managers underperform their benchmark after fees over 15–20 years. A friend says: "That means 10–20% do outperform — I'll just find those." Construct the full case against this strategy, addressing: (a) persistence of outperformance; (b) identification problem (how do you find them in advance?); (c) fee drag on the search itself; (d) why the surviving outperformers may not persist. *(Tests: active vs. passive reasoning and survivorship bias. Difficulty: high.)*
 
-**15.8** For the company you've analyzed in the project, evaluate it from a personal-investor perspective:
-(a) What position size would be reasonable in a $1M diversified portfolio?
-(b) Does the stock's beta increase or decrease the portfolio's overall systematic risk?
-(c) Are there tax considerations (dividend yield, expected capital gains) that affect the answer?
+**15.8** Using the forward-looking assumptions from Chapter 12 (current 10-year Treasury yield as the risk-free rate, ERP of 5%), compute the expected return on a portfolio with beta 1.2. Compare this to the Sharpe ratio of the same portfolio if it actually earns 13% with standard deviation 14%. Is the portfolio adding value above what its beta exposure justifies? *(Tests: integration of CAPM with Sharpe and alpha. Difficulty: high.)*
 
 ### Challenge
 
-**15.9** Compute the long-run wealth difference between two investors:
-- Investor A: $5,000/year in an actively managed fund with 9% gross return and 1% expense ratio (8% net) for 40 years.
-- Investor B: $5,000/year in an index fund with 8.5% gross return and 0.05% expense ratio (8.45% net) for 40 years.
+**15.9** Compute the long-run wealth difference between two investors, each investing $5,000 per year for 40 years: Investor A uses an actively managed fund with 9% gross return and a 1% expense ratio (8% net). Investor B uses an index fund with 8.5% gross return and a 0.05% expense ratio (8.45% net). (a) Compute terminal wealth for each using the annuity future-value formula from Chapter 8. (b) What is the dollar difference? (c) Express the fee drag as a percentage of Investor B's terminal wealth. What does the result say about the minimum alpha an active manager must generate to justify a 1% expense ratio? *(Tests: TVM + fee compounding + active management break-even. Difficulty: high.)*
 
-What's the difference in terminal wealth? What does it tell you about the importance of fees?
-
-**15.10** Pick a real active mutual fund (any fund family, any category). Find:
-(a) Its 10-year return.
-(b) Its 10-year benchmark return.
-(c) Its expense ratio.
-(d) The portfolio's beta relative to its benchmark.
-(e) The fund's Jensen's alpha (calculate from the data).
-
-Argue whether the fund has earned its fees.
-
----
-
-## Chapter summary
-
-- **Time horizon** is the most important driver of asset allocation. Longer horizons admit higher equity allocation.
-- **Risk capacity** (financial ability) and **risk tolerance** (emotional capacity) are different. Match the lower of the two.
-- **Diversification** is necessary but not sufficient. ~12-15 stocks across uncorrelated sectors captures most benefit.
-- Diversification eliminates **firm-specific risk**, not **systematic risk**. In crises, correlations rise.
-- **Sharpe, Treynor, Jensen's alpha** are the standard performance metrics. Sharpe for total-portfolio absolute risk-adjusted return; Treynor for systematic-risk-only; Alpha for the active manager's value-add over CAPM.
-- The **empirical record favors passive (indexing)** for most investors. After-fee active outperformance is rare and unpredictable in advance.
-- A written **investment policy statement** is the single most useful behavioral discipline.
-
----
-
-## What would change my mind
-
-The chapter argues that passive indexing is the right default for most individual investors. The reading would have to revise if (a) costs of active management fell dramatically (they have been falling, but not enough to overcome the underperformance gap), or (b) active management consistently outperformed in some identifiable category (small-cap and emerging markets show some evidence here, but the effect is modest and unstable). For US large-cap stocks specifically, the case for indexing is overwhelming.
-
-## Still puzzling
-
-The genuinely hard question this chapter sets up is *how to advise an individual investor who has done substantial fundamental work on a stock they believe is mispriced*. The textbook answer is "size the position appropriately within a diversified portfolio." The harder question is how to balance the analytical edge (which may be real) against the psychological cost of underperforming a simpler index strategy by years if you're wrong (or even if you're right but the market takes a long time to agree). I haven't found a clean rule. The honest framework is: do the work, size the position modestly relative to your conviction, accept that you may be wrong for years before being right or wrong forever. Active investing requires a temperament most investors don't have.
-
----
-
-## Connections forward
-
-- **Chapter 16** applies the same analytical machinery to *corporate* investment decisions (capital budgeting).
-- **Chapter 17** computes WACC — the firm's discount rate.
-- **Chapter 18** forecasts cash flows for valuation.
-- **Chapter 20** revisits portfolio risk in the context of risk management.
-
----
+**15.10** Find a real active mutual fund. Collect: its 10-year annualized return, its benchmark's 10-year annualized return, its expense ratio, and its beta relative to the benchmark. Compute Jensen's alpha net of fees. Then answer: has this fund generated enough alpha to justify its cost? If you had to advise the fund's current investors, what would you tell them? *(Tests: applying performance metrics to a real fund and forming a defensible judgment. Difficulty: high.)*
 
 ---
 
@@ -424,7 +228,7 @@ Don't sugar-coat. The point is to produce a defensible call, not a sales pitch.
 
 ### What this produces
 
-A 1-2 page investor-perspective section that becomes the report's executive summary and recommendation. The bear-thesis self-test is particularly valuable — most beginning analysts under-weight the case against their own conclusions.
+A 1–2 page investor-perspective section that becomes the report's executive summary and recommendation. The bear-thesis self-test is particularly valuable — most beginning analysts under-weight the case against their own conclusions.
 
 ### How to adapt this prompt
 
@@ -434,7 +238,7 @@ A 1-2 page investor-perspective section that becomes the report's executive summ
 
 ### Connection to previous chapters
 
-Synthesizes Chapters 1-14. Becomes the lens for the remaining chapters (capital allocation analysis in Ch 16-17, forecast scenarios in Ch 18, working capital in Ch 19, risk register in Ch 20).
+Synthesizes Chapters 1–14. Becomes the lens for the remaining chapters (capital allocation analysis in Ch 16–17, forecast scenarios in Ch 18, working capital in Ch 19, risk register in Ch 20).
 
 ### Preview of next chapter
 
@@ -444,11 +248,11 @@ Chapter 16 examines corporate capital budgeting from the firm's perspective. The
 
 **Tags:** asset-allocation, diversification, IPS, Sharpe-ratio, active-vs-passive, indexing, risk-tolerance, time-horizon
 
-
 ---
 
-##  AI Wayback Machine
-**Benjamin Graham** was wrote Security Analysis (1934) — the founding text of value investing.
+## AI Wayback Machine
+
+**Benjamin Graham** wrote *Security Analysis* (1934) — the founding text of value investing.
 
 **Run this:**
 
