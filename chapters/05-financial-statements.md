@@ -1,413 +1,223 @@
 # Chapter 5 — Financial Statements
 
-
-## TL;DR
-
-- You will practice Identify the four primary financial statements and what each measures; Trace how the income statement, balance sheet, and statement of equity connect through retained earnings; Distinguish operating, investing, and financing cash flows on a cash flow statement.
-- The chapter moves through The puzzle of one fact, three different stories, Learning objectives, Concept 1 — The four statements and what each one measures, The income statement — performance over a period, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. The Four Views of a Company
-2. Reading a 10-K
-3. The System That Turns a Year Into Numbers
-
-**TL;DR.** Every public company produces four primary financial statements that, taken together, describe its economic activity for a period: the income statement (what it earned), the balance sheet (what it owns and owes), the statement of stockholders' equity (how owners' claims changed), and the cash flow statement (where the cash actually went). The statements are linked — a number that appears in one shows up in another by design — and an analyst's job is to read all four together. This chapter teaches the structure, the linkages, and how to use common-size analysis to compare firms of different sizes.
+*One fact, four true stories, and why you need all of them.*
 
 ---
 
-## The puzzle of one fact, three different stories
+Here is a puzzle that took me an embarrassingly long time to make sense of.
 
-A company buys a $100 million factory in March of fiscal year 2024.
+A company buys a $100 million factory in March.
 
-On the **income statement** for fiscal 2024, the factory purchase appears almost nowhere. There's a fraction of a year of depreciation expense — perhaps $6 million if the factory has a useful life of about ten years — but the bulk of the $100 million does not appear. The income statement shows what the firm *earned*, not what it bought.
+At the end of the year, you look at the income statement. The factory is almost invisible. There's a depreciation charge — maybe $6 million, if the factory is expected to last about ten years — but the other $94 million appears nowhere. The income statement doesn't seem to care that the company just spent $100 million.
 
-On the **balance sheet** at year-end fiscal 2024, the factory appears as a $94 million line item under property, plant, and equipment ($100 million original cost, less the $6 million of accumulated depreciation). The balance sheet shows what the firm *owns* on a particular date.
+You look at the balance sheet. The factory is there: $94 million under property, plant, and equipment ($100 million purchase price minus the $6 million depreciated so far). It looks like an asset, not a cost.
 
-On the **cash flow statement** for fiscal 2024, the factory appears as a $100 million outflow under investing activities. The cash flow statement shows what the firm actually *paid for and received*.
+You look at the cash flow statement. There it is: a $100 million outflow under investing activities. The full amount, gone.
 
-Same fact, three different stories, all true. The income statement tells you about earnings. The balance sheet tells you about position. The cash flow statement tells you about cash. None of them is the complete picture; only the three together, with the statement of stockholders' equity, give you what an analyst needs.
+Same factory. Same company. Same year. Three different documents, three completely different stories about the same fact — and all three are true. The income statement is telling you about *earnings*. The balance sheet is telling you about *what the firm owns*. The cash flow statement is telling you about *cash*.
 
-For the equity research project, this chapter installs the most fundamental analytical skill — *reading the four statements together*. Every chapter from here forward assumes you can do this. The 10-K's pages 30–50 contain the financial statements; what's on them is what we work with.
-
----
-
-## Learning objectives
-
-After working through this chapter, you should be able to:
-
-- Identify the four primary financial statements and what each measures.
-- Trace how the income statement, balance sheet, and statement of equity connect through retained earnings.
-- Distinguish operating, investing, and financing cash flows on a cash flow statement.
-- Compute and interpret EBITDA, operating cash flow, and free cash flow.
-- Construct a common-size income statement and balance sheet.
-- Compare two firms of different sizes using common-size analysis.
-- Locate each of the four statements in a real 10-K (Apple is our demo).
-
-**Prerequisites.** Chapter 4 (accrual accounting). Chapter 2 (10-K filings).
+None of these is the complete picture. That's not a flaw in accounting — it's the design. Financial statements are not trying to tell you one simple number that summarizes a company. They are four different instruments, each measuring something different, each telling you something the others can't. An analyst's job is to read all four together and understand how they connect. That's what this chapter teaches.
 
 ---
 
-## Concept 1 — The four statements and what each one measures
+## The income statement — performance over a period
 
-A public company's annual report — Form 10-K, filed with the SEC — contains four primary financial statements. They are not independent reports. They are four views of the same underlying economic activity, linked by accounting identities.
+The income statement answers one question: how did the firm perform financially over this period? It is a movie, not a photograph. It shows flow, not position.
 
-### The income statement — performance over a period
-
-The income statement (sometimes called *statement of operations* or *profit and loss statement*) measures the firm's financial performance for a defined period — typically a quarter or a fiscal year. It is built top-down from revenue to net income.
-
-The standard structure:
+The structure runs top to bottom:
 
 ```
-   Net sales (or net revenue)
+   Net sales
  − Cost of goods sold (COGS)
-                                  Gross profit
+ ─────────────────────────────  Gross profit
  − Selling, general & administrative expenses (SG&A)
  − Research and development
  − Depreciation and amortization
-                                  Operating income (or EBIT — earnings before interest and taxes)
- + Other income / − Other expenses
-                                  Income before tax
+ ─────────────────────────────  Operating income (EBIT)
+ ± Other income / expenses
+ ─────────────────────────────  Income before tax
  − Tax expense
-                                  Net income
+ ─────────────────────────────  Net income
 ```
 
-The terms have specific meanings.
+**Net sales** is what the firm actually expects to collect — gross revenue minus returns, discounts, and allowances. **Cost of goods sold** captures direct costs of production: materials, direct labor, manufacturing overhead for the goods that actually left inventory during the period. The gap between them is **gross profit** — the first test of whether the company can sell things for more than it costs to make them. Gross margin (gross profit as a fraction of sales) is one of the most important single numbers in equity analysis. It tells you about pricing power and competitive position before anything else contaminates the picture.
 
-**Net sales** is gross sales minus returns, allowances, and discounts. It is what the firm actually expects to collect from customers. **Cost of goods sold** captures the direct costs of producing what was sold — direct materials, direct labor, manufacturing overhead allocated to the products that left inventory during the period. The difference, **gross profit**, is the most basic measure of a firm's pricing power: how much does revenue exceed the direct cost of goods?
+Below gross profit, **operating expenses** cover everything else required to run the business — rent, salaries, marketing, R&D. What's left is **operating income**, sometimes called EBIT: earnings before interest and taxes. EBIT measures the profitability of the core business, independent of how the company is financed. A firm with lots of debt has high interest expense; a firm with little debt has almost none. EBIT cuts through that difference and lets you compare the underlying business.
 
-**Operating expenses** below gross profit cover everything else needed to run the business: rent, sales commissions, executive salaries, R&D, marketing. **Operating income** (EBIT) is what's left after operating expenses — the profitability of the firm's core business, before financing costs and taxes.
+Below EBIT, interest expense, other items, and taxes bring you to **net income** — what's actually left for shareholders after paying everyone else.
 
-The split between EBIT and net income matters. EBIT is comparable across firms with different capital structures (one firm with lots of debt has high interest expense; another with little debt has almost none). Net income is what the firm actually keeps for shareholders after paying creditors and the IRS.
+**EBITDA** — earnings before interest, taxes, depreciation, and amortization — adds the two largest noncash charges back to EBIT. The idea is that depreciation and amortization are accounting conventions that don't represent cash leaving the firm in that period. If you add them back, you get something closer to the operating cash the business generates. Many analysts and practitioners use EBITDA as a quick proxy for operating cash flow. Warren Buffett has called it a "flawed" metric; the criticism is that depreciation reflects real economic deterioration of assets. A factory that wears out needs to be replaced eventually. Pretending depreciation doesn't exist doesn't make the replacement cost disappear. Use EBITDA, but use it as a starting point, not a conclusion.
 
-**EBITDA** — earnings before interest, taxes, depreciation, and amortization — adds back two large noncash items to EBIT. Many analysts and practitioners use EBITDA as a rough proxy for operating cash flow because it removes the effects of accounting choices about depreciation. EBITDA has critics; Warren Buffett famously dismissed it as a way for executives to make weak businesses look strong. The criticism has merit. Depreciation reflects real economic deterioration of assets; pretending it isn't an expense doesn't make the deterioration go away. Use EBITDA, but use it carefully.
-
-For Apple's fiscal 2020 (the OpenStax demo year), net income was about $57.4 billion on revenue of about $274.5 billion, and EBITDA approached $109 billion.[^1] Real-scale numbers — the company throws off enormous absolute earnings.
+For Apple's fiscal 2020: net income approximately $57.4 billion on revenue of approximately $274.5 billion. EBITDA approaching $109 billion. These are the numbers from its 10-K filed on EDGAR, and they set the scale for everything downstream.[^1]
 
 [^1]: Apple Inc., Form 10-K for fiscal year 2020, available via EDGAR. `[verify]` for current vintage.
 
-### The balance sheet — position at a point in time
+<!-- → [INFOGRAPHIC: waterfall chart showing Apple's fiscal 2020 income statement from revenue down to net income, with each major subtraction labeled — student should see the relative size of COGS, operating expenses, and tax vs. the margin that survives] -->
 
-If the income statement is a movie of a period, the balance sheet is a photograph of one moment — typically the last day of the fiscal year or quarter.
+---
 
-The balance sheet has three sections, organized by the accounting equation we built in Chapter 4:
+## The balance sheet — position at a point in time
+
+The balance sheet is a photograph. It doesn't care about flow; it shows what the firm owns and owes at one specific moment — typically the last day of the fiscal year.
+
+Everything on the balance sheet is organized around one equation:
 
 $$\text{Assets} = \text{Liabilities} + \text{Equity}$$
 
-**Assets** are split by liquidity. *Current assets* — expected to convert to cash within a year — include cash and equivalents, marketable securities, accounts receivable, inventory, and prepaid expenses. *Noncurrent assets* — held for more than a year — include property, plant, and equipment (net of accumulated depreciation), intangibles like goodwill and patents, and long-term investments.
+This isn't a coincidence or a convention. It's a tautology: every asset has to be financed by someone — either a creditor (liability) or an owner (equity). The equation must hold by construction.
 
-**Liabilities** mirror this split. *Current liabilities* due within a year include accounts payable, accrued expenses, short-term debt, the current portion of long-term debt, and deferred revenue. *Noncurrent liabilities* include long-term debt, pension obligations, and deferred tax liabilities.
+**Assets** are split by time. *Current assets* are expected to convert to cash within a year: cash, marketable securities, accounts receivable, inventory, prepaid expenses. *Noncurrent assets* are longer-lived: property, plant, and equipment (recorded at historical cost, minus accumulated depreciation), intangibles like goodwill and patents, long-term investments.
 
-**Equity** for a corporation has two main pieces: contributed capital (what owners have paid in for stock) and retained earnings (cumulative profits not paid out as dividends). Subtler pieces include treasury stock (shares the firm has bought back) and accumulated other comprehensive income (gains and losses that haven't yet hit the income statement).
+**Liabilities** mirror the split. *Current liabilities* due within a year include accounts payable, accrued expenses, short-term debt, the current portion of long-term debt, and deferred revenue. *Noncurrent liabilities* include long-term debt, pension obligations, deferred tax liabilities.
 
-Apple's fiscal 2020 balance sheet showed total assets of $323.9 billion, current liabilities of $105.4 billion, noncurrent liabilities of $153.2 billion, and equity of $65.3 billion.[^1] The firm had $191 billion in marketable securities (cash plus short-term and long-term investments) — more cash on its balance sheet than the entire market capitalization of most public companies. This shapes everything about how the company is analyzed; we'll come back to it in Chapter 17.
+**Equity** is what's left after you subtract liabilities from assets. For a corporation it has two main pieces: contributed capital (what owners paid in for stock) and retained earnings (cumulative profits not yet paid out as dividends). There are subtler pieces too — treasury stock (shares the firm has bought back), accumulated other comprehensive income (gains and losses that haven't yet flowed through the income statement) — but retained earnings is the one that connects the balance sheet to the income statement, and we'll come back to it.
 
-#### Limitations of the balance sheet
+Apple's fiscal 2020 balance sheet: total assets of $323.9 billion, current liabilities of $105.4 billion, noncurrent liabilities of $153.2 billion, equity of $65.3 billion. More striking: $191 billion in marketable securities — more cash and liquid investments than the entire market capitalization of most public companies. That number shapes everything about how Apple is analyzed.
 
-A balance sheet has structural limitations the analyst has to keep in mind.
+Now, the balance sheet's limitations, which are serious and deserve stating plainly.
 
-1. **Historical cost.** Most assets are recorded at what the firm paid for them, not what they're currently worth. A factory bought for $100M that has been depreciated to $40M might actually be worth $200M (if real estate values rose) or $20M (if it's obsolete). The balance sheet doesn't tell you which.
-2. **Estimates everywhere.** Useful lives of assets, allowance for doubtful accounts, pension obligations, deferred tax assets — all involve estimates. Estimates can be reasonable or aggressive. The estimates are disclosed in the footnotes, and reading footnotes is part of the work.
-3. **Point in time.** A firm with seasonal cash flow can have a very different balance sheet on December 31 than on June 30. Most large firms manage their balance sheets to look strongest at fiscal year-end (a phenomenon called *window dressing*).
-4. **Missing intangibles.** Internally developed brands, processes, software, and human capital are *not* on the balance sheet. Coca-Cola's balance sheet does not show "the value of the Coca-Cola brand." Acquired intangibles show up (as goodwill and identified intangibles); internally generated ones don't. This is one reason many tech and consumer-brand companies trade at large multiples of book value — the book misses much of what's valuable.
+**Historical cost.** Most assets are recorded at what the firm paid for them, not what they're currently worth. A factory bought for $100 million, depreciated to $40 million on the books, might actually be worth $200 million if real estate values rose, or $20 million if it's technologically obsolete. The balance sheet doesn't tell you which. The real value of the assets is one of the central questions equity analysis tries to answer.
 
-### The statement of stockholders' equity — how owners' claims changed
+**Estimates everywhere.** Useful lives of assets, allowances for uncollectible receivables, pension obligations, deferred tax calculations — all of these are estimates. The estimates are disclosed in the footnotes. Reading footnotes is part of the work. A company that consistently lengthens the assumed useful life of its assets is reducing depreciation expense and increasing reported earnings without any change in underlying economic reality.
 
-The third statement bridges the income statement and the balance sheet. It shows how the equity section of the balance sheet changed during the period.
+**Point in time.** A retail firm's balance sheet on December 31 looks very different from the same firm's balance sheet on July 31. Inventory builds before the holiday season. Cash builds after. Most large firms manage their year-end balance sheets to look as strong as possible — a practice called *window dressing*.
+
+**Missing intangibles.** Internally developed brands, processes, software, and human capital don't appear on the balance sheet. Coca-Cola's balance sheet does not show a line for "the Coca-Cola brand." Acquired intangibles do show up (as goodwill), but internally generated ones don't. This is why many technology and consumer-brand companies trade at enormous multiples of book value: the book value is missing most of what makes the business valuable.
+
+<!-- → [IMAGE: side-by-side illustration of two balance sheets for the same retailer — one at peak inventory (October) and one post-holiday (February) — showing how dramatically current assets and current liabilities can shift within one fiscal year] -->
+
+---
+
+## The statement of stockholders' equity — how owners' claims changed
+
+The third statement is the bridge. It shows how the equity section of the balance sheet moved during the period, and in doing so it connects the income statement to the balance sheet.
 
 The structure is a simple flow:
 
 ```
 Beginning equity balance
-+ Net income (from income statement)
-+ Stock issued (cash from sale of new shares)
-− Dividends paid
-− Stock repurchased (treasury stock)
++ Net income            (from income statement)
++ Stock issued          (cash from new share sales)
+− Dividends paid        (cash returned to shareholders)
+− Stock repurchased     (treasury stock purchases)
 ± Other comprehensive income items
-                                  Ending equity balance
+────────────────────────────────────────
+  Ending equity balance
 ```
 
-For most corporations, the largest moving piece is **retained earnings**. Each period:
+The largest moving piece is usually **retained earnings**. Each period:
 
 $$\text{Ending RE} = \text{Beginning RE} + \text{Net income} - \text{Dividends}$$
 
-Net income flows from the income statement. Dividends are decided by the board. The result becomes part of the new balance sheet.
+Net income flows from the income statement into retained earnings. Dividends flow out. The ending figure lands on the balance sheet. This is the linkage that makes the four-statement system self-checking: you can verify that the income statement's net income actually made it to the balance sheet.
 
-Three points to notice. First, retained earnings is *cumulative*. Apple's retained earnings has been built up over decades and reflects all profits earned minus all dividends paid (and stock buybacks, which we'll cover separately). Second, dividends *decrease* retained earnings — they are payments out of accumulated profits, not income statement expenses. Third, stock buybacks (treasury stock purchases) also decrease equity, but through a different mechanism than dividends.
+Three things that trip people up.
 
-For the project, the statement of equity is usually short and dense. It tells you a few important things: how much stock the firm has issued or repurchased recently, how much it pays in dividends, and the cumulative scale of its retained earnings. A firm that has been buying back stock aggressively (Apple, repeatedly, over the past decade) shows large negative entries in the treasury stock line.
+Dividends are *not* an income statement expense. They reduce retained earnings directly — a payment out of accumulated profits, bypassing the income statement entirely. Stock buybacks work similarly: they reduce equity, but through a treasury stock account rather than through retained earnings.
 
-### The cash flow statement — where the cash actually went
+Retained earnings is *cumulative*. It reflects every dollar of profit earned and every dollar of dividend paid since the company was founded. A firm with thirty years of profitability and modest dividends can have retained earnings that dwarf any single year's net income.
 
-The fourth statement is the one that ties accrual accounting back to cash. It reconciles net income (which can include lots of noncash items) to actual cash that moved.
-
-The cash flow statement has three sections.
-
-**Operating activities** — cash from the firm's core business. Almost always presented using the *indirect method*: start with net income, add back noncash expenses (depreciation, amortization), and adjust for changes in working capital accounts (receivables, payables, inventory). The result is *cash from operations*.
-
-**Investing activities** — cash from buying and selling long-term assets and investments. Major capital expenditures (capex) appear as outflows here. Sales of subsidiaries, acquisitions, and changes in investment portfolios all show up.
-
-**Financing activities** — cash from interactions with capital providers. Issuing debt or equity is a cash inflow; repaying debt, paying dividends, and buying back stock are outflows.
-
-Sum the three sections. The total equals the change in the firm's cash balance for the period:
-
-$$\text{Cash from Ops} + \text{Cash from Investing} + \text{Cash from Financing} = \text{Change in cash}$$
-
-And:
-
-$$\text{Beginning cash} + \text{Change in cash} = \text{Ending cash}$$
-
-The ending cash on the cash flow statement must equal the cash on the balance sheet at year-end. If it doesn't, someone made an error.
-
-↳ **Dig Deeper — Non-GAAP measures and "adjusted" earnings**
-
-*Most large public companies report multiple "adjusted" earnings figures alongside GAAP — adjusted EBITDA, adjusted net income, adjusted EPS, "core earnings." The adjustments often add back stock-based compensation, restructuring costs, and acquisition-related expenses. Some adjustments are economically defensible; others are creative accounting in a different costume.*
-
-**Prompt:**
-> Explain the SEC's regulations on non-GAAP measures (Regulation G and Item 10(e) of Regulation S-K). Then walk through three specific examples of common non-GAAP adjustments (stock-based compensation, "one-time" restructuring, amortization of acquired intangibles). For each, evaluate: is the adjustment economically defensible, partially defensible, or essentially earnings management dressed up as transparency?
-
-**What to do with the output:** Save it. Your chosen company almost certainly reports non-GAAP measures; the discipline of asking whether each adjustment is real or cosmetic is part of equity analysis.
-
-### The trade-off (concept 1)
-
-Each statement trades **what it shows clearly against what it obscures**. The income statement shows earnings cleanly but hides timing differences with cash. The balance sheet shows position cleanly but hides how the firm got there. The cash flow statement shows cash cleanly but hides the economic substance of the firm's activities. The statement of equity shows owner-claim changes cleanly but in isolation tells you almost nothing. Each statement alone is a partial view; the *system* of four statements is the complete one.
-
-### Worked example — connecting four statements through one transaction
-
-Suppose Apple buys back $80 billion of its own stock in fiscal 2024. Trace the impact:
-
-- **Income statement:** No effect on net income. Buybacks are not an expense.
-- **Cash flow statement:** $80 billion outflow under financing activities (cash paid to repurchase stock).
-- **Statement of equity:** Treasury stock balance increases by $80 billion (stock repurchased and held by the firm). Common shares outstanding decrease.
-- **Balance sheet:** Cash decreases by $80 billion (asset side). Treasury stock increases by $80 billion (a contra-equity account, reducing total equity by $80 billion). Both sides remain in balance.
-
-For the project: when Apple buys back stock, EPS rises mechanically because shares outstanding fall, even if net income is flat. Read the share-count footnote and the buyback announcements carefully; they affect every per-share metric in the rest of the analysis.
-
-### Common misconceptions
-
-- *"Net income is what the firm earned in cash."* No — net income includes noncash items like depreciation and accruals.
-- *"Equity is what the firm is worth."* Equity is book value, an accounting construct. Market value (market cap) is what the firm trades for. The two can differ by 10x or more.
-- *"The four statements are independent."* They are linked by design. A change to one usually requires changes to others.
+For the project, this statement is usually short. The key things to read: how much stock has the firm issued or repurchased recently, how much has it paid in dividends, and what does the cumulative scale of retained earnings say about the firm's history of profitability and capital allocation?
 
 ---
 
-## Concept 2 — Connecting the statements: the integrated system
+## The cash flow statement — where the cash actually went
 
-The four statements form one self-checking system. The same numbers appear in multiple statements by design. If they don't match, there's been an error or a misclassification.
+The fourth statement exists because of a gap that accrual accounting creates. Net income is not cash. It includes noncash charges (depreciation) and timing differences (revenue recognized before the cash is collected, expenses accrued before the cash is paid). The cash flow statement exists to reconcile net income back to actual cash.
 
-### The retained earnings link
+It has three sections.
 
-The cleanest link runs through retained earnings:
+**Operating activities** shows cash from the firm's core business. Almost always presented using the *indirect method*: start with net income, add back noncash items (depreciation, amortization), then adjust for changes in working capital (if accounts receivable grew, the firm earned revenue it hasn't collected yet — a cash use; if accounts payable grew, the firm incurred expenses it hasn't paid yet — a cash source). The result is *operating cash flow*.
 
-```
-Income Statement (period)        →   Net income for the period
-                                            ↓
-Statement of Equity               →   Beginning RE + Net income − Dividends = Ending RE
-                                            ↓
-Balance Sheet (period-end)       →   Retained Earnings line equals "Ending RE"
-```
+**Investing activities** shows cash from buying and selling long-term assets. Capital expenditures — the firm buying new equipment, factories, or technology — appear here as outflows. Acquisitions appear here. Proceeds from selling subsidiaries or assets appear here.
 
-Three statements, one number. Net income flows from top to bottom. If you compute net income and roll it through to the balance sheet, the retained earnings figure on the balance sheet must match.
+**Financing activities** shows cash from interactions with capital providers. Issuing new debt or equity is an inflow. Repaying debt, paying dividends, and buying back stock are outflows.
 
-### The cash link
+Sum the three sections, and you get the change in the firm's cash balance for the period:
 
-A second link runs through cash:
+$$\text{Cash from Ops} + \text{Cash from Investing} + \text{Cash from Financing} = \Delta\text{Cash}$$
 
-```
-Cash Flow Statement (period)     →   Beginning cash + Net change in cash = Ending cash
-                                            ↓
-Balance Sheet (period-end)       →   Cash and Equivalents line equals "Ending cash"
-```
+Add that change to the beginning cash balance, and you must get the ending cash balance — the same number that appears on the balance sheet. This is the second self-check in the four-statement system.
 
-Two statements, one number. The cash flow statement is essentially a derivation of the cash balance change, broken down by source (operating, investing, financing). The endpoint must match the balance sheet.
+<!-- → [CHART: stacked bar chart for a hypothetical firm over five years showing operating, investing, and financing cash flows as separate bars — student should see what a healthy mature firm looks like (large positive ops, negative investing, negative financing) vs. a growth firm (positive ops but smaller, large negative investing, positive financing from debt/equity issuance)] -->
 
-### Expenses vs. payables — a common confusion
+**Operating cash flow and free cash flow** are the two derived metrics that show up constantly in equity research, so they deserve a crisp definition here.
 
-A subtle point worth making explicit. An *expense* is recorded on the income statement when it's incurred (the matching principle from Chapter 4). A *payable* is recorded on the balance sheet to represent an obligation to pay. The two are linked: when you incur an expense without paying cash, you simultaneously record the expense (reducing equity through retained earnings) and a payable (a liability).
+*Operating cash flow (OCF)* is the operating section of the cash flow statement. It is the most direct measure of cash generated by the firm's core business after working capital changes.
 
-Concrete example: a firm incurs $1,500 of utilities expense in October but doesn't pay until November.
-
-**October entries:**
-- Utility expense: +$1,500 (income statement, reducing net income)
-- Accounts payable: +$1,500 (balance sheet liability)
-
-**November entries:**
-- Cash: −$1,500 (balance sheet asset down)
-- Accounts payable: −$1,500 (balance sheet liability down)
-
-The expense was recorded once (in October). The cash payment was recorded once (in November). The balance sheet bridges the gap with the accounts payable line item.
-
-For the project, this is why the cash flow statement adds back changes in accounts payable to get from net income to operating cash flow. If accounts payable rose by $50M during the year, that means $50M of expenses recorded on the income statement were *not* paid in cash — the firm preserved cash by extending its payables.
-
-### Reading Apple's four statements together
-
-A useful exercise. Open Apple's most recent 10-K. Find:
-
-1. **Income statement** — usually labeled "Consolidated Statements of Operations." Note net income for the most recent fiscal year.
-2. **Balance sheet** — labeled "Consolidated Balance Sheets." Note total assets and total liabilities + equity (must be equal).
-3. **Statement of equity** — labeled "Consolidated Statements of Shareholders' Equity." Verify that beginning RE + net income − dividends ≈ ending RE (small adjustments for stock-based compensation and other items will make it not exactly equal).
-4. **Cash flow statement** — labeled "Consolidated Statements of Cash Flows." Verify that beginning cash + net change in cash = ending cash on the balance sheet.
-
-Once the four statements check out, you have the firm's financial picture for the period. Subsequent chapters give you tools to *interpret* what the picture shows.
-
-↳ **Dig Deeper — Goodwill impairment and what it actually means**
-
-*When a firm acquires another firm for more than the target's fair value, the excess gets recorded as "goodwill" — an intangible asset on the balance sheet. Goodwill doesn't depreciate; it sits there indefinitely unless impaired. When firms write down goodwill in large amounts (think Yahoo writing down Tumblr or AT&T writing down Time Warner), the write-down is admitting an acquisition didn't pan out.*
-
-**Prompt:**
-> Explain how goodwill is created in an acquisition (purchase price minus identifiable net assets at fair value). Then explain how goodwill impairment testing works under ASC 350. Walk through one famous goodwill writedown case (Yahoo/Tumblr 2016, AT&T/Time Warner 2022, or another large recent case): what the original deal was, what changed, and what the impairment said about the acquisition's outcome.
-
-**What to do with the output:** Save it. Goodwill on your chosen company's balance sheet is the residue of past acquisitions; impairment events tell you about deals that didn't work.
-
-### The trade-off (concept 2)
-
-The integrated system trades **redundancy against verification**. Every important number appears in at least two places. The redundancy is what makes accounting fraud difficult to commit cleanly — manipulating one statement requires manipulating others, and cross-checks can catch inconsistencies. The cost is bookkeeping complexity. The benefit is auditability.
-
-### Worked example — building Clear Lake Sporting Goods' integrated statements
-
-Clear Lake (the OpenStax running example) had:
-- Prior year retained earnings: $15,000
-- Current year net income: $35,000
-- Current year dividends: $30,000
-
-The statement of equity shows:
-- Beginning RE: $15,000
-- + Net income: $35,000
-- − Dividends: $30,000
-- = Ending RE: $20,000
-
-The current-year balance sheet should show retained earnings of $20,000. If it shows anything else, there's an error.
-
-Now check cash. The cash flow statement showed:
-- Beginning cash: $90,000
-- Net cash from operations: $53,600
-- Net cash used in investing: −$18,600
-- Net cash from financing: −$15,000
-- Net change in cash: $20,000
-- Ending cash: $110,000
-
-The current-year balance sheet should show cash of $110,000. If it shows anything else, there's an error.
-
-The point of the exercise is not the numbers. It's the discipline of *checking* them. As an analyst, when something looks off in a 10-K, the linkages between statements are where you start.
-
-### Common misconceptions
-
-- *"You can analyze a firm from one statement."* Some analysts try; the result is partial. Skipping the cash flow statement, in particular, hides the firm's actual cash performance.
-- *"The statements are derived in isolation."* They are derived together. Net income doesn't get computed without consequences for the balance sheet and cash flow.
-
----
-
-## Concept 3 — Common-size analysis: comparing across size
-
-Two firms in the same industry can have very different absolute numbers. Apple's revenue in a recent year was roughly $400 billion. A small competitor's revenue might be $4 billion — one one-hundredth the scale. Comparing line items in dollars produces useless answers; Apple spends 100× more on R&D than the competitor, but that's not the meaningful comparison.
-
-**Common-size analysis** (also called *vertical analysis*) restates each line of a financial statement as a percentage of a base item. For income statements, the base is usually net sales. For balance sheets, the base is usually total assets.
-
-The result: two firms of vastly different sizes can be compared on the same page.
-
-### Common-size income statement
-
-Each line as a percentage of net sales.
-
-| Line item | Apple (illustrative) | Smaller competitor |
-|---|---|---|
-| Net sales | 100% | 100% |
-| Cost of sales | 56% | 65% |
-| **Gross profit** | **44%** | **35%** |
-| R&D | 7% | 5% |
-| SG&A | 6% | 12% |
-| **Operating income** | **31%** | **18%** |
-| Net income | 26% | 13% |
-
-A few stories pop out immediately. Apple has a structurally higher gross margin (44% vs. 35%) — it sells higher-priced products with lower per-unit costs as a fraction of price. Apple's SG&A is half the competitor's as a percentage of sales — operational leverage from its scale and brand. Apple converts roughly twice as many cents per dollar of revenue into net income (26% vs. 13%) — a much more profitable business.
-
-These are real economic insights, not just accounting curiosities. They tell you something about pricing power, cost structure, and operating efficiency that the absolute dollar figures hide.
-
-### Common-size balance sheet
-
-Each line as a percentage of total assets.
-
-| Line item | Firm A | Firm B |
-|---|---|---|
-| Cash & marketable securities | 18% | 5% |
-| Accounts receivable | 6% | 12% |
-| Inventory | 9% | 22% |
-| **Total current assets** | **45%** | **42%** |
-| PP&E (net) | 25% | 38% |
-| Goodwill & intangibles | 22% | 8% |
-| **Total assets** | **100%** | **100%** |
-| Accounts payable | 12% | 18% |
-| **Total current liabilities** | **20%** | **35%** |
-| Long-term debt | 30% | 22% |
-| **Total liabilities** | **55%** | **62%** |
-| **Total equity** | **45%** | **38%** |
-
-Firm A has more cash, less inventory, more goodwill (suggesting a history of acquisitions), less debt, and more equity. Firm B has more receivables and inventory (perhaps slower-collecting customers, perhaps more inventory-intensive operations), more debt, less equity.
-
-Common-size analysis surfaces these structural differences without requiring you to scale or remember the absolute dollar numbers.
-
-### Industry comparison — the move that matters
-
-The most useful common-size analysis compares a firm to its industry peers. Two firms that look unusual in isolation can both be normal for their industry; a firm that looks normal in isolation can be unusual when compared to peers.
-
-For the equity research project: build a common-size income statement and balance sheet for your chosen company. Then build the same for two or three peer firms. Compare. Where does your firm sit relative to peers on gross margin, SG&A intensity, capex intensity, leverage? Where does it look unusually profitable or unusually leveraged? These are the questions a research report answers.
-
-### Operating cash flow and free cash flow — beyond the statements
-
-Two derived metrics deserve special attention because they appear constantly in equity research.
-
-**Operating cash flow (OCF)** is cash from operations as reported on the cash flow statement. It is the most direct measure of how much cash the firm's core business generates each year, after working capital changes. For a stable firm, OCF should track net income reasonably closely; large persistent gaps between OCF and net income — in either direction — are signals worth investigating.
-
-**Free cash flow (FCF)** subtracts capital expenditures from operating cash flow:
+*Free cash flow (FCF)* subtracts capital expenditures:
 
 $$\text{FCF} = \text{OCF} - \text{Capex}$$
 
-FCF is what's left after the firm has paid for its operations *and* maintained or grown its productive assets. This is the cash genuinely available to be returned to capital providers — debt holders (interest and principal repayment), equity holders (dividends and buybacks), or simply held on the balance sheet.
-
-Most equity valuation models in this book — including the DCF model in Chapter 11 — discount FCF, not net income. The reason is simple: FCF is real cash that can be paid out. Net income is an accounting figure that includes noncash items and may not be available to distribute.
-
-For the project: compute OCF and FCF for your chosen company over the past five years. Plot them. Are they growing, shrinking, volatile? Does FCF cover dividends and buybacks, or does the firm rely on debt issuance to fund returns to shareholders? These questions feed directly into the report's investment thesis.
-
-### The trade-off (concept 3)
-
-Common-size analysis trades **absolute precision against comparability**. You lose information about scale (Apple is 100× the competitor's size, period). You gain the ability to compare structure and ratios across firms and over time. For an analyst trying to decide whether a firm's gross margin is high or low, the *level* (44% vs. 35%) is more informative than the absolute dollar amount. The trade-off is favorable for almost every comparative question.
-
-### Worked example — Clear Lake vs. Charlie's Camping World
-
-The OpenStax source compares Clear Lake Sporting Goods (a small retailer) with Charlie's Camping World (a competitor about 7× larger). On a common-size basis:
-
-| Line | Clear Lake | Charlie's |
-|---|---|---|
-| Net sales | 100% | 100% |
-| COGS | 50% | 59% |
-| Rent | 5% | 11% |
-| Salaries | 5% | 12% |
-| Depreciation | 4% | (lower) |
-| **Operating income** | 36% | (lower) |
-
-Clear Lake has lower COGS as a percentage of sales (better pricing or better procurement), lower rent (more efficient real estate use), and lower labor (fewer staff per dollar of sales). Charlie's is bigger but, by these measures, structurally less profitable. This is exactly the kind of comparison the project produces in Chapter 6 (ratios) and refines in Chapter 11 (valuation).
-
-### Common misconceptions
-
-- *"Higher percentages are always better."* Not necessarily. Higher cash as percentage of assets might mean strong liquidity or might mean management is hoarding cash that should be returned to shareholders. Context matters.
-- *"Common-size analysis works across industries."* Less reliably. Inventory-intensive retailers, capital-intensive manufacturers, and asset-light software firms have structurally different common-size profiles. Compare within an industry; cross-industry comparisons require more care.
+FCF is what's left after the firm has paid for its operations and maintained or grown its productive assets. It is the cash genuinely available to be returned to capital providers — to pay dividends, buy back stock, repay debt, or simply hold. Most equity valuation models, including the discounted cash flow models we build in Chapter 11, discount FCF rather than net income. The reason is simple: FCF is real, distributable cash. Net income is an accounting figure that may include earnings the firm has not yet collected and may never fully collect.
 
 ---
 
-## Synthesis — the four statements as the analyst's instrument
+## How the four statements connect
 
-The four statements are the substrate. Income statement, balance sheet, statement of stockholders' equity, cash flow statement — each one a partial view, all four together a working picture of the firm. Reading them is not optional; it is the foundational technical skill of equity research.
+The four statements are not independent documents assembled by four different departments. They are one system, connected by accounting identities, and the connections are what make the whole thing auditable.
 
-This chapter taught what each statement measures, how they connect, and how to make them comparable across firms via common-size analysis. We did not yet *interpret* what the numbers mean. That is the job of Chapter 6 (ratio analysis) and the chapters on valuation that follow.
+<!-- → [DIAGRAM: flow diagram showing the four statements as nodes with labeled arrows: net income flows from Income Statement → Statement of Equity → Balance Sheet (retained earnings); ending cash flows from Cash Flow Statement → Balance Sheet (cash line) — student should see at a glance which numbers appear in more than one statement and why] -->
 
-For the running project, the deliverable from this chapter is concrete:
+The cleanest connection runs through retained earnings:
 
-1. Locate and read your chosen company's most recent 10-K, including all four statements.
-2. Verify the linkages — net income flows into retained earnings; ending cash matches the balance sheet.
-3. Build a common-size income statement and balance sheet for the past three years.
-4. Compute OCF and FCF for the past five years.
+```
+Income Statement          →   Net income for the period
+                                    ↓
+Statement of Equity       →   Beginning RE + Net income − Dividends = Ending RE
+                                    ↓
+Balance Sheet             →   Retained Earnings = Ending RE
+```
 
-When all of that is done, you have the raw material for everything that follows.
+Three statements, one number. If the retained earnings figure on the balance sheet doesn't match what you'd compute from the income statement and the prior year's balance sheet, something is wrong.
+
+The second connection runs through cash:
+
+```
+Cash Flow Statement       →   Beginning cash + Net change in cash = Ending cash
+                                    ↓
+Balance Sheet             →   Cash and equivalents = Ending cash
+```
+
+Two statements, one number. The cash flow statement is essentially a derivation of why the cash balance moved; its endpoint must match the balance sheet.
+
+One subtle point worth making explicit, because it trips up almost everyone when they first see it. An *expense* is recorded on the income statement when it is incurred. A *payable* is recorded on the balance sheet when you owe money without having paid it. When a company incurs $1,500 in utilities expense in October but doesn't pay until November, two things happen simultaneously in October: the expense reduces net income (on the income statement), and accounts payable increases by $1,500 (on the balance sheet). In November, when the cash is paid, accounts payable goes down by $1,500 and cash goes down by $1,500. The expense was recorded once (October); the cash moved once (November); the balance sheet bridged the gap.
+
+This is why the cash flow statement adjusts for changes in working capital when moving from net income to operating cash flow. If accounts payable rose by $50 million during the year, the firm recorded $50 million of expenses but didn't pay that cash. Add it back: operating cash flow is higher than net income by that amount.
+
+<!-- → [IMAGE: two-column timeline for October and November showing the journal entries for the utility-expense example — income statement effect on the left, balance sheet effect on the right, with arrows showing how accounts payable bridges the gap between expense recording and cash payment] -->
+
+The practical consequence: a company can show growing net income while operating cash flow is deteriorating, if it is collecting receivables more slowly, building inventory, or squeezing its suppliers less effectively. Growing net income with declining operating cash flow is one of the earliest signals of financial distress. It is the kind of thing you catch only if you read both statements.
+
+---
+
+## Common-size analysis: making firms comparable
+
+A final technique this chapter needs before the project can proceed.
+
+Apple's revenue in a recent year was approximately $400 billion. A smaller competitor's revenue might be $4 billion. Comparing line items in absolute dollars produces useless conclusions — of course Apple spends more on R&D. The question that matters is what fraction of each dollar of revenue each company spends on R&D.
+
+**Common-size analysis** rescales each line of a financial statement as a percentage of a base item. For the income statement, the base is net sales. For the balance sheet, the base is total assets. Every line becomes a fraction, and firms of radically different sizes become directly comparable.
+
+<!-- → [TABLE: common-size income statement comparing Apple (illustrative) vs. a smaller competitor — rows: net sales 100%, cost of sales, gross profit, R&D, SG&A, operating income, net income — columns show the percentage for each firm, with a difference column; caption directs student to notice where Apple's structural advantages appear] -->
+
+The stories that emerge from common-size analysis are real economic insights, not accounting curiosities. A firm with 44% gross margin versus a competitor's 35% is structurally more profitable at the product level — it either sells at higher prices, produces at lower cost, or both. A firm with 6% SG&A versus a competitor's 12% has a more efficient go-to-market operation. These differences compound: the firm with better gross margin and lower SG&A doesn't just look better on paper, it has more cash available to reinvest in R&D, acquisitions, or shareholder returns.
+
+Common-size analysis also reveals how a firm has changed over time. Build a three-year common-size income statement for the same company. If gross margin is compressing, the firm's pricing power or cost structure is eroding. If SG&A is rising as a percentage of sales faster than revenue is growing, something in the cost structure is getting away from management. These time-series comparisons are part of the equity research report.
+
+The limitation worth stating: common-size analysis works best within an industry. An inventory-intensive retailer, a capital-intensive manufacturer, and an asset-light software firm have structurally different balance sheet profiles — comparing them on a common-size basis requires careful interpretation. Use common-size within industries; apply more caution across them.
+
+---
+
+## The whole system, read together
+
+The income statement, balance sheet, statement of equity, and cash flow statement are four views of the same underlying economic activity. The income statement measures performance. The balance sheet measures position. The statement of equity bridges them through retained earnings. The cash flow statement anchors accrual accounting back to cash.
+
+The linkages between them are the system's self-checks. Net income must flow to retained earnings; retained earnings must land on the balance sheet. Ending cash on the cash flow statement must equal cash on the balance sheet. When these checks fail — when numbers that should match don't — something has gone wrong: an error, a misclassification, or something worse.
+
+For the equity research project, the deliverable from this chapter is concrete. Locate your chosen company's most recent 10-K. Find all four statements. Verify the linkages. Build a common-size income statement and balance sheet for the past three years. Compute operating cash flow and free cash flow for the past five years. Plot them.
+
+When all of that is done, you have the substrate for every analytical move that follows. Chapter 6 computes ratios from these numbers. Chapter 11 builds valuations from the free cash flow figures. The chapters in between apply these statements to specific questions about capital structure, working capital, and acquisition accounting. The four statements are where all of it starts.
 
 ---
 
@@ -415,82 +225,86 @@ When all of that is done, you have the raw material for everything that follows.
 
 ### Warm-up
 
-**5.1** Name the four primary financial statements and what each one measures. Which one is a snapshot in time, and which one is a measurement over a period?
+**5.1** Name the four primary financial statements. For each, state in one sentence what it measures and whether it covers a period of time or a single point in time.
+*(Tests: basic identification of each statement's purpose and temporal orientation)*
 
-**5.2** Define EBITDA. Give one reason an analyst might prefer EBITDA over net income, and one reason an analyst should be skeptical of EBITDA as a measure.
+**5.2** Explain in your own words why EBITDA is both useful and potentially misleading. What does it add back, and what does that addition assume about economic reality?
+*(Tests: understanding of EBITDA as a metric and its limits)*
 
-**5.3** Distinguish operating cash flow from free cash flow. Which is used for valuation? Which is reported directly on the cash flow statement?
+**5.3** A firm has operating cash flow of $80 million and capital expenditures of $35 million. Compute free cash flow. Then explain why an equity analyst would discount FCF rather than net income when valuing a firm.
+*(Tests: FCF computation and the logic connecting it to valuation)*
 
 ### Application
 
-**5.4** A firm has the following data for the year:
+**5.4** A firm reports the following for the year:
 
-- Beginning cash: $50 million
-- Net income: $30 million
-- Depreciation: $10 million
-- Increase in accounts receivable: $5 million
-- Decrease in inventory: $3 million
-- Increase in accounts payable: $2 million
-- Capital expenditures: $20 million
-- Dividends paid: $8 million
-- Issuance of long-term debt: $15 million
+- Net income: $40 million
+- Depreciation and amortization: $12 million
+- Increase in accounts receivable: $8 million
+- Increase in inventory: $5 million
+- Increase in accounts payable: $6 million
+- Capital expenditures: $18 million
+- Proceeds from issuing long-term debt: $25 million
+- Dividends paid: $10 million
+- Beginning cash: $30 million
 
-(a) Compute operating cash flow (indirect method).
+(a) Compute operating cash flow using the indirect method.
 (b) Compute investing cash flow.
 (c) Compute financing cash flow.
-(d) Compute the change in cash and the ending cash balance.
+(d) Compute the ending cash balance.
 (e) Compute free cash flow.
 
-**5.5** Construct a common-size income statement from the following two firms' data (in $ millions):
+*(Tests: constructing all three sections of the cash flow statement and deriving FCF)*
 
-| Line | Firm X | Firm Y |
+**5.5** The following data ($ millions) is available for two firms in the same industry:
+
+| Line | Firm A | Firm B |
 |---|---|---|
-| Net sales | 800 | 4,500 |
-| COGS | 480 | 2,250 |
-| SG&A | 100 | 720 |
-| R&D | 80 | 90 |
-| Operating income | 140 | 1,440 |
+| Net sales | 1,200 | 600 |
+| COGS | 780 | 330 |
+| SG&A | 144 | 96 |
+| R&D | 60 | 18 |
+| Operating income | 216 | 156 |
 
-Compare. Which firm has stronger gross margin? Stronger SG&A discipline? Stronger overall operating margin?
+(a) Construct a common-size income statement for both firms.
+(b) Which firm has stronger gross margin? Stronger SG&A discipline? Stronger operating margin?
+(c) Firm B is half the size of Firm A. Does size explain the margin differences, or does something structural appear to be different between them? Defend your reading.
 
-**5.6** Locate your chosen company's most recent 10-K on EDGAR. For the most recent fiscal year:
+*(Tests: common-size construction and interpretation, including the discipline of asking what the percentages reveal)*
 
-(a) Find the income statement, balance sheet, and cash flow statement.
-(b) Compute net income, total assets, and operating cash flow.
-(c) Verify that the change in cash on the cash flow statement matches the change in the cash balance on the balance sheet.
+**5.6** A company reports beginning retained earnings of $42 million, net income of $18 million for the year, and dividends paid of $7 million.
+
+(a) Compute ending retained earnings.
+(b) Where does this ending figure appear, and in which statement?
+(c) Suppose the balance sheet at year-end shows retained earnings of $50 million instead of your computed figure. Name two possible explanations for the discrepancy.
+
+*(Tests: the retained earnings linkage and the ability to diagnose a break in it)*
 
 ### Synthesis
 
-**5.7** A firm reports growing net income but declining cash from operations over the past three years. Construct three plausible explanations and explain how you would distinguish them by reading the firm's 10-K.
+**5.7** A firm's net income has grown 15% per year for three consecutive years. Over the same period, operating cash flow has grown only 3% per year. Construct three distinct explanations for this divergence — ranging from a benign business reason to a warning sign — and identify what you would look for in the 10-K to distinguish them.
+*(Tests: the relationship between net income and operating cash flow, and the analytical value of reading both)*
 
-**5.8** Apple has, for years, generated FCF substantially larger than its dividend payments and stock buybacks combined, building up a cash pile of nearly $200 billion. Argue (a) why Apple might be doing this rather than returning more cash to shareholders, and (b) what an analyst should say about it in an equity research report. Defend a position.
+**5.8** Explain why the balance sheet's equity section (book value) often differs dramatically from the firm's market capitalization. Use the four structural limitations of the balance sheet discussed in the chapter to build your argument. Give one real-world example where the gap is especially large and explain why.
+*(Tests: balance sheet limitations and the distinction between book value and market value)*
 
 ### Challenge
 
-**5.9** A firm's accounts receivable balance grows from 10% of revenue to 18% of revenue over three years, while revenue itself grows steadily. List four possible explanations, ranging from benign (rapid growth in customer base) to alarming (revenue recognition manipulation). For each, identify what footnote or other disclosure would help you distinguish.
+**5.9** Locate your chosen company's most recent 10-K on EDGAR. Build a common-size income statement and balance sheet for the most recent three fiscal years. Identify the two or three line items that have moved most as a percentage of total sales (or total assets). Then read the MD&A section of the same 10-K and determine whether management addresses those movements. Does management's explanation hold up against what the numbers show?
+*(Tests: primary-source research, common-size time-series analysis, and critical reading of management commentary)*
 
-**5.10** Build a common-size balance sheet for your chosen company for the most recent three years. Which line items have moved most as a percentage of total assets? What does the movement suggest about the firm's evolution? Cross-check with the MD&A section of the 10-K to see whether management discusses the same items.
-
----
-
-## Chapter summary
-
-- Four primary statements: income statement (period), balance sheet (point in time), statement of stockholders' equity (changes in equity), cash flow statement (changes in cash).
-- The statements are linked. Net income from the income statement flows through the statement of equity into the balance sheet's retained earnings. The cash flow statement reconciles to the balance sheet's cash line.
-- The balance sheet uses historical cost, contains estimates, is a point-in-time snapshot, and excludes most internally generated intangibles. These are structural limitations to keep in mind.
-- The cash flow statement has three sections: operating, investing, financing. Their sum is the change in cash for the period.
-- **Common-size analysis** restates statements as percentages of a base (net sales for income statement, total assets for balance sheet), enabling comparison across firms of different sizes.
-- **Operating cash flow** is from the cash flow statement; **free cash flow** subtracts capex. FCF is the standard input to valuation.
+**5.10** Most large public companies report both GAAP net income and one or more "adjusted" earnings figures in their earnings releases and investor presentations. Pick a public company of your choice and find its most recent earnings release. Identify the adjustments management makes to get from GAAP net income to adjusted net income. For each adjustment, evaluate: is it economically defensible (a genuine one-time item that distorts the trend), partially defensible, or essentially a way of flattering the earnings picture? What is the total dollar impact of all adjustments combined, and in which direction does it push reported performance?
+*(Tests: critical evaluation of non-GAAP reporting and the judgment required to distinguish legitimate adjustments from earnings management)*
 
 ---
 
 ## What would change my mind
 
-The chapter argues that the four-statement system is the right framework for analyzing public companies, and that common-size analysis is the right tool for cross-firm comparison. The reading would have to revise if (a) accounting standards moved away from the four-statement framework toward something more integrated (some IFRS proposals have moved in this direction), or (b) empirical evidence emerged that common-size ratios are systematically misleading because of industry-mix effects (this is a real concern but doesn't displace the chapter's claim — it qualifies it).
+The chapter argues that the four-statement system is the right framework for analyzing public companies, and that common-size analysis is the right tool for cross-firm comparison. The reading would have to revise if (a) accounting standards moved away from the four-statement framework toward something more integrated — some IFRS proposals have moved in this direction — or (b) empirical evidence emerged that common-size ratios are systematically misleading because of industry-mix effects. The second concern is real but doesn't displace the chapter's claim; it qualifies it.
 
 ## Still puzzling
 
-The real tension I haven't resolved cleanly is the gap between **GAAP/IFRS reported numbers** and **management-reported "adjusted" numbers**. Most large public companies report a pile of non-GAAP measures — adjusted EBITDA, free cash flow ex-something, normalized earnings — in addition to the GAAP statements. The non-GAAP numbers are sometimes more economically meaningful (they back out one-time charges that distort GAAP earnings) and sometimes less (they exclude real expenses like stock-based compensation that materially deplete shareholder value). Distinguishing the two requires judgment, and the judgment isn't always easy. The chapter gestures at this; the project will engage it more deeply in Chapter 6 and the valuation chapters.
+The tension I haven't resolved cleanly is the gap between GAAP reported numbers and management-reported "adjusted" numbers. Most large public companies report adjusted EBITDA, adjusted net income, adjusted EPS — alongside the GAAP statements. Some adjustments are economically defensible (backing out one-time charges that genuinely distort trend earnings). Others are not (excluding stock-based compensation, which is a real cost of attracting and retaining the people who run the business). Distinguishing the two requires judgment, and the judgment isn't always easy. Chapter 6 and the valuation chapters engage this more directly.
 
 ---
 
@@ -501,8 +315,6 @@ The real tension I haven't resolved cleanly is the gap between **GAAP/IFRS repor
 - **Chapter 16** uses the income statement and balance sheet to evaluate capital budgeting decisions.
 - **Chapter 17** uses balance-sheet capital structure for WACC computation.
 - **Chapter 18** uses all four statements as the substrate for pro forma forecasting.
-
----
 
 ---
 
@@ -587,11 +399,11 @@ Chapter 6 computes ratios from these statements. The Chapter 6 LLM Exercise will
 
 **Tags:** financial-statements, income-statement, balance-sheet, cash-flow, common-size-analysis, EBITDA, free-cash-flow
 
-
 ---
 
-##  AI Wayback Machine
-**Mary T. Washington** was first Black woman CPA in the US (1943) — trained hundreds of accountants and shaped early small-business financial reporting.
+## AI Wayback Machine
+
+**Mary T. Washington** was the first Black woman CPA in the US (1943) — trained hundreds of accountants and shaped early small-business financial reporting.
 
 **Run this:**
 
