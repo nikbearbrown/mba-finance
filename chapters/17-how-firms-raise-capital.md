@@ -1,395 +1,217 @@
 # Chapter 17 — How Firms Raise Capital
 
-
-## TL;DR
-
-- You will practice Compute the after-tax cost of debt for a firm using its outstanding bond yields; Compute the cost of equity using CAPM and (where applicable) the dividend growth model; Compute the firm's WACC given component costs and capital structure weights.
-- The chapter moves through The puzzle of Apple's debt, Learning objectives, Concept 1 — The three component costs, Cost of debt, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. WACC and the Mix
-2. Debt, Equity, and Why Apple Borrows
-3. The Cost of Capital
-
-**TL;DR.** A firm's cost of capital — the **WACC** — is the weighted average of the costs of its debt and equity, with debt's cost adjusted for its tax-deductibility. WACC is the discount rate the firm uses to evaluate every project. Choosing the right capital structure (the mix of debt vs. equity) is a balance: debt is cheaper but increases default risk; equity is more expensive but more flexible. The optimal mix depends on the firm's industry, cash flow stability, and growth profile.
+*Why a company swimming in cash still borrows money — and what the answer tells you about the cost of capital.*
 
 ---
 
-## The puzzle of Apple's debt
+Apple ended fiscal 2020 with about $191 billion in cash and short-term investments. It generates roughly $100 billion in free cash flow per year. By any reasonable measure, it has more money than it can spend.
 
-Apple held about $191 billion in cash and short-term investments at the end of fiscal 2020. The company generates roughly $100 billion in free cash flow per year. By any measure, it has more cash than it can possibly need.
+And yet, by the end of that same fiscal year, Apple had nearly $113 billion in long-term debt outstanding. It had been issuing bonds every year since 2013.
 
-And yet, Apple has issued tens of billions of dollars in long-term debt since 2013, with nearly $113 billion in total debt outstanding by the end of fiscal 2020.[^1] Why does a company with more cash than the GDP of several small countries borrow money?
+Why does a company with more cash than the GDP of several small countries borrow money?
 
-[^1]: Apple Form 10-K filings via EDGAR. `[verify]` for current vintage.
+The puzzle is real, and its resolution explains something fundamental about how firms think about capital. Debt is not simply a sign of need. It is a tool with a specific economic property that equity lacks: the interest payments are tax-deductible. When Apple borrows at 4% and pays interest, it deducts that interest from taxable income. At a 21% corporate tax rate, each dollar of interest saves 21 cents in taxes. The effective cost of borrowed money is not 4% — it's $4\% \times (1 - 0.21) = 3.16\%$. Meanwhile, a dollar of equity costs Apple whatever shareholders demand for holding Apple stock — historically somewhere in the 8–10% range — with no tax offset at all.
 
-Three reasons, all of which this chapter unpacks.
+That gap is why firms borrow even when they don't need to. Cheap capital, cheapened further by the tax code, is worth using.
 
-**1. Debt is tax-deductible. Equity is not.** When Apple borrows at 4% and pays interest, it deducts that interest from taxable income. The federal corporate tax rate is 21%, so each dollar of interest saves Apple 21 cents in taxes. The *effective* cost of the borrowed dollar is 4% × (1 - 0.21) = 3.16%. By contrast, a dollar of equity raised costs whatever the cost of equity is — typically 8-10% for a firm like Apple — with no tax shield.
-
-**2. Apple's cash is largely held overseas (historically) or in short-term securities yielding less than its cost of debt.** Borrowing was, until tax reform, a way to fund US obligations (dividends, buybacks) without repatriating overseas cash and triggering tax. The structural reason has changed since 2017's tax reform, but the broader logic — borrowing at low rates to fund higher-return uses — remains.
-
-**3. Capital structure has its own logic.** A firm that operates entirely on equity gives up the financial leverage that magnifies returns to shareholders. A firm that operates entirely on debt cannot survive a recession. The right answer is somewhere in the middle, and finding that middle is what capital structure theory is for.
-
-This chapter computes the firm's **cost of capital** — the rate of return it must earn on its investments to satisfy both creditors and shareholders. The number that comes out, **WACC**, is the discount rate every project from Chapter 16 should be evaluated against. It's also the discount rate that goes into the DCF model in Chapter 11. WACC is one of the most important numbers a financial analyst computes.
+This chapter builds the **WACC** — the weighted-average cost of capital — from its components. WACC is the rate the firm must earn on its investments to satisfy both creditors and shareholders. It's the discount rate for every project in Chapter 16 and the denominator in every DCF valuation from Chapter 11. Getting it right is the central technical task of equity research.
 
 ---
 
-## Learning objectives
+## The cost of debt
 
-After working through this chapter, you should be able to:
+For a firm with bonds trading in the market, the cost of debt is the **yield to maturity** — the rate the market demands to hold the firm's debt right now. This is not the coupon rate printed on the bond certificate. That's a historical number, set when the bond was issued. The YTM is a current number, driven by current credit conditions, current interest rates, and the market's current view of the firm's default risk.
 
-- Compute the after-tax cost of debt for a firm using its outstanding bond yields.
-- Compute the cost of equity using CAPM and (where applicable) the dividend growth model.
-- Compute the firm's WACC given component costs and capital structure weights.
-- Apply Modigliani-Miller propositions to capital structure decisions.
-- Explain the trade-off theory of optimal capital structure.
-- Recognize the practical issues in WACC estimation (beta source, equity premium, flotation costs).
-
-**Prerequisites.** Chapter 10 (bonds), Chapter 11 (stocks), Chapter 14 (CAPM), Chapter 12 (historical returns).
-
----
-
-## Concept 1 — The three component costs
-
-A firm raises capital from three sources: debt, common equity, and (sometimes) preferred equity. Each has its own cost. WACC is the weighted average.
-
-### Cost of debt
-
-For a firm with outstanding bonds, the **cost of debt** is the **yield to maturity** the market demands. From Chapter 10:
+From Chapter 10, the YTM is the $y$ that solves:
 
 $$\text{Bond price} = C \times \frac{1 - (1+y)^{-n}}{y} + \frac{F}{(1+y)^n}$$
 
-Solve for $y$ given the current price. That's the YTM, and it's the firm's pre-tax cost of debt.
+where $C$ is the coupon, $F$ is the face value, and $n$ is the number of periods. If the bond is trading below par, the YTM exceeds the coupon. If above par, the YTM is below the coupon. The market price tells you what the market is actually demanding.
 
-But debt has a tax advantage that equity doesn't. Interest payments are deductible from taxable income; dividend payments are not. So the *effective* cost of debt is the YTM times $(1 - T)$, where $T$ is the marginal corporate tax rate:
+After the YTM, apply the tax adjustment:
 
 $$r_d^{\text{after-tax}} = r_d \times (1 - T)$$
 
-For a firm with bonds yielding 6% and a 21% tax rate:
+For bonds yielding 6% with a 21% corporate tax rate:
 
-$$r_d^{\text{after-tax}} = 0.06 \times (1 - 0.21) = 0.0474 = 4.74\%$$
+$$r_d^{\text{after-tax}} = 6\% \times 0.79 = 4.74\%$$
 
-The 1.26 percentage points of tax savings is the **interest tax shield** — the part of the firm's interest payment that the government effectively subsidizes through reduced taxes.
+The 1.26-percentage-point reduction is the **interest tax shield** — the government's implicit subsidy of corporate borrowing, through the deductibility of interest. Equity has no comparable subsidy. This is the structural reason that debt is cheaper than equity, net of taxes, and why rational capital structure includes some debt.
 
-For your equity research project: read your chosen company's debt footnote in the 10-K. Find the weighted-average yield on its outstanding bonds (or compute it from the largest bond issues). Apply the firm's effective tax rate. That's your after-tax cost of debt.
+For the project: find your company's outstanding bonds in the 10-K debt footnote, look up current trading yields, and apply the effective tax rate. That's your after-tax cost of debt.
 
-### Cost of equity (common stock)
+---
 
-The cost of equity is the rate of return shareholders demand for holding the firm's common stock. Unlike debt, it isn't directly observable — there's no contractual rate. We have to estimate it.
+## The cost of equity
 
-**Method 1: CAPM** (Chapter 14):
+Equity's cost is harder to observe because there's no contract. Shareholders don't have a coupon — they have a claim on residual cash flows and an expectation of return that has to be inferred rather than read off a bond screen.
+
+Two methods produce defensible estimates.
+
+**Method 1: CAPM.** The method installed in Chapter 14:
 
 $$r_e = R_f + \beta_e \times (E[R_m] - R_f)$$
 
-where:
-- $R_f$ = risk-free rate (10-year Treasury yield)
-- $\beta_e$ = the firm's equity beta
-- $E[R_m] - R_f$ = equity risk premium (4-6% range)
-
-For a firm with $\beta_e = 1.3$, $R_f = 4.5\%$, ERP = 5%:
+A firm with $\beta_e = 1.3$, a current 10-year Treasury yield of 4.5%, and an equity risk premium of 5%:
 
 $$r_e = 4.5\% + 1.3 \times 5\% = 11.0\%$$
 
-CAPM is the standard method and works for all firms.
+CAPM works for all firms, dividend-paying or not.
 
-**Method 2: Dividend Growth Model** (Chapter 11):
-
-For dividend-paying firms with stable growth:
+**Method 2: Dividend Growth Model.** For firms with stable, predictable dividends:
 
 $$r_e = \frac{D_1}{P_0} + g$$
 
-where $D_1$ is next year's dividend, $P_0$ is the current share price, and $g$ is the long-run dividend growth rate.
+where $D_1$ is next year's expected dividend, $P_0$ is today's stock price, and $g$ is the long-run dividend growth rate. This is the Gordon model rearranged: instead of computing a price, we compute the implied discount rate from the observed price.
 
-For a firm with $D_1 = 1.53$, $P_0 = 12.50$, $g = 2\%$:
+For a stock at $12.50, next dividend $1.53, growth rate 2%:
 
-$$r_e = \frac{1.53}{12.50} + 0.02 = 12.24\% + 2\% = 14.24\%$$
+$$r_e = \frac{1.53}{12.50} + 0.02 = 12.24\% + 2.0\% = 14.24\%$$
 
-The dividend growth model gives a different answer than CAPM in many cases. The honest approach: compute both, average them, or use the higher of the two as a conservative estimate.
+CAPM says 11.0%. DGM says 14.24%. Both are valid methods applied correctly to the same firm. The 3.2-point gap is not an error — it's the honest uncertainty in estimating the cost of equity. The right response is to report both and use sensitivity analysis, not to pick the one that produces the valuation you want.
 
-### Cost of preferred equity
-
-If the firm has preferred stock outstanding, its cost is the dividend yield:
-
-$$r_{\text{pfd}} = \frac{D_{\text{pfd}}}{P_{\text{pfd}}}$$
-
-For a preferred stock paying $2.00 annually with a current price of $21.80:
-
-$$r_{\text{pfd}} = \frac{2.00}{21.80} = 9.17\%$$
-
-Preferred dividends are typically not tax-deductible, so the cost of preferred equity is not adjusted for taxes (unlike debt).
-
-### Cost of new equity vs. retained earnings
-
-Retained earnings are equity capital the firm has already accumulated; using them costs the cost of equity (no flotation costs).
-
-Issuing new equity has additional costs — investment banking fees, legal fees, registration. **Flotation costs** typically run 5-10% of the gross offering amount.
-
-The cost of new equity adjusts the dividend growth model:
+**Flotation costs.** If the firm issues new equity (rather than using retained earnings), investment banking fees and registration costs add roughly 5-10% to the gross proceeds. The DGM adjusts:
 
 $$r_{e,\text{new}} = \frac{D_1}{P_0 - F} + g$$
 
-where $F$ is the flotation cost per share. If flotation is $0.75 on a $27.50 stock with $D_1 = 3.05$ and $g = 1.5\%$:
+where $F$ is the flotation cost per share. For most analysis, retained-earnings cost is the right input — firms generally fund ongoing operations from internal cash flow and issue new equity only for material expansion. When they do issue, the flotation-cost adjustment matters.
 
-$$r_{e,\text{new}} = \frac{3.05}{26.75} + 0.015 = 11.40\% + 1.5\% = 12.90\%$$
-
-vs. retained earnings: $\frac{3.05}{27.50} + 0.015 = 12.59\%$.
-
-The 0.31% gap is the flotation cost. For most analyses, retained-earnings cost is the right metric (firms generally fund growth from internal cash flow and only issue new equity for material expansion).
-
-↳ **Dig Deeper — The implied cost of capital approach**
-
-*CAPM and DGM are the standard approaches to cost of equity. A third approach — implied cost of capital (ICC) — backs out the discount rate that reconciles current stock price with analyst consensus forecasts. Some practitioners argue ICC is more forward-looking than CAPM and more market-grounded than DGM. The academic evidence is mixed but interesting.*
-
-**Prompt:**
-> Explain the implied cost of capital approach: starting from current stock price and consensus analyst forecasts of future earnings or dividends, solve for the discount rate that makes the DCF equal to the current price. Then summarize empirical work (Gebhardt, Lee, and Swaminathan 2001 is a starting point) on whether ICC predicts future returns better than CAPM. What's the strongest case for using ICC, and what's the strongest case against?
-
-**What to do with the output:** Save it. ICC is intermediate-finance content; the practical version of the discount-rate selection problem this chapter wrestles with.
-
-### The trade-off (concept 1)
-
-Component costs trade **observability against accuracy**. Cost of debt is highly observable (current bond yields). Cost of equity requires estimation with multiple defensible methods that often disagree. The wider the disagreement, the more sensitivity analysis the WACC computation needs.
-
-### Common misconceptions
-
-- *"Cost of debt is the coupon rate."* No — it's the yield to maturity (current market rate), not the historical coupon.
-- *"Cost of equity is the dividend yield."* Dividend yield is part of the cost of equity (in the DGM), but only part. The growth rate matters. CAPM ignores dividends entirely.
+<!-- → [TABLE: side-by-side comparison of CAPM vs. DGM for cost of equity — columns: method, inputs required, when it works well, when it breaks down; include one numerical example showing both methods applied to the same firm and the resulting gap; caption: both methods are correct in their domain; disagreement signals genuine uncertainty, not a calculation error] -->
 
 ---
 
-## Concept 2 — WACC: putting it together
+## WACC: the weighted average
 
-WACC is the weighted average of component costs, with weights determined by market values.
+With component costs in hand, WACC is the weighted average:
 
-### The formula
+$$\text{WACC} = D\% \times r_d(1-T) + P\% \times r_{\text{pfd}} + E\% \times r_e$$
 
-$$\text{WACC} = D\% \times r_d (1-T) + P\% \times r_{\text{pfd}} + E\% \times r_e$$
+where $D\%$, $P\%$, and $E\%$ are the fractions of total capital represented by debt, preferred equity, and common equity — weighted by **market values**, not book values.
 
-where:
-- $D\%, P\%, E\%$ are the firm's debt, preferred, and common equity weights (must sum to 100%)
-- $r_d, r_{\text{pfd}}, r_e$ are the component costs
+The market-value weighting is not a formality. A firm with $1B of book debt trading at 70 cents on the dollar has $700M of market-value debt. Using book value instead would overstate the debt weight, understate the equity weight, and produce a biased WACC. Market values are what capital providers actually own; those are the weights that reflect their economic stakes.
 
-The weights are based on **market values**, not book values. A firm with $5M of book debt trading at 97% of face value has a market value of debt of $4.85M; a firm with 1M shares outstanding at $15 has equity market value of $15M; the weights are computed from those market values.
+**A complete example.** Bluebonnet Industries.
 
-### Worked example — a complete WACC
+Market values: $4.85M debt, $15.0M equity, $19.85M total. Weights: $D\% = 24.4\%$, $E\% = 75.6\%$.
 
-Bluebonnet Industries.
+Cost of debt (YTM): 6.31%. After-tax: $6.31\% \times 0.79 = 4.99\%$.
 
-**Capital structure (market values):**
-- Debt: $4.85M
-- Equity: $15.0M
-- Total: $19.85M
-- D% = $4.85/$19.85 = 24.4%
-- E% = $15.0/$19.85 = 75.6%
-
-**Component costs:**
-- Cost of debt (YTM): 6.31%
-- After-tax cost of debt: 6.31% × (1 - 0.21) = 4.99%
-- Cost of equity (CAPM, β = 1.3, $R_f$ = 3%, ERP = 8%): $r_e = 3 + 1.3 \times 8 = 13.4\%$
-
-**WACC:**
+Cost of equity (CAPM): $\beta = 1.3$, $R_f = 3\%$, ERP = 8%: $r_e = 3 + 1.3 \times 8 = 13.4\%$.
 
 $$\text{WACC} = 0.244 \times 4.99\% + 0.756 \times 13.4\% = 1.22\% + 10.13\% = 11.35\%$$
 
-If we'd used the dividend growth model for cost of equity instead (giving 14.24%):
+With DGM cost of equity (14.24%):
 
 $$\text{WACC} = 0.244 \times 4.99\% + 0.756 \times 14.24\% = 1.22\% + 10.77\% = 11.99\%$$
 
-The two methods give 11.35% vs. 11.99% — a 0.6-percentage-point spread. Honest WACC analysis reports this range.
+The two approaches give 11.35% vs. 11.99% — a 0.64-point spread. In a DCF with a 5-year explicit forecast, that difference moves the firm value by several percentage points. Reporting a single WACC number is false precision. Report the range.
 
-### Practical issues
+<!-- → [CHART: tornado chart (or waterfall) showing WACC sensitivity — starting from a base-case WACC of ~11%, showing how much it shifts when each input changes by ±1 standard deviation: beta ±0.2, ERP ±1%, cost of debt ±0.5%, D% ±5%; student should see which input dominates WACC uncertainty for a typical firm] -->
 
-WACC computation is more sensitive to its inputs than the formula's simplicity suggests. The major sources of imprecision:
+**Practical inputs.** The four biggest sources of noise in WACC:
 
-**Beta estimation.** Different data sources give different betas. Yahoo Finance might say IBM has β = 0.97; MarketWatch might say β = 1.25. The cost of equity, and hence WACC, can swing by 2-3 percentage points depending on the source. Best practice: use a 5-year monthly regression against a broad market index, and report the value alongside other source estimates.
+*Beta.* Different data sources give different betas. Yahoo Finance and Bloomberg regularly disagree by 0.2 to 0.3 for the same stock. Best practice: run your own 5-year monthly regression (Chapter 14) and compare to published sources.
 
-**Risk-free rate choice.** Use the Treasury yield matching the project horizon. For a long-term project or DCF, use the 10-year Treasury. For shorter-term work, the 5-year. Don't use the 30-day T-bill yield — it's volatile and doesn't match the long-term equity discount rate.
+*Equity risk premium.* Reasonable estimates range 4–7%. Most equity research uses 4.5–5.5%. A one-point change in ERP moves cost of equity by one beta-unit — for a high-beta stock, that's a 1.5-point cost-of-equity swing.
 
-**Equity risk premium.** Estimates range from 4% to 7%. Most equity research uses 4.5-5.5%. The choice meaningfully affects WACC.
+*Risk-free rate.* Use the Treasury yield matching the investment horizon. For a long-run DCF, use the 10-year yield, not the 90-day T-bill.
 
-**Tax rate.** Use the firm's marginal tax rate (the rate that applies to the next dollar of income), not the effective tax rate (which is averaged across all income, including any tax credits or deductions). For US firms post-2017 reform, the federal marginal rate is 21%, plus state income taxes; the combined marginal rate is typically 25-28%.
-
-For your equity research project, run sensitivity on these inputs:
-- Beta ± 0.2
-- ERP at 4%, 5%, 6%
-- Cost of equity using both CAPM and DGM if applicable
-
-The resulting WACC range is what you should report. A point estimate is overconfident.
-
-### Net debt vs. gross debt
-
-Some analysts use **net debt** (total debt minus cash and cash equivalents) instead of gross debt for capital structure weights. The argument: cash on the balance sheet effectively offsets debt, since the firm could pay down debt with cash if needed.
-
-Apple end-2020:
-- Gross debt: $112.4B
-- Cash and short-term securities: $38.0B
-- Net debt: $74.4B
-
-Using net debt changes the weights and the WACC calculation. For a cash-rich firm like Apple, the difference can be substantial. There's no universal right answer; document which you used and be consistent.
-
-↳ **Dig Deeper — Buybacks vs. dividends as capital allocation choices**
-
-*A firm with $5B of excess cash can return it to shareholders via dividend or via stock buyback. The two are economically equivalent in a frictionless world but very different in real markets — taxation, signaling, market timing, executive compensation incentives all matter.*
-
-**Prompt:**
-> Compare dividends and stock buybacks as capital-return mechanisms. Cover (1) tax differences for shareholders, (2) signaling effects of each, (3) the timing question (does management buy back stock at attractive valuations or at market peaks?), (4) the impact on EPS arithmetic vs. economic value, (5) the role of executive compensation tied to EPS metrics. Cite empirical evidence on whether buybacks have on average created value (Manuel et al., or Fortune 500 buyback timing studies).
-
-**What to do with the output:** Save it. Most large public companies do substantial buybacks; understanding whether they're value-creating or value-destroying is part of the project's capital-allocation analysis.
-
-### The trade-off (concept 2)
-
-WACC trades **a single number for a complex reality**. The firm's actual capital structure changes over time, beta isn't constant, the equity premium varies, and tax rates depend on jurisdiction and structure. Any single WACC estimate is, at best, a snapshot of one specific moment. Sensitivity analysis is the discipline that makes WACC usable.
-
-### Common misconceptions
-
-- *"WACC is the firm's required rate of return."* It's the rate that satisfies all capital providers on average. Debt holders have specific contractual returns; equity holders demand the cost of equity. WACC averages them, weighted by capital share.
-- *"Higher leverage always lowers WACC because debt is cheaper."* Not always — increased leverage raises the cost of equity (riskier residual claim) and eventually starts raising the cost of debt (default risk). The U-shaped trade-off is the subject of Concept 3.
+*Tax rate.* Use the marginal rate — the rate on the next dollar of income — not the average effective rate. For US firms post-2017, the federal marginal rate is 21%; combined federal + state is typically 25–28%.
 
 ---
 
-## Concept 3 — Choosing the right capital structure
+## Modigliani-Miller: the clean theory
 
-Why do firms borrow at all? Why do they cap their borrowing at some level? The answers come from a famous theoretical result and its practical caveats.
+Before confronting real-world capital structure, understand what the clean theory says.
 
-### Modigliani-Miller (in perfect markets)
+Franco Modigliani and Merton Miller proved in 1958 that, in a world with no taxes, no transaction costs, perfect information, and no bankruptcy costs, **capital structure is irrelevant to firm value**. Their argument is elegant: a firm's value depends on the cash flows from its assets, not on how those cash flows are divided between debt and equity holders. The total pie doesn't change with the slicing.
 
-Franco Modigliani and Merton Miller (1958, 1963) proved that, in perfect markets — no taxes, no transaction costs, perfect information, no bankruptcy costs — **capital structure is irrelevant to firm value**. The theoretical argument:
+**MM Proposition I:** Levered firm value = unlevered firm value.
 
-A firm's value depends on the cash flows from its assets, not how those cash flows are sliced into claims. Whether the firm is funded with 100% equity or 50% debt / 50% equity, the total cash flow generated is the same. Splitting it between debt and equity holders just changes who gets which slice; the total pie is unchanged.
+**MM Proposition II:** The cost of equity rises with leverage, in exact proportion: $r_E = r_U + \frac{D}{E}(r_U - r_D)$. As you add cheaper debt, the equity becomes riskier (residual claim on a more leveraged firm) and demands a higher return. The two effects cancel. WACC stays constant.
 
-**MM Proposition I:** $V_L = V_U$ (value of levered firm = value of unlevered firm).
+A numerical illustration. T-shirt business, $40K invested, $52K expected cash flow, WACC = 14%.
 
-**MM Proposition II:** $r_E = r_U + \frac{D}{E}(r_U - r_D)$. As leverage rises, the cost of equity rises proportionally to compensate for higher residual risk. WACC stays constant.
-
-A worked example illustrates: T-shirt business with $40K investment, $52K expected cash flow.
-
-| Capital structure | $r_d$ | $r_E$ | WACC |
+| Capital structure | $r_d$ | $r_e$ | WACC |
 |---|---|---|---|
-| 100% equity | n/a | 14.0% | 14.0% |
+| 100% equity | — | 14.0% | 14.0% |
 | 11% debt / 89% equity | 4% | 15.2% | 14.0% |
 | 37% debt / 63% equity | 4% | 19.9% | 14.0% |
 | 88% debt / 12% equity | 10% | 42.5% | 14.0% |
 
-WACC is constant because the rising cost of equity exactly offsets the lower weight on cheaper debt. In this perfect-markets world, capital structure is genuinely irrelevant.
+WACC is constant across all leverage levels. The rising cost of equity exactly offsets the lower weight on cheap debt. In the perfect-markets world, there's literally nothing to optimize in capital structure.
 
-### Why MM doesn't fully apply: taxes and distress
+<!-- → [CHART: three-line chart showing MM Proposition II — x-axis: debt-to-total-capital from 0% to 80%; three lines: (1) cost of debt (nearly flat, rising slightly at high leverage), (2) cost of equity (rising linearly with leverage), (3) WACC (flat/constant); student should see visually how the rising equity cost exactly offsets the leverage benefit, keeping WACC constant in perfect markets] -->
 
-In the real world, two MM assumptions break.
-
-**Taxes break MM.** Interest is tax-deductible. Equity dividends are not. So the *after-tax* cost of debt is lower than its pre-tax cost. The interest tax shield creates a benefit to leverage that pure MM ignores.
-
-The tax-adjusted MM proposition: $V_L = V_U + (T \times D)$. The firm's value rises by the tax shield.
-
-For the T-shirt business at 28% tax rate:
-- Unlevered firm value: $45,614
-- Levered firm with $7,000 debt at 4%: tax shield = 0.28 × $280 = $78.40 per year, present value of tax shield ≈ $560
-- Levered firm value: $46,174
-
-Higher leverage produces more tax shield, which raises firm value. By this logic, firms should borrow as much as possible.
-
-**Financial distress costs break MM in the other direction.** As leverage rises, the probability of default rises. With distress comes:
-- Direct costs (legal, consulting, asset auctions during bankruptcy)
-- Indirect costs (customers and suppliers walk away; key employees leave; managers get distracted)
-- Lost growth options (the firm can't raise capital for new projects when distressed)
-
-Distress costs are real and substantial, particularly for firms with high asset specificity (technology firms, pharmaceutical firms with brand-dependent products). The empirical estimate: total distress costs can run 10-20% of pre-distress firm value.[^2]
-
-[^2]: Andrade and Kaplan (1998) and follow-on research. `[verify]` for current consensus.
-
-### Trade-off theory
-
-Combining the two:
-
-$$V_L = V_U + (T \times D) - \text{PV of distress costs}$$
-
-At low leverage: tax shield large; distress costs small. Firm value rises with leverage.
-At moderate leverage: tax shield grows; distress costs start rising. Diminishing returns.
-At high leverage: distress costs dominate. Firm value falls.
-
-There's an **optimal capital structure** where firm value is maximized — the point where the marginal tax-shield benefit equals the marginal distress-cost penalty. Different industries have different optima:
-
-| Industry | Typical D% | Why |
-|---|---|---|
-| Online retail | ~7% | High volatility, high growth, intangible assets — high distress costs |
-| Software | ~10-15% | Similar profile |
-| Telecom | ~45% | Stable cash flows, regulated revenue — low distress costs |
-| Tires/rubber | ~64% | Capital-intensive, mature, stable | 
-| Airlines | ~62% | Capital-intensive, but cyclical — actually overleveraged in many cases |
-
-For your equity research project: compute your chosen company's debt-to-equity ratio. Compare to industry peers. If it's significantly higher or lower than peers, ask why. The disagreement might be efficient (firm-specific reasons) or it might be evidence of capital-allocation issues.
-
-### Pecking order theory
-
-A complementary theory: firms prefer financing in this order:
-
-1. **Internal funds (retained earnings)** — no flotation costs, no signaling issues.
-2. **Debt** — modest costs, doesn't signal anything bad about prospects.
-3. **External equity** — most expensive, and (importantly) often interpreted as a negative signal that management thinks the stock is overvalued.
-
-Pecking order explains why firms with strong internal cash flow generally don't issue much debt or equity, and firms that need outside capital prefer debt to equity. Empirically, this matches observed financing patterns better than pure trade-off theory.
-
-### When firms should issue what
-
-A practical guide:
-
-- **Strong cash flow + low leverage**: continue to fund internally; consider buybacks if cash piles up.
-- **Strong cash flow + leverage at target**: maintain.
-- **Strong cash flow + over-target leverage**: pay down debt.
-- **Insufficient cash flow + below-target leverage**: issue debt up to target.
-- **Insufficient cash flow + at or above target leverage**: equity issuance becomes the option, despite higher cost.
-
-For the equity research project: when your chosen company makes major financing announcements (debt issuance, equity offering, stock buyback), the decision tells you something about management's view of the firm's prospects. A firm issuing equity at a low stock price is signaling it thinks the cost of equity is right or even cheap. A firm issuing debt is signaling confidence in its cash flow stability.
-
-### Worked example — assessing a leverage decision
-
-Suppose your chosen company announces a $5B debt issuance at a 5% coupon. The firm's existing capital structure:
-- Equity (market): $200B
-- Debt (market): $50B before the issuance
-- Cost of equity: 10%
-- Cost of debt: 4.5%
-- Tax rate: 25%
-
-Existing WACC: 0.20 × 4.5% × 0.75 + 0.80 × 10% = 0.675% + 8.0% = 8.675%
-
-After the issuance, debt = $55B; equity ≈ $200B (assuming the proceeds are used productively):
-- D% = 55/255 = 21.6%; E% = 200/255 = 78.4%
-- New cost of debt: assume the additional debt is at 5% (slightly higher reflecting marginally more risk) — blended cost of debt rises to ~4.55%
-- Cost of equity: marginal increase to ~10.1% (slightly riskier residual claim)
-
-New WACC: 0.216 × 4.55% × 0.75 + 0.784 × 10.1% = 0.737% + 7.92% = 8.66%
-
-The WACC barely changes. But the firm has $5B more cash for projects (capex, buybacks, acquisitions). Whether this is value-creating depends on what the cash is used for.
-
-### The trade-off (concept 3)
-
-Capital structure trades **expected return amplification against bankruptcy risk**. Debt amplifies returns to equity holders when things go well — a leveraged firm earns higher ROE for the same operating performance. Debt amplifies losses too — a leveraged firm in trouble can quickly fail. The right level of leverage depends on the firm's cash flow stability, growth profile, and tolerance for volatility.
-
-### Common misconceptions
-
-- *"Firms should minimize WACC."* Sort of. They should *maximize firm value*, which usually means low-but-not-zero WACC. Going to extremely high leverage to minimize WACC eventually creates distress risk that destroys value.
-- *"Capital structure doesn't matter."* In perfect markets (MM), no. In real markets with taxes and distress, it does — there's an optimum.
+The reason MM matters is not because the world is perfect. It's because MM tells you *why* capital structure matters in the real world: it's the things the model left out.
 
 ---
 
-## Synthesis — WACC as the firm's universal hurdle rate
+## Why capital structure matters: taxes and distress
 
-This chapter built the firm's cost of capital from its components:
+**Taxes create a benefit to leverage.** Interest is deductible. Equity dividends are not. So the *after-tax* cost of debt is lower than MM assumed, and adding debt creates a **tax shield** — a real increase in firm value.
 
-- **Cost of debt** (YTM, after-tax adjustment for tax shield)
-- **Cost of equity** (CAPM and/or DGM)
-- **Cost of preferred** (if applicable)
+With taxes, MM Proposition I becomes:
 
-Weighted by market-value capital structure shares, the result is **WACC** — the discount rate the firm uses for every project evaluation in Chapter 16, every DCF in Chapter 11, every pro forma in Chapter 18.
+$$V_L = V_U + T \times D$$
 
-**Capital structure choice** balances the tax shield's benefit against financial distress costs. Different industries have different optima. Your chosen company's actual capital structure tells you something about its risk profile and management's view of the world.
+The levered firm is worth more by the present value of the tax shield. For the T-shirt business at a 28% tax rate, $7,000 in debt at 4% generates $280 in annual interest, a $78.40 tax saving per year. Present value of the shield: approximately $560. Firm value rises from $45,614 to $46,174.
 
-For the equity research project, the deliverable from this chapter is:
-1. Your firm's WACC (with sensitivity range).
-2. An analysis of its capital structure relative to peers.
-3. An assessment of whether recent capital structure decisions (debt issuance, buybacks, dividends) appear value-creating.
+By pure tax logic, firms should borrow as much as possible. They don't. Something else is working in the opposite direction.
 
-This number — WACC — feeds into the DCF model and the price target. Combined with the cash flow forecasts in Chapter 18, the equity research report converges to a final valuation.
+**Financial distress costs create a penalty to high leverage.** As debt rises, the probability of default rises. With distress comes direct costs — legal fees, bankruptcy proceedings, asset liquidations at depressed prices — and indirect costs that are often larger: customers and suppliers walk away, key employees leave, management gets distracted managing the crisis rather than the business. For technology and pharmaceutical firms with brand-dependent value, intangible assets, and firm-specific human capital, distress is particularly devastating. Distress costs can run 10–20% of pre-distress firm value.
+
+The two forces define the **trade-off theory** of optimal capital structure:
+
+$$V_L = V_U + T \times D - \text{PV(distress costs)}$$
+
+At low leverage: tax shield large relative to distress costs. Increase leverage.
+At moderate leverage: both effects growing; diminishing returns to more debt.
+At high leverage: distress costs dominate. Decrease leverage.
+
+There is an interior optimum — the capital structure that maximizes firm value by balancing the two forces.
+
+<!-- → [CHART: trade-off theory diagram — x-axis: debt level (D), y-axis: firm value; three curves: V_U (horizontal baseline), V_U + PV(tax shield) (rising), and V_L = V_U + PV(tax shield) - PV(distress costs) (hump-shaped); optimal D* labeled at the peak; student should see why the optimum is interior and why it shifts based on firm characteristics] -->
+
+Different industries land at very different optimal leverage ratios for exactly this reason:
+
+| Industry | Typical debt-to-total-capital | Why |
+|---|---|---|
+| Software / online retail | ~7–15% | High intangible value, high distress costs, high growth |
+| Consumer staples | ~30–40% | Stable cash flows, tangible assets, low distress costs |
+| Telecom | ~45% | Regulated revenue, capital-intensive, reliable cash flow |
+| Airlines | ~60%+ | Capital-intensive; arguably over-leveraged given cyclicality |
+
+For the equity research project: find your company's debt-to-equity ratio. Compare to industry peers. Significant deviation in either direction warrants explanation — either there are firm-specific reasons it belongs off-industry-average, or there's a capital-allocation story to tell.
+
+---
+
+## Pecking order: a complementary theory
+
+The trade-off theory says there is an optimal capital structure that firms target. The **pecking order theory** (Myers and Majluf, 1984) says that in practice, firms don't start from an optimal target — they follow a financing hierarchy driven by information asymmetry.
+
+The argument: managers know more about the firm's prospects than the market does. When a firm issues equity, the market interprets it as a signal that management thinks the stock is overvalued (why else sell shares now?). The stock price typically falls on equity issuance announcements. Debt issuance is less of a signal — it doesn't announce that management thinks the firm is expensive. And internal funds (retained earnings) involve no signaling at all.
+
+The resulting pecking order:
+1. **Internal funds** (retained earnings): first choice. No flotation costs, no signaling.
+2. **Debt**: second choice. Modest issuance costs, modest signaling.
+3. **External equity**: last resort. Expensive and interpreted badly.
+
+Pecking order explains why high-cash-flow firms tend to carry less debt than trade-off theory would predict — they fund everything internally and don't need to borrow toward an optimal target. It also explains why distressed firms that have exhausted debt capacity issue equity reluctantly and at poor timing.
+
+Trade-off and pecking order are not mutually exclusive. The honest answer is that both forces operate, and their relative importance varies by firm.
+
+---
+
+## What WACC means for the project
+
+WACC is the firm's hurdle rate. Every investment is evaluated against it: if a project's IRR exceeds WACC, it creates value; if it falls short, it destroys value. In the DCF from Chapter 11, WACC is the discount rate applied to every future free cash flow.
+
+The number you computed in this chapter — with its sensitivity range — replaces the 8% placeholder from Chapter 11. Run the DCF both ways. If the fair-value range shifts materially, your investment thesis depends on where WACC lands, and you should say so.
+
+Capital structure analysis also tells you something qualitative. A firm issuing equity at a low stock price is signaling confidence (or desperation). A firm issuing debt is signaling stable cash flow confidence. A firm aggressively buying back stock is saying it believes the shares are cheap. These signals don't always bear out, but they're data.
+
+For the deliverable: compute your firm's WACC with a sensitivity range. Assess its capital structure against industry peers. Note any recent financing activity and what it signals. Then update the Chapter 11 DCF with the real discount rate and report the updated fair-value range.
 
 ---
 
@@ -397,74 +219,96 @@ This number — WACC — feeds into the DCF model and the price target. Combined
 
 ### Warm-up
 
-**17.1** Define WACC. State the formula including all three components.
+**17.1** Define WACC. Write the formula including all three component costs. Explain in one sentence why each component is present.
+*(Tests: basic WACC structure and the conceptual role of each term)*
 
-**17.2** Why is the cost of debt adjusted for taxes? Why is the cost of equity not?
+**17.2** Why is the cost of debt multiplied by $(1 - T)$ in the WACC formula? Why isn't the cost of equity adjusted the same way?
+*(Tests: the interest tax shield and the asymmetric tax treatment of debt vs. equity)*
 
-**17.3** Distinguish trade-off theory from pecking order theory.
+**17.3** State MM Proposition I in plain English. State MM Proposition II. What is MM telling you about the real world by describing a world where it doesn't hold?
+*(Tests: MM propositions and their role as a benchmark for identifying what actually matters in capital structure)*
 
 ### Application
 
-**17.4** A firm has:
-- $200M of debt at YTM 5.5%
-- $800M of equity (market cap)
-- Beta 1.2
-- Tax rate 25%
-- 10-year Treasury 4.5%, ERP 5%
+**17.4** A firm has the following capital structure and component costs:
 
-Compute:
-(a) Cost of equity using CAPM.
-(b) After-tax cost of debt.
-(c) Capital structure weights.
-(d) WACC.
+- Debt (market value): $300M; YTM: 5.8%
+- Common equity (market value): $700M; beta: 1.4
+- Tax rate: 25%
+- 10-year Treasury yield: 4.0%
+- Equity risk premium: 5%
 
-**17.5** Same firm announces a $200M debt issuance (raising D to $400M). Recompute WACC assuming costs stay roughly the same. By how much does WACC change?
+(a) Compute the after-tax cost of debt.
+(b) Compute the cost of equity using CAPM.
+(c) Compute the capital structure weights.
+(d) Compute WACC.
+(e) The DGM gives a cost of equity of 13.5% instead. Recompute WACC. By how much does it change?
+
+*(Tests: full WACC computation and the impact of cost-of-equity method choice)*
+
+**17.5** A firm's unlevered value ($V_U$) is $80M. It is considering adding $20M of debt at a 25% tax rate. Distress costs are estimated to have a present value of $3M given this leverage level.
+
+(a) Compute the levered firm value using the trade-off theory formula.
+(b) Has value been created or destroyed by adding the debt?
+(c) If the firm instead added $50M of debt, where distress costs rise to a PV of $12M, what is the new levered value? Is more or less debt preferable?
+(d) Identify the approximate optimal debt level (max firm value) and explain what determines it.
+
+*(Tests: trade-off theory formula and the identification of optimal leverage)*
 
 **17.6** For your chosen company:
-(a) Compute cost of debt from the largest bond outstanding (or weighted average of bond yields).
-(b) Compute cost of equity using CAPM with beta from your Chapter 14 regression.
-(c) Compute capital structure weights from market values.
-(d) Compute WACC.
-(e) Run sensitivity on beta and ERP.
+
+(a) Find the yield to maturity on the company's largest outstanding bond issue (from the 10-K debt footnote or a bond-pricing screen).
+(b) Apply the effective tax rate to compute after-tax cost of debt.
+(c) Use your CAPM cost of equity from Chapter 14.
+(d) Compute market-value weights for debt and equity.
+(e) Compute WACC. Run sensitivity: cost of equity ±1%, cost of debt ±0.5%, D% ±5 percentage points.
+
+*(Tests: primary-source WACC construction from actual company data)*
 
 ### Synthesis
 
-**17.7** A firm is choosing between issuing $1B of debt at 5% or $1B of equity at current prices. The firm's tax rate is 25%, and its current cost of equity is 11%. Construct a quantitative argument for and against each choice. What additional information would help decide?
+**17.7** Two firms in the same industry have nearly identical business profiles but very different capital structures: Firm Alpha has 15% debt-to-total-capital; Firm Beta has 55%.
 
-**17.8** Two firms in the same industry have very different debt levels: Firm A is at 60% debt, Firm B at 20%. Three possible explanations: (a) different optimal levels, (b) Firm A is over-leveraged, (c) Firm B is under-leveraged. For each, identify what evidence (financial metrics, industry comparisons, management commentary) would distinguish them.
+(a) Using trade-off theory, construct an argument that Firm Alpha is under-leveraged and Beta is at or near optimal.
+(b) Using pecking order theory, construct an alternative explanation: what does Beta's high leverage tell you about its financing history?
+(c) What financial metrics — coverage ratios, cash flow stability, asset tangibility — would help you determine which explanation is more likely correct?
+
+*(Tests: applying both capital structure theories to a real comparative scenario and identifying distinguishing evidence)*
+
+**17.8** Apple's WACC is widely estimated at 8–9%. It generates roughly $100B per year in free cash flow and has spent over $80B per year on buybacks and dividends in recent years. Using Chapter 16 (NPV) and Chapter 17 (capital structure) principles:
+
+(a) Under what condition is returning $80B+ per year to shareholders the value-maximizing decision?
+(b) Under what condition would reinvesting more of it in the business create more value?
+(c) What does the persistence of Apple's large buyback program signal under pecking order theory? Under trade-off theory?
+
+*(Tests: integrating capital allocation and capital structure thinking around a well-known real case)*
 
 ### Challenge
 
-**17.9** Build a complete DCF for your chosen company using:
-(a) The free cash flow projections you developed earlier (or estimate now).
-(b) The WACC you computed in 17.6.
-(c) Sensitivity analysis on WACC ± 1 percentage point.
+**17.9** Build the WACC sensitivity table for your chosen company: cost of equity at three levels (CAPM estimate, CAPM − 1%, CAPM + 1%) across rows; D% at three levels (current, current − 5pp, current + 5pp) across columns. Nine WACC estimates.
 
-Compare the resulting fair value range to the current market price. State your investment thesis (Buy/Hold/Sell with target price range).
+Then re-run your Chapter 11 DCF at each of the nine WACC levels and record the resulting value-per-share. Report: (a) the minimum and maximum value-per-share across all nine cases; (b) which input — cost of equity or capital structure — drives more DCF variability; (c) whether your Buy/Hold/Sell recommendation from Chapter 11 holds across all nine scenarios, or only in some.
 
-**17.10** Apple's WACC is widely estimated at around 8-9% historically, and it generates roughly $100B of free cash flow per year. In recent years Apple has spent over $80B per year on buybacks and dividends. Argue (using Chapter 16 NPV principles and Chapter 17 capital structure principles) whether this is the right capital allocation or whether the cash should be used differently.
+*(Tests: integrated WACC–DCF sensitivity analysis and the investment-thesis stability test)*
 
----
+**17.10** A firm with stable cash flows and 20% debt-to-capital is considering a leveraged recapitalization — issuing $2B in debt and using the proceeds to buy back equity. The firm's marginal tax rate is 28%.
 
-## Chapter summary
+(a) Compute the present value of the incremental tax shield created by the additional $2B in debt.
+(b) Estimate qualitatively how distress costs would change, given the firm's stable cash flows and tangible-asset base.
+(c) Using the trade-off theory, make a quantitative and qualitative case for whether the recapitalization creates or destroys value.
+(d) What signal would the recapitalization send to the market under pecking order theory — and how would you expect the stock price to react on announcement?
 
-- **Cost of debt** = YTM × (1 - T). The after-tax adjustment captures the interest tax shield.
-- **Cost of equity** can be estimated from CAPM ($r_e = R_f + \beta \times ERP$) or the Dividend Growth Model. Different methods often give different answers.
-- **WACC** = $D\% \times r_d(1-T) + P\% \times r_{\text{pfd}} + E\% \times r_e$. Weights are market values.
-- **MM Propositions** show that in perfect markets, capital structure doesn't affect firm value — WACC is constant across leverage choices.
-- **Trade-off theory** adds taxes (favoring debt) and financial distress costs (limiting debt) — produces an optimal capital structure.
-- **Pecking order theory**: firms prefer internal funds → debt → equity in that order.
-- WACC is the firm's hurdle rate for every project (Chapter 16) and the discount rate for DCF (Chapter 11).
+*(Tests: applying the full trade-off and signaling framework to a concrete financing decision, integrating tax shield arithmetic with qualitative judgment)*
 
 ---
 
 ## What would change my mind
 
-The chapter argues that the trade-off theory of capital structure (combined with WACC as the discount rate) is the right framework. The reading would have to revise if (a) compelling alternative theories of capital structure superseded trade-off — pecking order has merit but doesn't displace it, and behavioral theories haven't matured enough, or (b) practical estimation issues with WACC turned out to be so severe that the metric became unusable — they're severe but manageable with sensitivity analysis. WACC remains the working consensus.
+The chapter argues that trade-off theory plus WACC is the right framework. Two things would revise it. First, if pecking order turned out to be the dominant explanation for observed capital structures — it fits the data well but doesn't displace the normative case for trade-off. Second, if WACC estimation were so noisy as to be useless — the inputs are genuinely uncertain, but sensitivity analysis bounds the uncertainty into a usable range. Neither revision has arrived. WACC remains the working consensus for both practice and pedagogy.
 
 ## Still puzzling
 
-The cleanest unresolved question is *what to do when CAPM and DGM give substantially different cost-of-equity estimates*. The two methods rest on different assumptions and can produce 2-3 percentage point differences. Honest practice is to report both and average; alternative methods (implied cost of capital from analyst forecasts) exist but aren't standard. The discount rate is the most sensitive input in the entire analysis, and getting it precisely right may not be possible.
+The cleanest unresolved question: when CAPM and DGM give substantially different cost-of-equity estimates, which one do you weight? The methods rest on different assumptions. CAPM is forward-looking in its inputs but backward-looking in its beta. DGM requires dividends to exist and a stable growth rate to project. When they disagree by 3 points, no clean rule resolves it. The honest practice is to report both, use the midpoint or a conservative average, and acknowledge the uncertainty explicitly in the sensitivity analysis. Anyone who presents a single WACC number without a range is either extremely confident or not being entirely honest.
 
 ---
 
@@ -473,8 +317,6 @@ The cleanest unresolved question is *what to do when CAPM and DGM give substanti
 - **Chapter 18** uses WACC as the discount rate in pro forma forecasting.
 - **Chapter 19** addresses working capital — short-term financial decisions.
 - **Chapter 20** addresses risk management, including the risks that affect capital structure choice.
-
----
 
 ---
 
@@ -544,11 +386,11 @@ Chapter 18 builds pro forma forecasts. The Chapter 18 LLM Exercise will produce 
 
 **Tags:** WACC, capital-structure, cost-of-capital, cost-of-debt, cost-of-equity, MM-propositions, trade-off-theory, pecking-order
 
-
 ---
 
-##  AI Wayback Machine
-**Franco Modigliani** was co-developed the Modigliani-Miller theorem on capital structure — Nobel 1985.
+## AI Wayback Machine
+
+**Franco Modigliani** co-developed the Modigliani-Miller theorem on capital structure — Nobel 1985.
 
 **Run this:**
 
