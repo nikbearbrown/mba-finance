@@ -1,385 +1,191 @@
 # Chapter 14 — Regression Analysis in Finance
 
-
-## TL;DR
-
-- You will practice Compute the correlation coefficient between two return series and test for significance; Compute the slope, intercept, and R² of a simple linear regression; Explain what beta measures and compute it as the slope of a stock's returns regressed on market returns.
-- The chapter moves through The puzzle of two stocks at the same return, Learning objectives, Concept 1 — Correlation and regression: the machinery, Correlation, and related ideas.
-- Read it for the main argument, the vocabulary it introduces, and the practical judgment it asks you to develop.
-
-**Suggested titles**
-1. Beta, CAPM, and the Cost of Equity
-2. The Slope That Sets the Discount Rate
-3. From Correlation to Capital Cost
-
-**TL;DR.** Regression analysis takes two return series and computes the line that best fits the relationship. In finance, the most important regression is one specific case: a stock's returns regressed on the market's returns. The slope of that regression is **beta** — the measure of systematic risk that drives the cost of equity through the **CAPM** equation. This chapter installs the regression machinery, computes beta, and uses it to build the cost-of-equity input the project needs for valuation.
+*The one regression that prices risk — and why two identical stocks can command completely different valuations.*
 
 ---
 
-## The puzzle of two stocks at the same return
+Two stocks. Both expect 10% returns. Both have similar earnings and similar growth. By every superficial measure, they should trade at the same price-to-earnings multiple.
 
-Two stocks both have an expected return of 10% per year. Both have similar earnings and similar growth prospects. By any superficial measure, they should command the same valuation.
+They don't. One trades at a P/E of 15. The other at 25.
 
-They don't. One trades at a P/E of 15, the other at a P/E of 25. Why?
+Why?
 
-The market is doing something the simple statistics from Chapter 13 don't capture. It's pricing risk — specifically, the kind of risk that *cannot be diversified away*. Stocks whose returns are highly tied to broad market movements (high **beta**) are riskier in a portfolio context than stocks whose returns are mostly idiosyncratic (low beta), because the latter's risk gets diluted in a diversified portfolio while the former's doesn't.
+The market is doing something that the summary statistics from Chapter 13 don't capture. It's pricing *risk* — but not total risk. Specifically, it's pricing the risk that cannot be diversified away. If you hold a large portfolio of stocks, the firm-specific disasters — a product recall, a CEO scandal, a surprise accounting restatement — tend to cancel out across companies. What doesn't cancel out is the shared exposure to broad economic conditions: recessions, interest rate shocks, financial crises. That's the risk that survives diversification.
 
-To measure this, finance uses regression analysis. Specifically: regress a stock's monthly returns on the market's monthly returns. The slope of that regression is the stock's beta. A beta of 1.0 means the stock moves one-for-one with the market. A beta of 0.5 means the stock moves half as much as the market — when the market is up 10%, the low-beta stock is up 5% on average. A beta of 1.8 means the stock amplifies market moves — up 18% when the market is up 10%.
+A stock whose returns are tightly tied to market-wide movements contributes more of that inescapable risk to a portfolio than a stock that mostly bounces around for its own idiosyncratic reasons. The market prices this. The first stock must promise higher expected returns to compensate investors for the higher systematic risk they're accepting. The second — with its mostly diversifiable risk — is less threatening to a portfolio and commands a lower return premium.
 
-Beta is the central output of this chapter. Combined with the risk-free rate and the equity risk premium (Chapter 12), it produces the **cost of equity** — the discount rate the market demands for that stock's risk profile. The Capital Asset Pricing Model (CAPM) is the equation that ties them together.
+To measure this distinction, finance uses one specific regression: a stock's monthly returns regressed on the market's monthly returns. The slope of that regression is the stock's **beta**. And beta, plugged into the Capital Asset Pricing Model, becomes the cost of equity — the discount rate used in every DCF we've built.
 
-For the equity research project, this chapter delivers the discount-rate input to the DCF model from Chapter 11. Combined with Chapter 17's WACC computation, the cost of equity is the single most important number in the valuation.
-
----
-
-## Learning objectives
-
-After working through this chapter, you should be able to:
-
-- Compute the correlation coefficient between two return series and test for significance.
-- Compute the slope, intercept, and R² of a simple linear regression.
-- Explain what beta measures and compute it as the slope of a stock's returns regressed on market returns.
-- Apply CAPM to compute the cost of equity for a firm given beta, the risk-free rate, and the equity risk premium.
-- Interpret R², alpha, and the security market line.
-- Recognize the limitations of CAPM and beta in practice.
-
-**Prerequisites.** Chapter 12 (historical returns), Chapter 13 (statistics).
+That's the chapter.
 
 ---
 
-## Concept 1 — Correlation and regression: the machinery
+## The regression machinery
 
-Before getting to beta and CAPM, install the basic regression machinery.
+Before getting to beta, install the tool.
 
-### Correlation
-
-Chapter 13 introduced correlation as a measure of how two return series move together. The formula:
-
-$$r = \frac{n\sum xy - (\sum x)(\sum y)}{\sqrt{n\sum x^2 - (\sum x)^2}\sqrt{n\sum y^2 - (\sum y)^2}}$$
-
-Correlation $r$ ranges from -1 to +1. Two further moves matter for finance.
-
-**Significance test.** Is the observed correlation strong enough to take seriously, or could it have arisen from random sampling? A useful rule of thumb: with $n$ observations, a correlation coefficient is statistically significant at roughly the 5% level if $|r| \geq 2/\sqrt{n}$. With 13 monthly observations, that threshold is $2/\sqrt{13} \approx 0.55$. With 60 monthly observations (5 years of monthly data), $0.26$.
-
-For Nike vs. the S&P 500 over 13 months in 2020-2021, correlation was about 0.93 — highly significant.[^1]
-
-[^1]: OpenStax data; `[verify]` for current vintage.
-
-**Causation warning.** Correlation does not imply causation. The S&P 500 contains Nike, so Nike contributing to the index is mathematical rather than causal. More generally, two correlated time series can both be driven by a common third factor, or they can be coincidentally correlated in a small sample. The discipline is to never claim causal interpretation from correlation alone.
-
-### Linear regression
-
-If correlation is meaningful, the next step is to fit a line that captures the relationship:
-
-$$\hat{y} = a + bx$$
-
-where $\hat{y}$ is the predicted value of $y$ given $x$, $a$ is the intercept, and $b$ is the slope.
-
-The line is chosen by **ordinary least squares (OLS)** — minimizing the sum of squared deviations between observed and predicted values. The formulas:
+**Ordinary least squares.** Given two series of data — call them $x$ and $y$ — we want the line $\hat{y} = a + bx$ that best fits the observed pairs. "Best fit" means minimizing the sum of squared vertical distances between observed points and the line. The resulting formulas:
 
 $$b = \frac{n\sum xy - (\sum x)(\sum y)}{n\sum x^2 - (\sum x)^2}$$
 
 $$a = \bar{y} - b\bar{x}$$
 
-In Excel: `=SLOPE(y_range, x_range)` and `=INTERCEPT(y_range, x_range)`. In R: `lm(y ~ x)`.
+The slope $b$ tells you: when $x$ increases by one unit, the model predicts $y$ increases by $b$ units. The intercept $a$ tells you the predicted value of $y$ when $x = 0$.
 
-The slope $b$ measures how much $y$ changes for a one-unit change in $x$. The intercept $a$ is the predicted value of $y$ when $x = 0$.
+In Excel: `=SLOPE(y_range, x_range)` and `=INTERCEPT(y_range, x_range)`. In Python or R: one line of code. The formula is the theory; the software is the arithmetic.
 
-### R²: how good is the fit?
+**R²: what fraction of the variance is explained.** The slope tells you the direction and magnitude of the relationship. R² tells you how *strong* the relationship is:
 
-The slope tells you the relationship's *direction*. R² (the coefficient of determination) tells you the relationship's *strength*.
+$$R^2 = r^2 = (\text{correlation coefficient})^2$$
 
-$$R^2 = \frac{\text{Variance of } \hat{y}}{\text{Variance of } y}$$
+R² ranges from 0 to 1. An R² of 0.6 means the regression line accounts for 60% of the total variation in $y$; the remaining 40% is noise — the gap between observed values and the line's predictions. For stock returns regressed on the market, R² typically falls between 0.3 and 0.7. A utility stock deeply tied to the broad economy might be at the high end; a biotech stock whose returns are dominated by clinical trial outcomes might be at the low end.
 
-Equivalently, R² = (correlation coefficient)². It ranges from 0 to 1.
+<!-- → [CHART: scatter plot of 60 months of a stock's returns (y-axis) vs. S&P 500 returns (x-axis), with the OLS regression line drawn through the points; two versions side-by-side — one with R² ≈ 0.6 (tight cluster around the line) and one with R² ≈ 0.2 (scattered cloud) — student should see at a glance what R² measures visually] -->
 
-- **R² = 1**: the regression line perfectly explains all variation in $y$. Every observed point is exactly on the line.
-- **R² = 0**: the regression line explains no variation. The slope is essentially noise.
-- **R² = 0.5**: the regression explains 50% of the variance in $y$.
+**Residuals.** The regression line is an approximation. The difference between an observed value and its predicted value is the residual: $\text{residual}_i = y_i - \hat{y}_i$. A positive residual means the actual exceeded the prediction; negative means the opposite. For the regression to be reliable, residuals should center on zero with no systematic pattern. In financial return data, they often don't — variance tends to cluster in high-volatility periods, a pattern called heteroskedasticity. That's a real problem, though practitioners usually proceed anyway on the grounds that beta estimates are useful even when technically imperfect.
 
-For typical stock-vs.-market regressions, R² is in the 0.3 to 0.7 range — meaning 30% to 70% of a stock's return variation is explained by the market, and the remainder is firm-specific (idiosyncratic).
-
-### Residuals
-
-The regression line is an approximation. The difference between observed and predicted values is the **residual**:
-
-$$\text{Residual}_i = y_i - \hat{y}_i$$
-
-A positive residual means the actual value exceeded the prediction; negative means it fell short. For OLS to be valid, the residuals should be approximately:
-- Centered on zero (no systematic bias).
-- Normally distributed.
-- Equal variance across the range of $x$ (homoskedastic).
-- Independent of each other (no autocorrelation).
-
-In practice, financial-return regressions often violate these assumptions to some degree. The most common failure: **heteroskedasticity** — variance of returns changes with market conditions. Robust techniques exist; we won't develop them here.
-
-### Worked example — fitting a line
-
-Suppose Nike's monthly returns over 13 months are $x = $ S&P 500 returns and $y = $ Nike returns. The OLS regression gives:
-
-$$\hat{y}_\text{Nike} = a + b \cdot R_\text{S\&P}$$
-
-with $b = 0.83, a = 0.005$ (illustrative).
-
-This says: for each percentage point the S&P 500 moves, Nike moves about 0.83 percentage points in the same direction, plus a small constant offset. The slope $b = 0.83$ is **Nike's beta**.
-
-If the regression's R² is 0.86, then 86% of Nike's monthly return variation is explained by the market.
-
-↳ **Dig Deeper — Bayesian shrinkage and beta estimation**
-
-*A historical beta from 60 monthly observations has substantial estimation error. One way practitioners adjust: shrink the estimate toward the market average of 1.0. The Blume adjustment (Blume 1975) and Vasicek shrinkage are two formal approaches. Bloomberg's "adjusted beta" applies a simple version.*
-
-**Prompt:**
-> Explain the rationale for Bayesian shrinkage of beta estimates. Walk through the Blume adjustment formula (β_adj = 0.67 × β_estimated + 0.33 × 1.0). Then explain why this might be appropriate even when the regression beta is statistically significant — what assumption is the shrinkage adding, and why might it improve forward forecasting accuracy?
-
-**What to do with the output:** Save it. When your beta from Chapter 14's regression looks like an outlier (very high or very low), shrinkage is a defensible adjustment to consider.
-
-### The trade-off (concept 1)
-
-Regression trades **summary simplicity against fit quality**. A single line summarizes the relationship cleanly but never captures it perfectly. R² tells you how much of the data the line is missing. For most analytical purposes, an R² above 0.4-0.5 is enough to take the slope estimate seriously; below that, the relationship may be too noisy to use.
+**Significance.** A correlation — and therefore a regression slope — computed from finite data might look nonzero purely by chance. A useful rule of thumb: with $n$ paired observations, the correlation is statistically significant at roughly the 5% level if $|r| \geq 2/\sqrt{n}$. With 60 months of data, that threshold is $2/\sqrt{60} \approx 0.26$. Any beta regression run on 5 years of monthly data with a correlation above 0.26 is statistically distinguishable from zero.
 
 ---
 
-## Concept 2 — Beta: the slope that sets the cost of equity
+## Beta: the slope that prices risk
 
-Beta is the most-referenced number in equity research. It's also one of the most misunderstood. The technical definition is precise; the practical interpretation requires care.
+**Beta is the slope of a stock's returns regressed on the market's returns.** That's the complete definition. Everything else is interpretation.
 
-### What beta measures
-
-**Beta is the slope of a stock's returns regressed on the market's returns.**
+Mathematically:
 
 $$\beta = \frac{\text{Cov}(R_\text{stock}, R_\text{market})}{\text{Var}(R_\text{market})}$$
 
-This is mathematically identical to the OLS slope:
+This is identical to the OLS slope formula with $x = R_\text{market}$ and $y = R_\text{stock}$. In Excel: `=SLOPE(stock_returns, market_returns)`. Done.
 
-$$\beta = b = \frac{n\sum R_\text{stock} R_\text{market} - (\sum R_\text{stock})(\sum R_\text{market})}{n\sum R_\text{market}^2 - (\sum R_\text{market})^2}$$
-
-In Excel, you compute beta with `=SLOPE(stock_returns, market_returns)`. In Yahoo Finance and most financial data providers, beta is precomputed and updated regularly.
-
-**Interpreting beta:**
+What does the number mean?
 
 | Beta | Stock behavior |
 |---|---|
-| $\beta = 0$ | Uncorrelated with market |
-| $\beta = 0.5$ | Moves half as much as market |
-| $\beta = 1.0$ | Moves with the market (the market itself has β = 1) |
+| $\beta = 0$ | Return uncorrelated with market |
+| $\beta = 0.5$ | Moves half as much as the market |
+| $\beta = 1.0$ | Moves one-for-one with the market |
 | $\beta = 1.5$ | Amplifies market moves by 50% |
-| $\beta = -0.3$ | Moves opposite the market (rare; gold often shows this) |
+| $\beta = -0.3$ | Moves opposite the market (rare; gold sometimes shows this) |
 
-Examples (approximate, vary over time):
-- Walmart: beta around 0.5 — defensive stock, less volatile than the market.
-- Apple: beta around 1.2 — slightly more volatile than market.
-- Tesla: beta around 2.0 — substantially more volatile.
-- Procter & Gamble: beta around 0.4 — defensive consumer staples.
+Some approximate real-world examples: Walmart has historically had a beta around 0.5 — people buy groceries in recessions too, so it's less sensitive to economic cycles. Tesla has a beta around 2.0 — it amplifies market moves in both directions. Procter & Gamble sits near 0.4. Apple is closer to 1.2.
 
-### Why beta matters: systematic vs. idiosyncratic risk
+<!-- → [TABLE: beta values and interpretation for a set of real firms across industries — columns: firm, sector, approximate beta, interpretation of what the beta implies about the stock's behavior in a market downturn; student should see the pattern that defensive sectors cluster at low betas and cyclical/growth firms cluster at high betas] -->
 
-Total return variability decomposes into two parts:
+**Why only beta is priced.** Total return variability decomposes into two parts. **Systematic risk** is the part correlated with the market — captured by beta. **Idiosyncratic risk** is the part specific to the individual firm. In a diversified portfolio, idiosyncratic risks from different companies partially offset each other. The larger the portfolio, the more they cancel. A portfolio of 50 uncorrelated stocks has essentially zero idiosyncratic risk remaining.
 
-**Systematic (market) risk** — the part driven by broad market movements. Cannot be diversified away. *This is what beta captures.*
+What doesn't cancel is systematic risk. Market crashes hit every stock simultaneously, regardless of how diversified you are. The market — pricing what rational, diversified investors will pay — compensates investors for the risk they can't escape. The risk they *can* escape (idiosyncratic) doesn't command a premium, because a rational investor would diversify it away rather than pay to hold it.
 
-**Idiosyncratic (firm-specific) risk** — the part specific to the individual company. Largely diversified away in a portfolio of many stocks.
+Beta measures what remains after full diversification. That's what gets priced.
 
-In a well-diversified portfolio, idiosyncratic risk is negligible. What's left is systematic risk. The market — a rational pricing mechanism in theory — should compensate investors only for systematic risk, since that's the risk they can't escape.
+---
 
-This is the central insight of the **Capital Asset Pricing Model (CAPM)**: an asset's expected return should be proportional to its beta.
+## CAPM: the equation that connects beta to cost of equity
 
-### CAPM — the equation
+The Capital Asset Pricing Model says an asset's expected return is determined by two things: the time value of money, and compensation for systematic risk.
 
-$$E[R_i] = R_f + \beta_i \times (E[R_m] - R_f)$$
+$$\boxed{E[R_i] = R_f + \beta_i \times (E[R_m] - R_f)}$$
 
 where:
-- $E[R_i]$ = expected return on asset $i$ (the cost of equity)
-- $R_f$ = risk-free rate (typically 10-year Treasury yield)
+- $R_f$ = the risk-free rate (typically the current 10-year Treasury yield)
 - $\beta_i$ = the asset's beta
-- $E[R_m] - R_f$ = the equity risk premium (Chapter 12)
+- $E[R_m] - R_f$ = the **equity risk premium** (ERP) — the expected return of the market above the risk-free rate
 
-The intuition: an asset earns the risk-free rate (the time-value-of-money component) plus a premium proportional to its market exposure. A stock with $\beta = 0$ should earn just $R_f$. A stock with $\beta = 1$ should earn $R_f + ERP$ — exactly the market return. A stock with $\beta = 1.5$ should earn $R_f + 1.5 \times ERP$ — the risk-free rate plus 1.5 times the equity premium.
+The logic: a zero-beta asset contributes no systematic risk to a portfolio and should earn exactly $R_f$ — the time-value-of-money component. A stock with $\beta = 1$ is as risky as the market and should earn the market return. A stock with $\beta = 1.5$ accepts 50% more systematic risk than the market and should earn 50% more than the equity risk premium, on top of the risk-free rate.
 
-### Worked example — Nike's cost of equity
+**A concrete calculation.** Nike's beta from an OLS regression of 13 months vs. the S&P 500: approximately 0.83. Current 10-year Treasury yield: 4.5%. Equity risk premium estimate: 5%.
 
-Nike's beta from our regression: 0.83.
-
-Inputs:
-- $R_f = 4.5\%$ (10-year Treasury yield, current vintage)
-- $E[R_m] - R_f = 5\%$ (forward-looking equity risk premium estimate)
-
-CAPM:
 $$E[R_\text{Nike}] = 4.5\% + 0.83 \times 5\% = 4.5\% + 4.15\% = 8.65\%$$
 
-Nike's cost of equity, by CAPM, is about 8.65%. This is the discount rate to use in a Nike DCF.
+Nike's cost of equity, by CAPM, is about 8.65%. This is the discount rate to apply in a Nike DCF.
 
-If Nike's beta were higher — say, 1.5 — the cost of equity would be:
-$$4.5\% + 1.5 \times 5\% = 12\%$$
+Now watch what happens when beta changes. A stock with $\beta = 1.5$:
 
-Higher cost of equity → higher discount rate in DCF → lower present value of future cash flows → lower implied stock price (all else equal). This is exactly why the same expected cash flow stream produces different valuations for different stocks. Beta is the bridge.
+$$E[R] = 4.5\% + 1.5 \times 5\% = 12\%$$
 
-### The security market line
+Higher cost of equity → higher discount rate → lower present value of the same future cash flows → lower stock price. This is the mechanism. Two firms with identical free cash flow projections will have different valuations if their betas differ, because the market demands more return to hold the riskier one. The same $100 of FCF a year from now is worth $100/1.0865 = \$92.03$ at an 8.65% discount rate, but only $100/1.12 = \$89.29$ at 12%. Multiply that difference across a five-year DCF and it produces a substantial valuation gap.
 
-CAPM has a nice graphical representation. Plot expected return on the y-axis and beta on the x-axis. The CAPM equation traces a straight line:
-
-- y-intercept: $R_f$ (the risk-free rate; corresponds to $\beta = 0$).
+**The security market line.** CAPM has a clean graph. Plot expected return on the y-axis, beta on the x-axis. The CAPM equation is a straight line:
+- Intercept: $R_f$ (a zero-beta asset earns only the risk-free rate).
 - Slope: $E[R_m] - R_f$ (the equity risk premium).
-- The line passes through the point $(\beta = 1, R = E[R_m])$ — the market portfolio.
+- The line passes through $(\beta = 1, R = E[R_m])$ — the market portfolio itself.
 
-This line is the **security market line (SML)**. According to CAPM, every fairly-priced security should sit on the SML. Securities above the SML are underpriced (expected return is higher than CAPM predicts); securities below are overpriced.
+This line is the **security market line (SML)**. According to CAPM, every fairly priced security should sit on it. A security above the SML offers more expected return than its beta predicts — it's relatively cheap. One below the SML offers less expected return than its beta predicts — it's relatively expensive. In equilibrium, the argument goes, investors would bid up underpriced securities and bid down overpriced ones until all of them land on the line.
 
-### Alpha — the deviation from CAPM
+<!-- → [CHART: security market line — x-axis: beta from 0 to 2.0, y-axis: expected return; line starting at R_f (y-intercept), passing through the market portfolio at beta=1; two labeled points: one above the SML (underpriced security) and one below (overpriced); caption explaining that the vertical distance from the SML is alpha] -->
 
-In an OLS regression of stock returns on market returns:
-- The slope is beta.
-- The intercept is alpha.
+**Alpha.** In the regression equation:
 
 $$R_\text{stock} = \alpha + \beta \times R_\text{market} + \text{error}$$
 
-If CAPM holds perfectly, $\alpha = 0$ — the stock's return is fully explained by its market exposure plus the risk-free rate. A positive $\alpha$ means the stock has earned more than CAPM predicts. A negative $\alpha$ means it has earned less.
+the slope is beta and the intercept is **alpha**. If CAPM holds perfectly, $\alpha = 0$: the stock's return is fully explained by its market exposure. A positive alpha means the stock has earned more than CAPM predicts — it has outperformed on a risk-adjusted basis. A negative alpha means it has underperformed.
 
-For active fund managers, generating positive alpha is the goal. The empirical record is humbling: most active managers do not consistently produce positive alpha after fees. The few who do (Buffett over 50+ years, Renaissance Technologies' Medallion Fund) are exceptional.
+For active fund managers, generating positive alpha is the explicit goal. The empirical record is sobering: most active managers do not produce positive alpha consistently after fees. The few who do over long horizons — Buffett across five decades, Renaissance Technologies' Medallion Fund — are genuine exceptions, and even distinguishing skill from luck in those cases requires careful analysis.
 
-For the equity research project: when you compute your chosen company's regression vs. the S&P 500, the alpha tells you whether the stock has *historically* outperformed or underperformed CAPM expectations. This is suggestive but not predictive — historical alpha is a poor forecaster of future alpha.
-
-### Limitations of CAPM and beta
-
-CAPM is the workhorse model in finance, but it has well-known limits.
-
-**Single-factor model.** CAPM assumes that beta captures all priced risk. Empirical research (Fama-French) shows that other factors — size, value, momentum, profitability — also explain return variation that beta misses.
-
-**Beta is unstable.** A stock's beta calculated over different time windows can give different answers. Beta over 2018-2019 vs. beta over 2020-2021 can differ substantially. Practitioners typically use 3-5 years of monthly data and accept the noise.
-
-**Equity premium is uncertain.** As we saw in Chapter 12, the equity risk premium is between 4% and 7% by most estimates, but the right number depends on the time horizon and methodology. CAPM's output is sensitive to this input.
-
-**Forward vs. backward.** Beta is computed from historical data but used as a forward expectation. A firm whose business has materially changed (think: Tesla in 2015 vs. 2025) may have a beta that doesn't reflect its current risk profile.
-
-For the project, use CAPM for the cost of equity but report a *range*. A point estimate is overconfident.
-
-↳ **Dig Deeper — Fama-French three-factor and five-factor models**
-
-*CAPM uses a single factor: market beta. Empirical work since the 1990s (Fama-French) has consistently found that two additional factors — size and value — also explain stock returns in ways CAPM misses. The five-factor extension (2015) adds profitability and investment factors. Multi-factor models are the academic standard now.*
-
-**Prompt:**
-> Explain the Fama-French three-factor model: market premium, size premium (small-minus-big), and value premium (high-minus-low book-to-market). Then describe what each factor represents economically and how it's measured. Briefly summarize the 2015 five-factor extension. Finally, run a hypothetical comparison: for a small-cap value stock, would CAPM under- or over-estimate its expected return?
-
-**What to do with the output:** Save it. CAPM is the principles-course standard; multi-factor models are where the field actually is. Knowing both is part of being current.
-
-### The trade-off (concept 2)
-
-Beta trades **theoretical clarity against empirical messiness**. The CAPM model is mathematically elegant and connects asset pricing to portfolio theory cleanly. The actual application — historical beta from noisy data, forward expectations of an unstable premium, factors CAPM ignores — is much messier. Practitioners use CAPM despite its limits because the alternatives (multi-factor models, implied cost of capital methods) are more complex without being clearly more accurate.
-
-### Common misconceptions
-
-- *"Beta measures total risk."* It measures systematic risk only. The remainder (idiosyncratic) is captured by 1 − R². Total risk is standard deviation.
-- *"A high beta means the stock is bad."* It means the stock is more market-sensitive. In an up-market, high-beta stocks outperform.
-- *"Beta is constant."* It changes over time as the firm's business evolves.
+For the equity research project: your company's historical alpha is worth noting, but it is a weak predictor of future alpha. The number tells you how the stock performed relative to CAPM expectations over the regression window. It doesn't tell you what comes next.
 
 ---
 
-## Concept 3 — Building the cost of equity for the project
+## Limitations of CAPM — and why it's still used
 
-The pieces from this chapter and earlier ones now combine into the practical cost-of-equity computation.
+CAPM is a model, which means it is wrong in specific, well-understood ways.
 
-### Step 1: Pull return data
+**Single factor.** CAPM says beta — market exposure — is the only priced risk. Forty years of empirical work (Fama and French since the early 1990s) has shown that other factors also explain returns: firm size (small-cap stocks have historically outperformed large-caps beyond what beta predicts), value (high book-to-market stocks have outperformed), momentum, profitability, investment intensity. These factors are not in CAPM. Multi-factor models capture them; CAPM misses them.
 
-For your chosen company, pull 5 years of monthly returns. Pull the same 60 months of S&P 500 (or similar broad market index) returns. Yahoo Finance provides this; many other data sources do too.
+**Beta is unstable.** A regression over 2018–2019 can produce a very different beta than a regression over 2022–2023 for the same firm. A company undergoing a strategic pivot — expanding from a defensive consumer-staples business into a higher-growth segment, say — will have a beta that is changing. Historical beta is a lagging indicator of a forward-looking question.
 
-### Step 2: Run the regression
+**The equity risk premium is uncertain.** Chapter 12 established that reasonable ERP estimates range from 4% to 7% depending on methodology and time horizon. CAPM's output is proportional to ERP. A one-percentage-point difference in ERP moves the cost of equity by one full beta-unit. For a high-beta stock, that's a 1.5-point swing in cost of equity, which cascades into a meaningful valuation difference.
 
-In Excel:
-- `=SLOPE(stock_returns, market_returns)` returns beta.
-- `=INTERCEPT(stock_returns, market_returns)` returns alpha.
-- `=RSQ(stock_returns, market_returns)` returns R².
+**Forward vs. backward.** Beta is computed from historical data and used as a forward expectation. These are not the same thing.
 
-Or in R:
-```r
-model <- lm(stock_returns ~ market_returns)
-summary(model)
-```
+So why does every finance course still teach CAPM?
 
-The output tells you:
-- Beta (the slope).
-- Alpha (the intercept).
-- R² (how much of variance is explained by market).
-- Statistical significance of beta (the t-statistic and p-value).
+Because the alternatives are more complex without being clearly more accurate. Fama-French three-factor and five-factor models require additional factor return data, additional factor loadings, and additional assumptions about how many factors are "real." Implied-cost-of-capital methods (which back out the discount rate from current prices and analyst consensus forecasts) require trusting the consensus. In practice, after running all these approaches with their respective uncertainty, you typically end up with a range that overlaps substantially with a well-run CAPM plus sensitivity analysis.
 
-### Step 3: Apply CAPM
+CAPM is also transparent. Every assumption is visible. The inputs are few. Sensitivity analysis is straightforward. For introductory equity research, transparency plus sensitivity is more useful than complexity plus false precision.
 
-Use:
-- Current 10-year Treasury yield as $R_f$.
-- 4.5-5.5% as your equity risk premium estimate.
-- The beta from your regression.
+The right practice: use CAPM, be explicit about every assumption, and report a range rather than a point estimate.
 
-$$E[R_\text{stock}] = R_f + \beta \times (E[R_m] - R_f)$$
+---
 
-### Step 4: Sensitivity analysis
+## Building the cost of equity for the project
 
-Recompute under alternative assumptions:
-- ERP of 4%, 5%, 6%.
-- Beta plus or minus 0.2 (acknowledging measurement error).
+The machinery is in place. Here is the practical procedure.
 
-Report the range, not a single number.
+**Step 1: pull return data.** Five years of monthly returns for your company. Five years of monthly returns for the S&P 500 (or whichever broad market index you're using). Sixty pairs of observations. Yahoo Finance provides this; so do most financial data providers.
 
-### Step 5: Interpret the result
+**Step 2: run the regression.** In Excel:
+- `=SLOPE(stock_returns, market_returns)` → beta
+- `=INTERCEPT(stock_returns, market_returns)` → alpha (monthly; multiply by 12 for an approximate annualized figure)
+- `=RSQ(stock_returns, market_returns)` → R²
 
-The cost of equity feeds into:
-- WACC (Chapter 17).
-- DCF discount rate (Chapter 11).
-- The price-target calculation (Chapter 18).
+Compare your beta to the published figure on Yahoo Finance or Bloomberg. Differences of 0.1–0.2 are common (different time windows, different market indices). Differences above 0.3 warrant investigation: check for data errors or see whether the published source uses a fundamentally different methodology.
 
-A high cost of equity (say, 12-15%) means the stock has high systematic risk and the market demands high expected returns. Future cash flows are discounted aggressively. A low cost of equity (say, 6-8%) means low systematic risk; future cash flows are discounted gently and the stock is more valuable for the same cash flow stream.
+**Step 3: apply CAPM.** Use the current 10-year Treasury yield as $R_f$. Use 4.5–5.5% as your ERP estimate. Compute:
 
-### Worked example — applying it to a real firm
+$$\text{Cost of equity} = R_f + \beta \times \text{ERP}$$
 
-Suppose your chosen company's 5-year monthly regression vs. the S&P 500 produces:
-- Beta = 1.15
-- Alpha = 0.002 per month (2.4% annualized; positive — the firm has slightly outperformed CAPM expectations)
-- R² = 0.45 (45% of monthly variance explained by market; remaining 55% is idiosyncratic)
+**Step 4: sensitivity analysis.** Recompute with beta ± 0.2 and ERP at 4%, 5%, 6%. You'll get a range of six or nine cost-of-equity estimates. Report the range, not a single number. The range is the honest answer; the single number is an illusion of precision.
 
-With $R_f = 4.5\%$ and ERP = 5%:
+**Step 5: interpret R².** If R² is 0.5, the market explains 50% of your stock's monthly return variation; the other 50% is idiosyncratic. If R² is 0.2, the market explains only a fifth of the variation — beta is estimated noisily and single-factor CAPM may be leaving important risk factors unaccounted for. Either way, report R² alongside beta. It tells the reader how much faith to put in the slope estimate.
 
-$$E[R_\text{stock}] = 4.5\% + 1.15 \times 5\% = 10.25\%$$
+**A worked illustration.** Suppose your company's 5-year regression produces beta = 1.15, alpha = 0.002 per month (≈ 2.4% annualized), R² = 0.45. With $R_f = 4.5\%$ and ERP = 5%:
+
+$$\text{Cost of equity} = 4.5\% + 1.15 \times 5\% = 10.25\%$$
 
 Sensitivity:
-- ERP = 4%: cost of equity = 4.5 + 1.15 × 4 = 9.1%
-- ERP = 6%: cost of equity = 4.5 + 1.15 × 6 = 11.4%
-- Beta = 0.95: cost of equity = 4.5 + 0.95 × 5 = 9.25%
-- Beta = 1.35: cost of equity = 4.5 + 1.35 × 5 = 11.25%
 
-So the cost-of-equity range across reasonable assumptions is roughly 9% to 11.5%. In your DCF, test sensitivity at both ends.
+| | ERP = 4% | ERP = 5% | ERP = 6% |
+|---|---|---|---|
+| Beta = 0.95 | 8.3% | 9.25% | 10.2% |
+| Beta = 1.15 | 9.1% | 10.25% | 11.4% |
+| Beta = 1.35 | 9.9% | 11.25% | 12.6% |
 
-### What to do with R²
+The range across plausible assumptions: 8.3% to 12.6%. In your DCF, test sensitivity at both ends. Whatever conclusions you draw about the company's valuation should survive the full range.
 
-If R² is low (say, 0.2), the regression is not capturing much of your firm's return variability. The implications:
-- Beta estimate is noisy. Use it cautiously.
-- The firm has substantial idiosyncratic risk. Diversification benefits to a portfolio holder are large.
-- Single-factor CAPM may be missing important factors. Multi-factor models (Fama-French) might give better answers.
+<!-- → [TABLE: cost-of-equity sensitivity grid — rows: beta (0.7, 0.9, 1.1, 1.3, 1.5), columns: ERP (4%, 5%, 6%), with R_f = 4.5% fixed; each cell shows the resulting cost of equity; caption notes that the range within any plausible beta × ERP combination spans 3-5 percentage points, which is why reporting a single number is overconfident] -->
 
-For the project, just report R² alongside beta. A reader who's done equity research will understand the implications.
-
-### The trade-off (concept 3)
-
-Building the cost of equity trades **theoretical purity against practical decision-making**. CAPM is elegant in theory; in practice, there are many judgment calls (which time window, which index, which equity premium). The right approach is to be transparent about the choices, run sensitivity, and present a defensible range. The number in your DCF should be one input among others, not the answer to everything.
-
-### Common misconceptions
-
-- *"The cost of equity is what shareholders demand."* It's what the *market* demands, as inferred from CAPM and the firm's beta. Individual shareholders' personal demands can be quite different.
-- *"Higher beta always means higher returns."* Higher beta means *higher expected returns*, on average, over time. Realized returns can deviate substantially in any given period.
-
----
-
-## Synthesis — regression, beta, CAPM, and the discount rate
-
-The chapter built up regression analysis from the basic correlation calculation, through OLS slope and intercept, to beta and CAPM. The end product is a single number: the cost of equity for your chosen company.
-
-That cost of equity is the discount rate the market demands for the stock's risk profile. It's the input to every DCF in the next several chapters.
-
-The Capital Asset Pricing Model is the bridge between observed return data and the discount rate. Its limits are real — single factor, unstable beta, uncertain equity premium — but it remains the dominant model in equity research. Sensitivity analysis is what makes it usable in practice.
-
-For the equity research project, the deliverable from this chapter is:
-1. Beta computed from 5 years of monthly regressions.
-2. R² and alpha reported alongside.
-3. Cost of equity computed via CAPM, with a sensitivity range.
-4. Comparison to peer-firm betas and costs of equity.
-
-Chapter 17 will integrate the cost of equity with the cost of debt to compute WACC. Chapter 11's DCF will use WACC as the discount rate.
+The cost of equity flows into Chapter 17's WACC computation, which in turn flows into the DCF discount rate. The number you just computed is the most consequential single input in the equity research report. Handle it with appropriate uncertainty.
 
 ---
 
@@ -387,67 +193,88 @@ Chapter 17 will integrate the cost of equity with the cost of debt to compute WA
 
 ### Warm-up
 
-**14.1** Define correlation. Define R². How are they mathematically related?
+**14.1** Define beta in one sentence. Then explain in plain English — without using the word "covariance" — what a beta of 1.5 means for a stock held in a diversified portfolio.
+*(Tests: conceptual grasp of beta beyond its formula)*
 
-**14.2** Write the regression equation $\hat{y} = a + bx$. Define each term. What do the slope and intercept mean?
+**14.2** Explain the difference between systematic risk and idiosyncratic risk. Why does the market price only the first one? What assumption about investor behavior underlies this claim?
+*(Tests: the portfolio-diversification logic that gives beta its meaning)*
 
-**14.3** Define beta. Define alpha. What does each measure?
+**14.3** Write the CAPM equation. Define every variable. A firm has beta = 0.8, the risk-free rate is 4%, and the equity risk premium is 5%. Compute the cost of equity.
+*(Tests: basic CAPM application)*
 
 ### Application
 
-**14.4** A regression of a stock's monthly returns on the market's returns produces:
-- Slope = 1.20
-- Intercept = 0.001 (per month)
-- R² = 0.55
+**14.4** A regression of a stock's monthly returns on the S&P 500's monthly returns produces the following results:
+- Slope (beta): 1.35
+- Intercept (alpha, monthly): 0.0025
+- R²: 0.48
 
-Compute:
-(a) The stock's beta.
-(b) The annualized alpha.
-(c) The percentage of monthly return variance explained by the market.
-(d) The cost of equity using $R_f = 4.5\%$ and ERP = 5%.
+(a) Interpret the beta in plain English: what does this stock do when the market rises 10%?
+(b) What is the annualized alpha? Has this stock historically outperformed or underperformed CAPM expectations?
+(c) What percentage of this stock's monthly return variance is explained by market movements? What accounts for the rest?
+(d) Using $R_f = 4.5\%$ and ERP = 5%, compute the cost of equity.
+(e) If R² were 0.15 instead of 0.48, would you trust this beta more or less? Why?
 
-**14.5** Pull 5 years of monthly returns for your chosen company and the S&P 500. Compute beta, alpha, and R². Compare beta to a published source (Yahoo Finance, Bloomberg). Are they similar? If not, what could explain the difference?
+*(Tests: regression output interpretation, CAPM application, and the diagnostic use of R²)*
 
-**14.6** Using your computed beta and a reasonable risk-free rate and equity premium, compute the cost of equity for your company. Run sensitivity for $\pm 0.2$ on beta and $\pm 1$ percentage point on ERP. Report the range.
+**14.5** Two firms operate in the same industry with nearly identical business models. Firm A has been financed entirely with equity; Firm B has 40% debt in its capital structure. Both have an unlevered beta of 0.9.
+
+(a) Explain qualitatively why Firm B should have a higher equity beta than Firm A.
+(b) If the corporate tax rate is 25% and Firm B's debt-to-equity ratio is 0.67, use the Hamada equation ($\beta_L = \beta_U \times (1 + (1-T) \times D/E)$) to compute Firm B's levered beta.
+(c) Compute the cost of equity for each firm using CAPM ($R_f = 4\%$, ERP = 5%).
+(d) Why would you want to "unlever" a comparable firm's beta before applying it to a firm with a different capital structure?
+
+*(Tests: the relationship between leverage and beta, the Hamada equation, and re-levering for project analysis)*
+
+**14.6** Pull 60 months of monthly return data for your chosen company and the S&P 500. In Excel (or Python), compute:
+(a) Beta using `=SLOPE`.
+(b) Alpha (monthly) using `=INTERCEPT`. Annualize it.
+(c) R² using `=RSQ`.
+(d) Compare your beta to the published value on Yahoo Finance. If they differ by more than 0.2, identify one plausible reason.
+
+*(Tests: hands-on regression computation from primary-source return data)*
 
 ### Synthesis
 
-**14.7** Apple's beta has historically been around 1.1-1.3. Walmart's around 0.4-0.6. Construct (a) why these levels make sense given each firm's business model, (b) what implications they have for cost of equity, (c) what implications they have for the relative attractiveness of the two firms in a recession.
+**14.7** Build the full sensitivity table for your company's cost of equity: beta at your estimated value ± 0.2 (three rows), ERP at 4%, 5%, 6% (three columns). Report nine cost-of-equity estimates. Then identify which cell most closely matches the 8% WACC placeholder used in Chapter 11's DCF, and explain what assumption that implies about ERP and beta.
+*(Tests: sensitivity analysis, CAPM application, and connecting the cost-of-equity output to the DCF built in Chapter 11)*
 
-**14.8** A friend says: "If beta is so noisy and CAPM is missing important factors, why does anyone use it?" Construct a defense in three parts: (a) what CAPM gets right that simpler approaches miss; (b) why the alternatives (multi-factor models, ICC) aren't always better; (c) the role of sensitivity analysis in honest application.
+**14.8** A friend argues: "Beta is computed from historical data that reflects what the firm used to be. Why would I use it to discount what the firm will be?" Construct a three-part response: (a) why historical beta, despite its flaws, is still informative; (b) two specific circumstances where a historical beta would be particularly misleading; (c) what you would do differently in those two circumstances.
+*(Tests: critical evaluation of beta's limitations and the analytical judgment required to apply it responsibly)*
 
 ### Challenge
 
-**14.9** Run a regression of your chosen company's monthly returns on:
-(a) The S&P 500 returns alone (single-factor CAPM).
-(b) The S&P 500 returns + a "size" factor (small-cap minus large-cap returns).
-(c) The S&P 500 returns + size + a "value" factor (high book-to-market minus low book-to-market).
+**14.9** Your chosen company is planning a major acquisition in a different industry. The target firm operates in a sector with an average beta of 1.6, while your company's current beta is 0.9. After the acquisition, the combined firm will derive approximately 30% of its revenue from the acquired business.
 
-Compare the R² across the three regressions. Does adding factors help? What does it tell you about the firm's risk profile?
+(a) Estimate the post-acquisition beta of the combined firm as a weighted average of the two betas (by revenue contribution).
+(b) Recompute the cost of equity for the combined firm using CAPM.
+(c) How does this change your DCF valuation — does the acquisition appear more or less attractive after adjusting the discount rate?
+(d) What limitations does this beta-blending approach have, and what would a more rigorous analysis require?
 
-**14.10** Compute alpha for a recent hedge fund (or portfolio manager you can find return data for). Is it positive or negative? Statistically significant? What does the answer suggest about the manager's stock-picking skill — keeping in mind the limits of single-factor CAPM and the noise inherent in alpha estimates?
+*(Tests: beta adjustment for corporate transactions, the impact of discount-rate changes on valuation, and honest acknowledgment of model limits)*
 
----
+**14.10** The Fama-French three-factor model extends CAPM by adding size and value factors:
 
-## Chapter summary
+$$E[R_i] = R_f + \beta_\text{market}(R_m - R_f) + \beta_\text{size} \cdot SMB + \beta_\text{value} \cdot HML$$
 
-- **Correlation** measures linear association; **regression** fits a line to two-variable data via OLS.
-- The regression equation $\hat{y} = a + bx$ has slope $b$ and intercept $a$. R² measures how much of $y$'s variance the line explains.
-- **Beta** is the slope of a stock's returns regressed on market returns. Measures systematic risk.
-- **CAPM**: $E[R_i] = R_f + \beta_i (E[R_m] - R_f)$. Computes the cost of equity from beta and the equity premium.
-- **Alpha** is the regression intercept — the deviation from CAPM expectations.
-- The **security market line** is the graphical CAPM: expected return as a function of beta.
-- CAPM has known limits: single-factor, unstable beta, uncertain equity premium. Sensitivity analysis is essential.
+where SMB (small-minus-big) and HML (high-minus-low book-to-market) are factor return series available from Kenneth French's data library.
+
+(a) Explain what the size premium (SMB) and value premium (HML) represent economically. What is the proposed explanation for why each earns a return premium?
+(b) For your chosen company, state whether you would expect positive or negative loadings on SMB and HML based on what you know about the firm's size and valuation multiple. Justify your expectation.
+(c) If you had access to the factor data, describe step by step how you would run the three-factor regression and what you would compare to the single-factor CAPM result.
+(d) Under what circumstances would a three-factor cost of equity be meaningfully different from the CAPM cost of equity — and in which direction?
+
+*(Tests: conceptual understanding of factor models, the ability to reason about factor loadings from firm characteristics, and the analytical gap between CAPM and more complete asset-pricing models)*
 
 ---
 
 ## What would change my mind
 
-The chapter argues that CAPM is the right baseline model for cost of equity, with sensitivity analysis to handle its limitations. The reading would have to revise if (a) Fama-French or other multi-factor models became standard in undergraduate finance teaching (they may, eventually), or (b) implied-cost-of-capital methods (which back out cost of equity from current price + analyst consensus) consistently outperformed CAPM in forecasting future returns. Both are real alternatives; neither has displaced CAPM as the introductory standard.
+The chapter argues that CAPM is the right baseline model for cost of equity, with sensitivity analysis to handle its limitations. Two things would revise this. First, if Fama-French multi-factor models became the introductory standard — which may happen eventually, as computing access to factor data improves — the single-factor framework here would feel incomplete. Second, if implied-cost-of-capital methods (backing out cost of equity from current prices and forecasts) consistently demonstrated superior forecasting accuracy in peer-reviewed empirical work, there would be a strong argument to teach that approach instead. Neither displacement has happened at the introductory level. CAPM plus sensitivity remains the standard.
 
 ## Still puzzling
 
-The cleanest unresolved question: *should historical beta be used as a forward expectation?* The data is what it is — a stock's last 5 years of regression slope. But that 5-year slope reflects the firm's business as it was, not necessarily as it will be. Tesla's beta in 2018 is not Tesla's beta in 2025. Practitioners adjust for this with "Bayesian shrinkage" toward 1.0 (the market average) or by using a longer time window. Neither solution is fully satisfying. The honest framework is: historical beta is your best available estimate, but it's an estimate, and forward beta may be different.
+The question I haven't resolved cleanly: should historical beta be used as a forward expectation? The data reflects the firm's business as it *was* during the regression window — its leverage, its business mix, its competitive position. All of those can change. A firm that has added substantial debt since the regression window will have a higher forward beta than the historical one implies. Practitioners adjust using "Bayesian shrinkage" (pulling the estimate toward 1.0, the market average) or re-levering the beta using current capital structure. Neither approach fully resolves the fundamental problem that we're using backward-looking data to make a forward-looking judgment. The honest response is to be explicit about this, use sensitivity analysis to bound the uncertainty, and resist the temptation to report a single beta as though it were a known quantity.
 
 ---
 
@@ -457,8 +284,6 @@ The cleanest unresolved question: *should historical beta be used as a forward e
 - **Chapter 17** combines cost of equity with cost of debt to compute WACC.
 - **Chapter 18** uses WACC as the discount rate in the firm's pro forma forecasts.
 - **Chapter 20** revisits beta and systematic risk in the context of risk management.
-
----
 
 ---
 
@@ -528,11 +353,11 @@ Chapter 15 examines personal investing. The Chapter 15 LLM Exercise asks: would 
 
 **Tags:** regression, CAPM, beta, alpha, cost-of-equity, security-market-line, R-squared, OLS
 
-
 ---
 
-##  AI Wayback Machine
-**William Sharpe** was developed the Capital Asset Pricing Model — Nobel 1990.
+## AI Wayback Machine
+
+**William Sharpe** developed the Capital Asset Pricing Model — Nobel 1990.
 
 **Run this:**
 
