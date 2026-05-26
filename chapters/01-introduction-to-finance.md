@@ -37,6 +37,8 @@ Here are the three jobs.
 
 The three areas overlap constantly. A bank makes business-finance decisions about its own balance sheet while offering investment products to customers while being regulated by the infrastructure layer. The split is not a wall — it is a way of telling which kind of question you are asking.
 
+<!-- → [INFOGRAPHIC: Three interlocking circles — Business Finance, Investments, Financial Markets & Institutions — with brief label examples in each zone (CFO, portfolio manager, NYSE) and overlap regions annotated to show where a commercial bank or pension fund operates in multiple areas simultaneously] -->
+
 Most finance graduates, for most of their careers, work in business finance. Not investments. Not the glamorous part. The CFO's office, the treasurer's team, the controller's function. This is worth saying plainly, because the TV shows do not say it.
 
 ---
@@ -56,6 +58,8 @@ Three words appear in the definition and are doing more work than they look like
 - *Economic value* — what someone would actually pay if you cornered them honestly. Often higher than market value, because markets aggregate willingness-to-pay and most buyers get a slight discount on what they would have agreed to.
 
 When a financial argument seems contradictory, check first whether two different "values" are being mashed together in the same sentence. The contradiction usually dissolves.
+
+<!-- → [TABLE: Three definitions of value side by side — columns: Type, How it is measured, Who uses it primarily, What it captures, What it misses — one row each for book value, market value, and economic value; reader should be able to see at a glance why a "cheap stock" might be cheap by one measure and expensive by another] -->
 
 ---
 
@@ -169,6 +173,8 @@ When a firm goes public for the first time, that is an **initial public offering
 
 A maturity-based split. **Money markets** trade short-term, low-risk, highly liquid debt instruments with maturities of one year or less: Treasury bills, commercial paper, certificates of deposit, overnight federal funds. **Capital markets** trade longer-term instruments — bonds and stocks — where maturities run from years to decades, and stocks carry no maturity at all.
 
+<!-- → [TABLE: Money market vs. capital market instruments — columns: Instrument, Market type, Typical maturity, Issuer, Risk level, Primary use — rows covering T-bills, commercial paper, federal funds, investment-grade corporate bonds, and equities; student should be able to classify any new instrument after reading this] -->
+
 ### Three types of players
 
 **A broker** brings buyers and sellers together and earns a commission. The broker does not own the security; they facilitate. They take no risk on the trade.
@@ -230,6 +236,56 @@ The fuzziest piece of this chapter is the boundary between *risk* — uncertaint
 - **Chapter 3** picks up the macroeconomic threads — interest rates, inflation, the Federal Reserve — that determine the cost of money.
 - **Chapters 7–9** build the time-value-of-money arithmetic that makes the risk-return trade-off computable.
 - **Chapters 13–14** install the statistics and regression tools for measuring risk with precision.
+
+---
+
+## Exercises
+
+### Warm-up
+
+**1.1** In your own words — no textbook phrasing — write one sentence each defining business finance, investments, and financial markets and institutions. Then write a fourth sentence naming one situation where all three overlap in a single firm or transaction.
+
+**1.2** Classify each of the following as working-capital management, capital budgeting, or capital structure. For each, name the region of the balance sheet where the decision lives.
+
+(a) A regional airline decides to lease two additional aircraft for the next decade.
+(b) A software company decides to extend net-60 payment terms to a large new client.
+(c) A retailer issues $500 million in ten-year bonds to refinance existing short-term debt.
+(d) A manufacturer takes advantage of an early-payment discount, paying invoices in ten days instead of thirty.
+
+**1.3** A classmate says: "Stocks are riskier than bonds, so they always earn more." Write two sentences correcting the claim — identifying the exact words missing that would make it true, and explaining why each missing word matters.
+
+### Application
+
+**1.4** You have $8,000 to invest for twenty years. Two options:
+
+- A 20-year Treasury bond yielding 3.5% per year.
+- A diversified stock index fund with an expected return of 7% per year and a standard deviation of 16%.
+
+(a) Compute the expected ending value for each option using compound growth.
+(b) Explain, in one paragraph, under what circumstances the Treasury would be the rational choice even though its expected ending value is lower.
+
+**1.5** Identify the player type — broker, dealer, or financial intermediary — for each of the following. Explain your reasoning in one sentence.
+
+(a) Fidelity, when it routes your buy order for 50 shares of Microsoft to a market-making firm.
+(b) A NASDAQ market maker quoting bid $412.10 and ask $412.13 on Amazon shares.
+(c) A money market mutual fund that pools deposits from thousands of investors and uses them to buy Treasury bills and commercial paper.
+(d) A mortgage bank that originates home loans and holds them on its own balance sheet.
+
+**1.6** A firm completes an IPO, selling 2 million new shares at $25 each. The next day, 300,000 of those shares trade between investors at prices ranging from $24.80 to $25.40. Of all the cash that moved in these transactions, how much went to the issuing company? Explain which transaction sent cash to the firm and why the second day's trading sent none.
+
+### Synthesis
+
+**1.7** Return to Bacon Signs. The chapter describes one path: bank debt plus a short-term credit line, no outside equity. Suppose instead the owner had brought in an outside equity investor who took a 30% stake in exchange for funding the expansion.
+
+Trace how this choice would change all three finance decisions — working capital, capital budgeting, capital structure — and what the owner gave up and gained in each. Do not optimize; describe the trade.
+
+**1.8** Pick a public company whose products you use. In one paragraph each, describe a plausible decision the firm makes in working-capital management, capital budgeting, and capital structure. You do not need internal data — reason from the firm's visible operations and what they imply about the balance sheet. For each decision, state which region of the balance sheet it touches.
+
+### Challenge
+
+**1.9** "Higher risk should deliver higher expected return" is the central organizing claim of the field. Find a real-world case — a specific market, period, or asset class — where this relationship demonstrably failed to hold for an extended stretch. (Possible candidates: US equity returns during the 2000s decade, Japanese stocks since 1990, short-term Treasury yields during the 2010s zero-rate period.) Does the failure falsify the claim, refine it, or reveal something about what happens when prices wander away from fundamentals? Defend your reading in a paragraph.
+
+**1.10** A friend says: "Why do we even need financial intermediaries? I could just lend money directly to people who need it and keep the bank's profit for myself." Build your answer in three parts: (a) what a bank actually adds beyond matchmaking, (b) what kind of intermediary your friend might already be using without recognizing it, and (c) one historical episode — the savings-and-loan disintermediation of the 1970s or the peer-to-peer lending wave of the 2010s — where someone tried exactly this, and what happened.
 
 ---
 
