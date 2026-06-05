@@ -440,6 +440,10 @@ The cleanest unresolved question is *whether students who use LLMs heavily under
 
 ##  AI Wayback Machine
 
+![Fischer Black](../images/fischer-black-4o2.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 **Run this:**
 
 ```

@@ -254,6 +254,10 @@ Chapter 16 examines corporate capital budgeting from the firm's perspective. The
 
 **Benjamin Graham** wrote *Security Analysis* (1934) — the founding text of value investing.
 
+![Benjamin Graham](../images/benjamin-graham-5iz.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 **Run this:**
 
 ```

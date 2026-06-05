@@ -273,6 +273,10 @@ Chapter 4 introduces accrual accounting — the rules that produce the financial
 
 **Irving Fisher** developed the Fisher equation linking nominal and real interest rates — and the Quantity Theory of Money.
 
+![Irving Fisher](../images/irving-fisher-cz3.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 **Run this:**
 
 ```
